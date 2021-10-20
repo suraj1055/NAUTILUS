@@ -1,0 +1,121 @@
+@import '../../node_modules/@syncfusion/ej2-base/styles/material.css';  
+@import '../../node_modules/@syncfusion/ej2-buttons/styles/material.css';  
+@import '../../node_modules/@syncfusion/ej2-calendars/styles/material.css';  
+@import '../../node_modules/@syncfusion/ej2-dropdowns/styles/material.css';  
+@import '../../node_modules/@syncfusion/ej2-inputs/styles/material.css';  
+@import '../../node_modules/@syncfusion/ej2-navigations/styles/material.css';
+@import '../../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css';
+@import "../../node_modules/@syncfusion/ej2-react-grids/styles/material.css";
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+@import '../../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../../node_modules/@syncfusion/ej2-react-navigations/styles/material.css';
+
+
+@import "../../node_modules/@syncfusion/ej2-base/styles/material.css";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  text-decoration: none;
+}
+
+.signup-container{
+    box-shadow: 0 10px 45px -20px rgba(0, 0, 0, 0.8);
+    padding: 0 10px;
+    max-width: 450px;
+}
+
+.login-container{
+    box-shadow: 0 10px 45px -20px rgba(0, 0, 0, 0.8);
+    padding: 0 10px;
+    max-width: 400px;
+}
+
+
+.signup-card{
+  display: flex;
+  margin-top: 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card{
+  display: flex;
+  margin-top: 10rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container{
+  margin-top: 3rem;
+}
+
+.study-container{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.e-content .e-item {
+  font-size: 12px;
+  margin: 20px;
+  text-align: justify;
+}
+
+.viscocity-curve{ 
+  display: grid;
+  grid-template-columns: 250px 250px 250px 250px;
+  grid-gap: 2rem;
+}
+
+.step-button{
+  margin-top: 1.5rem;
+}
+
+.pressure-drop{
+  display: grid;
+  grid-template-columns: 200px 200px 200px 200px 200px;
+  grid-gap: 0.5rem;
+}
+
+.pack-hold{
+  display: grid;
+  grid-template-columns: 200px 200px 200px 200px 200px;
+  grid-gap: 1.5rem;
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+    .study-container{
+      overflow-x: scroll;
+}
+
+.viscocity-curve{ 
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
+  grid-gap: 2rem;
+}
+
+.step-button{
+  margin-top: -0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.pressure-drop{
+  display: grid;
+  grid-template-columns: 300px 300px;
+  grid-gap: 2rem;
+}
+
+.pack-hold{
+  display: grid;
+  grid-template-columns: 300px 300px;
+  grid-gap: 2rem;
+}
+
+}
+
