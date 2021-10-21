@@ -16,7 +16,6 @@ const ViscocityCurve = () => {
     return (
         <>
             <div className="viscocity-curve">
-
                 <div>
                     <div className="form-group">
                         <label htmlFor="exampleFormControlSelect30" className="lbl_design"> Injection Speed Units: </label>
@@ -46,60 +45,57 @@ const ViscocityCurve = () => {
 
                 <div className="step-button">
                     <Button color="primary" onClick={toggle}> {"Generate Injection Speed"} </Button>
-                </div>
+                </div >
                 {modal && <Viscocity toggle={toggle} modal={modal} />}
 
             </div>
 
-            <hr></hr>
-            <div className="m-4">
-                <Button color="primary"> {"Delete Row"} </Button>
-            </div>
-            <hr></hr>
-
-            <div className="row mb-4">
-                <GridComponent allowEditing={true} allowPaging={true} pageSettings={{ pageSize: 4 }}>
-                    <ColumnsDirective>
-                        <ColumnDirective field="InjectionSpeed" headerText="Injection Speed" textAlign="Center" width="100" />
-                        <ColumnDirective field="FillTime" headerText="Fill Time (sec)" textAlign="Center" width="100" />
-                        <ColumnDirective field="PeakInjPress" headerText="Peak Inj Press" textAlign="Center" width="100" />
-                        <ColumnDirective field="Viscocity" headerText="Viscocity" textAlign="Center" width="100" />
-                        <ColumnDirective field="ShearRate" headerText="Shear Rate" textAlign="Center" width="100" />
-                        <ColumnDirective field="AbsoluteDropViscocity" headerText="Absolute Drop Viscocity" textAlign="Center" width="100" />
-                        <ColumnDirective field="DropViscocity" headerText="% Drop Viscocity" textAlign="Center" width="100" />
-                    </ColumnsDirective>
-                    <Inject services={[DetailRow, Page, Edit, CommandColumn]} />
-                </GridComponent>
-            </div>
-
-            <hr></hr>
-            <div className="row">
-                <div className="form-group col-md-4">
-                    <label htmlFor="exampleFormControlSelect30" className="lbl_design"> X-Axis: </label>
-                    <select className="form-control digits" id="exampleFormControlSelect30">
-                        <option>{"Injection Speed"}</option>
-                        <option>{"Shear Rate"}</option>
-                    </select>
+            <div className="grid-chart-container">
+                <div className="grid_delete_row">
+                    <Button color="primary"> {"Delete Row"} </Button>
                 </div>
-                <div className="col-md-4 mt-4">
-                    <Button color="primary"> {"Calculate & Show Graph"} </Button>
+                <div>
+                    <GridComponent allowEditing={true} allowPaging={true} pageSettings={{ pageSize: 4 }}>
+                        <ColumnsDirective>
+                            <ColumnDirective field="InjectionSpeed" headerText="Injection Speed" textAlign="Center" width="100" />
+                            <ColumnDirective field="FillTime" headerText="Fill Time (sec)" textAlign="Center" width="100" />
+                            <ColumnDirective field="PeakInjPress" headerText="Peak Inj Press" textAlign="Center" width="100" />
+                            <ColumnDirective field="Viscocity" headerText="Viscocity" textAlign="Center" width="100" />
+                            <ColumnDirective field="ShearRate" headerText="Shear Rate" textAlign="Center" width="100" />
+                            <ColumnDirective field="AbsoluteDropViscocity" headerText="Absolute Drop Viscocity" textAlign="Center" width="100" />
+                            <ColumnDirective field="DropViscocity" headerText="% Drop Viscocity" textAlign="Center" width="100" />
+                        </ColumnsDirective>
+                        <Inject services={[DetailRow, Page, Edit, CommandColumn]} />
+                    </GridComponent>
                 </div>
             </div>
-            <hr></hr>
-
-            <div className="col-md-12">
-                <ChartComponent>
-                </ChartComponent>
-            </div>
-
-            <hr></hr>
+            <div className="grid-chart-container">
+                <div className="row">
+                    <div className="col-md-3">
+                        <div className="form-group">
+                            <label htmlFor="exampleFormControlSelect30" className="lbl_design"> X-Axis: </label>
+                            <select className="form-control digits" id="exampleFormControlSelect30">
+                                <option>{"Injection Speed"}</option>
+                                <option>{"Shear Rate"}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className="col-md-4 mt-4">
+                        <Button color="primary"> {"Calculate & Show Graph"} </Button>
+                    </div>
+                </div>
+                <div className="col-md-12">
+                    <ChartComponent>
+                    </ChartComponent>
+                </div>
+            </div>           
             <div className="row">
-                <div className="col-md-2">
+                <div className="col-md-12">
+                    <div className="text-right mt-2">
                     <Button color="primary"> {"Save"} </Button>
+                    </div>
                 </div>
             </div>
-            <hr></hr>
-
         </>
     )
 }

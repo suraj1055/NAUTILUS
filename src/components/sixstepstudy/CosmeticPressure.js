@@ -14,17 +14,12 @@ const CosmeticPressure = () => {
 
     return (
 
-        <div className="row">
-            <div className="row">
-                <div className="col-md-3">
-                    <div className="form-group">
-                        <CosmeticEdit toggle={toggle} modal={modal} />
-                    </div>
+        <div>
+            <div className="grid-chart-container">
+                <div className="form-group">
+                    <CosmeticEdit toggle={toggle} modal={modal} />
                 </div>
-            </div>
-
-            <div className="d-flex flex-column justify-content-center">
-                <div className="mb-2">
+                <div>
                     <GridComponent allowEditing={true} allowPaging={true} pageSettings={{ pageSize: 4 }}>
                         <ColumnsDirective>
                             <ColumnDirective field="MeltTemp" headerText="Melt Temp" textAlign="Center" width="100" />
@@ -34,30 +29,23 @@ const CosmeticPressure = () => {
                         <Inject services={[DetailRow, Page, Edit, CommandColumn]} />
                     </GridComponent>
                 </div>
-
-                <hr></hr>
+            </div>
+            <div className="grid-chart-container">
                 <div className="row">
-                    <div className="col-md-4 m-2">
+                    <div className="col-md-4 chart_container_btn">
                         <Button color="primary"> {"Calculate & Show Graph"} </Button>
                     </div>
                 </div>
-                <hr></hr>
-
-                <div className="mb-8">
+                <div>
                     <ChartComponent>
                     </ChartComponent>
                 </div>
-
-                <hr></hr>
-                <div className="row">
-                    <div className="col-md-2">
-                        <Button color="primary"> {"Save"} </Button>
-                    </div>
-                    <div className="col-md-2">
-                        <Button color="primary"> {"Save As"} </Button>
-                    </div>
-                </div>
-                <hr></hr>
+            </div>
+            <div className="row">
+                <div className="col-md-12 text-right">
+                    <Button color="primary" className="btn-save-chart"> {"Save"} </Button>                    
+                    <Button color="primary"> {"Save As"} </Button>                
+                </div>               
             </div>
         </div>
     )

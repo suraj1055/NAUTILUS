@@ -34,8 +34,22 @@
     padding: 0 10px;
     max-width: 400px;
 }
-
-
+.grid-chart-container{
+  padding: 15px 0px;
+  
+}
+.grid_delete_row{
+  margin: 15px 0px;
+}
+.grid_container_btn{
+  margin: 15px 0px;
+}
+.chart_container_btn{
+  margin: 15px 0px;
+}
+.btn-save-chart{
+  margin-right: 20px;
+}
 .signup-card{
   display: flex;
   margin-top: 40px;
@@ -59,6 +73,7 @@
 .study-container{
   max-width: 1200px;
   margin: 0 auto;
+  padding: 30px 0px;
 }
 
 .e-content .e-item {
@@ -67,10 +82,11 @@
   text-align: justify;
 }
 
-.viscocity-curve{ 
+.viscocity-curve{  
   display: grid;
   grid-template-columns: 250px 250px 250px 250px;
   grid-gap: 2rem;
+  padding: 15px 0px;
 }
 
 .step-button{
@@ -93,29 +109,45 @@
     .study-container{
       overflow-x: scroll;
 }
+.cav_bal_add_delete_btn{
+  margin-left: 75px ;
+}
+
+.cold_run_del_add_del_btn{
+  margin-left:75px;
+}
+
+.hot_run_btns{
+  margin-left:75px;
+}
+
+.cooling_time_all_btn{ 
+  margin-left:75px;
+}
 
 .viscocity-curve{ 
   display: grid;
   grid-template-columns: 200px 200px 200px;
-  grid-gap: 2rem;
+  grid-gap: 15px;
 }
 
-.step-button{
+/* .step-button{
   margin-top: -0.5rem;
   margin-bottom: 1.5rem;
-}
+} */
 
-.pressure-drop{
+/* .pressure-drop{
   display: grid;
   grid-template-columns: 300px 300px;
   grid-gap: 2rem;
-}
+} */
 
 .pack-hold{
   display: grid;
   grid-template-columns: 300px 300px;
   grid-gap: 2rem;
 }
+
 
 }
 

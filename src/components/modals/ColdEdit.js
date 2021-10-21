@@ -5,7 +5,7 @@ const ColdEdit = ({modal, toggle}) => {
     
     return (
 
-        <div className="card-body btn-showcase">
+        <div className="btn-showcase">
             {/* < !-- Using Form Modal --> */}
             <Button color="primary" onClick={toggle}>{"Edit"}</Button>
             <Modal isOpen={modal} toggle={toggle} centered={true}>
