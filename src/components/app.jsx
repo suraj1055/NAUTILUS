@@ -20,7 +20,7 @@ const App = (props) => {
                             { props.children }
                         </div>
                         {/* <Footer /> */}
-                        {/* <ThemeCustomizer /> */}
+                        <ThemeCustomizer />
                     </div>
                 </div>
                 <ToastContainer />
