@@ -65,7 +65,7 @@ const Viscocity = ({  modal2, toggle2 }) => {
             </ModalBody>
             <ModalFooter>
                 <Button color="primary">{"Update"}</Button>
-                <Button color="secondary" onClick={toggle2}>{"Cancel"}</Button>
+                <Button color="fourth" onClick={toggle2}>{"Cancel"}</Button>
             </ModalFooter>
         </Modal>
     </div>

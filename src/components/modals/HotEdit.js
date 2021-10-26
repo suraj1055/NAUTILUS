@@ -3,7 +3,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 const CosmeticEdit = ({modal, toggle}) => {
     return (
-        <div className="card-body btn-showcase">
+        <div className="btn-showcase">
             {/* < !-- Using Form Modal --> */}
             <Button color="primary" className="mt-1" onClick={toggle}>{"Generate Pressure Values"}</Button>
             <Modal isOpen={modal} toggle={toggle} centered={true}>
@@ -45,7 +45,7 @@ const CosmeticEdit = ({modal, toggle}) => {
                 </ModalBody>
                 <ModalFooter>
                     <Button color="primary">{"Rescale"}</Button>
-                    <Button color="secondary" onClick={toggle}>{"Cancel"}</Button>
+                    <Button color="fourth" onClick={toggle}>{"Cancel"}</Button>
                 </ModalFooter>
             </Modal>
         </div>
