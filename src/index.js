@@ -73,6 +73,7 @@ const Root = () => {
                             <Route path={`${process.env.PUBLIC_URL}/callback`} render={() => <Callback />} />
 
                             <App>
+                                
                                 <Route exact path={`${process.env.PUBLIC_URL}/sixstepstudy/sixstepstudy`} component={SixStepStudy} />
 
                                 <Route exact path={`${process.env.PUBLIC_URL}/`} render={() => {
