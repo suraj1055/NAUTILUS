@@ -38,15 +38,19 @@
   padding: 15px 0px;
   
 }
+
 .grid_delete_row{
   margin: 15px 0px;
 }
+
 .grid_container_btn{
   margin: 15px 0px;
 }
+
 .chart_container_btn{
   margin: 15px 0px;
 }
+
 .btn-save-chart{
   margin-right: 20px;
 }
@@ -87,9 +91,6 @@
 }
 
 .viscocity-curve{  
-  /* display: grid;
-  grid-template-columns: 250px 250px 250px 250px;
-  grid-gap: 2rem; */
   padding: 15px 0px;
 }
 .mybtn{
@@ -131,23 +132,6 @@
 .cooling_time_all_btn{ 
   margin-left:75px;
 }
-
-/* .viscocity-curve{ 
-  display: grid;
-  grid-template-columns: 700px 700px 700px;
-  grid-gap: 15px;
-} */
-
-/* .step-button{
-  margin-top: -0.5rem;
-  margin-bottom: 1.5rem;
-} */
-
-/* .pressure-drop{
-  display: grid;
-  grid-template-columns: 300px 300px;
-  grid-gap: 2rem;
-} */
 
 .pack-hold{
   display: grid;
