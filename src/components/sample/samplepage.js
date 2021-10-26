@@ -105,7 +105,7 @@ const Samplepage = () => {
                 </ModalBody>
                 <ModalFooter>
                   <Button color="primary">Create</Button>
-                  <Button color="secondary" onClick={toggle3}>{Cancel}</Button>
+                  <Button color="fourth" onClick={toggle3}>{Cancel}</Button>
                 </ModalFooter>
               </Modal>
             </div>
@@ -157,7 +157,7 @@ const Samplepage = () => {
                 </ModalBody>
                 <ModalFooter>
                   <Button color="primary">Create</Button>
-                  <Button color="secondary" onClick={toggle2}>{Cancel}</Button>
+                  <Button color="fourth" onClick={toggle2}>{Cancel}</Button>
                 </ModalFooter>
               </Modal>
             </div>

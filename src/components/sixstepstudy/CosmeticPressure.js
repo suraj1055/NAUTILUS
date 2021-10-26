@@ -43,8 +43,8 @@ const CosmeticPressure = () => {
             </div>
             <div className="row">
                 <div className="col-md-12 text-right">
-                    <Button color="primary" className="btn-save-chart"> {"Save"} </Button>                    
-                    <Button color="primary"> {"Save As"} </Button>                
+                    <Button color="third" className="btn-save-chart"> {"Save"} </Button>                    
+                    <Button color="third"> {"Save As"} </Button>                
                 </div>               
             </div>
         </div>

@@ -29,12 +29,12 @@ const CavityBalance = () => {
                         <div className="row">
                             <div className="col-md-4">
                                 <div className="grid_container_btn">
-                                    <Button color="primary"> {"Add Column"} </Button>
+                                    <Button color="secondary" className="btn btn-primary btn-sm" type="button"> {"Add Column"} </Button>
                                 </div>
                             </div>
                             <div className="col-md-4">
                                 <div className="grid_container_btn cav_bal_add_delete_btn">
-                                    <Button color="primary"> {"Delete Column"} </Button>
+                                    <Button color="secondary" className="btn btn-primary btn-sm" type="button"> {"Delete Column"} </Button>
                                 </div>
                             </div>
                         </div>
@@ -74,9 +74,9 @@ const CavityBalance = () => {
             </div>
             <div className="row">
                 <div className="col-md-12">
-                    <div className="text-right  mt-2">
-                        <Button color="primary" className="btn-save-chart"> {"Save"} </Button>
-                        <Button color="primary"> {"Save As"} </Button>
+                    <div className="text-right">
+                        <Button color="third" className="btn-save-chart"> {"Save"} </Button>
+                        <Button color="third"> {"Save As"} </Button>
                     </div>
                 </div>
             </div>

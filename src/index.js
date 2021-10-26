@@ -73,7 +73,7 @@ const Root = () => {
                             <Route path={`${process.env.PUBLIC_URL}/callback`} render={() => <Callback />} />
 
 
-                            {currentUser !== null || authenticated || jwt_token ?
+                            {/* {currentUser !== null || authenticated || jwt_token ? */}
 
                                 <App>
                                     <Route exact path={`${process.env.PUBLIC_URL}/sixstepstudy/sixstepstudy`} component={SixStepStudy} />
@@ -86,9 +86,9 @@ const Root = () => {
                                     <Route path={`${process.env.PUBLIC_URL}/dashboard/default`} component={Default} />
 
                                 </App>
-                                :
-                                <Redirect to={`${process.env.PUBLIC_URL}/login`} />
-                            }
+                                {/* :
+                                <Redirect to={`${process.env.PUBLIC_URL}/login`} /> */}
+                            {/* } */}
                         </Switch>
                     </BrowserRouter>
                 </Provider>

@@ -5,6 +5,8 @@ const ThemeCustomizer = () => {
 
     const primary_color = localStorage.getItem('primary_color');
     const secondary_color = localStorage.getItem('secondary_color');
+    const third_color = localStorage.getItem(' third_color');
+    const fourth_color = localStorage.getItem(' fourth_color');
     const layout_version = localStorage.getItem('layout_version');
     const sidebar_type = localStorage.getItem('wrapper')
     const body_sidebar_type = localStorage.getItem('bodyWrapper');
@@ -29,6 +31,8 @@ const ThemeCustomizer = () => {
                 color,
                 primary_color,
                 secondary_color,
+                third_color,
+                fourth_color,
                 layout_version,
             }
         })
