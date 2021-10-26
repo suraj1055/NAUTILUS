@@ -52,7 +52,7 @@ const PackAndHold = () => {
             </div>
             <div className="grid-chart-container">
                 <div className="grid_container_btn">
-                    <Button color="primary"> {"Delete Row"} </Button>
+                    <Button color="secondary" className="btn btn-primary btn-sm" type="button"> {"Delete Row"} </Button>
                 </div>
                 <div>
                     <GridComponent allowEditing={true} allowPaging={true} pageSettings={{ pageSize: 4 }}>
@@ -80,8 +80,8 @@ const PackAndHold = () => {
             </div>            
             <div className="row">
                 <div className="col-md-12 text-right">
-                    <Button color="primary" className="btn-save-chart"> {"Save"} </Button>
-                    <Button color="primary"> {"Save As"} </Button>
+                    <Button color="third" className="btn-save-chart"> {"Save"} </Button>
+                    <Button color="third"> {"Save As"} </Button>
                 </div>                
             </div>           
         </>

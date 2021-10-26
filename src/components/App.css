@@ -14,7 +14,7 @@
 
 
 @import "../../node_modules/@syncfusion/ej2-base/styles/material.css";
-
+@import url("../assets/custom-stylesheet/sixstep_style.css");
 * {
   box-sizing: border-box;
   margin: 0;
@@ -70,6 +70,10 @@
   margin-top: 3rem;
 }
 
+.lbl_design{
+  font-size: 14px;
+}
+
 .study-container{
   max-width: 1200px;
   margin: 0 auto;
@@ -83,14 +87,16 @@
 }
 
 .viscocity-curve{  
-  display: grid;
+  /* display: grid;
   grid-template-columns: 250px 250px 250px 250px;
-  grid-gap: 2rem;
+  grid-gap: 2rem; */
   padding: 15px 0px;
 }
-
+.mybtn{
+  background-color: #573DAC;;
+}
 .step-button{
-  margin-top: 1.5rem;
+  margin-top: 1.7rem;
 }
 
 .pressure-drop{
@@ -109,6 +115,7 @@
     .study-container{
       overflow-x: scroll;
 }
+
 .cav_bal_add_delete_btn{
   margin-left: 75px ;
 }
@@ -125,11 +132,11 @@
   margin-left:75px;
 }
 
-.viscocity-curve{ 
+/* .viscocity-curve{ 
   display: grid;
-  grid-template-columns: 200px 200px 200px;
+  grid-template-columns: 700px 700px 700px;
   grid-gap: 15px;
-}
+} */
 
 /* .step-button{
   margin-top: -0.5rem;

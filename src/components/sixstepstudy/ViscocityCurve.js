@@ -16,43 +16,47 @@ const ViscocityCurve = () => {
     return (
         <>
             <div className="viscocity-curve">
-                <div>
-                    <div className="form-group">
-                        <label htmlFor="exampleFormControlSelect30" className="lbl_design"> Injection Speed Units: </label>
-                        <select className="form-control digits" id="exampleFormControlSelect30">
-                            <option>{"1"}</option>
-                            <option>{"2"}</option>
-                            <option>{"3"}</option>
-                            <option>{"4"}</option>
-                            <option>{"5"}</option>
-                        </select>
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="row">
+                            <div className="col-md-3">
+                                <div className="form-group">
+                                    <label htmlFor="exampleFormControlSelect30" className="lbl_design"> Injection Speed Units: </label>
+                                    <select className="form-control digits" id="exampleFormControlSelect30">
+                                        <option>{"1"}</option>
+                                        <option>{"2"}</option>
+                                        <option>{"3"}</option>
+                                        <option>{"4"}</option>
+                                        <option>{"5"}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="col-md-3">
+                                <div className="form-group">
+                                    <label htmlFor="exampleInputPassword27" className="lbl_design">Intensification Ratio:</label>
+                                    <input className="form-control" id="exampleInputPassword27" type="text" />
+                                </div>
+                            </div>
+                            <div className="col-md-3">
+                                <div className="form-group">
+                                    <label htmlFor="exampleInputPassword27" className="lbl_design"> Pressure Units: </label>
+                                    <input className="form-control" id="exampleInputPassword27" type="text" />
+                                </div>
+                            </div>
+                            <div className="col-md-3">
+                                <div className="step-button">
+                                    <Button color="primary" onClick={toggle}> {"Generate Injection Speed"} </Button>
+                                </div >
+                                {modal && <Viscocity toggle={toggle} modal={modal} />}
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <div>
-                    <div className="form-group">
-                        <label htmlFor="exampleInputPassword27" className="lbl_design">Intensification Ratio:</label>
-                        <input className="form-control" id="exampleInputPassword27" type="text" />
-                    </div>
-                </div>
-
-                <div>
-                    <div className="form-group">
-                        <label htmlFor="exampleInputPassword27" className="lbl_design"> Pressure Units: </label>
-                        <input className="form-control" id="exampleInputPassword27" type="text" />
-                    </div>
-                </div>
-
-                <div className="step-button">
-                    <Button color="primary" onClick={toggle}> {"Generate Injection Speed"} </Button>
-                </div >
-                {modal && <Viscocity toggle={toggle} modal={modal} />}
-
             </div>
 
             <div className="grid-chart-container">
                 <div className="grid_delete_row">
-                    <Button color="primary"> {"Delete Row"} </Button>
+                    <Button color="secondary" className="btn btn-primary btn-sm" type="button"> {"Delete Row"} </Button>
                 </div>
                 <div>
                     <GridComponent allowEditing={true} allowPaging={true} pageSettings={{ pageSize: 4 }}>
@@ -88,11 +92,11 @@ const ViscocityCurve = () => {
                     <ChartComponent>
                     </ChartComponent>
                 </div>
-            </div>           
+            </div>
             <div className="row">
                 <div className="col-md-12">
-                    <div className="text-right mt-2">
-                    <Button color="primary"> {"Save"} </Button>
+                    <div className="text-right">
+                        <Button color="third"> {"Save"} </Button>
                     </div>
                 </div>
             </div>
