@@ -76,6 +76,10 @@ const Root = () => {
 
                                 <Route exact path={`${process.env.PUBLIC_URL}/sixstepstudy/sixstepstudy`} component={SixStepStudy} />
 
+                                <Route exact path={`${process.env.PUBLIC_URL}/`} render={() => {
+                                    return (<Redirect to={`${process.env.PUBLIC_URL}/dashboard/default`} />)
+                                }} />
+
                                 <Route path={`${process.env.PUBLIC_URL}/dashboard/default`} component={Default} />
 
                             </App>
