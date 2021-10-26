@@ -87,13 +87,8 @@ const Root = () => {
 
                                 </App>
                                 {/* :
-<<<<<<< HEAD
                                 <Redirect to={`${process.env.PUBLIC_URL}/login`} />
                              } */}
-=======
-                                <Redirect to={`${process.env.PUBLIC_URL}/login`} /> */}
-                            {/* } */}
->>>>>>> 708f3b97494a6d10fd2807f381ff06f449d3106a
                         </Switch>
                     </BrowserRouter>
                 </Provider>
