@@ -7,9 +7,7 @@ const Default = () => {
     return (
         <Fragment>
             <Breadcrumb parent="Dashboard" title="Default" />
-
             <Samplepage />
-
         </Fragment>
     );
 };

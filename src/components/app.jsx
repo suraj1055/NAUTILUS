@@ -19,6 +19,8 @@ const App = (props) => {
                         <div className="page-body">
                             { props.children }
                         </div>
+                         {/* <Footer /> */}
+                        {/* <ThemeCustomizer /> */}
                     </div>
                 </div>
                 <ToastContainer />
