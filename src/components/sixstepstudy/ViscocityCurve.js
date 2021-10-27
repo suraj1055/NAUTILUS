@@ -84,7 +84,7 @@ const ViscocityCurve = () => {
                             </select>
                         </div>
                     </div>
-                    <div className="col-md-4 mt-4">
+                    <div className="col-md-4 mt-6">
                         <Button color="primary"> {"Calculate & Show Graph"} </Button>
                     </div>
                 </div>

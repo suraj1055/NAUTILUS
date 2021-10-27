@@ -3,7 +3,7 @@ import Header from './common/header-component/header';
 import Sidebar from './common/sidebar-component/sidebar';
 import RightSidebar from './common/right-sidebar';
 // import Footer from './common/footer';
-// import ThemeCustomizer from './common/theme-customizer'
+import ThemeCustomizer from './common/theme-customizer'
 import { ToastContainer } from 'react-toastify';
 import Loader from './common/loader';
 
@@ -19,8 +19,8 @@ const App = (props) => {
                         <div className="page-body">
                             { props.children }
                         </div>
-                         {/* <Footer /> */}
-                        {/* <ThemeCustomizer /> */}
+                        {/* <Footer /> */}
+                        <ThemeCustomizer />
                     </div>
                 </div>
                 <ToastContainer />
