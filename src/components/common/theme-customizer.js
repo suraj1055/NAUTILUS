@@ -79,7 +79,7 @@ const ThemeCustomizer = () => {
         } else {
             document.querySelector(".compactLogo").className = 'compactLogo hide';
         }
-    }, []);
+    }, [body_sidebar_type, color, configDB.settings.sidebar.bodyWrapper, configDB.settings.sidebar.wrapper]);
 
 
     return (
