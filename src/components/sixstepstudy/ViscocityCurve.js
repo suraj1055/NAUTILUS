@@ -21,8 +21,8 @@ const ViscocityCurve = () => {
                         <div className="row">
                             <div className="col-md-3">
                                 <div className="form-group">
-                                    <label htmlFor="exampleFormControlSelect30" className="lbl_design"> Injection Speed Units: </label>
-                                    <select className="form-control digits" id="exampleFormControlSelect30">
+                                    <label htmlFor="Injection_Speed_Units" className="lbl_design"> Injection Speed Units: </label>
+                                    <select className="form-control digits" id="Injection_Speed_Units">
                                         <option>{"1"}</option>
                                         <option>{"2"}</option>
                                         <option>{"3"}</option>
@@ -33,14 +33,14 @@ const ViscocityCurve = () => {
                             </div>
                             <div className="col-md-3">
                                 <div className="form-group">
-                                    <label htmlFor="exampleInputPassword27" className="lbl_design">Intensification Ratio:</label>
-                                    <input className="form-control" id="exampleInputPassword27" type="text" />
+                                    <label htmlFor="Intensification_Ratio" className="lbl_design">Intensification Ratio:</label>
+                                    <input className="form-control" id="Intensification_Ratio" type="text" />
                                 </div>
                             </div>
                             <div className="col-md-3">
                                 <div className="form-group">
-                                    <label htmlFor="exampleInputPassword27" className="lbl_design"> Pressure Units: </label>
-                                    <input className="form-control" id="exampleInputPassword27" type="text" />
+                                    <label htmlFor="Pressure_Units" className="lbl_design"> Pressure Units: </label>
+                                    <input className="form-control" id="Pressure_Units" type="text" />
                                 </div>
                             </div>
                             <div className="col-md-3">

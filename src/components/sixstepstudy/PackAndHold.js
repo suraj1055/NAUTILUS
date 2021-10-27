@@ -10,8 +10,8 @@ const PackAndHold = () => {
             <div className="row">
                 <div className="col-md-4">
                     <div className="form-group">
-                        <label htmlFor="exampleFormControlSelect30" className="lbl_design"> Pack Pressure Units: </label>
-                        <select className="form-control digits" id="exampleFormControlSelect30">
+                        <label htmlFor="Pack_Pressure_Units" className="lbl_design"> Pack Pressure Units: </label>
+                        <select className="form-control digits" id="Pack_Pressure_Units">
                             <option>{"psi"}</option>
                             <option>{"ppsi"}</option>
                             <option>{"Mpa"}</option>
@@ -21,14 +21,14 @@ const PackAndHold = () => {
                 </div>
                 <div className="col-md-4">
                     <div className="form-group">
-                        <label htmlFor="exampleInputPassword27" className="lbl_design">Final Desired Part Weight:</label>
-                        <input className="form-control" id="exampleInputPassword27" type="text" />
+                        <label htmlFor="Final_Desired_Part_Weight" className="lbl_design">Final Desired Part Weight:</label>
+                        <input className="form-control" id="Final_Desired_Part_Weight" type="text" />
                     </div>
                 </div>
                 <div className="col-md-4">
                     <div className="form-group">
-                        <label htmlFor="exampleInputPassword27" className="lbl_design">Part Weight Units: </label>
-                        <select className="form-control digits" id="exampleFormControlSelect30">
+                        <label htmlFor="Part_Weight_Units" className="lbl_design">Part Weight Units: </label>
+                        <select className="form-control digits" id="Part_Weight_Units">
                             <option>{"gms"}</option>
                             <option>{"oz"}</option>
                         </select>
@@ -38,8 +38,8 @@ const PackAndHold = () => {
             <div className="row">
                 <div className="col-md-4">
                     <div className="form-group">
-                        <label htmlFor="exampleInputPassword27" className="lbl_design">Copy Data From Cold Runner: </label>
-                        <select className="form-control digits" id="exampleFormControlSelect30">
+                        <label htmlFor="Copy_Data_From_Cold_Runner" className="lbl_design">Copy Data From Cold Runner: </label>
+                        <select className="form-control digits" id="Copy_Data_From_Cold_Runner">
                             <option>{"Weight1"}</option>
                         </select>
                     </div>

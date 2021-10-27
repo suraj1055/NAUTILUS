@@ -28,22 +28,22 @@ const PressureDropStudy = () => {
                     </div>
                     <div className="col-md-4">
                         <div className="form-group">
-                            <label htmlFor="exampleInputPassword27" className="lbl_design">Nozzle Length:</label>
-                            <input className="form-control" id="exampleInputPassword27" type="text" />
+                            <label htmlFor="Nozzle_Length" className="lbl_design">Nozzle Length:</label>
+                            <input className="form-control" id="Nozzle_Length" type="text" />
                         </div>
                     </div>
                     <div className="col-md-4">
                         <div className="form-group">
-                            <label htmlFor="exampleInputPassword27" className="lbl_design"> Orifice Diameter: </label>
-                            <input className="form-control" id="exampleInputPassword27" type="text" />
+                            <label htmlFor="Orifice_Diameter" className="lbl_design"> Orifice Diameter: </label>
+                            <input className="form-control" id="Orifice_Diameter" type="text" />
                         </div>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-md-3">
                         <div className="form-group">
-                            <label htmlFor="exampleInputPassword27" className="lbl_design"> Max Pressure Available: </label>
-                            <input className="form-control" id="exampleInputPassword27" type="text" />
+                            <label htmlFor="Max_Pressure_Available" className="lbl_design"> Max Pressure Available: </label>
+                            <input className="form-control" id="Max_Pressure_Available" type="text" />
                         </div>
                     </div>
                     <div className="col-md-3">
