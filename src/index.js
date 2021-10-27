@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
-import { firebase_app, auth0 } from './data/config';
+import { auth0 } from './data/config';
 import { configureFakeBackend, authHeader, handleResponse } from "./services/fack.backend";
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
@@ -32,9 +32,7 @@ configureFakeBackend();
 const Root = () => {
 
     const abortController = new AbortController();
-    const [currentUser, setCurrentUser] = useState(false);
-    const [authenticated, setAuthenticated] = useState(false)
-    const jwt_token = localStorage.getItem('token');
+    
 
     useEffect(() => {
 
@@ -43,8 +41,6 @@ const Root = () => {
         const color = localStorage.getItem('color')
         console.log(color);
         const layout = localStorage.getItem('layout_version') || configDB.data.color.layout_version
-        firebase_app.auth().onAuthStateChanged(setCurrentUser);
-        setAuthenticated(JSON.parse(localStorage.getItem("authenticated")))
         document.body.classList.add(layout);
         console.ignoredYellowBox = ['Warning: Each', 'Warning: Failed'];
         console.disableYellowBox = true;
@@ -54,7 +50,7 @@ const Root = () => {
             abortController.abort();
         }
 
-    }, []);
+    }, [abortController]);
 
     return (
         <div className="App">
@@ -72,23 +68,16 @@ const Root = () => {
 
                             <Route path={`${process.env.PUBLIC_URL}/callback`} render={() => <Callback />} />
 
-
-                            {/* {currentUser !== null || authenticated || jwt_token ? */}
-
-                                <App>
-                                    <Route exact path={`${process.env.PUBLIC_URL}/sixstepstudy/sixstepstudy`} component={SixStepStudy} />
-
-                                    <Route exact path={`${process.env.PUBLIC_URL}/`} render={() => {
+                            <App>
+                                    <Route exact path='*' render={() => {
                                         return (<Redirect to={`${process.env.PUBLIC_URL}/dashboard/default`} />)
                                     }} />
 
+                                    <Route exact path={`${process.env.PUBLIC_URL}/sixstepstudy/sixstepstudy`} component={SixStepStudy} />
 
                                     <Route path={`${process.env.PUBLIC_URL}/dashboard/default`} component={Default} />
-
-                                </App>
-                                {/* :
-                                <Redirect to={`${process.env.PUBLIC_URL}/login`} />
-                             } */}
+                            </App>
+                              
                         </Switch>
                     </BrowserRouter>
                 </Provider>

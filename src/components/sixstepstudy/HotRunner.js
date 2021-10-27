@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, CommandColumn, Edit } from '@syncfusion/ej2-react-grids';
 import { ChartComponent } from '@syncfusion/ej2-react-charts'
-import GenerateEdit from '../modals/GenerateEdit'
+// import GenerateEdit from '../modals/GenerateEdit'
 import HotEdit from '../modals/HotEdit';
 import { Button } from 'reactstrap';
 
@@ -12,13 +12,6 @@ const HotRunner = () => {
     const toggle = () => {
         setModal(!modal)
     }
-
-    const [modal2, setModal2] = useState();
-
-    const toggle2 = () => {
-        setModal2(!modal2)
-    }
-
 
     return (
         <>
