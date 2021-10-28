@@ -4,11 +4,7 @@ import { Link } from 'react-router-dom';
 import {Email,Resetpassword,Forgotpassword,SignUp2} from '../constant';
 
 
-const ResetPwd = ({history}) => {
-    
-    const loginAuth = () => {
-        history.push(`${process.env.PUBLIC_URL}/dashboard/default`);
-    }
+const ResetPwd = () => {
     
     return (
         <div>
@@ -34,7 +30,7 @@ const ResetPwd = ({history}) => {
                                                     </div>
                                                     
                                                     <div className="form-group form-row mt-3 mb-0">
-                                                        <button className="btn btn-primary btn-block" type="button" onClick={() => loginAuth()}>{Resetpassword}</button>
+                                                        <button className="btn btn-primary btn-block" type="button">{Resetpassword}</button>
                                                     </div>                                                    
                                                                                             
                                                     <div className="login_links text-center">
