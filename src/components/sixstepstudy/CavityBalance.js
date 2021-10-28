@@ -76,7 +76,6 @@ const CavityBalance = () => {
                 <div className="col-md-12">
                     <div className="text-right">
                         <Button color="third" className="btn-save-chart"> {"Save"} </Button>
-                        <Button color="third"> {"Save As"} </Button>
                     </div>
                 </div>
             </div>

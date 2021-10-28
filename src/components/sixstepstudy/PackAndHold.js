@@ -79,11 +79,10 @@ const PackAndHold = () => {
                 </div>
             </div>            
             <div className="row">
-                <div className="col-md-12 text-right">
+                <div className="col-md-12 text-right mb-4">
                     <Button color="third" className="btn-save-chart"> {"Save"} </Button>
-                    <Button color="third"> {"Save As"} </Button>
                 </div>                
-            </div>           
+            </div>      
         </>
     )
 }
