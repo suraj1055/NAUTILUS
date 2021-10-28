@@ -59,7 +59,7 @@ const Root = () => {
                     <BrowserRouter basename={`/`}>
                         <Switch>
 
-                            <Route exact path='/' render={() => {
+                            <Route exact path='/endless' render={() => {
                                 return (<Redirect to={`${process.env.PUBLIC_URL}/pages/login`} />)
                             }} />
 
@@ -72,7 +72,6 @@ const Root = () => {
                             <Route path={`${process.env.PUBLIC_URL}/callback`} render={() => <Callback />} />
 
                             <App>
-
                                 <Route exact path={`${process.env.PUBLIC_URL}/sixstepstudy/sixstepstudy`} component={SixStepStudy} />
 
                                 <Route path={`${process.env.PUBLIC_URL}/dashboard/default`} component={Default} />

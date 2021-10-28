@@ -1,5 +1,5 @@
 import React, { useState ,Fragment } from 'react';
-import logo from '../../../assets/images/endless-logo.png';
+// import logo from '../../../assets/images/endless-logo.png';
 import { Link } from 'react-router-dom';
 import { AlignLeft, MoreHorizontal } from 'react-feather';
 import '../../../assets/custom-stylesheet/header_style.css';

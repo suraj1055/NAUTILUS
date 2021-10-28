@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
+import { Nav, NavItem, NavLink } from 'reactstrap';
 // import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { useSelector, useDispatch } from 'react-redux';
 // import { CopyToClipboard } from 'react-copy-to-clipboard';
@@ -20,7 +20,7 @@ const ThemeCustomizer = () => {
     const configDB = useSelector(content => content.Customizer.customizer);
     const color = localStorage.getItem('color')
     const mix_layout = configDB.color.mix_layout;
-    const [layout_type, setLayout_type] = useState(configDB.settings.layout_type);
+    // const [layout_type, setLayout_type] = useState(configDB.settings.layout_type);
     const dispatch = useDispatch();
     const config_primary = configDB.color.primary_color;
     const config_secondary = configDB.color.secondary_color;
@@ -43,8 +43,8 @@ const ThemeCustomizer = () => {
         })
 
         //set layout_type
-        document.body.setAttribute('main-theme-layout', layout_type);
-        document.documentElement.dir = layout_type;
+        // document.body.setAttribute('main-theme-layout', layout_type);
+        // document.documentElement.dir = layout_type;
 
         //set sidebar wrapper
         if(sidebar_type === null && body_sidebar_type === null){
