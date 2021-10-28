@@ -69,11 +69,7 @@ const Root = () => {
                             <Route path={`${process.env.PUBLIC_URL}/callback`} render={() => <Callback />} />
 
                             <App>
-<<<<<<< HEAD
                                     <Route exact path='/' render={() => {
-=======
-                                    <Route exact path='*' render={() => {
->>>>>>> d3ed40e423d0300013d10d4bd0409c7a7c1bf36b
                                         return (<Redirect to={`${process.env.PUBLIC_URL}/dashboard/default`} />)
                                     }} />
 

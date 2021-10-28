@@ -79,11 +79,7 @@
 }
 
 .study-container{
-<<<<<<< HEAD
-  max-width: 95vw;
-=======
   width: 100%; 
->>>>>>> d3ed40e423d0300013d10d4bd0409c7a7c1bf36b
   margin: 0 auto;
   padding: 30px 30px;
 }
