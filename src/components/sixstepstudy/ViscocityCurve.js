@@ -56,7 +56,7 @@ const ViscocityCurve = () => {
 
             <div className="grid-chart-container">
                 <div className="grid_delete_row">
-                    <Button color="secondary" className="btn btn-primary btn-sm" type="button"> {"Delete Row"} </Button>
+                    <Button color="fifth" className="btn btn-sm" type="button"> {"Delete Row"} </Button>
                 </div>
                 <div>
                     <GridComponent allowEditing={true} allowPaging={true} pageSettings={{ pageSize: 4 }}>
@@ -88,12 +88,15 @@ const ViscocityCurve = () => {
                         <Button color="primary"> {"Calculate & Show Graph"} </Button>
                     </div>
                 </div>
-                <div className="col-md-12">
-                    <ChartComponent>
-                    </ChartComponent>
+                <div className="row">
+                    <div className="col-md-12">
+                        <ChartComponent>
+                        </ChartComponent>
+                    </div>
                 </div>
+
             </div>
-            <div className="row">
+            <div className="row save_saveas_btn">
                 <div className="col-md-12">
                     <div className="text-right">
                         <Button color="third"> {"Save"} </Button>
