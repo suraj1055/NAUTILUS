@@ -17,7 +17,7 @@ import { Auth0Provider } from '@auth0/auth0-react'
 import Default from './components/dashboard/defaultCompo/default';
 
 // pages 
-import Login from './pages/login';
+import SignIn from './pages/login';
 import Signup from './pages/signup';
 import ResetPwd from './pages/resetPwd';
 
@@ -32,7 +32,7 @@ configureFakeBackend();
 const Root = () => {
 
     const abortController = new AbortController();
-    
+
 
     useEffect(() => {
 
@@ -59,8 +59,11 @@ const Root = () => {
                     <BrowserRouter basename={`/`}>
                         <Switch>
 
+                            <Route exact path='/' render={() => {
+                                return (<Redirect to={`${process.env.PUBLIC_URL}/pages/login`} />)
+                            }} />
 
-                            <Route path={`${process.env.PUBLIC_URL}/pages/login`} component={Login} />
+                            <Route path={`${process.env.PUBLIC_URL}/pages/login`} component={SignIn} />
 
                             <Route path={`${process.env.PUBLIC_URL}/pages/signup`} component={Signup} />
 
@@ -69,15 +72,12 @@ const Root = () => {
                             <Route path={`${process.env.PUBLIC_URL}/callback`} render={() => <Callback />} />
 
                             <App>
-                                    <Route exact path='/' render={() => {
-                                        return (<Redirect to={`${process.env.PUBLIC_URL}/dashboard/default`} />)
-                                    }} />
 
-                                    <Route exact path={`${process.env.PUBLIC_URL}/sixstepstudy/sixstepstudy`} component={SixStepStudy} />
+                                <Route exact path={`${process.env.PUBLIC_URL}/sixstepstudy/sixstepstudy`} component={SixStepStudy} />
 
-                                    <Route path={`${process.env.PUBLIC_URL}/dashboard/default`} component={Default} />
+                                <Route path={`${process.env.PUBLIC_URL}/dashboard/default`} component={Default} />
                             </App>
-                              
+
                         </Switch>
                     </BrowserRouter>
                 </Provider>

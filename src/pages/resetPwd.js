@@ -1,11 +1,10 @@
 import React from 'react';
 import '../assets/custom-stylesheet/login_style.css';
-
-import { withRouter } from "react-router";
+import { Link } from 'react-router-dom';
 import {Email,Resetpassword,Forgotpassword,SignUp2} from '../constant';
 
 
-const Logins = ({history}) => {
+const ResetPwd = ({history}) => {
     
     const loginAuth = () => {
         history.push(`${process.env.PUBLIC_URL}/dashboard/default`);
@@ -39,7 +38,7 @@ const Logins = ({history}) => {
                                                     </div>                                                    
                                                                                             
                                                     <div className="login_links text-center">
-                                                        <div className="mt-2">{"Don't have an Account?"} <a className="btn-link text-capitalize" href="signup.js">{SignUp2}</a></div>                                                                                                   
+                                                        <div className="mt-2">{"Don't have an Account?"} <Link className="btn-link text-capitalize" to={`${process.env.PUBLIC_URL}/pages/signup`}> {SignUp2} </Link></div>                                                                                             
                                                     </div>
                                                     
                                                 </form>
@@ -56,4 +55,4 @@ const Logins = ({history}) => {
     );
 };
 
-export default withRouter(Logins);
+export default ResetPwd;

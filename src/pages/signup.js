@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import '../assets/custom-stylesheet/login_style.css';
 import { Email,Password,RetypePassword ,NewUser,SignUp2} from '../constant';
+import { Link } from 'react-router-dom';
 
 const Signup = () => {
     return (
@@ -37,7 +38,8 @@ const Signup = () => {
                                                         <button className="btn btn-primary btn-block" type="button">{SignUp2}</button>
                                                 </div>
                                                     <div className="login_links text-center">
-                                                     <div className="mt-2">{"Are you already user?"} <a className="btn-link text-capitalize" href="login.html">{SignUp2}</a></div>
+                                                     <div className="mt-2">{"Are you already user?"} <Link className="btn-link text-capitalize" to={`${process.env.PUBLIC_URL}/pages/login`}> SignIn </Link>
+                                                     </div>
                                                     </div>
                                             </form>
                                             </div>

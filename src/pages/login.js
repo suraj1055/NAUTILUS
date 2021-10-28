@@ -1,9 +1,9 @@
 import React from 'react';
 import '../assets/custom-stylesheet/login_style.css';
-import { withRouter } from "react-router";
-import { Login, Email, Password, RememberMe } from '../constant';
+import { Login, Email, Password, RememberMe, SignUp2 } from '../constant';
+import { Link } from 'react-router-dom';
 
-const Logins = ({ history }) => {
+const SignIn = ({ history }) => {
 
     const loginAuth = () => {
         history.push(`${process.env.PUBLIC_URL}/dashboard/default`);
@@ -28,7 +28,7 @@ const Logins = ({ history }) => {
                                                 <form className="theme-form">
                                                     <div className="form-group">
                                                         <label className="col-form-label pt-0">{Email}</label>
-                                                        <input className="form-control " type="email" required="" />
+                                                        <input className="form-control " type="email" required/>
                                                     </div>
                                                     <div className="form-group">
                                                         <label className="col-form-label">{Password}</label>
@@ -37,15 +37,15 @@ const Logins = ({ history }) => {
                                                     <div className="form-group form-row mt-3 mb-0 text-center">
                                                         <button className="btn btn-primary btn-block btn_txt " type="button" onClick={() => loginAuth()}>{Login}</button>
                                                     </div>
-                                                    <div className="checkbox ">
+                                                    <div className="row checkbox">
                                                         <input id="checkbox1" type="checkbox" />
                                                         <label htmlFor="checkbox1 txt-col">{RememberMe}</label>
-                                                        {/* <a href="#" className="forgot-password ">Forgot Password?</a> */}
+                                                        <Link to={`${process.env.PUBLIC_URL}/pages/resetPwd`} className="col-md-8 btn-link text-capitalize text-right mt-2"> Forgot Password ? </Link>
                                                     </div>
 
-                                                    {/* <div className="login_links text-center">
-                                                        <div className="mt-2">{"Don't have an Account?"} <a className="btn-link text-capitalize" href="/login">{SignUp2}</a></div>
-                                                    </div> */}
+                                                    <div className="login_links text-center">
+                                                        <div className="mt-2">{"Don't have an Account?"} <Link className="btn-link text-capitalize" to={`${process.env.PUBLIC_URL}/pages/signup`}>{SignUp2}</Link></div>
+                                                    </div>
 
                                                 </form>
                                             </div>
@@ -61,4 +61,4 @@ const Logins = ({ history }) => {
     );
 };
 
-export default withRouter(Logins);
+export default SignIn;
