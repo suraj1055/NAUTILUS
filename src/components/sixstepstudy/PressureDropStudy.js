@@ -56,7 +56,7 @@ const PressureDropStudy = () => {
             </div>
             <div className="grid-chart-container">
                 <div className="grid_container_btn">
-                    <Button color="secondary" className="btn btn-primary btn-sm" type="button"> {"Delete Row"} </Button>
+                    <Button color="fifth" className="btn btn-sm" type="button"> {"Delete Row"} </Button>
                 </div>
                 <div>
                     <GridComponent allowEditing={true} allowPaging={true} pageSettings={{ pageSize: 4 }}>
@@ -80,14 +80,13 @@ const PressureDropStudy = () => {
                     </ChartComponent>
                 </div>
             </div>
-            <div className="row">
+            <div className="row save_saveas_btn">
                 <div className="col-md-12 text-right">
                     <Button color="third" className="btn-save-chart"> {"Save"} </Button>
                     <Button color="third"> {"Save As"} </Button>
                 </div>
                 
             </div>
-            <hr></hr>
         </>
     )
 }

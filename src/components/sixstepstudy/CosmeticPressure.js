@@ -41,7 +41,7 @@ const CosmeticPressure = () => {
                     </ChartComponent>
                 </div>
             </div>
-            <div className="row">
+            <div className="row save_saveas_btn">
                 <div className="col-md-12 text-right">
                     <Button color="third" className="btn-save-chart"> {"Save"} </Button>                    
                     <Button color="third"> {"Save As"} </Button>                
