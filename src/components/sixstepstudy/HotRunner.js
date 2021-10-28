@@ -28,14 +28,15 @@ const HotRunner = () => {
                 </div>
                 <div className="col-md-3">
                     <div className="form-group hot_run_btns">
-                        <GenerateEdit toggle2={toggle2} moda2l={modal2} />
+                        <Button color="primary" onClick={toggle2}>{"Edit Pressure Value"}</Button>
+                        {modal2 && <GenerateEdit toggle2={toggle2} modal2={modal2} />}
                     </div>
                 </div>
             </div>
             <div className="grid-chart-container">
                 <div className="row">
 
-                     <div className="col-md-2 grid_container_btn hot_run_btns">
+                    <div className="col-md-2 grid_container_btn hot_run_btns">
                         <Button color="secondary" className="btn btn-primary btn-sm" type="button"> {"Add Column"} </Button>
                     </div>
 
@@ -74,10 +75,9 @@ const HotRunner = () => {
             </div>
 
             <div className="row">
-                <div className="col-md-12 text-right">
+                <div className="col-md-12 text-right mb-2">
                     <Button color="third" className="btn-save-chart"> {"Save"} </Button>
-                    <Button color="third"> {"Save As"} </Button>
-                </div>               
+                </div>
             </div>
         </>
     )
