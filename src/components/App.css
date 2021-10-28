@@ -79,9 +79,9 @@
 }
 
 .study-container{
-  max-width: 95vw;
+  width: 100%; 
   margin: 0 auto;
-  padding: 30px 0px;
+  padding: 30px 30px;
 }
 
 .e-content .e-item {
@@ -90,8 +90,8 @@
   text-align: justify;
 }
 
-.viscocity-curve{  
-  padding: 15px 0px;
+.save_saveas_btn{  
+  padding: 0px 0px 15PX 0PX;
 }
 
 .mybtn{
@@ -116,20 +116,21 @@
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
     .study-container{
+      padding: 30px 30px;
       height: 1000px;
       overflow-y: scroll;
-}
+    }
 
 .cav_bal_add_delete_btn{
-  margin-left: 75px ;
+  margin-left: 30px ;
 }
 
 .cold_run_del_add_del_btn{
-  margin-left:75px;
+  margin-left:30px;
 }
 
 .hot_run_btns{
-  margin-left:75px;
+  margin-left:30px;
 }
 
 .cooling_time_all_btn{ 
