@@ -114,19 +114,21 @@
   grid-gap: 1.5rem;
 }
 
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:landscape) {
     .study-container{
       padding: 30px 30px;
       height: 1000px;
       overflow-y: scroll;
     }
-
+    .step-button{
+      margin-top: 1.7rem;
+    }
 .cav_bal_add_delete_btn{
   margin-left: 30px ;
 }
 
 .hot_run_btns{
-  margin-left:75px;
+  margin-left:85px;
   margin-top: 4px;
 }
 .hot_run_grid_btns{
@@ -138,7 +140,7 @@
 }
 
 .cooling_time_all_btn{ 
-  margin-left:75px;
+  margin-left:30px;
 }
 
 .pack-hold{
@@ -146,7 +148,40 @@
   grid-template-columns: 300px 300px;
   grid-gap: 2rem;
 }
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:portrait)  {
+  .study-container{
+    padding: 30px 30px;
+    height: 1000px;
+    overflow-y: scroll;
+  }
+  .step-button{
+    margin-top: 50px;
+  }
+.cav_bal_add_delete_btn{
+margin-left: 30px ;
+}
 
+.hot_run_btns{
+margin-left:85px;
+margin-top: 4px;
+}
+.hot_run_grid_btns{
+margin-left:30px;
+}
+.cold_run_grid_btns{
+margin-left:30px;
+}
 
+.cooling_time_all_btn{ 
+margin-left:30px;
+}
+
+.pack-hold{
+display: grid;
+grid-template-columns: 300px 300px;
+grid-gap: 2rem;
+}
+  
 }
 

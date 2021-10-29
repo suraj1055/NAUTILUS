@@ -45,9 +45,12 @@ const PackAndHold = () => {
                     </div>
                 </div>
                 <div className="col-md-4">
-                    <div className="form-group step-button">
-                        <Button color="primary"> {"Import Data"} </Button>
+                    <div className="step-button">
+                        <div className="form-group">
+                            <Button color="primary"> {"Import Data"} </Button>
+                        </div>
                     </div>
+
                 </div>
             </div>
             <div className="grid-chart-container">
@@ -77,12 +80,12 @@ const PackAndHold = () => {
                     <ChartComponent>
                     </ChartComponent>
                 </div>
-            </div>            
+            </div>
             <div className="row">
                 <div className="col-md-12 text-right mb-4">
                     <Button color="third" className="btn-save-chart"> {"Save"} </Button>
-                </div>                
-            </div>      
+                </div>
+            </div>
         </>
     )
 }
