@@ -63,6 +63,10 @@ const Root = () => {
                                 return (<Redirect to={`${process.env.PUBLIC_URL}/pages/login`} />)
                             }} />
 
+                            <Route exact path='/endless' render={() => {
+                                return (<Redirect to={`${process.env.PUBLIC_URL}/pages/login`} />)
+                            }} />
+
                             <Route path={`${process.env.PUBLIC_URL}/pages/login`} component={SignIn} />
 
                             <Route path={`${process.env.PUBLIC_URL}/pages/signup`} component={Signup} />
