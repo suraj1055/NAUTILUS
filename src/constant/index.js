@@ -25,7 +25,7 @@ export const Ui = "Ui"
 export const Xi = "Xi"
 export const Message = "Message"
 export const Portfolio = "Portfolio"
-export const NewUser = "New User"
+export const NewUser = "NEW USER"
 export const Month = "Month"
 export const Today = "Today"
 export const NickStone = "Nick Stone"
@@ -1531,7 +1531,7 @@ export const  Border  = "Border"
 
 export const SignUp2 = "Sign Up"
 export const Resetpassword = "Reset Password"
-export const Forgotpassword = "Forgot Password"
+export const Forgotpassword = "FORGOT PASSWORD"
 
 
 
