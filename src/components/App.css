@@ -126,10 +126,17 @@
 }
 
 .cold_run_del_add_del_btn{
-  margin-left:30px;
+
 }
 
 .hot_run_btns{
+  margin-left:75px;
+  margin-top: 4px;
+}
+.hot_run_grid_btns{
+  margin-left:30px;
+}
+.cold_run_grid_btns{
   margin-left:30px;
 }
 
