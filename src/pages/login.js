@@ -1,6 +1,6 @@
 import React from 'react';
 import '../assets/custom-stylesheet/login_style.css';
-import { Login, Email, Password, RememberMe, SignUp2 } from '../constant';
+import { LOGIN,Login, Email, Password, RememberMe, SignUp2 } from '../constant';
 import { Link } from 'react-router-dom';
 
 const SignIn = ({ history }) => {
@@ -23,7 +23,7 @@ const SignIn = ({ history }) => {
                                             <div className="bg_txture"></div>
                                             <div className="card-body card_css">
                                                 <div className="text-center">
-                                                    <h5>{Login}</h5>
+                                                    <h5 className="card_head">{LOGIN}</h5>
                                                 </div>
                                                 <form className="theme-form">
                                                     <div className="form-group">
@@ -40,11 +40,11 @@ const SignIn = ({ history }) => {
                                                     <div className="row checkbox">
                                                         <input id="checkbox1" type="checkbox" />
                                                         <label htmlFor="checkbox1 txt-col">{RememberMe}</label>
-                                                        <Link to={`${process.env.PUBLIC_URL}/pages/resetPwd`} className="col-md-8 btn-link text-capitalize text-right mt-2"> Forgot Password ? </Link>
+                                                        <Link to={`${process.env.PUBLIC_URL}/pages/resetPwd`} className="col-md-8 btn-link text-capitalize text-right mt-2 remember_me"> Forgot Password ? </Link>
                                                     </div>
 
                                                     <div className="login_links text-center">
-                                                        <div className="mt-2">{"Don't have an Account?"} <Link className="btn-link text-capitalize" to={`${process.env.PUBLIC_URL}/pages/signup`}>{SignUp2}</Link></div>
+                                                        <div className="mt-2">{"Don't have an Account?"} <Link className="btn-link text-capitalize sign_up" to={`${process.env.PUBLIC_URL}/pages/signup`}>{SignUp2}</Link></div>
                                                     </div>
 
                                                 </form>
