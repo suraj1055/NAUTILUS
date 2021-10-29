@@ -46,9 +46,12 @@ const PackAndHold = () => {
                 </div>
                 <div className="col-md-4">
                     <div className="step-button">
-                        <div className="form-group">
-                            <Button color="primary"> {"Import Data"} </Button>
+                        <div className="pack-hold-import-data">
+                            <div className="form-group">
+                                <Button color="primary"> {"Import Data"} </Button>
+                            </div>
                         </div>
+
                     </div>
 
                 </div>

@@ -155,7 +155,16 @@
     overflow-y: scroll;
   }
   .step-button{
+    margin-top: 30px;
+  }
+  .pack-hold-import-data{
     margin-top: 50px;
+  }
+  .step-button2{
+    margin-top: 0px;
+  }
+  .pre-step-button2{
+    margin-top: 45px;
   }
 .cav_bal_add_delete_btn{
 margin-left: 30px ;
