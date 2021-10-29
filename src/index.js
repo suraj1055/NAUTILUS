@@ -59,6 +59,10 @@ const Root = () => {
                     <BrowserRouter basename={`/`}>
                         <Switch>
 
+                            <Route exact path='/' render={() => {
+                                return (<Redirect to={`${process.env.PUBLIC_URL}/pages/login`} />)
+                            }} />
+
                             <Route exact path='/endless' render={() => {
                                 return (<Redirect to={`${process.env.PUBLIC_URL}/pages/login`} />)
                             }} />
