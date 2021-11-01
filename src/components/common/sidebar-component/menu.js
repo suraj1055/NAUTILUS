@@ -1,6 +1,5 @@
 import {
-    Home,
-    Lock
+    Home
 } from 'react-feather';
 
 export const MENUITEMS = [
