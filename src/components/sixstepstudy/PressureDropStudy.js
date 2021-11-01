@@ -48,7 +48,10 @@ const PressureDropStudy = () => {
                     </div>
                     <div className="col-md-3">
                         <div className="step-button">
-                            <Button color="primary" className="mt-1" onClick={toggle}>{"Select Max Press from machine DB"}</Button>
+                            <div className="pre-step-button2">
+                                <Button color="primary"  className="mt-1" onClick={toggle}>{"Select Max Press from machine DB"}</Button>
+                            </div>
+                           
                         </div>
                     </div>
                     {modal && <Pressure toggle={toggle} modal={modal} />}

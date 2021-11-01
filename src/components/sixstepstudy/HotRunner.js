@@ -36,15 +36,15 @@ const HotRunner = () => {
             <div className="grid-chart-container">
                 <div className="row">
 
-                    <div className="col-md-2 grid_container_btn hot_run_btns">
+                    <div className="col-md-2 grid_container_btn">
                         <Button color="secondary" className="btn btn-primary btn-sm" type="button"> {"Add Column"} </Button>
                     </div>
 
-                    <div className="col-md-2 grid_container_btn">
+                    <div className="col-md-2 grid_container_btn hot_run_grid_btns">
                         <Button color="fifth" className="btn btn-sm" type="button"> {"Delete Row"} </Button>
                     </div>
 
-                    <div className="col-md-2 grid_container_btn hot_run_btns">
+                    <div className="col-md-2 grid_container_btn hot_run_grid_btns">
                         <Button color="fifth" className="btn btn-sm" type="button"> {"Delete Column"} </Button>
                     </div>
                 </div>
