@@ -44,7 +44,7 @@ const ViscocityCurve = () => {
                                 </div>
                             </div>
                             <div className="col-md-3">
-                                <div className="step-button">
+                                <div className="step-button viscocity-btn">
                                     <Button color="primary" onClick={toggle}> {"Generate Injection Speed"} </Button>
                                 </div >
                                 {modal && <Viscocity toggle={toggle} modal={modal} />}
