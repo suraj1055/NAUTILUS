@@ -1,14 +1,12 @@
-import React, { useState ,Fragment } from 'react';
-// import logo from '../../../assets/images/endless-logo.png';
+import React, { useState, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { AlignLeft, MoreHorizontal } from 'react-feather';
+import { AlignLeft, LogOut } from 'react-feather';
 import '../../../assets/custom-stylesheet/header_style.css';
 
 const Header = () => {
   const [sidebar, setSidebar] = useState(false);
-  const [headerbar, setHeaderbar] = useState(true);
 
- const openCloseSidebar = () => {
+  const openCloseSidebar = () => {
     if (sidebar) {
       setSidebar(!sidebar)
       document.querySelector(".page-main-header").classList.remove('open');
@@ -16,7 +14,7 @@ const Header = () => {
     } else {
       setSidebar(!sidebar)
       document.querySelector(".page-main-header").classList.add('open');
-      document.querySelector(".page-sidebar").classList.add('open'); 
+      document.querySelector(".page-sidebar").classList.add('open');
     }
   }
 
@@ -27,11 +25,11 @@ const Header = () => {
           <div className="main-header-left d-lg-none">
             <div className="logo-wrapper">
               <Link to={`${process.env.PUBLIC_URL}/dashboard/default`}>
-                
+
               </Link>
             </div>
           </div>
-          <div className="mobile-sidebar d-block">
+          <div className="d-block">
             <div className="media-body text-right switch-sm">
               <label className="switch">
                 <a href="#javascript" onClick={() => openCloseSidebar()}>
@@ -41,12 +39,12 @@ const Header = () => {
             </div>
           </div>
           <div className="nav-right col p-0">
-            <ul className={`nav-menus ${headerbar ? '' : 'open'}`}>
-            
-            </ul>
-            <div className="d-lg-none mobile-toggle pull-right" onClick={() => setHeaderbar(!headerbar)}><MoreHorizontal/></div>
+            <div className="pull-right mt-2">
+              <Link to={`${process.env.PUBLIC_URL}/pages/login`}>
+                <LogOut />
+              </Link>
+            </div>
           </div>
-
         </div>
       </div>
     </Fragment>
