@@ -30,7 +30,7 @@ onChildCommandClick(args) {
 render() {
   return (
     <div className="container">
-      <GridComponent dataSource={mold} pageSettings={{ pageCount: 5 }} editSettings={this.editSettings} allowPaging={true} childGrid={this.childGrid} toolbar={this.toolbarOptions} >
+      <GridComponent dataSource={mold} pageSettings={{ pageSize: 5 }} editSettings={this.editSettings} allowPaging={true} childGrid={this.childGrid} toolbar={this.toolbarOptions} >
         <ColumnsDirective>
           <ColumnDirective field="MoldID" headerText="Mold ID" textAlign="Center" width="100" />
           <ColumnDirective field="PlatenOrientation" headerText="Platen Orientation" textAlign="Center" width="100" />
