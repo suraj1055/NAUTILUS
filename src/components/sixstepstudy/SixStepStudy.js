@@ -88,17 +88,17 @@ export default class SixStepStudy extends React.Component {
                 <div className="row">
                     <div className="col-md-12">
                         <div className="row">
-                            <div className="study-container">                            
+                            <div className="study-container">
                                 <TabComponent heightAdjustMode="Auto" id="defaultTab">
-                            <TabItemsDirective>
-                                <TabItemDirective header={headertext[0]} content={content0} />
-                                <TabItemDirective header={headertext[1]} content={content1} />
-                                <TabItemDirective header={headertext[2]} content={content2} />
-                                <TabItemDirective header={headertext[3]} content={content3} />
-                                <TabItemDirective header={headertext[4]} content={nestedTab1} />
-                                <TabItemDirective header={headertext[5]} content={content4} />
-                            </TabItemsDirective>
-                        </TabComponent>
+                                    <TabItemsDirective>
+                                        <TabItemDirective header={headertext[0]} content={content0} />
+                                        <TabItemDirective header={headertext[1]} content={content1} />
+                                        <TabItemDirective header={headertext[2]} content={content2} />
+                                        <TabItemDirective header={headertext[3]} content={content3} />
+                                        <TabItemDirective header={headertext[4]} content={nestedTab1} />
+                                        <TabItemDirective header={headertext[5]} content={content4} />
+                                    </TabItemsDirective>
+                                </TabComponent>
                             </div>
                         </div>
                     </div>
