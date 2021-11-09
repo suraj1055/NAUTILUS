@@ -5,13 +5,10 @@ import { mold, session } from '../data/Session_Mold_data';
 
 class SessionMold extends Component {
 
-  commands = [ { type: 'Open', buttonOption: { cssClass: 'e-flat', iconCss: 'e-icons e-add' }} ];
-
   constructor(props) {
     super(props);
     this.props = props;
     this.toolbarOptions = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
-    this.pageSettings = { pageCount: 5 };
     this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, newRowPosition: 'Top' };
     this.childGrid = {
       columns: [
@@ -33,9 +30,8 @@ onChildCommandClick(args) {
 render() {
   return (
     <div className="container">
-      <GridComponent dataSource={mold} toolbar={this.toolbarOptions} editSettings={this.editSettings} pageSettings={this.pageSettings}>
+      <GridComponent dataSource={mold} pageSettings={{ pageCount: 5 }} editSettings={this.editSettings} allowPaging={true} childGrid={this.childGrid} toolbar={this.toolbarOptions} >
         <ColumnsDirective>
-          <ColumnDirective headerText="Open" textAlign="Center" width="100" commands={this.commands} commandClick={this.onChildCommandClick} />
           <ColumnDirective field="MoldID" headerText="Mold ID" textAlign="Center" width="100" />
           <ColumnDirective field="PlatenOrientation" headerText="Platen Orientation" textAlign="Center" width="100" />
           <ColumnDirective field="NumberofBases" headerText="Number of Bases" textAlign="Center" width="100" />
