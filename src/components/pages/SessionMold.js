@@ -9,7 +9,7 @@ class SessionMold extends Component {
     super(props);
     this.props = props;
     this.toolbarOptions = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
-    this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, newRowPosition: 'Top' };
+    this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, newRowPosition: 'Top', mode: 'Dialog' };
     this.childGrid = {
       columns: [
         { headerText: 'Open', textAlign: 'Center', width: 120, commands: [{ buttonOption: { iconCss: 'e-icons e-add' } }] },
@@ -32,11 +32,11 @@ render() {
     <div className="container">
       <GridComponent dataSource={mold} pageSettings={{ pageSize: 5 }} editSettings={this.editSettings} allowPaging={true} childGrid={this.childGrid} toolbar={this.toolbarOptions} >
         <ColumnsDirective>
-          <ColumnDirective field="MoldID" headerText="Mold ID" textAlign="Center" width="100" />
-          <ColumnDirective field="PlatenOrientation" headerText="Platen Orientation" textAlign="Center" width="100" />
-          <ColumnDirective field="NumberofBases" headerText="Number of Bases" textAlign="Center" width="100" />
-          <ColumnDirective field="Isthisanewmold" headerText="Family Mold (Y/N)" textAlign="Center" width="100" />
-          <ColumnDirective field="NumberofParts" headerText="Number of Parts" textAlign="Center" width="100" />
+          <ColumnDirective field="MoldID" headerText="Mold ID" textAlign="Left" width="100" isPrimaryKey={true}/>
+          <ColumnDirective field="PlatenOrientation" headerText="Platen Orientation" textAlign="Left" width="100" />
+          <ColumnDirective field="NumberofBases" headerText="Number of Bases" textAlign="Left" width="100" />
+          <ColumnDirective field="Isthisanewmold" headerText="Family Mold (Y/N)" textAlign="Left" width="100" />
+          <ColumnDirective field="NumberofParts" headerText="Number of Parts" textAlign="Left" width="100" />
         </ColumnsDirective>
         <Inject services={[DetailRow, Page, Edit, CommandColumn, Toolbar]} />
       </GridComponent>
