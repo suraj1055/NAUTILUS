@@ -10,7 +10,7 @@ class SessionMold extends Component {
     super(props);
     this.props = props;
     this.toolbarOptions = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
-    this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, newRowPosition: 'Top', mode: 'Dialog' };
+    this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, newRowPosition: 'Top'};
     this.childGrid = {
       columns: [
         { headerText: 'Open', textAlign: 'Center', width: 120, commands: [{ buttonOption: { iconCss: 'e-icons e-add' } }] },

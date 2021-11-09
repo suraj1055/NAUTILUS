@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, CommandColumn, Edit } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, CommandColumn, Edit, Toolbar } from '@syncfusion/ej2-react-grids';
 import { ChartComponent } from '@syncfusion/ej2-react-charts'
 import GenerateEdit from '../modals/GenerateEdit'
 import HotEdit from '../modals/HotEdit';
@@ -61,7 +61,7 @@ const HotRunner = () => {
                             <ColumnDirective field="400" headerText="400" textAlign="Left" width="100" />
                             <ColumnDirective field="500" headerText="500" textAlign="Left" width="100" />
                         </ColumnsDirective>
-                        <Inject services={[DetailRow, Page, Edit, CommandColumn]} />
+                        <Inject services={[DetailRow, Page, Edit, CommandColumn, Toolbar]} />
                     </GridComponent>
                 </div>
             </div>

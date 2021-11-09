@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, CommandColumn, Edit } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, CommandColumn, Edit, Toolbar } from '@syncfusion/ej2-react-grids';
 import { ChartComponent } from '@syncfusion/ej2-react-charts';
 import Pressure from "../modals/Pressure";
 import { Button } from 'reactstrap';
@@ -73,7 +73,7 @@ const PressureDropStudy = () => {
                             <ColumnDirective field="DeltaP" headerText="Delta P" textAlign="Left" width="100" />
                             <ColumnDirective field="Delta" headerText="% Delta P"textAlign="Left" width="100" />
                         </ColumnsDirective>
-                        <Inject services={[DetailRow, Page, Edit, CommandColumn]} />
+                        <Inject services={[DetailRow, Page, Edit, CommandColumn, Toolbar]} />
                     </GridComponent>
                 </div>
             </div>

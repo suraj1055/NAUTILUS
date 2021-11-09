@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, CommandColumn, Edit } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, CommandColumn, Edit, Toolbar } from '@syncfusion/ej2-react-grids';
 import { ChartComponent } from '@syncfusion/ej2-react-charts';
 import Viscocity from '../modals/Viscocity';
 import '../App.css';
@@ -72,7 +72,7 @@ const ViscocityCurve = () => {
                             <ColumnDirective field="AbsoluteDropViscocity" headerText="Absolute Drop Viscocity" textAlign="Left" width="100" isPrimaryKey={true}/>
                             <ColumnDirective field="DropViscocity" headerText="% Drop Viscocity" textAlign="Left" width="100" isPrimaryKey={true} />
                         </ColumnsDirective>
-                        <Inject services={[DetailRow, Page, Edit, CommandColumn]} />
+                        <Inject services={[DetailRow, Page, Edit, CommandColumn, Toolbar]} />
                     </GridComponent>
                 </div>
             </div>

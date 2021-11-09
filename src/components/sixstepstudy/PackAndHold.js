@@ -1,5 +1,5 @@
 import React from 'react'
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, CommandColumn, Edit } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, CommandColumn, Edit, Toolbar } from '@syncfusion/ej2-react-grids';
 import { ChartComponent } from '@syncfusion/ej2-react-charts'
 import { Button } from 'reactstrap';
 
@@ -73,7 +73,7 @@ const PackAndHold = () => {
                             <ColumnDirective field="WeightIncrease" headerText="% Weight Increase" textAlign="Left" width="100" />
                             <ColumnDirective field="PackPressure" headerText="Pack Pressure" textAlign="left" width="100" />
                         </ColumnsDirective>
-                        <Inject services={[DetailRow, Page, Edit, CommandColumn]} />
+                        <Inject services={[DetailRow, Page, Edit, CommandColumn, Toolbar]} />
                     </GridComponent>
                 </div>
             </div>
