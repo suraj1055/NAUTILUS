@@ -7,7 +7,7 @@ import { Button } from 'reactstrap';
 
 const ViscocityCurve = () => {
 
-    const editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, newRowPosition: 'Top', mode: 'Dialog' }
+    const editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, newRowPosition: 'Top', mode: 'Dialog' };
     const toolbarOptions = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
 
     const [modal, setModal] = useState();
@@ -64,13 +64,13 @@ const ViscocityCurve = () => {
                 <div>
                     <GridComponent pageSettings={{ pageSize: 5 }} editSettings={editSettings} allowPaging={true} toolbar={toolbarOptions}>
                         <ColumnsDirective>
-                            <ColumnDirective field="InjectionSpeed" headerText="Injection Speed" textAlign="Center" width="100" />
-                            <ColumnDirective field="FillTime" headerText="Fill Time (sec)" textAlign="Center" width="100" />
-                            <ColumnDirective field="PeakInjPress" headerText="Peak Inj Press" textAlign="Center" width="100" />
-                            <ColumnDirective field="Viscocity" headerText="Viscocity" textAlign="Center" width="100" />
-                            <ColumnDirective field="ShearRate" headerText="Shear Rate" textAlign="Center" width="100" />
-                            <ColumnDirective field="AbsoluteDropViscocity" headerText="Absolute Drop Viscocity" textAlign="Center" width="100" />
-                            <ColumnDirective field="DropViscocity" headerText="% Drop Viscocity" textAlign="Center" width="100" />
+                            <ColumnDirective field="InjectionSpeed" headerText="Injection Speed" textAlign="Left" width="100" />
+                            <ColumnDirective field="FillTime" headerText="Fill Time (sec)" textAlign="Left" width="100" />
+                            <ColumnDirective field="PeakInjPress" headerText="Peak Inj Press" textAlign="Left" width="100" />
+                            <ColumnDirective field="Viscocity" headerText="Viscocity" textAlign="Left" width="100" isPrimaryKey={true}/>
+                            <ColumnDirective field="ShearRate" headerText="Shear Rate" textAlign="Left" width="100" isPrimaryKey={true}/>
+                            <ColumnDirective field="AbsoluteDropViscocity" headerText="Absolute Drop Viscocity" textAlign="Left" width="100" isPrimaryKey={true}/>
+                            <ColumnDirective field="DropViscocity" headerText="% Drop Viscocity" textAlign="Left" width="100" isPrimaryKey={true} />
                         </ColumnsDirective>
                         <Inject services={[DetailRow, Page, Edit, CommandColumn]} />
                     </GridComponent>
