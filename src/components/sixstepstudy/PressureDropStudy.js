@@ -6,6 +6,9 @@ import { Button } from 'reactstrap';
 
 const PressureDropStudy = () => {
 
+    const editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, newRowPosition: 'Top', mode: 'Dialog' };
+    const toolbarOptions = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
+
     const [modal, setModal] = useState();
 
     const toggle = () => {
@@ -62,13 +65,13 @@ const PressureDropStudy = () => {
                     <Button color="fifth" className="btn btn-sm" type="button"> {"Delete Row"} </Button>
                 </div>
                 <div>
-                    <GridComponent allowEditing={true} allowPaging={true} pageSettings={{ pageSize: 4 }}>
+                    <GridComponent pageSettings={{ pageSize: 5 }} editSettings={editSettings} allowPaging={true} toolbar={toolbarOptions}>
                         <ColumnsDirective>
-                            <ColumnDirective field="FlowArea" headerText="Flow Area" textAlign="Center" width="100" />
-                            <ColumnDirective field="PeakPressure" headerText="Peak Pressure" textAlign="Center" width="100" />
-                            <ColumnDirective field="Maximum" headerText="% Maximum" textAlign="Center" width="100" />
-                            <ColumnDirective field="DeltaP" headerText="Delta P" textAlign="Center" width="100" />
-                            <ColumnDirective field="Delta" headerText="% Delta P" textAlign="Center" width="100" />
+                            <ColumnDirective field="FlowArea" headerText="Flow Area" textAlign="Left" width="100" />
+                            <ColumnDirective field="PeakPressure" headerText="Peak Pressure" textAlign="Left" width="100" />
+                            <ColumnDirective field="Maximum" headerText="% Maximum" textAlign="Left" width="100" />
+                            <ColumnDirective field="DeltaP" headerText="Delta P" textAlign="Left" width="100" />
+                            <ColumnDirective field="Delta" headerText="% Delta P"textAlign="Left" width="100" />
                         </ColumnsDirective>
                         <Inject services={[DetailRow, Page, Edit, CommandColumn]} />
                     </GridComponent>

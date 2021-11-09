@@ -6,6 +6,9 @@ import { Button } from 'reactstrap';
 
 const CavityBalance = () => {
 
+    const editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, newRowPosition: 'Top', mode: 'Dialog' };
+    const toolbarOptions = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
+
     const [modal, setModal] = useState();
 
     const toggle = () => {
@@ -37,10 +40,10 @@ const CavityBalance = () => {
                 </div>
                 <div>
                     <div className="col-md-6 mb-4">
-                        <GridComponent allowEditing={true} allowPaging={true} pageSettings={{ pageSize: 4 }}>
+                        <GridComponent pageSettings={{ pageSize: 5 }} editSettings={editSettings} allowPaging={true} toolbar={toolbarOptions} >
                             <ColumnsDirective>
-                                <ColumnDirective field="Time" headerText="Time" textAlign="Center" width="100" />
-                                <ColumnDirective field="Weight" headerText="Weight1" textAlign="Center" width="100" />
+                                <ColumnDirective field="Time" headerText="Time" textAlign="Left" width="100" />
+                                <ColumnDirective field="Weight" headerText="Weight1" textAlign="Left" width="100" />
                             </ColumnsDirective>
                             <Inject services={[DetailRow, Page, Edit, CommandColumn]} />
                         </GridComponent>

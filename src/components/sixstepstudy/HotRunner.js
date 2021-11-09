@@ -7,6 +7,9 @@ import { Button } from 'reactstrap';
 
 const HotRunner = () => {
 
+    const editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, newRowPosition: 'Top', mode: 'Dialog' };
+    const toolbarOptions = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
+
     const [modal, setModal] = useState();
     const [modal2, setModal2] = useState();
 
@@ -49,14 +52,14 @@ const HotRunner = () => {
                     </div>
                 </div>
                 <div>
-                    <GridComponent allowEditing={true} allowPaging={true} pageSettings={{ pageSize: 4 }}>
+                    <GridComponent pageSettings={{ pageSize: 5 }} editSettings={editSettings} allowPaging={true} toolbar={toolbarOptions}>
                         <ColumnsDirective>
-                            <ColumnDirective field="Time" headerText="Time" textAlign="Center" width="100" />
-                            <ColumnDirective field="100" headerText="100" textAlign="Center" width="100" />
-                            <ColumnDirective field="200" headerText="200" textAlign="Center" width="100" />
-                            <ColumnDirective field="300" headerText="300" textAlign="Center" width="100" />
-                            <ColumnDirective field="400" headerText="400" textAlign="Center" width="100" />
-                            <ColumnDirective field="500" headerText="500" textAlign="Center" width="100" />
+                            <ColumnDirective field="Time" headerText="Time" textAlign="Left" width="100" />
+                            <ColumnDirective field="100" headerText="100" textAlign="Left" width="100" />
+                            <ColumnDirective field="200" headerText="200" textAlign="Left" width="100" />
+                            <ColumnDirective field="300" headerText="300" textAlign="Left" width="100" />
+                            <ColumnDirective field="400" headerText="400" textAlign="Left" width="100" />
+                            <ColumnDirective field="500" headerText="500" textAlign="Left" width="100" />
                         </ColumnsDirective>
                         <Inject services={[DetailRow, Page, Edit, CommandColumn]} />
                     </GridComponent>

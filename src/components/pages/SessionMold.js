@@ -1,4 +1,5 @@
 import '../App.css';
+import '../../assets/custom-stylesheet/dialog_input.css'
 import React, { Component } from 'react';
 import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, CommandColumn, Edit, Toolbar } from '@syncfusion/ej2-react-grids';
 import { mold, session } from '../data/Session_Mold_data';

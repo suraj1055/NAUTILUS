@@ -6,6 +6,9 @@ import { Button } from 'reactstrap';
 
 const CoolingTimeStudy = () => {
 
+    const editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, newRowPosition: 'Top', mode: 'Dialog' };
+    const toolbarOptions = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
+
     const [modal, setModal] = useState();
 
     const toggle = () => {
@@ -39,10 +42,10 @@ const CoolingTimeStudy = () => {
                     </div>
                 </div>
                 <div>
-                    <GridComponent allowEditing={true} allowPaging={true} pageSettings={{ pageSize: 4 }}>
+                    <GridComponent pageSettings={{ pageSize: 5 }} editSettings={editSettings} allowPaging={true} toolbar={toolbarOptions}>
                         <ColumnsDirective>
-                            <ColumnDirective field="CoolingTimeStudy" headerText="Cooling Time Study" textAlign="Center" width="100" />
-                            <ColumnDirective field="Dim1" headerText="Dim1" textAlign="Center" width="100" />
+                            <ColumnDirective field="CoolingTimeStudy" headerText="Cooling Time Study" textAlign="Left" width="100" />
+                            <ColumnDirective field="Dim1" headerText="Dim1" textAlign="Left" width="100" />
                         </ColumnsDirective>
                         <Inject services={[DetailRow, Page, Edit, CommandColumn]} />
                     </GridComponent>

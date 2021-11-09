@@ -4,6 +4,10 @@ import { ChartComponent } from '@syncfusion/ej2-react-charts'
 import { Button } from 'reactstrap';
 
 const PackAndHold = () => {
+
+    const editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, newRowPosition: 'Top', mode: 'Dialog' };
+    const toolbarOptions = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
+
     return (
 
         <>
@@ -61,12 +65,12 @@ const PackAndHold = () => {
                     <Button color="fifth" className="btn btn-sm" type="button"> {"Delete Row"} </Button>
                 </div>
                 <div>
-                    <GridComponent allowEditing={true} allowPaging={true} pageSettings={{ pageSize: 4 }}>
+                    <GridComponent pageSettings={{ pageSize: 5 }} editSettings={editSettings} allowPaging={true} toolbar={toolbarOptions}>
                         <ColumnsDirective>
-                            <ColumnDirective field="Time" headerText="Time (sec)" textAlign="Center" width="100" />
-                            <ColumnDirective field="PartWeight" headerText="Part Weight" textAlign="Center" width="100" />
-                            <ColumnDirective field="ActualWeightIncrease" headerText="Actual Weight Increase" textAlign="Center" width="100" />
-                            <ColumnDirective field="WeightIncrease" headerText="% Weight Increase" textAlign="Center" width="100" />
+                            <ColumnDirective field="Time" headerText="Time (sec)" textAlign="Left" width="100" />
+                            <ColumnDirective field="PartWeight" headerText="Part Weight" textAlign="Left" width="100" />
+                            <ColumnDirective field="ActualWeightIncrease" headerText="Actual Weight Increase" textAlign="Left" width="100" />
+                            <ColumnDirective field="WeightIncrease" headerText="% Weight Increase" textAlign="Left" width="100" />
                             <ColumnDirective field="PackPressure" headerText="Pack Pressure" textAlign="left" width="100" />
                         </ColumnsDirective>
                         <Inject services={[DetailRow, Page, Edit, CommandColumn]} />

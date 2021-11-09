@@ -5,6 +5,9 @@ import CavityEdit from '../modals/CavityEdit'
 import { Button } from 'reactstrap';
 
 const CavityBalance = () => {
+    
+    const editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, newRowPosition: 'Top', mode: 'Dialog' };
+    const toolbarOptions = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
 
     const [modal, setModal] = useState();
 
@@ -41,11 +44,11 @@ const CavityBalance = () => {
                     </div>
                 </div>
                 <div className="mb-4">
-                    <GridComponent allowEditing={true} allowPaging={true} pageSettings={{ pageSize: 4 }}>
+                    <GridComponent pageSettings={{ pageSize: 5 }} editSettings={editSettings} allowPaging={true} toolbar={toolbarOptions}>
                         <ColumnsDirective>
-                            <ColumnDirective field="CavityNo" headerText="Cavity No" textAlign="Center" width="100" />
-                            <ColumnDirective field="FillTime" headerText="25% fill" textAlign="Center" width="100" />
-                            <ColumnDirective field="PeakInjPress" headerText="95% fill" textAlign="Center" width="100" />
+                            <ColumnDirective field="CavityNo" headerText="Cavity No" textAlign="Left"  width="100" />
+                            <ColumnDirective field="FillTime" headerText="25% fill" textAlign="Left"  width="100" />
+                            <ColumnDirective field="PeakInjPress" headerText="95% fill" textAlign="Left"  width="100" />
                         </ColumnsDirective>
                         <Inject services={[DetailRow, Page, Edit, CommandColumn]} />
                     </GridComponent>
@@ -53,9 +56,9 @@ const CavityBalance = () => {
                 <div className="">
                     <GridComponent allowEditing={true} allowPaging={true} pageSettings={{ pageSize: 4 }}>
                         <ColumnsDirective>
-                            <ColumnDirective field="CavityNo" headerText="Cavity No" textAlign="Center" width="100" />
-                            <ColumnDirective field="FillTime" headerText="25% fill" textAlign="Center" width="100" />
-                            <ColumnDirective field="PeakInjPress" headerText="95% fill" textAlign="Center" width="100" />
+                            <ColumnDirective field="CavityNo" headerText="Cavity No" textAlign="Left" width="100" />
+                            <ColumnDirective field="FillTime" headerText="25% fill" textAlign="Left" width="100" />
+                            <ColumnDirective field="PeakInjPress" headerText="95% fill" textAlign="Left" width="100" />
                         </ColumnsDirective>
                         <Inject services={[DetailRow, Page, Edit, CommandColumn]} />
                     </GridComponent>

@@ -6,6 +6,9 @@ import { Button } from 'reactstrap';
 
 const CosmeticPressure = () => {
 
+    const editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, newRowPosition: 'Top', mode: 'Dialog' };
+    const toolbarOptions = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
+
     const [modal, setModal] = useState();
 
     const toggle = () => {
@@ -20,11 +23,11 @@ const CosmeticPressure = () => {
                     <CosmeticEdit toggle={toggle} modal={modal} />
                 </div>
                 <div>
-                    <GridComponent allowEditing={true} allowPaging={true} pageSettings={{ pageSize: 4 }}>
+                    <GridComponent pageSettings={{ pageSize: 5 }} editSettings={editSettings} allowPaging={true} toolbar={toolbarOptions}>
                         <ColumnsDirective>
-                            <ColumnDirective field="MeltTemp" headerText="Melt Temp" textAlign="Center" width="100" />
-                            <ColumnDirective field="LowPressure" headerText="Low Hydraulic Pressure" textAlign="Center" width="100" />
-                            <ColumnDirective field="HighPressure" headerText="High Hydraulic Pressure" textAlign="Center" width="100" />
+                            <ColumnDirective field="MeltTemp" headerText="Melt Temp" textAlign="Left"  width="100" />
+                            <ColumnDirective field="LowPressure" headerText="Low Hydraulic Pressure" textAlign="Left" width="100" />
+                            <ColumnDirective field="HighPressure" headerText="High Hydraulic Pressure" textAlign="Left" width="100" />
                         </ColumnsDirective>
                         <Inject services={[DetailRow, Page, Edit, CommandColumn]} />
                     </GridComponent>

@@ -18,7 +18,7 @@ export default class SixStepStudy extends React.Component {
             { text: "Viscocity Curve" },
             { text: "Cavity Balance" },
             { text: "Pressure Drop Study" },
-            { text: "Cosmetic Pressure Window" },
+            { text: "Cosmetic Process Window" },
             { text: "Gate Seal Study" },
             { text: "Cooling Time Study" },
             { text: "Cold Runner" }, { text: "Pack And Hold" },
