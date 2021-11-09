@@ -11,6 +11,7 @@ import PackAndHold from "./PackAndHold";
 import ColdRunner from "./ColdRunner";
 
 export default class SixStepStudy extends React.Component {
+    
     render() {
 
         let headertext = [
