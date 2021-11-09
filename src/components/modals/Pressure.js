@@ -41,7 +41,7 @@ const Pressure = ({ modal, toggle }) => {
                 </ModalBody>
                 <ModalFooter>
                     <Button color="primary"> Ok </Button>
-                    <Button color="secondary" onClick={toggle}> Cancel </Button>
+                    <Button color="fourth" onClick={toggle}> Cancel </Button>
                 </ModalFooter>
             </Modal>
 

@@ -84,6 +84,15 @@ export const session = [
        Name: 'Session6', MoldID: 6, Date: '20-09-2021'
     },  
     {
+       Name: 'Session6', MoldID: 6, Date: '20-09-2021'
+    },  
+    {
+       Name: 'Session6', MoldID: 6, Date: '20-09-2021'
+    },  
+    {
+       Name: 'Session6', MoldID: 6, Date: '20-09-2021'
+    },  
+    {
        Name: 'Session7', MoldID: 7, Date: '20-09-2021'
     },  
     {

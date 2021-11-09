@@ -14,7 +14,7 @@
 
 
 @import "../../node_modules/@syncfusion/ej2-base/styles/material.css";
-
+@import url("../assets/custom-stylesheet/sixstep_style.css");
 * {
   box-sizing: border-box;
   margin: 0;
@@ -34,8 +34,26 @@
     padding: 0 10px;
     max-width: 400px;
 }
+.grid-chart-container{
+  padding: 15px 0px;
+  
+}
 
+.grid_delete_row{
+  margin: 15px 0px;
+}
 
+.grid_container_btn{
+  margin: 15px 0px;
+}
+
+.chart_container_btn{
+  margin: 15px 0px;
+}
+
+.btn-save-chart{
+  margin-right: 20px;
+}
 .signup-card{
   display: flex;
   margin-top: 40px;
@@ -56,9 +74,14 @@
   margin-top: 3rem;
 }
 
+.lbl_design{
+  font-size: 14px;
+}
+
 .study-container{
-  max-width: 1200px;
+  width: 100%; 
   margin: 0 auto;
+  padding: 30px 30px;
 }
 
 .e-content .e-item {
@@ -67,14 +90,16 @@
   text-align: justify;
 }
 
-.viscocity-curve{ 
-  display: grid;
-  grid-template-columns: 250px 250px 250px 250px;
-  grid-gap: 2rem;
+.save_saveas_btn{  
+  padding: 0px 0px 15PX 0PX;
+}
+
+.mybtn{
+  background-color: #573DAC;;
 }
 
 .step-button{
-  margin-top: 1.5rem;
+  margin-top: 1.7rem;
 }
 
 .pressure-drop{
@@ -89,26 +114,33 @@
   grid-gap: 1.5rem;
 }
 
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:landscape) {
     .study-container{
-      overflow-x: scroll;
+      padding: 30px 30px;
+      height: 1000px;
+      overflow-y: scroll;
+    }
+    .step-button{
+      margin-top: 1.7rem;
+    }
+.cav_bal_add_delete_btn{
+  margin-left: 30px ;
 }
 
-.viscocity-curve{ 
-  display: grid;
-  grid-template-columns: 200px 200px 200px;
-  grid-gap: 2rem;
+.hot_run_btns{
+  margin-left:85px;
+  margin-top: 4px;
+}
+.hot_run_grid_btns{
+  margin-left:30px;
 }
 
-.step-button{
-  margin-top: -0.5rem;
-  margin-bottom: 1.5rem;
+.cold_run_grid_btns{
+  margin-left:30px;
 }
 
-.pressure-drop{
-  display: grid;
-  grid-template-columns: 300px 300px;
-  grid-gap: 2rem;
+.cooling_time_all_btn{ 
+  margin-left:30px;
 }
 
 .pack-hold{
@@ -116,6 +148,49 @@
   grid-template-columns: 300px 300px;
   grid-gap: 2rem;
 }
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:portrait)  {
+  .study-container{
+    padding: 30px 30px;
+    height: 1000px;
+    overflow-y: scroll;
+  }
+  .step-button{
+    margin-top: 30px;
+  }
+  .pack-hold-import-data{
+    margin-top: 50px;
+  }
+  .step-button2{
+    margin-top: 0px;
+  }
+  .pre-step-button2{
+    margin-top: 45px;
+  }
+.cav_bal_add_delete_btn{
+margin-left: 30px ;
+}
 
+.hot_run_btns{
+margin-left:85px;
+margin-top: 4px;
+}
+.hot_run_grid_btns{
+margin-left:30px;
+}
+.cold_run_grid_btns{
+margin-left:30px;
+}
+
+.cooling_time_all_btn{ 
+margin-left:30px;
+}
+
+.pack-hold{
+display: grid;
+grid-template-columns: 300px 300px;
+grid-gap: 2rem;
+}
+  
 }
 
