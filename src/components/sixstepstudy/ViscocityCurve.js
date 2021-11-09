@@ -7,6 +7,8 @@ import { Button } from 'reactstrap';
 
 const ViscocityCurve = () => {
 
+    const editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, newRowPosition: 'Top', mode: 'Dialog' }
+
     const [modal, setModal] = useState();
 
     const toggle = () => {
@@ -59,7 +61,7 @@ const ViscocityCurve = () => {
                     <Button color="fifth" className="btn btn-sm" type="button"> {"Delete Row"} </Button>
                 </div>
                 <div>
-                    <GridComponent allowEditing={true} allowPaging={true} pageSettings={{ pageSize: 4 }}>
+                    <GridComponent editSettings={editSettings} allowPaging={true} pageSettings={{ pageSize: 4 }}>
                         <ColumnsDirective>
                             <ColumnDirective field="InjectionSpeed" headerText="Injection Speed" textAlign="Center" width="100" />
                             <ColumnDirective field="FillTime" headerText="Fill Time (sec)" textAlign="Center" width="100" />
