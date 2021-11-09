@@ -7,7 +7,7 @@ import { Button } from 'reactstrap';
 
 const HotRunner = () => {
 
-    const editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, newRowPosition: 'Top', mode: 'Dialog' };
+    const editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, newRowPosition: 'Top'};
     const toolbarOptions = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
 
     const [modal, setModal] = useState();
