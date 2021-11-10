@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, CommandColumn, Edit } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, CommandColumn, Edit, Toolbar } from '@syncfusion/ej2-react-grids';
 import { ChartComponent } from '@syncfusion/ej2-react-charts'
 import CavityEdit from '../modals/CavityEdit'
 import { Button } from 'reactstrap';
@@ -50,7 +50,7 @@ const CavityBalance = () => {
                             <ColumnDirective field="FillTime" headerText="25% fill" textAlign="Left"  width="100" />
                             <ColumnDirective field="PeakInjPress" headerText="95% fill" textAlign="Left"  width="100" />
                         </ColumnsDirective>
-                        <Inject services={[DetailRow, Page, Edit, CommandColumn]} />
+                        <Inject services={[DetailRow, Page, Edit, CommandColumn, Toolbar]} />
                     </GridComponent>
                 </div>
                 <div className="">

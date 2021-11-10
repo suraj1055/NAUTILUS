@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, CommandColumn, Edit } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, CommandColumn, Edit, Toolbar } from '@syncfusion/ej2-react-grids';
 import { ChartComponent } from '@syncfusion/ej2-react-charts'
 import CosmeticEdit from '../modals/CosmeticEdit';
 import { Button } from 'reactstrap';
@@ -29,7 +29,7 @@ const CosmeticPressure = () => {
                             <ColumnDirective field="LowPressure" headerText="Low Hydraulic Pressure" textAlign="Left" width="100" />
                             <ColumnDirective field="HighPressure" headerText="High Hydraulic Pressure" textAlign="Left" width="100" />
                         </ColumnsDirective>
-                        <Inject services={[DetailRow, Page, Edit, CommandColumn]} />
+                        <Inject services={[DetailRow, Page, Edit, CommandColumn, Toolbar]} />
                     </GridComponent>
                 </div>
             </div>

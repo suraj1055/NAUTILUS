@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, CommandColumn, Edit } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, CommandColumn, Edit, Toolbar } from '@syncfusion/ej2-react-grids';
 import { ChartComponent } from '@syncfusion/ej2-react-charts';
 import CoolingEdit from '../modals/CoolingEdit';
 import { Button } from 'reactstrap';
@@ -47,7 +47,7 @@ const CoolingTimeStudy = () => {
                             <ColumnDirective field="CoolingTimeStudy" headerText="Cooling Time Study" textAlign="Left" width="100" />
                             <ColumnDirective field="Dim1" headerText="Dim1" textAlign="Left" width="100" />
                         </ColumnsDirective>
-                        <Inject services={[DetailRow, Page, Edit, CommandColumn]} />
+                        <Inject services={[DetailRow, Page, Edit, CommandColumn, Toolbar]} />
                     </GridComponent>
                 </div>
             </div>
