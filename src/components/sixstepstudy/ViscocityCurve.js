@@ -4,14 +4,14 @@ import Viscocity from '../modals/Viscocity';
 import '../App.css';
 import { Button } from 'reactstrap';
 import Table from 'react-bootstrap/Table'
-// import data from '../data/Viscocity_curve_data'
+import data from '../data/Viscocity_curve_data'
 import { nanoid } from 'nanoid'
 
 const ViscocityCurve = () => {
 
     const [modal, setModal] = useState();
 
-    const [values, setValues] = useState();
+    const [values, setValues] = useState(data);
 
     const [addInputValues, setInputValues] = useState({
         Injection_Speed: '',
@@ -99,7 +99,8 @@ const ViscocityCurve = () => {
 
                 <input type="text" name="Peak_Inj_Press" onChange={handleValueChange} />
 
-                <Button type="submit"> Add </Button>
+                
+                
             </form>
 
 
