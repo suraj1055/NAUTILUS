@@ -1,15 +1,10 @@
 import React from 'react';
 import '../assets/custom-stylesheet/login_style.css';
-
-import { withRouter } from "react-router";
+import { Link } from 'react-router-dom';
 import {Email,Resetpassword,Forgotpassword,SignUp2} from '../constant';
 
 
-const Logins = ({history}) => {
-    
-    const loginAuth = () => {
-        history.push(`${process.env.PUBLIC_URL}/dashboard/default`);
-    }
+const ResetPwd = () => {
     
     return (
         <div>
@@ -26,7 +21,7 @@ const Logins = ({history}) => {
                                         <div className="bg_txture"></div>
                                             <div className="card-body">
                                                 <div className="text-center">
-                                                    <h5>{Forgotpassword}</h5>                                                    
+                                                    <h5 className="card_head">{Forgotpassword}</h5>                                                    
                                                 </div>
                                                 <form className="theme-form">
                                                     <div className="form-group">
@@ -35,11 +30,11 @@ const Logins = ({history}) => {
                                                     </div>
                                                     
                                                     <div className="form-group form-row mt-3 mb-0">
-                                                        <button className="btn btn-primary btn-block" type="button" onClick={() => loginAuth()}>{Resetpassword}</button>
+                                                        <button className="btn btn-primary btn-block" type="button">{Resetpassword}</button>
                                                     </div>                                                    
                                                                                             
                                                     <div className="login_links text-center">
-                                                        <div className="mt-2">{"Don't have an Account?"} <a className="btn-link text-capitalize" href="signup.js">{SignUp2}</a></div>                                                                                                   
+                                                        <div className="mt-2">{"Don't have an Account?"} <Link className="btn-link text-capitalize sign_in" to={`${process.env.PUBLIC_URL}/pages/signup`}> {SignUp2} </Link></div>                                                                                             
                                                     </div>
                                                     
                                                 </form>
@@ -56,4 +51,4 @@ const Logins = ({history}) => {
     );
 };
 
-export default withRouter(Logins);
+export default ResetPwd;

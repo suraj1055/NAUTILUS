@@ -20,13 +20,23 @@
     margin: auto;
     width: 98%;
 }
-
+.card_head{
+    font-weight: 700;
+    color: #4d4d4d;
+}
+.remember_me{
+    color: #414242;
+    font-size: 14px;
+}
+.sign_up,.sign_in{
+    color: #573DAC;
+}
 .bg_txture{
-    background-color: #0288d1 !important;
+    background-color: #573DAC !important;
     height: 5px;
 }
 .bg_txture2{
-    background-color: #0288d1 !important;
+    background-color: #573DAC !important;
     height: 5px;
     padding-top: -50px;
 }

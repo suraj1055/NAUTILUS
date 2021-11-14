@@ -3,21 +3,20 @@ export class ConfigDB {
 		settings: {
 			layout_type: 'ltr',
 			sidebar: {
-				wrapper: 'default',
-				bodyWrapper: 'default'
+				type: 'compact-page',
+				body_type: 'sidebar-hover'
 			},
 			sidebar_setting: 'default-sidebar',
 			sidebar_backround: 'dark-sidebar'
 		},
 		color: {
 			layout_version: 'light',
-			color: 'color-1',
-			primary_color: '#4466f2',
-			secondary_color: '#1ea6ec',
+			color: '',
+			primary_color: '',
+			secondary_color: '',
 			mix_layout: 'default'
 		},
 		router_animation: 'fadeIn'
 	}
 }
-
 export default ConfigDB;

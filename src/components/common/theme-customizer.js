@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
+import { Nav, NavItem, NavLink } from 'reactstrap';
 import { useSelector, useDispatch } from 'react-redux';
 
 const ThemeCustomizer = () => {
@@ -8,10 +9,10 @@ const ThemeCustomizer = () => {
     const layout_version = localStorage.getItem('layout_version');
     const sidebar_type = localStorage.getItem('wrapper')
     const body_sidebar_type = localStorage.getItem('bodyWrapper');
+    const [activeTab1, setActiveTab1] = useState('1');
     const configDB = useSelector(content => content.Customizer.customizer);
     const color = localStorage.getItem('color')
     const mix_layout = configDB.color.mix_layout;
-    const [layout_type] = useState(configDB.settings.layout_type);
     const dispatch = useDispatch();
     const config_primary = configDB.color.primary_color;
     const config_secondary = configDB.color.secondary_color;
@@ -32,10 +33,6 @@ const ThemeCustomizer = () => {
                 layout_version,
             }
         })
-
-        //set layout_type
-        document.body.setAttribute('main-theme-layout', layout_type);
-        document.documentElement.dir = layout_type;
 
         //set sidebar wrapper
         if(sidebar_type === null && body_sidebar_type === null){
@@ -75,14 +72,29 @@ const ThemeCustomizer = () => {
         } else {
             document.querySelector(".compactLogo").className = 'compactLogo hide';
         }
+        // eslint-disable-next-line
     }, []);
-
 
     return (
         <Fragment>
-            
+            <div className="customizer-links">
+                <div className="nav flex-column nac-pills" id="c-pills-tab" role="tablist" aria-orientation="vertical">
+                    <Nav tabs className="tab-list-bottom border-tab-primary">
+                        <NavItem className="nav nav-tabs" id="myTab" role="tablist">
+                            {/* eslint-disable-next-line */}
+                            <NavLink className={activeTab1 == '1' ? 'active' : ''} onClick={() => setActiveTab1('1')}>
+                            </NavLink>
+                        </NavItem>
+                        <NavItem className="nav nav-tabs" id="myTab" role="tablist">
+                            {/* eslint-disable-next-line */}
+                            <NavLink className={activeTab1 == '2' ? 'active' : ''} onClick={() => setActiveTab1('2')}>
+                            </NavLink>
+                        </NavItem>
+                    </Nav>
+                </div>
+            </div>
         </Fragment>
     )
 }
 
-export default ThemeCustomizer;
+export default ThemeCustomizer

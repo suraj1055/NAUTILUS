@@ -11,17 +11,18 @@ import PackAndHold from "./PackAndHold";
 import ColdRunner from "./ColdRunner";
 
 export default class SixStepStudy extends React.Component {
+    
     render() {
 
         let headertext = [
-        { text: "Viscocity Curve" },
-        { text: "Cavity Balance" },
-        { text: "Pressure Drop Study" },
-        { text: "Cosmetic Pressure Window" },
-        { text: "Gate Seal Study" },
-        { text: "Cooling Time Study" },
-        { text: "Cold Runner" },{ text: "Pack And Hold" },
-        { text: "Hot Runner" }
+            { text: "Viscocity Curve" },
+            { text: "Cavity Balance" },
+            { text: "Pressure Drop Study" },
+            { text: "Cosmetic Process Window" },
+            { text: "Gate Seal Study" },
+            { text: "Cooling Time Study" },
+            { text: "Cold Runner" }, { text: "Pack And Hold" },
+            { text: "Hot Runner" }
         ];
 
         function content0() {
@@ -84,18 +85,28 @@ export default class SixStepStudy extends React.Component {
         }
 
         return (
-            <div className="study-container">
-                <TabComponent heightAdjustMode="Auto" id="defaultTab">
-                    <TabItemsDirective>
-                        <TabItemDirective header={headertext[0]} content={content0} />
-                        <TabItemDirective header={headertext[1]} content={content1} />
-                        <TabItemDirective header={headertext[2]} content={content2} />
-                        <TabItemDirective header={headertext[3]} content={content3} />
-                        <TabItemDirective header={headertext[4]} content={nestedTab1} />
-                        <TabItemDirective header={headertext[5]} content={content4} />
-                    </TabItemsDirective>
-                </TabComponent>
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="row">
+                            <div className="study-container">
+                                <TabComponent heightAdjustMode="Auto" id="defaultTab">
+                                    <TabItemsDirective>
+                                        <TabItemDirective header={headertext[0]} content={content0} />
+                                        <TabItemDirective header={headertext[1]} content={content1} />
+                                        <TabItemDirective header={headertext[2]} content={content2} />
+                                        <TabItemDirective header={headertext[3]} content={content3} />
+                                        <TabItemDirective header={headertext[4]} content={nestedTab1} />
+                                        <TabItemDirective header={headertext[5]} content={content4} />
+                                    </TabItemsDirective>
+                                </TabComponent>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            );
+
+        );
     }
 }

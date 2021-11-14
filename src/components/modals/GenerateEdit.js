@@ -6,7 +6,6 @@ const Viscocity = ({  modal2, toggle2 }) => {
     return (
         <div className="card-body btn-showcase">
         {/* < !-- Using Form Modal --> */}
-        <Button color="primary" onClick={toggle2}>{"Edit Pressure Value"}</Button>
         <Modal isOpen={modal2} toggle={toggle2} centered={true}>
             <ModalHeader toggle={toggle2}> {"Edit Pressure Value"} </ModalHeader>
             <ModalBody>
@@ -65,7 +64,7 @@ const Viscocity = ({  modal2, toggle2 }) => {
             </ModalBody>
             <ModalFooter>
                 <Button color="primary">{"Update"}</Button>
-                <Button color="secondary" onClick={toggle2}>{"Cancel"}</Button>
+                <Button color="fourth" onClick={toggle2}>{"Cancel"}</Button>
             </ModalFooter>
         </Modal>
     </div>

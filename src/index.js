@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
-import { firebase_app, auth0 } from './data/config';
+import { auth0 } from './data/config';
 import { configureFakeBackend, authHeader, handleResponse } from "./services/fack.backend";
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
@@ -17,7 +17,7 @@ import { Auth0Provider } from '@auth0/auth0-react'
 import Default from './components/dashboard/defaultCompo/default';
 
 // pages 
-import Login from './pages/login';
+import SignIn from './pages/login';
 import Signup from './pages/signup';
 import ResetPwd from './pages/resetPwd';
 
@@ -32,9 +32,7 @@ configureFakeBackend();
 const Root = () => {
 
     const abortController = new AbortController();
-    const [currentUser, setCurrentUser] = useState(false);
-    const [authenticated, setAuthenticated] = useState(false)
-    const jwt_token = localStorage.getItem('token');
+
 
     useEffect(() => {
 
@@ -43,8 +41,6 @@ const Root = () => {
         const color = localStorage.getItem('color')
         console.log(color);
         const layout = localStorage.getItem('layout_version') || configDB.data.color.layout_version
-        firebase_app.auth().onAuthStateChanged(setCurrentUser);
-        setAuthenticated(JSON.parse(localStorage.getItem("authenticated")))
         document.body.classList.add(layout);
         console.ignoredYellowBox = ['Warning: Each', 'Warning: Failed'];
         console.disableYellowBox = true;
@@ -54,7 +50,7 @@ const Root = () => {
             abortController.abort();
         }
 
-    }, []);
+    }, [abortController]);
 
     return (
         <div className="App">
@@ -63,8 +59,15 @@ const Root = () => {
                     <BrowserRouter basename={`/`}>
                         <Switch>
 
+                            <Route exact path='/' render={() => {
+                                return (<Redirect to={`${process.env.PUBLIC_URL}/pages/login`} />)
+                            }} />
 
-                            <Route path={`${process.env.PUBLIC_URL}/pages/login`} component={Login} />
+                            <Route exact path='/endless' render={() => {
+                                return (<Redirect to={`${process.env.PUBLIC_URL}/pages/login`} />)
+                            }} />
+
+                            <Route path={`${process.env.PUBLIC_URL}/pages/login`} component={SignIn} />
 
                             <Route path={`${process.env.PUBLIC_URL}/pages/signup`} component={Signup} />
 
@@ -72,23 +75,12 @@ const Root = () => {
 
                             <Route path={`${process.env.PUBLIC_URL}/callback`} render={() => <Callback />} />
 
+                            <App>
+                                <Route exact path={`${process.env.PUBLIC_URL}/sixstepstudy/sixstepstudy`} component={SixStepStudy} />
 
-                            {currentUser !== null || authenticated || jwt_token ?
+                                <Route path={`${process.env.PUBLIC_URL}/dashboard/default`} component={Default} />
+                            </App>
 
-                                <App>
-                                    <Route exact path={`${process.env.PUBLIC_URL}/sixstepstudy/sixstepstudy`} component={SixStepStudy} />
-
-                                    <Route exact path={`${process.env.PUBLIC_URL}/`} render={() => {
-                                        return (<Redirect to={`${process.env.PUBLIC_URL}/dashboard/default`} />)
-                                    }} />
-
-
-                                    <Route path={`${process.env.PUBLIC_URL}/dashboard/default`} component={Default} />
-
-                                </App>
-                                :
-                                <Redirect to={`${process.env.PUBLIC_URL}/login`} />
-                            }
                         </Switch>
                     </BrowserRouter>
                 </Provider>
