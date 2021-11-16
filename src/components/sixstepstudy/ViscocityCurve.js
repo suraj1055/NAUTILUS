@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, CommandColumn, Edit, Toolbar } from '@syncfusion/ej2-react-grids';
 import { ChartComponent } from '@syncfusion/ej2-react-charts';
 import Viscocity from '../modals/Viscocity';
 import '../App.css';
 import { Button } from 'reactstrap';
+import ViscocityGrid from '../Grids/ViscocityGrid'
 
 const ViscocityCurve = () => {
 
@@ -58,24 +58,11 @@ const ViscocityCurve = () => {
             </div>
 
             <div className="grid-chart-container">
-                <div className="grid_delete_row">
-                    <Button color="fifth" className="btn btn-sm" type="button"> {"Delete Row"} </Button>
-                </div>
                 <div>
-                    <GridComponent pageSettings={{ pageSize: 5 }} editSettings={editSettings} allowPaging={true} toolbar={toolbarOptions}>
-                        <ColumnsDirective>
-                            <ColumnDirective field="InjectionSpeed" headerText="Injection Speed" textAlign="Left" width="100" />
-                            <ColumnDirective field="FillTime" headerText="Fill Time (sec)" textAlign="Left" width="100" />
-                            <ColumnDirective field="PeakInjPress" headerText="Peak Inj Press" textAlign="Left" width="100" />
-                            <ColumnDirective field="Viscocity" headerText="Viscocity" textAlign="Left" width="100" isPrimaryKey={true}/>
-                            <ColumnDirective field="ShearRate" headerText="Shear Rate" textAlign="Left" width="100" isPrimaryKey={true}/>
-                            <ColumnDirective field="AbsoluteDropViscocity" headerText="Absolute Drop Viscocity" textAlign="Left" width="100" isPrimaryKey={true}/>
-                            <ColumnDirective field="DropViscocity" headerText="% Drop Viscocity" textAlign="Left" width="100" isPrimaryKey={true} />
-                        </ColumnsDirective>
-                        <Inject services={[DetailRow, Page, Edit, CommandColumn, Toolbar]} />
-                    </GridComponent>
+                    <ViscocityGrid />
                 </div>
             </div>
+
             <div className="grid-chart-container">
                 <div className="row">
                     <div className="col-md-3">
