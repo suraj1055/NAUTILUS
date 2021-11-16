@@ -3,48 +3,11 @@ import { ChartComponent } from '@syncfusion/ej2-react-charts';
 import Viscocity from '../modals/Viscocity';
 import '../App.css';
 import { Button } from 'reactstrap';
-import Table from 'react-bootstrap/Table'
-import data from '../data/Viscocity_curve_data'
-import { nanoid } from 'nanoid'
+import ViscocityGrid from '../Grids/ViscocityGrid'
 
 const ViscocityCurve = () => {
 
     const [modal, setModal] = useState();
-
-    const [values, setValues] = useState(data);
-
-    const [addInputValues, setInputValues] = useState({
-        Injection_Speed: '',
-        Fill_Time: '',
-        Peak_Inj_Press: ''
-    })
-
-    const handleValueChange = (event) => {
-        event.preventDefault();
-
-        const fieldName = event.target.getAttribute("name")
-        const fieldValue = event.target.value;
-
-        const newInputValues = { ...addInputValues };
-        newInputValues[fieldName] = fieldValue;
-
-        setInputValues(newInputValues);
-    }
-
-    const handleValueSubmit = (event) => {
-        event.preventDefault();
-
-        const newValue = {
-            id: nanoid(),
-            Injection_Speed: addInputValues.Injection_Speed,
-            Fill_Time: addInputValues.Fill_Time,
-            Peak_Inj_Press: addInputValues.Peak_Inj_Press
-        }
-
-        const newValues = [...values, newValue]
-
-        setValues(newValues);
-    }
 
     const toggle = () => {
         setModal(!modal)
@@ -91,52 +54,12 @@ const ViscocityCurve = () => {
                 </div>
             </div>
 
-
-            <form onSubmit={handleValueSubmit} >
-                <input type="text" name="Injection_Speed" onChange={handleValueChange} />
-
-                <input type="text" name="Fill_Time" onChange={handleValueChange} />
-
-                <input type="text" name="Peak_Inj_Press" onChange={handleValueChange} />
-
-                
-                
-            </form>
-
-
             <div className="grid-chart-container">
-
                 <div>
-                    <Table striped bordered hover responsive variant="light">
-                        <thead>
-                            <tr>
-                                <th> Injection Speed </th>
-                                <th> Fill Time (sec) </th>
-                                <th> Peak Inj Press </th>
-                                <th> Viscocity </th>
-                                <th> ShearRate </th>
-                                <th>AbsoluteDropViscocity </th>
-                                <th> %DropViscocity </th>
-                                <th> Action </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {values.map((value) => 
-                                <tr>
-                                    <td> {value.Injection_Speed} </td>
-                                    <td> {value.Injection_Speed} </td>
-                                    <td> {value.Injection_Speed} </td>
-                                    <td> {value.Injection_Speed} </td>
-                                    <td> {value.Injection_Speed} </td>
-                                    <td> {value.Injection_Speed} </td>
-                                    <td> {value.Injection_Speed} </td>
-                                </tr>
-                            )}
-                        </tbody>
-                    </Table>
+                    <ViscocityGrid />
                 </div>
-
             </div>
+
             <div className="grid-chart-container">
                 <div className="row">
                     <div className="col-md-3">

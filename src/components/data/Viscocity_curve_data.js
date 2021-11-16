@@ -1,6 +1,6 @@
 let data = [
     {
-        id: 1, Injection_Speed : 1 , Fill_Time: 1.59, Peak_Inj_Press: 2342
+        id: 1, Injection_Speed : '' , Fill_Time: 1.59, Peak_Inj_Press: 2342
     },
     {
         id: 2, Injection_Speed : 2, Fill_Time: 2.59, Peak_Inj_Press: 3423
