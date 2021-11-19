@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, CommandColumn, Edit, Toolbar } from '@syncfusion/ej2-react-grids';
 import { ChartComponent } from '@syncfusion/ej2-react-charts';
 import Viscocity from '../modals/Viscocity';
 import '../App.css';
@@ -6,7 +7,10 @@ import { Button } from 'reactstrap';
 import ViscocityGrid from '../Grids/ViscocityGrid'
 
 const ViscocityCurve = () => {
-    
+
+    const editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, newRowPosition: 'Top'};
+    const toolbarOptions = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
+
     const [modal, setModal] = useState();
 
     const toggle = () => {
@@ -56,7 +60,18 @@ const ViscocityCurve = () => {
 
             <div className="grid-chart-container">
                 <div>
-                    <ViscocityGrid />
+                    <GridComponent pageSettings={{ pageSize: 5 }} editSettings={editSettings} allowPaging={true} toolbar={toolbarOptions}>
+                        <ColumnsDirective>
+                            <ColumnDirective field="InjectionSpeed" headerText="Injection Speed" textAlign="Left" width="100" />
+                            <ColumnDirective field="FillTime" headerText="Fill Time (sec)" textAlign="Left" width="100" />
+                            <ColumnDirective field="PeakInjPress" headerText="Peak Inj Press" textAlign="Left" width="100" />
+                            <ColumnDirective field="Viscocity" headerText="Viscocity" textAlign="Left" width="100" isPrimaryKey={true}/>
+                            <ColumnDirective field="ShearRate" headerText="Shear Rate" textAlign="Left" width="100" isPrimaryKey={true}/>
+                            <ColumnDirective field="AbsoluteDropViscocity" headerText="Absolute Drop Viscocity" textAlign="Left" width="100" isPrimaryKey={true}/>
+                            <ColumnDirective field="DropViscocity" headerText="% Drop Viscocity" textAlign="Left" width="100" isPrimaryKey={true} />
+                        </ColumnsDirective>
+                        <Inject services={[DetailRow, Page, Edit, CommandColumn, Toolbar]} />
+                    </GridComponent>
                 </div>
             </div>
 

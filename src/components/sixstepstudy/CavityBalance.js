@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, CommandColumn, Edit, Toolbar } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, CommandColumn, Edit,Toolbar } from '@syncfusion/ej2-react-grids';
 import { ChartComponent } from '@syncfusion/ej2-react-charts'
 import CavityEdit from '../modals/CavityEdit'
 import { Button } from 'reactstrap';
@@ -7,6 +7,9 @@ import Cavity from '../columns/Cavity';
 import CavityGrid from '../Grids/CavityGrid';
 
 const CavityBalance = () => {
+    
+    const editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, newRowPosition: 'Top'};
+    const toolbarOptions = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
 
     const [modal, setModal] = useState();
 
