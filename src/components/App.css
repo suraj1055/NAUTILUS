@@ -194,3 +194,25 @@ grid-gap: 2rem;
   
 }
 
+/* ***************** GRID_CSS ******************** */
+
+.Cavity-Grid-Container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.Cavity-Grid-1-Container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+
+.Cavity-Grid-2-Container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
