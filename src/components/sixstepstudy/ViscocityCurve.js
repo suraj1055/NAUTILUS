@@ -6,10 +6,7 @@ import { Button } from 'reactstrap';
 import ViscocityGrid from '../Grids/ViscocityGrid'
 
 const ViscocityCurve = () => {
-
-    const editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, newRowPosition: 'Top', mode: 'Dialog' };
-    const toolbarOptions = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
-
+    
     const [modal, setModal] = useState();
 
     const toggle = () => {
