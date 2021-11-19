@@ -35,7 +35,6 @@ const CavityGrid = ({ column }) => {
                                 <td> <input type='text' className="form-control" value="XYZ-5" readonly /> </td>
                                 <td> <input type='text' className="form-control" /> </td>
                             </tr>
-                            </div>
                         </tbody>
                     </Table>
                 </div>
