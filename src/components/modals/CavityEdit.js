@@ -5,7 +5,7 @@ const CavityEdit = ({ modal, toggle }) => {
     return (
         <div className="btn-showcase">
             {/* < !-- Using Form Modal --> */}
-            <Button color="primary" onClick={toggle}>{"Edit"}</Button>
+            <Button color="primary" onClick={toggle}> Edit </Button>
             <Modal isOpen={modal} toggle={toggle} centered={true}>
                 <ModalHeader toggle={toggle}>{"Edit Header's Value"}</ModalHeader>
                 <ModalBody>
