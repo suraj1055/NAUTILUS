@@ -13,54 +13,32 @@ const CavityGrid = ({ column }) => {
                             <tr>
                                 <th> Cavity No. </th>
                                 <th> Column 1 </th>
+                                {column.map((index) => (
+                                    <th> {index} </th>
+                                ))}
                             </tr>
                         </thead>
                         <tbody>
                             <tr className="table-row">
-                                <td> <input type='text' className="form-control" value="ABC-4" readonly/> </td>
-                                <td> <input type='text' className="form-control"/> </td>
+                                <td> <input type='text' className="form-control" value="ABC-4" readonly /> </td>
+                                <td> <input type='text' className="form-control" /> </td>
                             </tr>
                             <tr>
-                                <td> <input type='text' className="form-control" value="ABC-5" readonly/> </td>
-                                <td> <input type='text' className="form-control"/> </td>
+                                <td> <input type='text' className="form-control" value="ABC-5" readonly /> </td>
+                                <td> <input type='text' className="form-control" /> </td>
                             </tr>
                             <tr>
-                                <td> <input type='text' className="form-control" value="XYZ-4" readonly/> </td>
-                                <td> <input type='text' className="form-control"/> </td>
+                                <td> <input type='text' className="form-control" value="XYZ-4" readonly /> </td>
+                                <td> <input type='text' className="form-control" /> </td>
                             </tr>
                             <tr>
-                                <td> <input type='text' className="form-control" value="XYZ-5" readonly/> </td>
-                                <td> <input type='text' className="form-control"/> </td>
+                                <td> <input type='text' className="form-control" value="XYZ-5" readonly /> </td>
+                                <td> <input type='text' className="form-control" /> </td>
                             </tr>
+                            </div>
                         </tbody>
                     </Table>
                 </div>
-                <div className="Cavity-Grid-2-Container">
-                    {column.map((index) => (
-                        <Table striped bordered hover responsive variant="light">
-                            <thead>
-                                <tr>
-                                    <th> {index} </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td> <input type='text' className="form-control" /> </td>
-                                </tr>
-                                <tr>
-                                    <td> <input type='text' className="form-control" /> </td>
-                                </tr>
-                                <tr>
-                                    <td> <input type='text' className="form-control" /> </td>
-                                </tr>
-                                <tr>
-                                    <td> <input type='text' className="form-control" /> </td>
-                                </tr>
-                            </tbody>
-                        </Table>
-                    ))}
-                </div>
-
             </div>
         </>
     )
