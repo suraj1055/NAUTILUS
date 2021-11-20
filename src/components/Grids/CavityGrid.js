@@ -11,8 +11,8 @@ const CavityGrid = ({ column }) => {
                     <Table striped bordered hover responsive variant="light">
                         <thead>
                             <tr>
-                                <th> Cavity No. </th>
-                                <th> Column 1 </th>
+                                <th> <h6> Cavity No. </h6> </th>
+                                <th> <h6> Column 1 </h6> </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -40,7 +40,7 @@ const CavityGrid = ({ column }) => {
                         <Table striped bordered hover responsive variant="light">
                             <thead>
                                 <tr>
-                                    <th> {index} </th>
+                                    <th> <h6> {index} </h6> </th>
                                 </tr>
                             </thead>
                             <tbody>
