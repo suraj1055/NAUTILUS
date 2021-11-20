@@ -3,7 +3,7 @@ import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Pa
 import { ChartComponent } from '@syncfusion/ej2-react-charts'
 import CavityEdit from '../modals/CavityEdit'
 import { Button } from 'reactstrap';
-import Cavity from '../columns/Cavity';
+import Cavity from '../columns/CavityAddColumn';
 import CavityGrid from '../Grids/CavityGrid';
 
 const CavityBalance = () => {
@@ -38,12 +38,18 @@ const CavityBalance = () => {
         setHeader("");
       };
 
+    const editHeader = (e) => {
+        e.preventDefault();
+
+        setHeader(e.target.value)
+    }
+
     return (
         <>
             <div className="row">
                 <div className="col-md-3">
                     <div className="form-group">
-                        <CavityEdit toggle={toggle} modal={modal} />
+                        <CavityEdit toggle={toggle} modal={modal} column={column} addHeader={addHeader} editHeader={editHeader}/>
                     </div>
                 </div>
             </div>
