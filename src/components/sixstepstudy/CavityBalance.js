@@ -5,6 +5,8 @@ import CavityEdit from '../modals/CavityEdit';
 import { Button } from 'reactstrap';
 import Cavity from '../columns/CavityAddColumn';
 import CavityGrid from '../Grids/CavityGrid';
+import { nanoid } from "nanoid";
+import data from '../data/cavity_balance_data'
 
 const CavityBalance = () => {
 
@@ -24,32 +26,41 @@ const CavityBalance = () => {
 
     }
 
-    const [header, setHeader] = useState();
-    const [column, setColumn] = useState([]);
+    const [column, setColumn] = useState(data);
+    const [addColumn, setAddColumn] = useState({
+        header: "",
+    });
 
-    const addHeader = (e) => {
-        e.preventDefault();
+    const handleAddHeader = (event) => {
+        event.preventDefault();
 
-        setHeader(e.target.value)
-    }
+        const fieldName = event.target.getAttribute("name");
+        const fieldValue = event.target.value;
 
-    const addColumn = () => {
-        setColumn([...column, header]);
-        setHeader("");
-      };
+        const newHeader = { ...addColumn };
+        newHeader[fieldName] = fieldValue;
 
-    const editHeader = (e) => {
-        e.preventDefault();
+        setAddColumn(newHeader);
+    };
 
-        setHeader(e.target.value)
-    }
+    const handleAddColumn = (event) => {
+        event.preventDefault();
+
+        const newColumn = {
+            id: nanoid(),
+            header: addColumn.header,
+        };
+
+        const newColumns = [...column, newColumn];
+        setColumn(newColumns);
+    };
 
     return (
         <>
             <div className="row">
                 <div className="col-md-3">
                     <div className="form-group">
-                        <CavityEdit toggle={toggle} modal={modal} column={column} addHeader={addHeader} editHeader={editHeader}/>
+                        <CavityEdit toggle={toggle} modal={modal} column={column}  />
                     </div>
                 </div>
             </div>
@@ -59,7 +70,7 @@ const CavityBalance = () => {
                         <div className="row">
                             <div className="col-md-4">
                                 <div className="grid_container_btn">
-                                    <Cavity toggle2={toggle2} modal2={modal2} header={header} setHeader={setHeader} column={column} addHeader={addHeader} addColumn={addColumn} />
+                                    <Cavity toggle2={toggle2} modal2={modal2} handleAddHeader={handleAddHeader} handleAddColumn={handleAddColumn} />
                                 </div>
                             </div>
                             <div className="col-md-4">
@@ -71,7 +82,7 @@ const CavityBalance = () => {
                     </div>
                 </div>
                 <div className="mb-4">
-                    <CavityGrid column={column}/>
+                    <CavityGrid column={column} />
                 </div>
                 <div className="">
                     <GridComponent allowEditing={true} allowPaging={true} pageSettings={{ pageSize: 4 }}>

@@ -12,25 +12,20 @@ const CavityGrid = ({ column }) => {
                         <thead>
                             <tr>
                                 <th> Cavity No. </th>
-                                <th> Column 1 </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td> <input type='text' className="form-control" value="ABC-4" readonly/> </td>
-                                <td> <input type='text' className="form-control"/> </td>
                             </tr>
                             <tr>
                                 <td> <input type='text' className="form-control" value="ABC-5" readonly/> </td>
-                                <td> <input type='text' className="form-control"/> </td>
                             </tr>
                             <tr>
                                 <td> <input type='text' className="form-control" value="XYZ-4" readonly/> </td>
-                                <td> <input type='text' className="form-control"/> </td>
                             </tr>
                             <tr>
                                 <td> <input type='text' className="form-control" value="XYZ-5" readonly/> </td>
-                                <td> <input type='text' className="form-control"/> </td>
                             </tr>
                         </tbody>
                     </Table>
@@ -40,7 +35,7 @@ const CavityGrid = ({ column }) => {
                         <Table striped bordered hover responsive variant="light">
                             <thead>
                                 <tr>
-                                    <th> {index} </th>
+                                    <th> {index.header} </th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-const Cavity = ({ toggle2, modal2, addHeader, addColumn }) => {
+const Cavity = ({ toggle2, modal2, handleAddHeader, handleAddColumn }) => {
     return (
         <div className="btn-showcase">
             <Button onClick={toggle2} color="secondary" className="btn btn-sm" type="button"> Add Column </Button>
@@ -20,7 +20,7 @@ const Cavity = ({ toggle2, modal2, addHeader, addColumn }) => {
                                         </div>
                                     </div>
                                     <div className="col-md-10">
-                                        <input className="form-control" id="exampleInputPassword27" type="text" placeholder="Enter Header Name" name="header" onChange={addHeader}/>
+                                        <input className="form-control" id="exampleInputPassword27" type="text" placeholder="Enter Header Name" name="header" onChange={handleAddHeader}/>
                                     </div>
                                 </div>
                             </div>
@@ -28,7 +28,7 @@ const Cavity = ({ toggle2, modal2, addHeader, addColumn }) => {
                     </form>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="primary" onClick={addColumn}> Add </Button>
+                    <Button color="primary" onClick={handleAddColumn}> Add </Button>
                     <Button color="fourth" onClick={toggle2}> Cancel </Button>
                 </ModalFooter>
             </Modal>
