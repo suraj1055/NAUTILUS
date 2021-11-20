@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, CommandColumn, Edit, Toolbar } from '@syncfusion/ej2-react-grids';
-import { ChartComponent } from '@syncfusion/ej2-react-charts'
-import CavityEdit from '../modals/CavityEdit'
+import { ChartComponent } from '@syncfusion/ej2-react-charts';
+import CavityEdit from '../modals/CavityEdit';
 import { Button } from 'reactstrap';
 import Cavity from '../columns/CavityAddColumn';
 import CavityGrid from '../Grids/CavityGrid';
