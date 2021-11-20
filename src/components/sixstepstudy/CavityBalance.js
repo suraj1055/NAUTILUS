@@ -1,15 +1,12 @@
-import React, { useState } from 'react'
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, CommandColumn, Edit,Toolbar } from '@syncfusion/ej2-react-grids';
-import { ChartComponent } from '@syncfusion/ej2-react-charts'
-import CavityEdit from '../modals/CavityEdit'
+import React, { useState } from 'react';
+import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, CommandColumn, Edit, Toolbar } from '@syncfusion/ej2-react-grids';
+import { ChartComponent } from '@syncfusion/ej2-react-charts';
+import CavityEdit from '../modals/CavityEdit';
 import { Button } from 'reactstrap';
-import Cavity from '../columns/Cavity';
+import Cavity from '../columns/CavityAddColumn';
 import CavityGrid from '../Grids/CavityGrid';
 
 const CavityBalance = () => {
-    
-    const editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, newRowPosition: 'Top'};
-    const toolbarOptions = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
 
     const [modal, setModal] = useState();
 
@@ -41,12 +38,18 @@ const CavityBalance = () => {
         setHeader("");
       };
 
+    const editHeader = (e) => {
+        e.preventDefault();
+
+        setHeader(e.target.value)
+    }
+
     return (
         <>
             <div className="row">
                 <div className="col-md-3">
                     <div className="form-group">
-                        <CavityEdit toggle={toggle} modal={modal} />
+                        <CavityEdit toggle={toggle} modal={modal} column={column} addHeader={addHeader} editHeader={editHeader}/>
                     </div>
                 </div>
             </div>

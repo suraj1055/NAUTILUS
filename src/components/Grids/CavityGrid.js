@@ -16,7 +16,7 @@ const CavityGrid = ({ column }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr className="table-row">
+                            <tr>
                                 <td> <input type='text' className="form-control" value="ABC-4" readonly/> </td>
                                 <td> <input type='text' className="form-control"/> </td>
                             </tr>
