@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, CommandColumn, Edit, Toolbar } from '@syncfusion/ej2-react-grids';
 import { ChartComponent } from '@syncfusion/ej2-react-charts';
-import CavityEdit from '../modals/CavityEdit';
 import { Button } from 'reactstrap';
 import Cavity from '../columns/CavityAddColumn';
 import CavityGrid from '../Grids/CavityGrid';
@@ -17,7 +16,7 @@ const CavityBalance = () => {
 
     }
 
-    const [header, setHeader] = useState();
+    const [header, setHeader] = useState(data);
     const [column, setColumn] = useState([]);
 
     const addHeader = (e) => {
@@ -37,7 +36,7 @@ const CavityBalance = () => {
 
     const deleteColumn = (id) => {
         const updatedColumns = column.filter((element, index) => {
-            return index != id;
+            return index !== id;
         })
 
         setColumn(updatedColumns)
@@ -51,7 +50,7 @@ const CavityBalance = () => {
                         <div className="row">
                             <div className="col-md-4">
                                 <div className="grid_container_btn">
-                                    <Cavity toggle2={toggle2} modal2={modal2} header={header} setHeader={setHeader} column={column} addHeader={addHeader} addColumn={addColumn} />
+                                    <Cavity toggle2={toggle2} modal2={modal2} addHeader={addHeader} addColumn={addColumn} />
                                 </div>
                             </div>
                         </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-const Cavity = ({ toggle2, modal2, addHeader, addColumn }) => {
+const Cavity = ({ toggle2, modal2, addHeader, addColumn}) => {
     return (
         <div className="btn-showcase">
             <Button onClick={toggle2} color="secondary" className="btn btn-sm" type="button"> Add Column </Button>
