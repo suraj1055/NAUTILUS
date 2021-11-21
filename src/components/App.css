@@ -207,12 +207,38 @@ grid-gap: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60%;
+  width: 70%;
 }
 
 .Cavity-Grid-2-Container{
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 40%;
+}
+
+.table-heading-content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.table-heading-icons{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 20%;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+@media (min-height: 768px) and (max-height:1024px){
+  .table-heading-icons{
+    font-size: 0.7rem;
+  }
+}
+
+.table-heading{
+  width: 50%;
 }
