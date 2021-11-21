@@ -1,6 +1,7 @@
 import React from 'react'
 import '../App.css';
 import Table from 'react-bootstrap/Table'
+import ReadOnly from '../columns/ReadOnlyRow';
 
 const CavityGrid = ({ column, deleteColumn }) => {
 
@@ -12,16 +13,18 @@ const CavityGrid = ({ column, deleteColumn }) => {
                         <thead>
                             <tr>
                                 <th> <h6> Cavity No. </h6> </th>
-                                <th>
-                                    <div className="table-heading-content">
-                                        <div className="table-heading">
-                                            <h6> <input type="text" className="form-control" /> </h6>
+                                <div>
+                                    <th>
+                                        <div className="table-heading-content">
+                                            <div className="table-heading">
+                                                <h6> Col 1 </h6>
+                                            </div>
+                                            <div className="table-heading-icons">
+                                                <div> <i class="fa fa-edit"></i> </div>
+                                            </div>
                                         </div>
-                                        <div className="table-heading-icons">
-                                            <div> <i class="fa fa-edit"></i> </div>
-                                        </div>
-                                    </div>
-                                </th>
+                                    </th>
+                                </div>
                             </tr>
                         </thead>
                         <tbody>

@@ -221,13 +221,14 @@ grid-gap: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .table-heading-icons{
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 20%;
+  width: 100%;
   font-size: 0.95rem;
   cursor: pointer;
   margin-bottom: 5px;
@@ -240,5 +241,5 @@ grid-gap: 2rem;
 }
 
 .table-heading{
-  width: 50%;
+  width: 100%;
 }
