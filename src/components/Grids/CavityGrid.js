@@ -15,7 +15,7 @@ const CavityGrid = ({ column, deleteColumn }) => {
                                 <th>
                                     <div className="table-heading-content">
                                         <div className="table-heading">
-                                            <h6> Col 1 </h6>
+                                            <h6> <input type="text" className="form-control" /> </h6>
                                         </div>
                                         <div className="table-heading-icons">
                                             <div> <i class="fa fa-edit"></i> </div>
