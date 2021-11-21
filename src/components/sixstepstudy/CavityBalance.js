@@ -4,7 +4,7 @@ import { ChartComponent } from '@syncfusion/ej2-react-charts';
 import { Button } from 'reactstrap';
 import Cavity from '../columns/CavityAddColumn';
 import CavityGrid from '../Grids/CavityGrid';
-import data from '../data/cavity_balance_data'
+import { nanoid } from 'nanoid'
 
 const CavityBalance = () => {
 
@@ -16,8 +16,10 @@ const CavityBalance = () => {
 
     }
 
-    const [header, setHeader] = useState(data);
+    const [header, setHeader] = useState();
     const [column, setColumn] = useState([]);
+    const [isColumnId, setIsColumnId] = useState(null);
+    const [toggleEdit, setToggleEdit] = useState(true);
 
     const addHeader = (e) => {
         e.preventDefault();
@@ -28,18 +30,43 @@ const CavityBalance = () => {
        if (!header) {
 
        }
+       else if (header && !toggleEdit) {
+            setColumn(
+                column.map((element) => {
+                    if(element.id === isColumnId) {
+                        return {...element, header: header}
+                    }
+                    return element;
+                })
+            )
+       }
        else{
-        setColumn([...column, header]);
+        const newColumn = { id: nanoid(), header: header}
+        setColumn([...column, newColumn]);
         setHeader("");
        }
     };
 
     const deleteColumn = (id) => {
-        const updatedColumns = column.filter((element, index) => {
-            return index !== id;
+        const updatedColumns = column.filter((index) => {
+            return index.id !== id;
         })
-
+        console.log(id)
         setColumn(updatedColumns)
+    }
+
+    const editColumn = (id) => {
+        const editedColumn = column.find((element) => {
+            return element.id === id
+        })
+        setIsColumnId(id)
+        setHeader(editedColumn.header)
+        setToggleEdit(false)
+    }
+
+    const editCancel = () => {
+        setIsColumnId(null)
+        setToggleEdit(true)
     }
 
     return (
@@ -57,7 +84,7 @@ const CavityBalance = () => {
                     </div>
                 </div>
                 <div className="mb-4">
-                    <CavityGrid column={column} deleteColumn={deleteColumn} />
+                    <CavityGrid column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} addColumn={addColumn} toggleEdit={toggleEdit} />
                 </div>
                 <div className="">
                     <GridComponent allowEditing={true} allowPaging={true} pageSettings={{ pageSize: 4 }}>
