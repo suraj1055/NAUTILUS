@@ -24,10 +24,8 @@ const CavityBalance = () => {
 
     }
 
-    const [column, setColumn] = useState(data);
-    const [addColumn, setAddColumn] = useState({
-        header: "",
-    });
+    const [header, setHeader] = useState(data);
+    const [column, setColumn] = useState([]);
 
     const addHeader = (e) => {
         e.preventDefault();
@@ -60,7 +58,7 @@ const CavityBalance = () => {
                         <div className="row">
                             <div className="col-md-4">
                                 <div className="grid_container_btn">
-                                    <Cavity toggle2={toggle2} modal2={modal2} handleAddHeader={handleAddHeader} handleAddColumn={handleAddColumn} />
+                                    <Cavity toggle2={toggle2} modal2={modal2} addHeader={addHeader} addColumn={addColumn} />
                                 </div>
                             </div>
                         </div>
