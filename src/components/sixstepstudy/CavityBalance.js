@@ -1,20 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, CommandColumn, Edit, Toolbar } from '@syncfusion/ej2-react-grids';
-import { ChartComponent } from '@syncfusion/ej2-react-charts'
-import CavityEdit from '../modals/CavityEdit'
+import { ChartComponent } from '@syncfusion/ej2-react-charts';
 import { Button } from 'reactstrap';
-import Cavity from '../columns/Cavity';
+import Cavity from '../columns/CavityAddColumn';
 import CavityGrid from '../Grids/CavityGrid';
+import data from '../data/cavity_balance_data'
 
 const CavityBalance = () => {
-
-    const [modal, setModal] = useState();
-
-    const toggle = () => {
-
-        setModal(!modal);
-
-    }
 
     const [modal2, setModal2] = useState();
 
@@ -24,48 +16,48 @@ const CavityBalance = () => {
 
     }
 
-    const [header, setHeader] = useState();
+    const [header, setHeader] = useState(data);
     const [column, setColumn] = useState([]);
 
     const addHeader = (e) => {
         e.preventDefault();
-
         setHeader(e.target.value)
     }
 
     const addColumn = () => {
+       if (!header) {
+
+       }
+       else{
         setColumn([...column, header]);
         setHeader("");
-      };
+       }
+    };
+
+    const deleteColumn = (id) => {
+        const updatedColumns = column.filter((element, index) => {
+            return index !== id;
+        })
+
+        setColumn(updatedColumns)
+    }
 
     return (
         <>
-            <div className="row">
-                <div className="col-md-3">
-                    <div className="form-group">
-                        <CavityEdit toggle={toggle} modal={modal} />
-                    </div>
-                </div>
-            </div>
             <div className="grid-chart-container">
                 <div className="row">
                     <div className="col-md-6">
                         <div className="row">
                             <div className="col-md-4">
                                 <div className="grid_container_btn">
-                                    <Cavity toggle2={toggle2} modal2={modal2} header={header} setHeader={setHeader} column={column} addHeader={addHeader} addColumn={addColumn} />
-                                </div>
-                            </div>
-                            <div className="col-md-4">
-                                <div className="grid_container_btn cav_bal_add_delete_btn">
-                                    <Button color="fifth" className="btn btn-sm" type="button"> Delete Column </Button>
+                                    <Cavity toggle2={toggle2} modal2={modal2} addHeader={addHeader} addColumn={addColumn} />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="mb-4">
-                    <CavityGrid column={column}/>
+                    <CavityGrid column={column} deleteColumn={deleteColumn} />
                 </div>
                 <div className="">
                     <GridComponent allowEditing={true} allowPaging={true} pageSettings={{ pageSize: 4 }}>
