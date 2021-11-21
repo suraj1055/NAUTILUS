@@ -8,14 +8,6 @@ import data from '../data/cavity_balance_data'
 
 const CavityBalance = () => {
 
-    const [modal, setModal] = useState();
-
-    const toggle = () => {
-
-        setModal(!modal);
-
-    }
-
     const [modal2, setModal2] = useState();
 
     const toggle2 = () => {
@@ -44,7 +36,7 @@ const CavityBalance = () => {
 
     const deleteColumn = (id) => {
         const updatedColumns = column.filter((element, index) => {
-            return index != id;
+            return index !== id;
         })
 
         setColumn(updatedColumns)
