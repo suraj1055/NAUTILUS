@@ -5,6 +5,7 @@ import CavityEdit from '../modals/CavityEdit';
 import { Button } from 'reactstrap';
 import Cavity from '../columns/CavityAddColumn';
 import CavityGrid from '../Grids/CavityGrid';
+import data from '../data/cavity_balance_data'
 
 const CavityBalance = () => {
 
@@ -29,30 +30,29 @@ const CavityBalance = () => {
 
     const addHeader = (e) => {
         e.preventDefault();
-
         setHeader(e.target.value)
     }
 
     const addColumn = () => {
+       if (!header) {
+
+       }
+       else{
         setColumn([...column, header]);
         setHeader("");
-      };
+       }
+    };
 
-    const editHeader = (e) => {
-        e.preventDefault();
+    const deleteColumn = (id) => {
+        const updatedColumns = column.filter((element, index) => {
+            return index != id;
+        })
 
-        setHeader(e.target.value)
+        setColumn(updatedColumns)
     }
 
     return (
         <>
-            <div className="row">
-                <div className="col-md-3">
-                    <div className="form-group">
-                        <CavityEdit toggle={toggle} modal={modal} column={column} addHeader={addHeader} editHeader={editHeader}/>
-                    </div>
-                </div>
-            </div>
             <div className="grid-chart-container">
                 <div className="row">
                     <div className="col-md-6">
@@ -62,16 +62,11 @@ const CavityBalance = () => {
                                     <Cavity toggle2={toggle2} modal2={modal2} header={header} setHeader={setHeader} column={column} addHeader={addHeader} addColumn={addColumn} />
                                 </div>
                             </div>
-                            <div className="col-md-4">
-                                <div className="grid_container_btn cav_bal_add_delete_btn">
-                                    <Button color="fifth" className="btn btn-sm" type="button"> Delete Column </Button>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
                 <div className="mb-4">
-                    <CavityGrid column={column}/>
+                    <CavityGrid column={column} deleteColumn={deleteColumn} />
                 </div>
                 <div className="">
                     <GridComponent allowEditing={true} allowPaging={true} pageSettings={{ pageSize: 4 }}>
