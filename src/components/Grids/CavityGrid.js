@@ -39,7 +39,7 @@ const CavityGrid = ({ column, deleteColumn, editColumn, isColumnId, editCancel, 
                                         {isColumnId === index.id ? (<th>
                                             <div className="table-heading-content">
                                                 <div className="table-heading">
-                                                    <input type="text" onChange={addHeader} />
+                                                    <input type="text" defaultValue={index.header} onChange={addHeader} />
                                                 </div>
                                                 <div className="table-heading-icons">
                                                     <div> <i class="fa fa-check" onClick={() => editColumn(index.id)} onClick={addColumn}></i> </div>

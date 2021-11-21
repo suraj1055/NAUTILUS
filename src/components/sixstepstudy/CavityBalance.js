@@ -5,6 +5,7 @@ import { Button } from 'reactstrap';
 import Cavity from '../columns/CavityAddColumn';
 import CavityGrid from '../Grids/CavityGrid';
 import { nanoid } from 'nanoid'
+import CavityGrid2 from '../Grids/CavityGrid2';
 
 const CavityBalance = () => {
 
@@ -88,14 +89,7 @@ const CavityBalance = () => {
                     <CavityGrid column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} addColumn={addColumn} toggleEdit={toggleEdit} />
                 </div>
                 <div className="">
-                    <GridComponent allowEditing={true} allowPaging={true} pageSettings={{ pageSize: 4 }}>
-                        <ColumnsDirective>
-                            <ColumnDirective field="CavityNo" headerText="Cavity No" textAlign="Left" width="100" />
-                            <ColumnDirective field="FillTime" headerText="25% fill" textAlign="Left" width="100" />
-                            <ColumnDirective field="PeakInjPress" headerText="95% fill" textAlign="Left" width="100" />
-                        </ColumnsDirective>
-                        <Inject services={[DetailRow, Page, Edit, CommandColumn, Toolbar]} />
-                    </GridComponent>
+                    <CavityGrid2 column={column} />
                 </div>
             </div>
             <div className="grid-chart-container">
