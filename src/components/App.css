@@ -207,14 +207,14 @@ grid-gap: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 70%;
+  width: 30%;
 }
 
 .Cavity-Grid-2-Container{
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40%;
+  width: 30%;
 }
 
 .table-heading-content{
@@ -236,9 +236,16 @@ grid-gap: 2rem;
 @media (min-height: 768px) and (max-height:1024px){
   .table-heading-icons{
     font-size: 0.7rem;
+    width: 40%;
   }
+
+  .table-heading input{
+    width: 40px;
+    margin-top: 2px;
+  }
+
 }
 
 .table-heading{
-  width: 50%;
+  width: 30%;
 }

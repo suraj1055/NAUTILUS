@@ -4,7 +4,8 @@ import { ChartComponent } from '@syncfusion/ej2-react-charts';
 import { Button } from 'reactstrap';
 import Cavity from '../columns/CavityAddColumn';
 import CavityGrid from '../Grids/CavityGrid';
-import data from '../data/cavity_balance_data'
+// import data from '../data/cavity_balance_data';
+import { nanoid } from 'nanoid'
 
 const CavityBalance = () => {
 
@@ -16,31 +17,33 @@ const CavityBalance = () => {
 
     }
 
-    const [header, setHeader] = useState(data);
-    const [column, setColumn] = useState([]);
+    const [column, setColumn] = useState();
+    const [header, setHeader] = useState([]);
 
-    const addHeader = (e) => {
+    const addColumn = (e) => {
         e.preventDefault();
-        setHeader(e.target.value)
+        setColumn(e.target.value)
     }
 
-    const addColumn = () => {
-       if (!header) {
+    const addHeader = () => {
+       if (!column) {
 
        }
        else{
-        setColumn([...column, header]);
-        setHeader("");
+        const allColumn = { id: nanoid(), header: header}
+        setHeader([...column, allColumn]);
+        setColumn("");
        }
     };
 
-    const deleteColumn = (id) => {
-        const updatedColumns = column.filter((element, index) => {
-            return index !== id;
+    const deleteColumn = (index) => {
+        const updatedColumns = header.filter((element) => {
+            return index !== element.id;
         })
 
-        setColumn(updatedColumns)
+        setHeader(updatedColumns)
     }
+
 
     return (
         <>
@@ -57,7 +60,7 @@ const CavityBalance = () => {
                     </div>
                 </div>
                 <div className="mb-4">
-                    <CavityGrid column={column} deleteColumn={deleteColumn} />
+                    <CavityGrid header={header} />
                 </div>
                 <div className="">
                     <GridComponent allowEditing={true} allowPaging={true} pageSettings={{ pageSize: 4 }}>
