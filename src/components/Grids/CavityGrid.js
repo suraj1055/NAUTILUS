@@ -17,16 +17,16 @@ const CavityGrid = ({ column, deleteColumn, editColumn, isColumnId, editCancel, 
                         </thead>
                         <tbody className="grid_style">
                             <tr>
-                                <td> <input type='text' className="form-control" value="ABC-4" /> </td>
+                                <td> <input type='text' className="form-control" value="ABC-4" readOnly/> </td>
                             </tr>
                             <tr>
-                                <td> <input type='text' className="form-control" value="ABC-5" /> </td>
+                                <td> <input type='text' className="form-control" value="ABC-5" readOnly/> </td>
                             </tr>
                             <tr>
-                                <td> <input type='text' className="form-control" value="XYZ-4" /> </td>
+                                <td> <input type='text' className="form-control" value="XYZ-4" readOnly/> </td>
                             </tr>
                             <tr>
-                                <td> <input type='text' className="form-control" value="XYZ-5" /> </td>
+                                <td> <input type='text' className="form-control" value="XYZ-5" readOnly/> </td>
                             </tr>
                         </tbody>
                     </Table>

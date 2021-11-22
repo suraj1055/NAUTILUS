@@ -41,8 +41,8 @@ const CavityBalance = () => {
         if (header && !toggleEdit) {
             setColumn(
                 column.map((element) => {
-                    if(element.id === isColumnId) {
-                        return {...element, header: header}
+                    if (element.id === isColumnId) {
+                        return { ...element, header: header }
                     }
                     return element;
                 })
@@ -59,7 +59,6 @@ const CavityBalance = () => {
         const updatedColumns = column.filter((index) => {
             return index.id !== id;
         })
-        console.log(id)
         setColumn(updatedColumns)
     }
 
