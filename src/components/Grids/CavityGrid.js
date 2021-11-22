@@ -16,16 +16,16 @@ const CavityGrid = ({ column, deleteColumn, editColumn, isColumnId, editCancel, 
                         </thead>
                         <tbody>
                             <tr>
-                                <td> <input type='text' className="form-control" value="ABC-4" /> </td>
+                                <td> <input type='text' className="form-control" value="ABC-4" readOnly/> </td>
                             </tr>
                             <tr>
-                                <td> <input type='text' className="form-control" value="ABC-5" /> </td>
+                                <td> <input type='text' className="form-control" value="ABC-5" readOnly/> </td>
                             </tr>
                             <tr>
-                                <td> <input type='text' className="form-control" value="XYZ-4" /> </td>
+                                <td> <input type='text' className="form-control" value="XYZ-4" readOnly/> </td>
                             </tr>
                             <tr>
-                                <td> <input type='text' className="form-control" value="XYZ-5" /> </td>
+                                <td> <input type='text' className="form-control" value="XYZ-5" readOnly/> </td>
                             </tr>
                         </tbody>
                     </Table>
@@ -42,7 +42,7 @@ const CavityGrid = ({ column, deleteColumn, editColumn, isColumnId, editCancel, 
                                                     <input type="text" defaultValue={index.header} onChange={addHeader} />
                                                 </div>
                                                 <div className="table-heading-icons">
-                                                    <div> <i class="fa fa-check" onClick={() => editColumn(index.id)} onClick={addColumn}></i> </div>
+                                                    <div> <i class="fa fa-check" onClick={addColumn}></i> </div>
                                                     <div> <i class="fa fa-window-close" onClick={editCancel} ></i> </div>
                                                 </div>
                                             </div>

@@ -16,35 +16,35 @@ const CavityGrid2 = ({ column }) => {
                         </thead>
                         <tbody>
                             <tr>
-                                <td> <input type='text' className="form-control" value="Total Fill" /> </td>
+                                <td> <input type='text' className="form-control" value="Total Fill" readOnly/> </td>
                             </tr>
                             <tr>
-                                <td> <input type='text' className="form-control" value="Average Fill" /> </td>
+                                <td> <input type='text' className="form-control" value="Average Fill" readOnly/> </td>
                             </tr>
                             <tr>
-                                <td> <input type='text' className="form-control" value="Range" /> </td>
+                                <td> <input type='text' className="form-control" value="Range" readOnly/> </td>
                             </tr>
                             <tr>
-                                <td> <input type='text' className="form-control" value="Max Part Wt." /> </td>
+                                <td> <input type='text' className="form-control" value="Max Part Wt." readOnly/> </td>
                             </tr>
                             <tr>
-                                <td> <input type='text' className="form-control" value="Max Part Wt." /> </td>
+                                <td> <input type='text' className="form-control" value="Max Part Wt." readOnly/> </td>
                             </tr>
                             <tr>
-                                <td> <input type='text' className="form-control" value="% Variation From Average" /> </td>
+                                <td> <input type='text' className="form-control" value="% Variation From Average" readOnly/> </td>
                             </tr>
 
                             <tr>
-                                <td> <input type='text' className="form-control" value="ABC-4" /> </td>
+                                <td> <input type='text' className="form-control" value="ABC-4" readOnly/> </td>
                             </tr>
                             <tr>
-                                <td> <input type='text' className="form-control" value="ABC-5" /> </td>
+                                <td> <input type='text' className="form-control" value="ABC-5" readOnly/> </td>
                             </tr>
                             <tr>
-                                <td> <input type='text' className="form-control" value="XYZ-4" /> </td>
+                                <td> <input type='text' className="form-control" value="XYZ-4" readOnly/> </td>
                             </tr>
                             <tr>
-                                <td> <input type='text' className="form-control" value="XYZ-5" /> </td>
+                                <td> <input type='text' className="form-control" value="XYZ-5" readOnly/> </td>
                             </tr>
                         </tbody>
                     </Table>

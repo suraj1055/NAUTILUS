@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, CommandColumn, Edit, Toolbar } from '@syncfusion/ej2-react-grids';
 import { ChartComponent } from '@syncfusion/ej2-react-charts';
 import { Button } from 'reactstrap';
 import Cavity from '../columns/CavityAddColumn';
@@ -28,32 +27,33 @@ const CavityBalance = () => {
     }
 
     const addColumn = () => {
-       if (!header) {
-
-       }
-       else if (header && !toggleEdit) {
+        if (!header) {
+            const newColumn = { id: nanoid(), header: header }
+            setColumn([...column, newColumn]);
+            setHeader("");
+        }
+        else if (header && !toggleEdit) {
             setColumn(
                 column.map((element) => {
-                    if(element.id === isColumnId) {
-                        return {...element, header: header}
+                    if (element.id === isColumnId) {
+                        return { ...element, header: header }
                     }
                     return element;
                 })
             )
             setIsColumnId(null)
-       }
-       else{
-        const newColumn = { id: nanoid(), header: header}
-        setColumn([...column, newColumn]);
-        setHeader("");
-       }
+        }
+        else {
+            const newColumn = { id: nanoid(), header: header }
+            setColumn([...column, newColumn]);
+            setHeader("");
+        }
     };
 
     const deleteColumn = (id) => {
         const updatedColumns = column.filter((index) => {
             return index.id !== id;
         })
-        console.log(id)
         setColumn(updatedColumns)
     }
 
