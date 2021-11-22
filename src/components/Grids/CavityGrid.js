@@ -1,6 +1,7 @@
 import React from 'react'
 import '../App.css';
 import Table from 'react-bootstrap/Table'
+import '../../assets/custom-stylesheet/grid_stylecss.css'
 
 const CavityGrid = ({ column, deleteColumn, editColumn, isColumnId, editCancel, addHeader, editColumnHeader }) => {
 
@@ -14,7 +15,7 @@ const CavityGrid = ({ column, deleteColumn, editColumn, isColumnId, editCancel, 
                                 <th> <h6> Cavity No. </h6> </th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className="grid_style">
                             <tr>
                                 <td> <input type='text' className="form-control" value="ABC-4" /> </td>
                             </tr>
