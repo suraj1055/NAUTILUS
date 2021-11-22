@@ -2,7 +2,7 @@ import React from 'react'
 import '../App.css';
 import Table from 'react-bootstrap/Table'
 
-const CavityGrid = ({ column, deleteColumn, editColumn, isColumnId, editCancel, addHeader, addColumn }) => {
+const CavityGrid = ({ column, deleteColumn, editColumn, isColumnId, editCancel, addHeader, editColumnHeader }) => {
 
     return (
         <>
@@ -42,7 +42,7 @@ const CavityGrid = ({ column, deleteColumn, editColumn, isColumnId, editCancel, 
                                                     <input type="text" defaultValue={index.header} onChange={addHeader} />
                                                 </div>
                                                 <div className="table-heading-icons">
-                                                    <div> <i class="fa fa-check" onClick={() => editColumn(index.id)} onClick={addColumn}></i> </div>
+                                                    <div> <i class="fa fa-check" onClick={editColumnHeader}></i> </div>
                                                     <div> <i class="fa fa-window-close" onClick={editCancel} ></i> </div>
                                                 </div>
                                             </div>

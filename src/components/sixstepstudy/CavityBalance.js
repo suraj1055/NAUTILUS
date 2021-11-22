@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Inject, DetailRow, Page, CommandColumn, Edit, Toolbar } from '@syncfusion/ej2-react-grids';
 import { ChartComponent } from '@syncfusion/ej2-react-charts';
 import { Button } from 'reactstrap';
 import Cavity from '../columns/CavityAddColumn';
@@ -31,7 +30,15 @@ const CavityBalance = () => {
        if (!header) {
 
        }
-       else if (header && !toggleEdit) {
+       else{
+        const newColumn = { id: nanoid(), header: header}
+        setColumn([...column, newColumn]);
+        setHeader("");
+       }
+    };
+
+    const editColumnHeader = () => {
+        if (header && !toggleEdit) {
             setColumn(
                 column.map((element) => {
                     if(element.id === isColumnId) {
@@ -40,14 +47,13 @@ const CavityBalance = () => {
                     return element;
                 })
             )
+            setHeader("");
             setIsColumnId(null)
        }
        else{
-        const newColumn = { id: nanoid(), header: header}
-        setColumn([...column, newColumn]);
-        setHeader("");
+
        }
-    };
+    }
 
     const deleteColumn = (id) => {
         const updatedColumns = column.filter((index) => {
@@ -58,11 +64,7 @@ const CavityBalance = () => {
     }
 
     const editColumn = (id) => {
-        const editedColumn = column.find((element) => {
-            return element.id === id
-        })
         setIsColumnId(id)
-        setHeader(editedColumn.header)
         setToggleEdit(false)
     }
 
@@ -86,7 +88,7 @@ const CavityBalance = () => {
                     </div>
                 </div>
                 <div className="mb-4">
-                    <CavityGrid column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} addColumn={addColumn} toggleEdit={toggleEdit} />
+                    <CavityGrid column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} />
                 </div>
                 <div className="">
                     <CavityGrid2 column={column} />
