@@ -20,7 +20,7 @@ const Cavity = ({ toggle2, modal2, addHeader, addColumn}) => {
                                         </div>
                                     </div>
                                     <div className="col-md-10">
-                                        <input className="form-control" id="exampleInputPassword27" type="text" placeholder="Enter Header Name" name="header" onChange={addHeader}/>
+                                        <input className="form-control" id="exampleInputPassword27" type="text" placeholder="Enter Header Name" name="header" onChange={addHeader} />
                                     </div>
                                 </div>
                             </div>
