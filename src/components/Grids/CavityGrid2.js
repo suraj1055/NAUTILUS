@@ -14,7 +14,7 @@ const CavityGrid2 = ({ column }) => {
                                 <th> <h6> Cavity No. </h6> </th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className="grid_style">
                             <tr>
                                 <td> <input type='text' className="form-control" value="Total Fill" readOnly/> </td>
                             </tr>
