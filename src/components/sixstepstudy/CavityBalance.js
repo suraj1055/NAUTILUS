@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ChartComponent } from '@syncfusion/ej2-react-charts';
 import { Button } from 'reactstrap';
-import Cavity from '../columns/CavityAddColumn';
+import Cavity from '../columns&rows/CavityAddColumn';
 import CavityGrid from '../Grids/CavityGrid';
 import { nanoid } from 'nanoid'
 import CavityGrid2 from '../Grids/CavityGrid2';

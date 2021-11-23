@@ -1,6 +1,6 @@
 import React from 'react'
-import '../App.css';
 import Table from 'react-bootstrap/Table'
+import '../App.css';
 import '../../assets/custom-stylesheet/grid_stylecss.css'
 
 const CavityGrid = ({ column, deleteColumn, editColumn, isColumnId, editCancel, addHeader, editColumnHeader }) => {

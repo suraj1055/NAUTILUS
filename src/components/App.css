@@ -194,7 +194,7 @@ grid-gap: 2rem;
   
 }
 
-/* ***************** GRID_CSS ******************** */
+/* ***************** CAVITY_BALANCE_GRID_CSS ******************** */
 
 .Cavity-Grid-Container{
   display: flex;
@@ -248,4 +248,11 @@ grid-gap: 2rem;
 
 .table-heading{
   width: 30%;
+}
+
+/* ******************* VISCOCITY_GRID_CSS ******************* */
+.viscocity_icons{
+  font-size: 30px;
+  margin-left: 20px;
+  cursor: pointer;
 }

@@ -6,12 +6,43 @@ import { Button } from 'reactstrap';
 import ViscocityGrid from '../Grids/ViscocityGrid'
 
 const ViscocityCurve = () => {
-    
+
     const [modal, setModal] = useState();
 
     const toggle = () => {
         setModal(!modal)
     }
+
+    const [modal2, setModal2] = useState();
+
+    const toggle2 = () => {
+        setModal2(!modal2)
+    }
+
+    const row1 = [];
+    const [row, setRow] = useState();
+    const [NewRow, setNewRow] = useState([]);
+    const [allRowsAdded, updateAllRows] = useState(0);
+
+    const addRow = (e) => {
+        e.preventDefault();
+        setRow(e.target.value)
+    }
+
+    const increaseRow = () => {
+        for (let i = 0; i < parseInt(row); i++) {
+            row1[i] = allRowsAdded + i;
+        }
+        updateAllRows((allRowsAdded) => allRowsAdded + parseInt(row));
+        setNewRow([...NewRow, ...row1]);
+    };
+
+    const deleteRow = (id) => {
+        const updatedRows = [...NewRow].filter((rowId) => {
+          return rowId !== id;
+        });
+        setNewRow(updatedRows);
+      };
 
     return (
         <>
@@ -56,7 +87,7 @@ const ViscocityCurve = () => {
 
             <div className="grid-chart-container">
                 <div>
-                    <ViscocityGrid />
+                    <ViscocityGrid toggle2={toggle2} modal2={modal2} addRow={addRow} increaseRow={increaseRow} deleteRow={deleteRow} NewRow={NewRow} />
                 </div>
             </div>
 
