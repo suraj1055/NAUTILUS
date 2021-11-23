@@ -60,7 +60,7 @@ const CavityGrid = ({ column, deleteColumn, editColumn, isColumnId, editCancel, 
                                         </th>)}
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody className="grid_style">
                                     <tr>
                                         <td> <input type='text' className="form-control" /> </td>
                                     </tr>
