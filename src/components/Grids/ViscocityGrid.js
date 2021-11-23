@@ -5,7 +5,7 @@ import '../../assets/custom-stylesheet/grid_stylecss.css';
 import { Button } from 'reactstrap';
 import ViscocityAddRow from '../columns&rows/ViscocityAddRow';
 
-const ViscocityGrid = ({ toggle2, modal2, addRow, increaseRow, deleteRow, NewRow }) => {
+const ViscocityGrid = ({ toggle2, modal2, addRow, increaseRow, deleteRow, NewRow, NewRow2, deleteRow2 }) => {
 
   return (
     <div>
@@ -28,7 +28,7 @@ const ViscocityGrid = ({ toggle2, modal2, addRow, increaseRow, deleteRow, NewRow
             </tr>
           </thead>
           <tbody className="grid_style">
-            {/* {row2.map((rowId) => {
+            {NewRow2.map((rowId) => {
               return (
                 <tr key={rowId}>
                   <td> <input type='text' className="form-control" /> </td>
@@ -41,7 +41,7 @@ const ViscocityGrid = ({ toggle2, modal2, addRow, increaseRow, deleteRow, NewRow
                   <td> <i className="fa fa-trash viscocity_icons" onClick={() => deleteRow2(rowId)}></i> </td>
                 </tr>
               )
-            })} */}
+            })}
 
             {NewRow.map((rowId) => {
               return (

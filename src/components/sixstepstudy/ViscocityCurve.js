@@ -22,6 +22,7 @@ const ViscocityCurve = () => {
     const row1 = [];
     const [row, setRow] = useState();
     const [NewRow, setNewRow] = useState([]);
+    const [NewRow2, setNewRow2] = useState([1,2,3,4,5]);
     const [allRowsAdded, updateAllRows] = useState(0);
 
     const addRow = (e) => {
@@ -42,6 +43,13 @@ const ViscocityCurve = () => {
           return rowId !== id;
         });
         setNewRow(updatedRows);
+      };
+
+      const deleteRow2 = (id) => {
+        const updatedRows = [...NewRow2].filter((rowId) => {
+          return rowId !== id;
+        });
+        setNewRow2(updatedRows);
       };
 
     return (
@@ -87,7 +95,7 @@ const ViscocityCurve = () => {
 
             <div className="grid-chart-container">
                 <div>
-                    <ViscocityGrid toggle2={toggle2} modal2={modal2} addRow={addRow} increaseRow={increaseRow} deleteRow={deleteRow} NewRow={NewRow} />
+                    <ViscocityGrid toggle2={toggle2} modal2={modal2} addRow={addRow} increaseRow={increaseRow} deleteRow={deleteRow} NewRow={NewRow} NewRow2={NewRow2} deleteRow2={deleteRow2} />
                 </div>
             </div>
 
