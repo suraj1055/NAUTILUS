@@ -22,7 +22,7 @@ const ViscocityCurve = () => {
     const row1 = [];
     const [row, setRow] = useState();
     const [NewRow, setNewRow] = useState([]);
-    const [NewRow2, setNewRow2] = useState([1,2,3,4,5]);
+    const [NewRow2, setNewRow2] = useState([1, 2, 3, 4, 5]);
     const [allRowsAdded, updateAllRows] = useState(0);
 
     const addRow = (e) => {
@@ -40,17 +40,17 @@ const ViscocityCurve = () => {
 
     const deleteRow = (id) => {
         const updatedRows = [...NewRow].filter((rowId) => {
-          return rowId !== id;
+            return rowId !== id;
         });
         setNewRow(updatedRows);
-      };
+    };
 
-      const deleteRow2 = (id) => {
+    const deleteRow2 = (id) => {
         const updatedRows = [...NewRow2].filter((rowId) => {
-          return rowId !== id;
+            return rowId !== id;
         });
         setNewRow2(updatedRows);
-      };
+    };
 
     return (
         <>
@@ -85,8 +85,8 @@ const ViscocityCurve = () => {
                             <div className="col-md-3">
                                 <div className="step-button">
                                     <Button color="primary" className="step-button2" onClick={toggle}> {"Generate Injection Speed"} </Button>
+                                    {modal && <Viscocity toggle={toggle} modal={modal} />}
                                 </div >
-                                {modal && <Viscocity toggle={toggle} modal={modal} />}
                             </div>
                         </div>
                     </div>
