@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { ChartComponent } from '@syncfusion/ej2-react-charts';
+import { ChartComponent, LineSeries, Inject, SeriesCollectionDirective, SeriesDirective, Category, DataLabel } from '@syncfusion/ej2-react-charts';
 import Viscocity from '../modals/Viscocity';
 import '../App.css';
 import { Button } from 'reactstrap';
-import ViscocityGrid from '../Grids/ViscocityGrid'
+import ViscocityGrid from '../Grids/ViscocityGrid';
+import data from "../data/Viscocity_curve_data.json"
+import { nanoid } from 'nanoid'
 
 const ViscocityCurve = () => {
 
@@ -21,9 +23,62 @@ const ViscocityCurve = () => {
 
     const row1 = [];
     const [row, setRow] = useState();
-    const [NewRow, setNewRow] = useState([]);
-    const [NewRow2, setNewRow2] = useState([1, 2, 3, 4, 5]);
-    const [allRowsAdded, updateAllRows] = useState(0);
+    const [NewRow2, setNewRow2] = useState(data);
+    const [IntensificationRatio, setIntensificationRatio] = useState()
+    const [Injection_Speed, setInjection_Speed] = useState(true);
+    const [chartData, setChartData] = useState([]);
+
+    const [editFormData, setEditFormData] = useState({
+        Injection_Speed: "",
+        Fill_Time: "",
+        Peak_Inj_Press: "",
+        Viscosity: "",
+        Shear_Rate: ""
+    })
+
+    const [isRowId, setIsRowId] = useState(null)
+
+    const handleEditFormChange = (event) => {
+        event.preventDefault();
+
+        const fieldName = event.target.getAttribute("name");
+        const fieldValue = event.target.value;
+
+        const newFormData = { ...editFormData };
+        newFormData[fieldName] = fieldValue;
+
+        setEditFormData(newFormData);
+    }
+
+    const handleEditFormSubmit = (event) => {
+        event.preventDefault();
+
+        if (!IntensificationRatio) {
+            alert("Please enter Intensification Ratio")
+        }
+
+        else {
+            const editedValue = {
+                id: isRowId,
+                Injection_Speed: editFormData.Injection_Speed,
+                Fill_Time: editFormData.Fill_Time,
+                Peak_Inj_Press: editFormData.Peak_Inj_Press,
+                Viscosity: editFormData.Fill_Time * editFormData.Peak_Inj_Press * IntensificationRatio,
+                Shear_Rate: 1 / editFormData.Fill_Time,
+              }
+          
+              const newValues = [...NewRow2];
+          
+              const index = NewRow2.findIndex((value) => value.id === isRowId)
+          
+              newValues[index] = editedValue;
+          
+              setNewRow2(newValues);
+          
+              setIsRowId(null)
+        }
+
+    }
 
     const addRow = (e) => {
         e.preventDefault();
@@ -32,25 +87,47 @@ const ViscocityCurve = () => {
 
     const increaseRow = () => {
         for (let i = 0; i < parseInt(row); i++) {
-            row1[i] = allRowsAdded + i;
+            row1.push({
+                id: nanoid(),
+                Injection_Speed: "",
+                Fill_Time: "",
+                Peak_Inj_Press: "",
+                Viscosity: "",
+                Shear_Rate: ""
+            })
         }
-        updateAllRows((allRowsAdded) => allRowsAdded + parseInt(row));
-        setNewRow([...NewRow, ...row1]);
-    };
-
-    const deleteRow = (id) => {
-        const updatedRows = [...NewRow].filter((rowId) => {
-            return rowId !== id;
-        });
-        setNewRow(updatedRows);
+        setNewRow2([...NewRow2, ...row1]);
     };
 
     const deleteRow2 = (id) => {
-        const updatedRows = [...NewRow2].filter((rowId) => {
-            return rowId !== id;
+        const updatedRows = [...NewRow2].filter((value) => {
+          return value.id !== id;
         });
         setNewRow2(updatedRows);
     };
+
+    const setId = (event, NewRow) => {
+
+        event.preventDefault();
+        
+        setIsRowId(NewRow.id);
+
+        const formValues = {
+            Injection_Speed: NewRow.Injection_Speed,
+            Fill_Time: NewRow.Fill_Time,
+            Peak_Inj_Press: NewRow.Peak_Inj_Press,
+        }
+
+        setEditFormData(formValues);
+    }
+
+    const ChangeGraph = () => {
+        setInjection_Speed(!Injection_Speed)
+    }
+
+    const setGraph = () => {
+        setChartData(NewRow2)
+    }
 
     return (
         <>
@@ -73,7 +150,7 @@ const ViscocityCurve = () => {
                             <div className="col-md-3">
                                 <div className="form-group">
                                     <label htmlFor="Intensification_Ratio" className="lbl_design">Intensification Ratio:</label>
-                                    <input className="form-control" id="Intensification_Ratio" type="text" />
+                                    <input className="form-control" onChange={(e) => setIntensificationRatio(e.target.value)} id="Intensification_Ratio" type="text" />
                                 </div>
                             </div>
                             <div className="col-md-3">
@@ -95,7 +172,7 @@ const ViscocityCurve = () => {
 
             <div className="grid-chart-container">
                 <div>
-                    <ViscocityGrid toggle2={toggle2} modal2={modal2} addRow={addRow} increaseRow={increaseRow} deleteRow={deleteRow} NewRow={NewRow} NewRow2={NewRow2} deleteRow2={deleteRow2} />
+                    <ViscocityGrid toggle2={toggle2} modal2={modal2} addRow={addRow} increaseRow={increaseRow} NewRow2={NewRow2} deleteRow2={deleteRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} setId={setId} isRowId={isRowId} editFormData={editFormData} />
                 </div>
             </div>
 
@@ -104,20 +181,40 @@ const ViscocityCurve = () => {
                     <div className="col-md-3">
                         <div className="form-group">
                             <label htmlFor="exampleFormControlSelect30" className="lbl_design"> X-Axis: </label>
-                            <select className="form-control digits" id="exampleFormControlSelect30">
+                            <select className="form-control digits" id="exampleFormControlSelect30" onChange={ChangeGraph}>
                                 <option>{"Injection Speed"}</option>
                                 <option>{"Shear Rate"}</option>
                             </select>
                         </div>
                     </div>
                     <div className="col-md-4 mt-4">
-                        <Button color="primary"> {"Calculate & Show Graph"} </Button>
+                        <Button color="primary" onClick={setGraph} > Show Graph </Button>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-md-12">
-                        <ChartComponent>
-                        </ChartComponent>
+                        {Injection_Speed ? (<ChartComponent title="Viscosity Curve" primaryXAxis={{ title: "Injection Speed" }} primaryYAxis={{ title: "Viscosity" }}>
+
+                            <Inject services={[LineSeries, Category, DataLabel]} />
+
+                            <SeriesCollectionDirective>
+                                <SeriesDirective type="Line" dataSource={chartData} xName="Injection_Speed" yName="Viscosity" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
+                            </SeriesCollectionDirective>
+
+                        </ChartComponent>)
+
+                            :
+
+                            (<ChartComponent title="Viscosity Curve" primaryXAxis={{ title: "Shear Rate" }} primaryYAxis={{ title: "Viscosity" }}>
+
+                                <Inject services={[LineSeries, Category, DataLabel]} />
+
+                                <SeriesCollectionDirective>
+                                    <SeriesDirective type="Line" dataSource={chartData} xName="Shear_Rate" yName="Viscosity" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
+                                </SeriesCollectionDirective>
+
+                            </ChartComponent>
+                            )}
                     </div>
                 </div>
 
