@@ -256,3 +256,8 @@ grid-gap: 2rem;
   margin-left: 20px;
   cursor: pointer;
 }
+
+.viscosity_table{
+  height: 280px;
+  overflow: scroll;
+}

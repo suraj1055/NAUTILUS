@@ -4,64 +4,68 @@ import '../App.css';
 import '../../assets/custom-stylesheet/grid_stylecss.css';
 import { Button } from 'reactstrap';
 import ViscocityAddRow from '../columns&rows/ViscocityAddRow';
+import Edit from './ViscocityEdit'
+import Read from './ViscocityRead'
 
-const ViscocityGrid = ({ toggle2, modal2, addRow, increaseRow, deleteRow, NewRow, NewRow2, deleteRow2 }) => {
+const ViscocityGrid = ({ toggle2, modal2, addRow, increaseRow, NewRow2, deleteRow2, handleEditFormSubmit, handleEditFormChange, setId, isRowId, editFormData }) => {
 
   return (
     <div>
       <div className="mb-4">
         <Button onClick={toggle2} color="secondary" className="btn btn-sm" type="button"> Add Row </Button>
-        <ViscocityAddRow toggle2={toggle2} modal2={modal2} addRow={addRow} increaseRow={increaseRow} deleteRow={deleteRow} />
+        <ViscocityAddRow toggle2={toggle2} modal2={modal2} addRow={addRow} increaseRow={increaseRow} />
       </div>
-      <div>
-        <form>
-          <Table striped bordered hover responsive variant="light">
-            <thead>
+      <form onSubmit={handleEditFormSubmit} >
+        <Table striped bordered hover responsive variant="light">
+        <thead>
               <tr>
-                <th> <h6> Injection Speed </h6> </th>
-                <th> <h6> Fill Time </h6> </th>
-                <th> <h6> Peak Inj Press </h6> </th>
-                <th> <h6> Viscocity </h6> </th>
-                <th> <h6> Shear Rate </h6> </th>
-                <th> <h6> AbsoluteDropViscocity </h6> </th>
-                <th> <h6> %DropViscocity </h6> </th>
-                <th> <h6> Action </h6> </th>
+                <th>
+                  <h6> Injection Speed </h6>
+                </th>
+                <th>
+                  <h6> Fill Time </h6>
+                </th>
+                <th>
+                  <h6> Peak Inj Press </h6>
+                </th>
+                <th>
+                  <h6> Viscocity </h6>
+                </th>
+                <th>
+                  <h6> Shear Rate </h6>
+                </th>
+                <th>
+                  <h6> AbsoluteDropViscocity </h6>
+                </th>
+                <th>
+                  <h6> %DropViscocity </h6>
+                </th>
+                <th>
+                  <h6> Action </h6>
+                </th>
               </tr>
             </thead>
+        </Table>
+        <div className="viscosity_table">
+          <Table striped bordered hover responsive variant="light">
             <tbody className="grid_style">
-              {NewRow2.map((rowId) => {
-                return (
-                  <tr key={rowId}>
-                    <td> <input type='text' className="form-control" /> </td>
-                    <td> <input type='text' className="form-control" /></td>
-                    <td><input type='text' className="form-control" /> </td>
-                    <td> <input type='text' className="form-control" readOnly /></td>
-                    <td> <input type='text' className="form-control" readOnly /></td>
-                    <td> <input type='text' className="form-control" readOnly /></td>
-                    <td> <input type='text' className="form-control" readOnly /></td>
-                    <td> <i className="fa fa-trash viscocity_icons" onClick={() => deleteRow2(rowId)}></i> </td>
-                  </tr>
-                )
-              })}
+            {NewRow2.map((NewRow, rowId) => (
+                <>
+                  {isRowId === NewRow.id ?
+                    (
+                      <Edit NewRow={NewRow} setId={setId} NewRow2={NewRow2} handleEditFormChange={handleEditFormChange} deleteRow2={deleteRow2} rowId={rowId} editFormData={editFormData} />
+                    )
+                    :
+                    (<Read NewRow={NewRow} NewRow2={NewRow2} setId={setId} deleteRow2={deleteRow2} rowId={rowId} editFormData={editFormData}/>)
+                  }
+                </>
 
-              {NewRow.map((rowId) => {
-                return (
-                  <tr key={rowId}>
-                    <td> <input type='text' className="form-control" /> </td>
-                    <td> <input type='text' className="form-control" /></td>
-                    <td><input type='text' className="form-control" /> </td>
-                    <td> <input type='text' className="form-control" readOnly /></td>
-                    <td> <input type='text' className="form-control" readOnly /></td>
-                    <td> <input type='text' className="form-control" readOnly /></td>
-                    <td> <input type='text' className="form-control" readOnly /></td>
-                    <td> <i className="fa fa-trash viscocity_icons" onClick={() => deleteRow(rowId)}></i> </td>
-                  </tr>
-                )
-              })}
+              ))}
             </tbody>
           </Table>
-        </form>
-      </div>
+        </div>
+        <Button type="submit" className="mt-4"> Calculate & Save </Button>
+      </form>
     </div>
   )
 }

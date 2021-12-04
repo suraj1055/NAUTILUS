@@ -43,8 +43,8 @@ const CavityGrid = ({ column, deleteColumn, editColumn, isColumnId, editCancel, 
                                                     <input type="text" defaultValue={index.header} onChange={addHeader} />
                                                 </div>
                                                 <div className="table-heading-icons">
-                                                    <div> <i class="fa fa-check" onClick={editColumnHeader}></i> </div>
-                                                    <div> <i class="fa fa-window-close" onClick={editCancel} ></i> </div>
+                                                    <div> <i className="fa fa-check" onClick={editColumnHeader}></i> </div>
+                                                    <div> <i className="fa fa-window-close" onClick={editCancel} ></i> </div>
                                                 </div>
                                             </div>
                                         </th>) : (<th>
@@ -53,8 +53,8 @@ const CavityGrid = ({ column, deleteColumn, editColumn, isColumnId, editCancel, 
                                                     <h6> {index.header} </h6>
                                                 </div>
                                                 <div className="table-heading-icons">
-                                                    <div> <i class="fa fa-edit" onClick={() => editColumn(index.id)}></i> </div>
-                                                    <div> <i class="fa fa-trash" onClick={() => deleteColumn(index.id)} ></i> </div>
+                                                    <div> <i className="fa fa-edit" onClick={() => editColumn(index.id)} ></i> </div>
+                                                    <div> <i className="fa fa-trash" onClick={() => deleteColumn(index.id)} ></i> </div>
                                                 </div>
                                             </div>
                                         </th>)}
