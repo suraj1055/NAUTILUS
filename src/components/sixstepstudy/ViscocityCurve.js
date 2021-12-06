@@ -191,12 +191,12 @@ const ViscocityCurve = () => {
                         </div>
                     </div>
                     <div className="col-md-4 mt-4">
-                        <Button color="primary" onClick={setGraph} > Show Graph </Button>
+                        <Button color="primary" onClick={handleEditFormSubmit} > Show Graph </Button>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-md-12">
-                        {Injection_Speed ? (<ChartComponent title="Viscosity Curve" primaryXAxis={{ title: "Injection Speed" }} primaryYAxis={{ title: "Viscosity" }}>
+                        {Injection_Speed ? (<ChartComponent title="Viscosity Curve" width="1100" primaryXAxis={{ title: "Injection Speed", edgeLabelPlacement:"Shift" }} primaryYAxis={{ title: "Viscosity" }}>
 
                             <Inject services={[LineSeries, Category, DataLabel]} />
 
@@ -208,7 +208,7 @@ const ViscocityCurve = () => {
 
                             :
 
-                            (<ChartComponent title="Viscosity Curve" primaryXAxis={{ title: "Shear Rate" }} primaryYAxis={{ title: "Viscosity" }}>
+                            (<ChartComponent title="Viscosity Curve" width="1100" primaryXAxis={{ title: "Shear Rate" }} primaryYAxis={{ title: "Viscosity" }}>
 
                                 <Inject services={[LineSeries, Category, DataLabel]} />
 
