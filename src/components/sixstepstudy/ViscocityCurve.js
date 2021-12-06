@@ -41,42 +41,45 @@ const ViscocityCurve = () => {
     const handleEditFormChange = (event) => {
         event.preventDefault();
 
-        const fieldName = event.target.getAttribute("name");
-        const fieldValue = event.target.value;
+        if (!IntensificationRatio) {
+            alert("Please enter Intensification Ratio")
+        }
+        
+        else {
 
-        const newFormData = { ...editFormData };
-        newFormData[fieldName] = fieldValue;
+            const fieldName = event.target.getAttribute("name");
+            const fieldValue = event.target.value;
 
-        setEditFormData(newFormData);
+            const newFormData = { ...editFormData };
+            newFormData[fieldName] = fieldValue;
+
+            setEditFormData(newFormData);
+        }
     }
 
     const handleEditFormSubmit = (event) => {
         event.preventDefault();
 
-        if (!IntensificationRatio) {
-            alert("Please enter Intensification Ratio")
+        const editedValue = {
+            id: isRowId,
+            Injection_Speed: editFormData.Injection_Speed,
+            Fill_Time: editFormData.Fill_Time,
+            Peak_Inj_Press: editFormData.Peak_Inj_Press,
+            Viscosity: editFormData.Fill_Time * editFormData.Peak_Inj_Press * IntensificationRatio,
+            Shear_Rate: 1 / editFormData.Fill_Time,
         }
 
-        else {
-            const editedValue = {
-                id: isRowId,
-                Injection_Speed: editFormData.Injection_Speed,
-                Fill_Time: editFormData.Fill_Time,
-                Peak_Inj_Press: editFormData.Peak_Inj_Press,
-                Viscosity: editFormData.Fill_Time * editFormData.Peak_Inj_Press * IntensificationRatio,
-                Shear_Rate: 1 / editFormData.Fill_Time,
-              }
-          
-              const newValues = [...NewRow2];
-          
-              const index = NewRow2.findIndex((value) => value.id === isRowId)
-          
-              newValues[index] = editedValue;
-          
-              setNewRow2(newValues);
-          
-              setIsRowId(null)
-        }
+        const newValues = [...NewRow2];
+
+        const index = NewRow2.findIndex((value) => value.id === isRowId)
+
+        newValues[index] = editedValue;
+
+        setNewRow2(newValues);
+
+        setChartData(NewRow2)
+
+        setIsRowId(null)
 
     }
 
@@ -101,7 +104,7 @@ const ViscocityCurve = () => {
 
     const deleteRow2 = (id) => {
         const updatedRows = [...NewRow2].filter((value) => {
-          return value.id !== id;
+            return value.id !== id;
         });
         setNewRow2(updatedRows);
     };
@@ -109,7 +112,7 @@ const ViscocityCurve = () => {
     const setId = (event, NewRow) => {
 
         event.preventDefault();
-        
+
         setIsRowId(NewRow.id);
 
         const formValues = {

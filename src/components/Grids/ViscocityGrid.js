@@ -15,38 +15,38 @@ const ViscocityGrid = ({ toggle2, modal2, addRow, increaseRow, NewRow2, deleteRo
         <Button onClick={toggle2} color="secondary" className="btn btn-sm" type="button"> Add Row </Button>
         <ViscocityAddRow toggle2={toggle2} modal2={modal2} addRow={addRow} increaseRow={increaseRow} />
       </div>
-      <form onSubmit={handleEditFormSubmit} >
+      <form>
         <Table striped bordered hover responsive variant="light">
         <thead>
               <tr>
-                <th>
+                <th className="viscosity_heading2">
                   <h6> Injection Speed </h6>
                 </th>
-                <th>
+                <th className="viscosity_heading2">
                   <h6> Fill Time </h6>
                 </th>
-                <th>
+                <th className="viscosity_heading2">
                   <h6> Peak Inj Press </h6>
                 </th>
-                <th>
+                <th className="viscosity_heading2">
                   <h6> Viscocity </h6>
                 </th>
-                <th>
+                <th className="viscosity_heading">
                   <h6> Shear Rate </h6>
                 </th>
-                <th>
-                  <h6> AbsoluteDropViscocity </h6>
+                <th className="viscosity_heading">
+                  <h6> AbsoluteDropViscosity </h6>
                 </th>
-                <th>
+                <th className="viscosity_heading">
                   <h6> %DropViscocity </h6>
                 </th>
-                <th>
+                <th >
                   <h6> Action </h6>
                 </th>
               </tr>
             </thead>
         </Table>
-        <div className="viscosity_table">
+        <div className="viscosity_table" onMouseOut={handleEditFormSubmit}>
           <Table striped bordered hover responsive variant="light">
             <tbody className="grid_style">
             {NewRow2.map((NewRow, rowId) => (
@@ -64,7 +64,7 @@ const ViscocityGrid = ({ toggle2, modal2, addRow, increaseRow, NewRow2, deleteRo
             </tbody>
           </Table>
         </div>
-        <Button type="submit" className="mt-4"> Calculate & Save </Button>
+        {/* <Button type="submit" className="mt-4"> Calculate & Save </Button> */}
       </form>
     </div>
   )

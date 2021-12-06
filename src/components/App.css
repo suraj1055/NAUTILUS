@@ -261,3 +261,11 @@ grid-gap: 2rem;
   height: 280px;
   overflow: scroll;
 }
+
+.viscosity_heading{
+  width: 150px;
+}
+
+.viscosity_heading2{
+  width: 170px;
+}

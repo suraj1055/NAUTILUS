@@ -2,13 +2,13 @@ import React from 'react'
 
 const Read = ({ setId, NewRow2, deleteRow2, NewRow, rowId }) => {
     return (
-        <tr key={rowId} >
+        <tr key={rowId} onClick={(event) => setId(event, NewRow)}>
 
-            <td> <input type='text' className="form-control" value={NewRow.Injection_Speed} onClick={(event) => setId(event, NewRow)} readOnly/> </td>
+            <td> <input type='text' className="form-control" value={NewRow.Injection_Speed} readOnly/> </td>
 
-            <td> <input type='text' className="form-control" value={NewRow.Fill_Time} onClick={(event) => setId(event, NewRow)} readOnly/> </td>
+            <td> <input type='text' className="form-control" value={NewRow.Fill_Time} readOnly/> </td>
 
-            <td> <input type='text' className="form-control" value={NewRow.Peak_Inj_Press} onClick={(event) => setId(event, NewRow)} readOnly/> </td>
+            <td> <input type='text' className="form-control" value={NewRow.Peak_Inj_Press} readOnly/> </td>
 
             <td> <input type='text' className="form-control" name="Viscosity" value={NewRow2[rowId].Viscosity === "" ? ('-') : (Math.round(NewRow2[rowId].Viscosity))} readOnly /> </td>
 
