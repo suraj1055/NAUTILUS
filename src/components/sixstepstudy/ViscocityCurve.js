@@ -77,9 +77,9 @@ const ViscocityCurve = () => {
 
         setNewRow2(newValues);
 
-        setChartData(NewRow2)
+        setIsRowId(null);
 
-        setIsRowId(null)
+        setChartData(NewRow2)
 
     }
 
@@ -127,6 +127,10 @@ const ViscocityCurve = () => {
     const ChangeGraph = () => {
         setInjection_Speed(!Injection_Speed)
     }
+
+    // const setGraph = () => {
+    //     setChartData(NewRow2)
+    // }
 
     return (
         <>
@@ -185,6 +189,9 @@ const ViscocityCurve = () => {
                                 <option>{"Shear Rate"}</option>
                             </select>
                         </div>
+                    </div>
+                    <div className="col-md-4 mt-4">
+                        <Button color="primary" onClick={handleEditFormSubmit} > Show Graph </Button>
                     </div>
                 </div>
                 <div className="row">
