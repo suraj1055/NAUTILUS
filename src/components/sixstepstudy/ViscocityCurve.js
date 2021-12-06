@@ -65,7 +65,7 @@ const ViscocityCurve = () => {
             Injection_Speed: editFormData.Injection_Speed,
             Fill_Time: editFormData.Fill_Time,
             Peak_Inj_Press: editFormData.Peak_Inj_Press,
-            Viscosity: editFormData.Fill_Time * editFormData.Peak_Inj_Press * IntensificationRatio,
+            Viscosity: editFormData.Fill_Time * editFormData.Peak_Inj_Press,
             Shear_Rate: 1 / editFormData.Fill_Time,
         }
 
@@ -128,10 +128,6 @@ const ViscocityCurve = () => {
         setInjection_Speed(!Injection_Speed)
     }
 
-    const setGraph = () => {
-        setChartData(NewRow2)
-    }
-
     return (
         <>
             <div className="viscocity-curve">
@@ -175,7 +171,7 @@ const ViscocityCurve = () => {
 
             <div className="grid-chart-container">
                 <div>
-                    <ViscocityGrid toggle2={toggle2} modal2={modal2} addRow={addRow} increaseRow={increaseRow} NewRow2={NewRow2} deleteRow2={deleteRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} setId={setId} isRowId={isRowId} editFormData={editFormData} />
+                    <ViscocityGrid toggle2={toggle2} modal2={modal2} addRow={addRow} increaseRow={increaseRow} NewRow2={NewRow2} deleteRow2={deleteRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} setId={setId} isRowId={isRowId} editFormData={editFormData} IntensificationRatio={IntensificationRatio} />
                 </div>
             </div>
 
@@ -189,9 +185,6 @@ const ViscocityCurve = () => {
                                 <option>{"Shear Rate"}</option>
                             </select>
                         </div>
-                    </div>
-                    <div className="col-md-4 mt-4">
-                        <Button color="primary" onClick={setGraph} > Show Graph </Button>
                     </div>
                 </div>
                 <div className="row">

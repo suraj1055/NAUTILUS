@@ -1,6 +1,6 @@
 import React from 'react'
 
-const edit = ({ NewRow2, handleEditFormChange, deleteRow2, NewRow, rowId, editFormData }) => {
+const edit = ({ NewRow2, handleEditFormChange, deleteRow2, NewRow, rowId, editFormData, IntensificationRatio }) => {
     return (
         <tr key={rowId}>
 
@@ -10,7 +10,7 @@ const edit = ({ NewRow2, handleEditFormChange, deleteRow2, NewRow, rowId, editFo
 
             <td> <input type='text' className="form-control" name="Peak_Inj_Press" value={editFormData.Peak_Inj_Press} onChange={handleEditFormChange} /> </td>
 
-            <td> <input type='text' className="form-control" name="Viscosity" value={ NewRow2[rowId].Viscosity === "" ? ('-') : (Math.round(NewRow2[rowId].Viscosity) )} readOnly/> </td>
+            <td> <input type='text' className="form-control" name="Viscosity" value={ NewRow2[rowId].Viscosity === "" ? ('-') : (Math.round(NewRow2[rowId].Viscosity) * IntensificationRatio )} readOnly/> </td>
 
             <td> <input type='text' className="form-control" name="Shear_Rate" value={ NewRow2[rowId].Shear_Rate === "" ? '-' : Number(NewRow.Shear_Rate).toFixed(3)} readOnly/> </td>
 
