@@ -6,6 +6,7 @@ import { Button } from 'reactstrap';
 import ViscocityGrid from '../Grids/ViscocityGrid';
 import data from "../data/Viscocity_curve_data.json"
 import { nanoid } from 'nanoid'
+// import { data2 } from "../data/data"
 
 const ViscocityCurve = () => {
 
@@ -27,6 +28,8 @@ const ViscocityCurve = () => {
     const [IntensificationRatio, setIntensificationRatio] = useState()
     const [Injection_Speed, setInjection_Speed] = useState(true);
     const [chartData, setChartData] = useState([]);
+    const [ minViscosity, setMinViscosity] = useState()
+    const [ maxViscosity, setMaxViscosity] = useState()
 
     const [editFormData, setEditFormData] = useState({
         Injection_Speed: "",
@@ -44,7 +47,7 @@ const ViscocityCurve = () => {
         if (!IntensificationRatio) {
             alert("Please enter Intensification Ratio")
         }
-        
+
         else {
 
             const fieldName = event.target.getAttribute("name");
@@ -65,8 +68,8 @@ const ViscocityCurve = () => {
             Injection_Speed: editFormData.Injection_Speed,
             Fill_Time: editFormData.Fill_Time,
             Peak_Inj_Press: editFormData.Peak_Inj_Press,
-            Viscosity: editFormData.Fill_Time * editFormData.Peak_Inj_Press,
-            Shear_Rate: 1 / editFormData.Fill_Time,
+            Viscosity: Math.round(editFormData.Fill_Time * editFormData.Peak_Inj_Press * IntensificationRatio),
+            Shear_Rate: Number(1 / editFormData.Fill_Time).toFixed(3),
         }
 
         const newValues = [...NewRow2];
@@ -128,9 +131,20 @@ const ViscocityCurve = () => {
         setInjection_Speed(!Injection_Speed)
     }
 
-    // const setGraph = () => {
-    //     setChartData(NewRow2)
-    // }
+    const setGraph = (event) => {
+
+        setMinViscosity(chartData[chartData.length - 1].Viscosity - chartData[chartData.length - 1].Viscosity / 5)
+
+        setMaxViscosity(chartData[chartData.length - chartData.length].Viscosity + chartData[chartData.length - chartData.length].Viscosity / 5)
+
+        handleEditFormSubmit(event)
+    }
+
+    // const minViscosity = NewRow2[NewRow2.length - 1].Viscosity - NewRow2[NewRow2.length - 1].Viscosity / 5
+    // const maxViscosity = NewRow2[NewRow2.length - NewRow2.length].Viscosity + NewRow2[NewRow2.length - NewRow2.length].Viscosity / 5
+
+    // const minViscosity = chartData[chartData.length - 1].Viscosity - chartData[chartData.length - 1].Viscosity / 5
+    // const maxViscosity = chartData[chartData.length - chartData.length].Viscosity + chartData[chartData.length - chartData.length].Viscosity / 5
 
     return (
         <>
@@ -191,12 +205,12 @@ const ViscocityCurve = () => {
                         </div>
                     </div>
                     <div className="col-md-4 mt-4">
-                        <Button color="primary" onClick={handleEditFormSubmit} > Show Graph </Button>
+                        <Button color="primary" onClick={setGraph}> Show Graph </Button>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-md-12">
-                        {Injection_Speed ? (<ChartComponent title="Viscosity Curve" width="1100" primaryXAxis={{ title: "Injection Speed", edgeLabelPlacement:"Shift" }} primaryYAxis={{ title: "Viscosity" }}>
+                        {Injection_Speed ? (<ChartComponent title="Viscosity Curve" width="1100" primaryXAxis={{ valueType: "Category", title: "Injection Speed" }} primaryYAxis={{ title: "Viscosity", minimum: minViscosity, maximum: maxViscosity, interval: 10000 }}>
 
                             <Inject services={[LineSeries, Category, DataLabel]} />
 
@@ -208,7 +222,7 @@ const ViscocityCurve = () => {
 
                             :
 
-                            (<ChartComponent title="Viscosity Curve" width="1100" primaryXAxis={{ title: "Shear Rate" }} primaryYAxis={{ title: "Viscosity" }}>
+                            (<ChartComponent title="Viscosity Curve" width="1100" primaryXAxis={{ valueType: "Category", title: "Shear Rate" }} primaryYAxis={{ title: "Viscosity", minimum: minViscosity, maximum: maxViscosity, interval: 10000 }}>
 
                                 <Inject services={[LineSeries, Category, DataLabel]} />
 
