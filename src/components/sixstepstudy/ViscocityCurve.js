@@ -27,9 +27,9 @@ const ViscocityCurve = () => {
     const [NewRow2, setNewRow2] = useState(data);
     const [IntensificationRatio, setIntensificationRatio] = useState()
     const [Injection_Speed, setInjection_Speed] = useState(true);
-    const [chartData, setChartData] = useState([]);
-    const [ minViscosity, setMinViscosity] = useState()
-    const [ maxViscosity, setMaxViscosity] = useState()
+    const [minViscosity, setMinViscosity] = useState()
+    const [maxViscosity, setMaxViscosity] = useState()
+    const [Interval, setInterval] = useState()
 
     const [editFormData, setEditFormData] = useState({
         Injection_Speed: "",
@@ -82,8 +82,6 @@ const ViscocityCurve = () => {
 
         setIsRowId(null);
 
-        setChartData(NewRow2)
-
     }
 
     const addRow = (e) => {
@@ -133,18 +131,14 @@ const ViscocityCurve = () => {
 
     const setGraph = (event) => {
 
-        setMinViscosity(chartData[chartData.length - 1].Viscosity - chartData[chartData.length - 1].Viscosity / 5)
+        setMinViscosity(NewRow2[NewRow2.length - 1].Viscosity - NewRow2[NewRow2.length - 1].Viscosity / 5)
 
-        setMaxViscosity(chartData[chartData.length - chartData.length].Viscosity + chartData[chartData.length - chartData.length].Viscosity / 5)
+        setMaxViscosity(NewRow2[NewRow2.length - NewRow2.length].Viscosity + NewRow2[NewRow2.length - NewRow2.length].Viscosity / 5)
+
+        setInterval((NewRow2[0].Viscosity - NewRow2[NewRow2.length - 1].Viscosity) / 3)
 
         handleEditFormSubmit(event)
     }
-
-    // const minViscosity = NewRow2[NewRow2.length - 1].Viscosity - NewRow2[NewRow2.length - 1].Viscosity / 5
-    // const maxViscosity = NewRow2[NewRow2.length - NewRow2.length].Viscosity + NewRow2[NewRow2.length - NewRow2.length].Viscosity / 5
-
-    // const minViscosity = chartData[chartData.length - 1].Viscosity - chartData[chartData.length - 1].Viscosity / 5
-    // const maxViscosity = chartData[chartData.length - chartData.length].Viscosity + chartData[chartData.length - chartData.length].Viscosity / 5
 
     return (
         <>
@@ -210,27 +204,30 @@ const ViscocityCurve = () => {
                 </div>
                 <div className="row">
                     <div className="col-md-12">
-                        {Injection_Speed ? (<ChartComponent title="Viscosity Curve" width="1100" primaryXAxis={{ valueType: "Category", title: "Injection Speed" }} primaryYAxis={{ title: "Viscosity", minimum: minViscosity, maximum: maxViscosity, interval: 10000 }}>
-
-                            <Inject services={[LineSeries, Category, DataLabel]} />
-
-                            <SeriesCollectionDirective>
-                                <SeriesDirective type="Line" dataSource={chartData} xName="Injection_Speed" yName="Viscosity" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
-                            </SeriesCollectionDirective>
-
-                        </ChartComponent>)
-
-                            :
-
-                            (<ChartComponent title="Viscosity Curve" width="1100" primaryXAxis={{ valueType: "Category", title: "Shear Rate" }} primaryYAxis={{ title: "Viscosity", minimum: minViscosity, maximum: maxViscosity, interval: 10000 }}>
+                        {Injection_Speed ? (
+                            <ChartComponent title="Viscosity Curve" width="1100" primaryXAxis={{ valueType: "Category", title: "Injection Speed" }} primaryYAxis={{ title: "Viscosity", minimum: minViscosity, maximum: maxViscosity, interval: Interval }}>
 
                                 <Inject services={[LineSeries, Category, DataLabel]} />
 
                                 <SeriesCollectionDirective>
-                                    <SeriesDirective type="Line" dataSource={chartData} xName="Shear_Rate" yName="Viscosity" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
+                                    <SeriesDirective type="Line" dataSource={NewRow2} xName="Injection_Speed" yName="Viscosity" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
                                 </SeriesCollectionDirective>
 
                             </ChartComponent>
+                        )
+
+                            :
+
+                            (
+                                <ChartComponent title="Viscosity Curve" width="1100" primaryXAxis={{ valueType: "Category", title: "Shear Rate" }} primaryYAxis={{ title: "Viscosity", minimum: minViscosity, maximum: maxViscosity, interval: Interval }}>
+
+                                    <Inject services={[LineSeries, Category, DataLabel]} />
+
+                                    <SeriesCollectionDirective>
+                                        <SeriesDirective type="Line" dataSource={NewRow2} xName="Shear_Rate" yName="Viscosity" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
+                                    </SeriesCollectionDirective>
+
+                                </ChartComponent>
                             )}
                     </div>
                 </div>
