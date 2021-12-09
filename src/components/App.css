@@ -269,3 +269,8 @@ grid-gap: 2rem;
 .viscosity_heading2{
   width: 170px;
 }
+
+/* ****************** Pressure Drop ********************** */
+.Pressure_Heading{
+  width: 300px;
+}

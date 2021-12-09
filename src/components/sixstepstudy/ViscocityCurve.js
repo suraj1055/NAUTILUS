@@ -6,7 +6,6 @@ import { Button } from 'reactstrap';
 import ViscocityGrid from '../Grids/ViscocityGrid';
 import data from "../data/Viscocity_curve_data.json"
 import { nanoid } from 'nanoid'
-// import { data2 } from "../data/data"
 
 const ViscocityCurve = () => {
 

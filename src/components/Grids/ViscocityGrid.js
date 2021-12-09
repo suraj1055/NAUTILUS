@@ -64,7 +64,6 @@ const ViscocityGrid = ({ toggle2, modal2, addRow, increaseRow, NewRow2, deleteRo
             </tbody>
           </Table>
         </div>
-        {/* <Button type="submit" className="mt-4"> Calculate & Save </Button> */}
       </form>
     </div>
   )
