@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-const CosmeticEdit = ({ modal, toggle }) => {
+const CosmeticEdit = ({ modal, toggle, setHeader1, setHeader2, Melting, Hydraulic }) => {
     return (
 
         <div className="btn-showcase">
@@ -20,7 +20,7 @@ const CosmeticEdit = ({ modal, toggle }) => {
                                         </div>
                                     </div>
                                     <div className="col-md-10">
-                                        <input className="form-control " id="exampleInputPassword27" type="text" placeholder="" />
+                                        <input className="form-control" defaultValue={Melting} type="text" onChange={setHeader1} />
                                     </div>
                                 </div>
                             </div>
@@ -34,7 +34,7 @@ const CosmeticEdit = ({ modal, toggle }) => {
                                         </div>
                                     </div>
                                     <div className="col-md-10">
-                                        <input className="form-control " id="exampleInputPassword27" type="text" placeholder="" />
+                                        <input className="form-control" defaultValue={Hydraulic} type="text" onChange={setHeader2} />
                                     </div>
                                 </div>
                             </div>
