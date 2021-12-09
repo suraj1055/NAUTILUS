@@ -1,40 +1,40 @@
 import React, { useState } from 'react'
 import { ChartComponent } from '@syncfusion/ej2-react-charts'
 import { Button } from 'reactstrap';
-import { nanoid } from 'nanoid';
 import CosmeticGrid from '../Grids/CosmeticGrid';
+import CosmeticEdit from '../modals/CosmeticEdit';
+// import data from '../data/Cosmetic_data.json'
 
 const CosmeticPressure = () => {
 
-    const [header, setHeader] = useState();
-    const [column, setColumn] = useState([]);
-    const [isColumnId, setIsColumnId] = useState(null);
-    const [toggleEdit, setToggleEdit] = useState(true);
+    const [modal, setModal] = useState();
+    const [Melting, setMelting] = useState("Melt Temp")
+    const [Hydraulic, setHydraulic] = useState("Hydraulic 1")
 
-    const editColumnHeader = () => {
-        if (header && !toggleEdit) {
-            setColumn(
-                column.map((element) => {
-                    if (element.id === isColumnId) {
-                        return { ...element, header: header }
-                    }
-                    return element;
-                })
-            )
-            setHeader("");
-            setIsColumnId(null)
-       }
-       else{
-
-       }
+    const toggle = () => {
+        setModal(!modal)
     }
+
+    const setHeader1 = (e) => {
+        e.preventDefault();
+        setMelting(e.target.value) 
+    }
+
+    const setHeader2 = (e) => {
+        e.preventDefault();
+        setHydraulic(e.target.value)
+    }
+
 
     return (
 
         <div>
             <div className="grid-chart-container">
+                <div className="form-group">
+                    <CosmeticEdit toggle={toggle} modal={modal} setHeader1={setHeader1} setHeader2={setHeader2} Melting={Melting} Hydraulic={Hydraulic} />
+                </div>
                 <div>
-                    <CosmeticGrid />
+                    <CosmeticGrid Melting={Melting} Hydraulic={Hydraulic} />
                 </div>
             </div>
             <div className="grid-chart-container">

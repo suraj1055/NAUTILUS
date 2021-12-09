@@ -23,9 +23,9 @@ const PressureDropStudy = () => {
     const row1 = [];
     const [row, setRow] = useState();
     const [NewRow2, setNewRow2] = useState(data);
-    const [minViscosity, setMinViscosity] = useState()
-    const [maxViscosity, setMaxViscosity] = useState()
-    const [Interval, setInterval] = useState()
+    // const [minViscosity, setMinViscosity] = useState()
+    // const [maxViscosity, setMaxViscosity] = useState()
+    // const [Interval, setInterval] = useState()
 
     const [editFormData, setEditFormData] = useState({
         Injection_Speed: "",
@@ -115,16 +115,16 @@ const PressureDropStudy = () => {
         setEditFormData(formValues);
     }
 
-    const setGraph = (event) => {
+    // const setGraph = (event) => {
 
-        setMinViscosity(NewRow2[NewRow2.length - 1].Viscosity - NewRow2[NewRow2.length - 1].Viscosity / 5)
+    //     setMinViscosity(NewRow2[NewRow2.length - 1].Viscosity - NewRow2[NewRow2.length - 1].Viscosity / 5)
 
-        setMaxViscosity(NewRow2[NewRow2.length - NewRow2.length].Viscosity + NewRow2[NewRow2.length - NewRow2.length].Viscosity / 5)
+    //     setMaxViscosity(NewRow2[NewRow2.length - NewRow2.length].Viscosity + NewRow2[NewRow2.length - NewRow2.length].Viscosity / 5)
 
-        setInterval((NewRow2[0].Viscosity - NewRow2[NewRow2.length - 1].Viscosity) / 3)
+    //     setInterval((NewRow2[0].Viscosity - NewRow2[NewRow2.length - 1].Viscosity) / 3)
 
-        handleEditFormSubmit(event)
-    }
+    //     handleEditFormSubmit(event)
+    // }
 
     return (
         <>
@@ -178,7 +178,7 @@ const PressureDropStudy = () => {
             </div>
             <div className="grid-chart-container">
                 <div className="chart_container_btn">
-                <Button color="primary" onClick={setGraph}> Show Graph </Button>
+                <Button color="primary"> Show Graph </Button>
                 </div>
                 <div>
                     <ChartComponent>
