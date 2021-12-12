@@ -274,3 +274,17 @@ grid-gap: 2rem;
 .Pressure_Heading{
   width: 300px;
 }
+
+/* *********************** Cold Runner *************** */
+.Cold-Grid-Container{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.cold_table{
+  height: 280px;
+  overflow-x: scroll;
+}
+
+/* ************************* Cooling Time Study ************************** */

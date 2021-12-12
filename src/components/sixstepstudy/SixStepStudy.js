@@ -6,8 +6,6 @@ import CavityBalance from "./CavityBalance";
 import PressureDropStudy from "./PressureDropStudy";
 import CosmeticPressure from "./CosmeticPressure";
 import CoolingTimeStudy from "./CoolingTimeStudy";
-import HotRunner from "./HotRunner";
-import PackAndHold from "./PackAndHold";
 import ColdRunner from "./ColdRunner";
 
 export default class SixStepStudy extends React.Component {
@@ -21,8 +19,6 @@ export default class SixStepStudy extends React.Component {
             { text: "Cosmetic Process Window" },
             { text: "Gate Seal Study" },
             { text: "Cooling Time Study" },
-            { text: "Cold Runner" }, { text: "Pack And Hold" },
-            { text: "Hot Runner" }
         ];
 
         function content0() {
@@ -51,37 +47,14 @@ export default class SixStepStudy extends React.Component {
 
         function content4() {
             return (<div>
-                <CoolingTimeStudy />
+                  <ColdRunner />
             </div>);
         }
 
         function content5() {
             return (<div>
-                <ColdRunner />
+              <CoolingTimeStudy />
             </div>);
-        }
-
-        function content6() {
-            return (<div>
-                <PackAndHold />
-            </div>);
-        }
-
-        function content7() {
-            return (<div>
-                <HotRunner />
-            </div>);
-        }
-
-
-        function nestedTab1() {
-            return (<TabComponent heightAdjustMode="Auto" id="nestedTab1">
-                <TabItemsDirective>
-                    <TabItemDirective header={headertext[6]} content={content5} />
-                    <TabItemDirective header={headertext[7]} content={content6} />
-                    <TabItemDirective header={headertext[8]} content={content7} />
-                </TabItemsDirective>
-            </TabComponent>);
         }
 
         return (
@@ -96,8 +69,8 @@ export default class SixStepStudy extends React.Component {
                                         <TabItemDirective header={headertext[1]} content={content1} />
                                         <TabItemDirective header={headertext[2]} content={content2} />
                                         <TabItemDirective header={headertext[3]} content={content3} />
-                                        <TabItemDirective header={headertext[4]} content={nestedTab1} />
-                                        <TabItemDirective header={headertext[5]} content={content4} />
+                                        <TabItemDirective header={headertext[4]} content={content4} />
+                                        <TabItemDirective header={headertext[5]} content={content5} />
                                     </TabItemsDirective>
                                 </TabComponent>
                             </div>
@@ -106,7 +79,6 @@ export default class SixStepStudy extends React.Component {
                 </div>
 
             </div>
-
         );
     }
 }

@@ -9,7 +9,7 @@ const CosmeticPressure = () => {
 
     const [modal, setModal] = useState();
     const [Melting, setMelting] = useState("Melt Temp")
-    const [Hydraulic, setHydraulic] = useState("Hydraulic 1")
+    const [Hydraulic, setHydraulic] = useState("Hydraulic")
 
     const toggle = () => {
         setModal(!modal)
