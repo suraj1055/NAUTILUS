@@ -6,6 +6,7 @@ import { nanoid } from 'nanoid';
 import ColdAddColumn from '../columns&rows/ColdAddColumn';
 import ColdAddRow from '../columns&rows/ColdAddRow';
 import data from "../data/Cold_runner.json"
+import ColdGrid2 from '../Grids/ColdGrid2';
 
 const CavityBalance = () => {
 
@@ -27,6 +28,7 @@ const CavityBalance = () => {
     const [column, setColumn] = useState([]);
     const [isColumnId, setIsColumnId] = useState(null);
     const [toggleEdit, setToggleEdit] = useState(true);
+    const [grid2, setGrid2] = useState("");
 
     const addHeader = (e) => {
         e.preventDefault();
@@ -128,28 +130,33 @@ const CavityBalance = () => {
                     <div className="mb-4">
                         {/* Grid 1 */}
 
-                        <ColdGrid1 modal={modal} toggle={toggle} modal2={modal2} toggle2={toggle2} column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} addColumn={addColumn} NewRow2={NewRow2}deleteRow2={deleteRow2} />
+                        <ColdGrid1 modal={modal} toggle={toggle} modal2={modal2} toggle2={toggle2} column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} addColumn={addColumn} NewRow2={NewRow2} deleteRow2={deleteRow2} />
 
-                    </div>
-                    <div className="col-md-6">
-                        {/* Grid @ */}
                     </div>
                 </div>
             </div>
             <div className="grid-chart-container">
-                <div className="row">
-                    <div className="col-md-4  chart_container_btn">
-                        <select className="form-control digits" id="exampleFormControlSelect30">
-                            <option>{"Weight1"}</option>
+                <div className="row mb-4">
+                    <div className="col-md-4 chart_container_btn">
+                        <select className="form-control digits" id="exampleFormControlSelect30" onClick={(e) => setGrid2(e.target.value) }>
+                            {column.map((value) => (
+                                <option> {value.header} </option>
+                            ))}
                         </select>
                     </div>
                     <div className="col-md-4  chart_container_btn">
                         <Button color="primary"> Calculate & Show Graph </Button>
                     </div>
                 </div>
-                <div className="col-md-12">
-                    <ChartComponent>
-                    </ChartComponent>
+                <div className="row">
+                    <div className="col-md-4">
+                        {/* Grid 2 */}
+                        <ColdGrid2 column={column} NewRow2={NewRow2} grid2={grid2} />
+                    </div>
+                    <div className="col-md-8">
+                        <ChartComponent>
+                        </ChartComponent>
+                    </div>
                 </div>
             </div>
             <div className="row">

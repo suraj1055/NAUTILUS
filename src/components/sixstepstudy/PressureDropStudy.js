@@ -23,9 +23,6 @@ const PressureDropStudy = () => {
     const row1 = [];
     const [row, setRow] = useState();
     const [NewRow2, setNewRow2] = useState(data);
-    // const [minViscosity, setMinViscosity] = useState()
-    // const [maxViscosity, setMaxViscosity] = useState()
-    // const [Interval, setInterval] = useState()
 
     const [editFormData, setEditFormData] = useState({
         Injection_Speed: "",
