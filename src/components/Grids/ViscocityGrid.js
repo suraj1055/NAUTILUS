@@ -15,7 +15,7 @@ const ViscocityGrid = ({ toggle2, modal2, addRow, increaseRow, NewRow2, deleteRo
         <Button onClick={toggle2} color="secondary" className="btn btn-sm" type="button"> Add Row </Button>
         <ViscocityAddRow toggle2={toggle2} modal2={modal2} addRow={addRow} increaseRow={increaseRow} />
       </div>
-      <form>
+      <form autoComplete="off">
         <Table striped bordered hover responsive variant="light">
         <thead>
               <tr>
@@ -38,7 +38,7 @@ const ViscocityGrid = ({ toggle2, modal2, addRow, increaseRow, NewRow2, deleteRo
                   <h6> AbsoluteDropViscosity </h6>
                 </th>
                 <th className="viscosity_heading">
-                  <h6> %DropViscocity </h6>
+                  <h6> %DropViscosity </h6>
                 </th>
                 <th >
                   <h6> Action </h6>

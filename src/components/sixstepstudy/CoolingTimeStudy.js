@@ -147,7 +147,7 @@ const CoolingTimeStudy = () => {
                         <Button color="primary"> {"Calculate & Show Graph"} </Button>
                     </div>
                 </div>
-                <div classname="col-md-12">
+                <div className="col-md-12">
                     <ChartComponent>
                     </ChartComponent>
                 </div>
