@@ -36,9 +36,7 @@ const CoolingGrid = ({ addHeader, column, deleteColumn, editColumn, isColumnId, 
                                         </th>)}
                                     </>
                                 ))}
-                                <div>
-                                    <th> <h6> Action </h6> </th>
-                                </div>
+                                <th> <h6> Action </h6> </th>
                             </tr>
                         </thead>
                     </Table>
@@ -52,9 +50,8 @@ const CoolingGrid = ({ addHeader, column, deleteColumn, editColumn, isColumnId, 
                                     {column.map((index) => (
                                         <td style={{ width: '180px' }}> <input type="text" className="form-control" /> </td>
                                     ))}
-                                    <div> 
-                                        <td> <i className="fa fa-trash viscocity_icons" onClick={() => deleteRow2(NewRow.id)}></i> </td>
-                                    </div>
+
+                                    <td> <i className="fa fa-trash viscocity_icons" onClick={() => deleteRow2(NewRow.id)}></i> </td>
                                 </tr>
                             ))}
                         </tbody>
