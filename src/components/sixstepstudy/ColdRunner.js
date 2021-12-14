@@ -119,7 +119,7 @@ const CavityBalance = () => {
         <>
             <div className="grid-chart-container">
                 <div className="row mb-4">
-                    <div>
+                    <div style={{ marginLeft:'15px' }}>
                         <ColdAddColumn modal={modal} toggle={toggle} addColumn={addColumn} addHeader={addHeader} />
                     </div>
                     <div>
@@ -127,7 +127,7 @@ const CavityBalance = () => {
                     </div>
                 </div>
                 <div>
-                    <div className="mb-4">
+                    <div className="mb-2">
                         {/* Grid 1 */}
 
                         <ColdGrid1 modal={modal} toggle={toggle} modal2={modal2} toggle2={toggle2} column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} addColumn={addColumn} NewRow2={NewRow2} deleteRow2={deleteRow2} />
@@ -144,16 +144,16 @@ const CavityBalance = () => {
                             ))}
                         </select>
                     </div>
-                    <div className="col-md-4  chart_container_btn">
+                    <div className="col-md-4 chart_container_btn">
                         <Button color="primary"> Calculate & Show Graph </Button>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col-md-4">
+                <div className="cold-runner-grid">
+                    <div className="cold-grid">
                         {/* Grid 2 */}
                         <ColdGrid2 column={column} NewRow2={NewRow2} grid2={grid2} />
                     </div>
-                    <div className="col-md-8">
+                    <div className="cold-chart">
                         <ChartComponent>
                         </ChartComponent>
                     </div>

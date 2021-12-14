@@ -47,7 +47,7 @@ const ColdGrid1 = ({ addHeader, column, deleteColumn, editColumn, isColumnId, ed
                         <Table striped bordered hover responsive variant="light">
                             <tbody className="grid_style">
                                 {NewRow2.map((NewRow, rowId) => (
-                                    <tr>
+                                    <tr key={rowId} >
                                         <td style={{ width: '190px' }}> <input type="text" className="form-control" /> </td>
                                         {column.map((index) => (
                                             <td style={{ width: '190px' }}> <input type="text" className="form-control" /> </td>
