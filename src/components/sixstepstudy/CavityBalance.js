@@ -5,6 +5,9 @@ import Cavity from '../columns&rows/CavityAddColumn';
 import CavityGrid from '../Grids/CavityGrid';
 import { nanoid } from 'nanoid'
 import CavityGrid2 from '../Grids/CavityGrid2';
+import '../App.css';
+import { HtmlEditor, Inject, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 const CavityBalance = () => {
 
@@ -15,6 +18,19 @@ const CavityBalance = () => {
         setModal2(!modal2);
 
     }
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    let toolbarSettings = {
+        items: ['Bold', 'Italic', 'Underline', 'StrikeThrough',
+            'FontName', 'FontSize', 'FontColor', 'BackgroundColor',
+            'LowerCase', 'UpperCase', '|',
+            'Formats', 'Alignments', 'OrderedList', 'UnorderedList',
+            'Outdent', 'Indent', '|', 'Undo', 'Redo']
+    };
 
     const [header, setHeader] = useState();
     const [column, setColumn] = useState([]);
@@ -27,15 +43,15 @@ const CavityBalance = () => {
     }
 
     const addColumn = () => {
-       if (!header) {
+        if (!header) {
 
-       }
-       else{
-        const newColumn = { id: nanoid(), header: header}
-        setColumn([...column, newColumn]);
-        console.log(newColumn)
-        setHeader("");
-       }
+        }
+        else {
+            const newColumn = { id: nanoid(), header: header }
+            setColumn([...column, newColumn]);
+            console.log(newColumn)
+            setHeader("");
+        }
     };
 
     const editColumnHeader = () => {
@@ -50,10 +66,10 @@ const CavityBalance = () => {
             )
             setHeader("");
             setIsColumnId(null)
-       }
-       else{
+        }
+        else {
 
-       }
+        }
     }
 
     const deleteColumn = (id) => {
@@ -76,16 +92,30 @@ const CavityBalance = () => {
     return (
         <>
             <div className="grid-chart-container">
-                <div className="row">
-                    <div className="col-md-6">
-                        <div className="row">
-                            <div className="col-md-4">
-                                <div className="grid_container_btn">
-                                    <Cavity toggle2={toggle2} modal2={modal2} addHeader={addHeader} addColumn={addColumn} />
-                                </div>
-                            </div>
-                        </div>
+                <div className="d-flex justify-content-between">
+                    <div className="grid_container_btn">
+                        <Cavity toggle2={toggle2} modal2={modal2} addHeader={addHeader} addColumn={addColumn} />
                     </div>
+                    <div className='mt-3'>
+                        <Button color="fifth" className="btn btn-sm mr-4" type="button"> Print </Button>
+                        <Button onClick={handleShow} color="primary" className="btn btn-sm step-button2" type="button"> Comment </Button>
+                        <Modal isOpen={show} centered={true} >
+                            <ModalHeader toggle={handleClose}>
+                                Add Comment
+                            </ModalHeader>
+                            <ModalBody>
+                                <RichTextEditorComponent toolbarSettings={toolbarSettings} height={250}>
+
+                                    <Inject services={[Toolbar, HtmlEditor]} />
+                                </RichTextEditorComponent>
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="primary"> Save </Button>
+                                <Button color="dark" onClick={handleClose}> Cancel </Button>
+                            </ModalFooter>
+                        </Modal>
+                    </div>
+
                 </div>
                 <div className="mb-4">
                     <CavityGrid column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} />

@@ -13,6 +13,7 @@
     "@syncfusion/ej2-react-charts": "^19.3.44",
     "@syncfusion/ej2-react-grids": "^19.3.43",
     "@syncfusion/ej2-react-navigations": "^19.3.44",
+    "@syncfusion/ej2-react-richtexteditor": "^19.3.57",
     "@types/googlemaps": "^3.39.6",
     "@types/markerclustererplus": "^2.1.33",
     "axios": "^0.20.0",

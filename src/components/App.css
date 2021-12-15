@@ -8,6 +8,7 @@
 @import '../../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css';
 @import "../../node_modules/@syncfusion/ej2-react-grids/styles/material.css";
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import '../../node_modules/@syncfusion/ej2-richtexteditor/styles/material.css';
 
 @import '../../node_modules/@syncfusion/ej2-base/styles/material.css';
 @import '../../node_modules/@syncfusion/ej2-react-navigations/styles/material.css';
@@ -223,6 +224,15 @@ grid-gap: 2rem;
   align-items: center;
 }
 
+.table-heading-content-editable{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 2px;
+  padding: 2px 5px;
+}
+
 .table-heading-icons{
   display: flex;
   justify-content: space-around;
@@ -239,15 +249,27 @@ grid-gap: 2rem;
     width: 40%;
   }
 
-  .table-heading input{
-    width: 60px;
+  .table-heading-editable input{
+    width: 60%;
     margin: 3px 2px;
   }
 
 }
 
 .table-heading{
+  width: 70%;
+}
+
+.table-heading-editable{
+  width: 60%;
+}
+
+.table-heading input{
   width: 40%;
+}
+.table-heading-editable input{
+  border: none;
+  outline: 0;
 }
 
 /* ******************* VISCOCITY_GRID_CSS ******************* */

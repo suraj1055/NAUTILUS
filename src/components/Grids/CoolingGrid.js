@@ -14,8 +14,8 @@ const CoolingGrid = ({ addHeader, column, deleteColumn, editColumn, isColumnId, 
                                 {column.map((index) => (
                                     <>
                                         {isColumnId === index.id ? (<th style={{ width: '180px' }}>
-                                            <div className="table-heading-content">
-                                                <div className="table-heading">
+                                            <div className="table-heading-content-editable">
+                                                <div className="table-heading-editable">
                                                     <input type="text" defaultValue={index.header} onChange={addHeader} />
                                                 </div>
                                                 <div className="table-heading-icons">
