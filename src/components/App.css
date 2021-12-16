@@ -246,12 +246,16 @@ grid-gap: 2rem;
 @media (min-height: 768px) and (max-height:1024px){
   .table-heading-icons{
     font-size: 0.7rem;
-    width: 40%;
+    width: 20%;
   }
 
   .table-heading-editable input{
     width: 60%;
     margin: 3px 2px;
+  }
+
+  .table-heading{
+    width: 80%;
   }
 
 }

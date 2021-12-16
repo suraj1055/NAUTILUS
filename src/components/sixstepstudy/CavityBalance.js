@@ -8,6 +8,7 @@ import CavityGrid2 from '../Grids/CavityGrid2';
 import '../App.css';
 import { HtmlEditor, Inject, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import data from '../data/cavity_balance_data.json';
 
 const CavityBalance = () => {
 
@@ -33,7 +34,7 @@ const CavityBalance = () => {
     };
 
     const [header, setHeader] = useState();
-    const [column, setColumn] = useState([]);
+    const [column, setColumn] = useState(data);
     const [isColumnId, setIsColumnId] = useState(null);
     const [toggleEdit, setToggleEdit] = useState(true);
 
@@ -47,9 +48,8 @@ const CavityBalance = () => {
 
         }
         else {
-            const newColumn = { id: nanoid(), header: header }
+            const newColumn = { id: nanoid(), "header": header, "edit" : true, "delete": true }
             setColumn([...column, newColumn]);
-            console.log(newColumn)
             setHeader("");
         }
     };
