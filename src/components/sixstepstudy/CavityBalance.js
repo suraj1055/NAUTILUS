@@ -9,8 +9,17 @@ import '../App.css';
 import { HtmlEditor, Inject, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import data from '../data/cavity_balance_data.json';
+import CavityEdit from '../modals/CavityEdit'
 
 const CavityBalance = () => {
+
+    const [modal, setModal] = useState();
+
+    const toggle = () => {
+
+        setModal(!modal);
+
+    }
 
     const [modal2, setModal2] = useState();
 
@@ -48,7 +57,7 @@ const CavityBalance = () => {
 
         }
         else {
-            const newColumn = { id: nanoid(), "header": header, "edit" : true, "delete": true }
+            const newColumn = { id: nanoid(), "header": header, "edit": true, "delete": true }
             setColumn([...column, newColumn]);
             setHeader("");
         }
@@ -93,8 +102,13 @@ const CavityBalance = () => {
         <>
             <div className="grid-chart-container">
                 <div className="d-flex justify-content-between">
-                    <div className="grid_container_btn">
-                        <Cavity toggle2={toggle2} modal2={modal2} addHeader={addHeader} addColumn={addColumn} />
+                    <div className="d-flex">
+                        <div className="grid_container_btn">
+                            <Cavity toggle2={toggle2} modal2={modal2} addHeader={addHeader} addColumn={addColumn} />
+                        </div>
+                        <div className="grid_container_btn">
+                            <CavityEdit modal={modal} toggle={toggle} column={column} addHeader={addHeader} editColumnHeader={editColumnHeader} editCancel={editCancel} editColumn={editColumn} />
+                        </div>
                     </div>
                     <div className='mt-3'>
                         <Button color="fifth" className="btn btn-sm mr-4" type="button"> Print </Button>
@@ -118,7 +132,7 @@ const CavityBalance = () => {
 
                 </div>
                 <div className="mb-4">
-                    <CavityGrid column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} />
+                    <CavityGrid column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} toggle={toggle}/>
                 </div>
                 <div className="">
                     <CavityGrid2 column={column} />

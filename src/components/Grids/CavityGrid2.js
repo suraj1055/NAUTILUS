@@ -13,7 +13,7 @@ const CavityGrid2 = ({ column }) => {
                         <tr>
                             {column.map((value, key) => (
                                 <>
-                                    <th> <h6> {value.header} </h6> </th>
+                                    <th key={key} > <h6> {value.header} </h6> </th>
                                 </>
                             ))}
                         </tr>
@@ -35,7 +35,6 @@ const CavityGrid2 = ({ column }) => {
                         </tr>
                         <tr>
                             {column.map((value) => (
-
                                 <>
                                     {value.edit === true ? (<td> <input type='text' className="form-control" readOnly /> </td>) : (<td> <input type='text' className="form-control" value="Range" readOnly /> </td>)}
                                 </>
@@ -43,7 +42,6 @@ const CavityGrid2 = ({ column }) => {
                         </tr>
                         <tr>
                             {column.map((value) => (
-
                                 <>
                                     {value.edit === true ? (<td> <input type='text' className="form-control" readOnly /> </td>) : (<td> <input type='text' className="form-control" value="Max Part Wt." readOnly /> </td>)}
                                 </>

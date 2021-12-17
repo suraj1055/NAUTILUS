@@ -208,14 +208,11 @@ grid-gap: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40%;
+  width: 1000%;
 }
 
-.Cavity-Grid-2-Container{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40%;
+.Cavity-Grid-2-Container tr th{
+  width: 20%;
 }
 
 .table-heading-content{
