@@ -8,7 +8,7 @@ import CavityGrid2 from '../Grids/CavityGrid2';
 import '../App.css';
 import { HtmlEditor, Inject, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { data } from '../data/cavity_balance_data';
+import { data, data2 } from '../data/cavity_balance_data';
 import CavityEdit from '../modals/CavityEdit'
 
 const CavityBalance = () => {
@@ -46,6 +46,7 @@ const CavityBalance = () => {
     const [column, setColumn] = useState(data);
     const [isColumnId, setIsColumnId] = useState(null);
     const [toggleEdit, setToggleEdit] = useState(true);
+    const column2 = data2
 
     const addHeader = (e) => {
         e.preventDefault();
@@ -132,7 +133,7 @@ const CavityBalance = () => {
 
                 </div>
                 <div className="mb-4">
-                    <CavityGrid column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} toggle={toggle}/>
+                    <CavityGrid column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} toggle={toggle} column2={column2} />
                 </div>
                 <div className="">
                     <CavityGrid2 column={column} />

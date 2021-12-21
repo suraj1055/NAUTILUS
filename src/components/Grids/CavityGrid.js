@@ -3,7 +3,7 @@ import Table from 'react-bootstrap/Table'
 import '../App.css';
 import '../../assets/custom-stylesheet/grid_stylecss.css'
 
-const CavityGrid = ({ column, deleteColumn }) => {
+const CavityGrid = ({ column, deleteColumn, column2 }) => {
 
     return (
         <>
@@ -14,7 +14,7 @@ const CavityGrid = ({ column, deleteColumn }) => {
                             <tr>
                                 {column.map((value, key) => (
                                     <>
-                                        { value.delete === false ? (<th>
+                                        {value.delete === false ? (<th>
                                             <div className="table-heading-content">
                                                 <div className="table-heading">
                                                     <h6> {value.header} </h6>
@@ -35,49 +35,20 @@ const CavityGrid = ({ column, deleteColumn }) => {
                             </tr>
                         </thead>
                         <tbody className="grid_style">
-                            <tr>
+                            {column2.map((value, key) => (
+                                <tr>
 
-                                {column.map((value) => (
-                                    <>
-                                        {value.edit === true ?
-                                            (<td> <input type='text' className="form-control" /> </td>)
-                                            :
-                                            (<td> <input type='text' className="form-control" value="ABC-4" readOnly /> </td>)}
-                                    </>
-                                ))}
-                            </tr>
-                            <tr>
-                                {column.map((value) => (
-                                    <>
-                                        {value.edit === true ?
-                                            (<td> <input type='text' className="form-control" /> </td>)
-                                            :
-                                            (<td> <input type='text' className="form-control" value="ABC-4" readOnly /> </td>)}
-                                    </>
-                                ))}
+                                    {column.map((index, key) => (
+                                        <>
+                                            {value.edit === true ?
+                                                (<td> <input type='text' className="form-control" /> </td>)
+                                                :
+                                                (<td> <input type='text' className="form-control" value={value.Cavity_No} readOnly /> </td>)}
+                                        </>
+                                    ))}
 
-                            </tr>
-                            <tr>
-                                {column.map((value) => (
-                                    <>
-                                        {value.edit === true ?
-                                            (<td> <input type='text' className="form-control" /> </td>)
-                                            :
-                                            (<td> <input type='text' className="form-control" value="ABC-4" readOnly /> </td>)}
-                                    </>
-                                ))}
-
-                            </tr>
-                            <tr>
-                                {column.map((value) => (
-                                    <>
-                                        {value.edit === true ?
-                                            (<td> <input type='text' className="form-control" /> </td>)
-                                            :
-                                            (<td> <input type='text' className="form-control" value="ABC-4" readOnly /> </td>)}
-                                    </>
-                                ))}
-                            </tr>
+                                </tr>
+                            ))}
                         </tbody>
                     </Table>
                 </div>
