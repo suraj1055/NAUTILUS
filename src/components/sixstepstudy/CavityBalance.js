@@ -8,7 +8,7 @@ import CavityGrid2 from '../Grids/CavityGrid2';
 import '../App.css';
 import { HtmlEditor, Inject, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import data from '../data/cavity_balance_data.json';
+import { data } from '../data/cavity_balance_data';
 import CavityEdit from '../modals/CavityEdit'
 
 const CavityBalance = () => {
