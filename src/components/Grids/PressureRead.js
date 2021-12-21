@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Read = ({ setId, NewRow2, deleteRow2, NewRow, rowId }) => {
+const Read = ({ setId, deleteRow2, NewRow, rowId }) => {
     return (
         <tr key={rowId} onClick={(event) => setId(event, NewRow)}>
 
