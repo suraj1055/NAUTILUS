@@ -14,7 +14,7 @@ const CavityGrid = ({ column, deleteColumn }) => {
                             <tr>
                                 {column.map((value, key) => (
                                     <>
-                                        {value.delete === false ? (<th>
+                                        { value.delete === false ? (<th>
                                             <div className="table-heading-content">
                                                 <div className="table-heading">
                                                     <h6> {value.header} </h6>
@@ -37,44 +37,44 @@ const CavityGrid = ({ column, deleteColumn }) => {
                         <tbody className="grid_style">
                             <tr>
 
-                                {column.map((value, key) => (
+                                {column.map((value) => (
                                     <>
                                         {value.edit === true ?
-                                            (<td> <input type='text' name="value1" className="form-control" /> </td>)
+                                            (<td> <input type='text' className="form-control" /> </td>)
                                             :
-                                            (<td> <input type='text' className="form-control" value="ABC-1" readOnly /> </td>)}
+                                            (<td> <input type='text' className="form-control" value="ABC-4" readOnly /> </td>)}
                                     </>
                                 ))}
                             </tr>
                             <tr>
-                                {column.map((value, key) => (
+                                {column.map((value) => (
                                     <>
                                         {value.edit === true ?
-                                            (<td> <input type='text' name="value2" className="form-control" /> </td>)
+                                            (<td> <input type='text' className="form-control" /> </td>)
                                             :
-                                            (<td> <input type='text' className="form-control" value="ABC-2" readOnly /> </td>)}
-                                    </>
-                                ))}
-
-                            </tr>
-                            <tr>
-                                {column.map((value, key) => (
-                                    <>
-                                        {value.edit === true ?
-                                            (<td> <input type='text' name="value3" className="form-control" /> </td>)
-                                            :
-                                            (<td> <input type='text' className="form-control" value={column[value.id + 2].Cavity_No} readOnly /> </td>)}
+                                            (<td> <input type='text' className="form-control" value="ABC-4" readOnly /> </td>)}
                                     </>
                                 ))}
 
                             </tr>
                             <tr>
-                                {column.map((value, key) => (
+                                {column.map((value) => (
                                     <>
                                         {value.edit === true ?
-                                            (<td> <input type='text' name="value4" className="form-control" /> </td>)
+                                            (<td> <input type='text' className="form-control" /> </td>)
                                             :
-                                            (<td> <input type='text' className="form-control" value={column[value.id + 3].Cavity_No} readOnly /> </td>)}
+                                            (<td> <input type='text' className="form-control" value="ABC-4" readOnly /> </td>)}
+                                    </>
+                                ))}
+
+                            </tr>
+                            <tr>
+                                {column.map((value) => (
+                                    <>
+                                        {value.edit === true ?
+                                            (<td> <input type='text' className="form-control" /> </td>)
+                                            :
+                                            (<td> <input type='text' className="form-control" value="ABC-4" readOnly /> </td>)}
                                     </>
                                 ))}
                             </tr>

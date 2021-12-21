@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
+import { ChartComponent } from '@syncfusion/ej2-react-charts';
 import { Button } from 'reactstrap';
 import Cavity from '../columns&rows/CavityAddColumn';
 import CavityGrid from '../Grids/CavityGrid';
 import { nanoid } from 'nanoid'
 import CavityGrid2 from '../Grids/CavityGrid2';
 import '../App.css';
-import { HtmlEditor, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
-import { ChartComponent, LineSeries, Inject, SeriesCollectionDirective, SeriesDirective, Category, DataLabel } from '@syncfusion/ej2-react-charts';
+import { HtmlEditor, Inject, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { data } from '../data/cavity_balance_data';
 import CavityEdit from '../modals/CavityEdit'
@@ -46,7 +46,6 @@ const CavityBalance = () => {
     const [column, setColumn] = useState(data);
     const [isColumnId, setIsColumnId] = useState(null);
     const [toggleEdit, setToggleEdit] = useState(true);
-    // const column2 = data;
 
     const addHeader = (e) => {
         e.preventDefault();
@@ -58,12 +57,7 @@ const CavityBalance = () => {
 
         }
         else {
-            const newColumn = {
-                id: nanoid(),
-                "header": header,
-                "delete": true,
-                "edit": true
-            }
+            const newColumn = { id: nanoid(), "header": header, "edit": true, "delete": true }
             setColumn([...column, newColumn]);
             setHeader("");
         }
@@ -138,7 +132,7 @@ const CavityBalance = () => {
 
                 </div>
                 <div className="mb-4">
-                    <CavityGrid column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} toggle={toggle} />
+                    <CavityGrid column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} toggle={toggle}/>
                 </div>
                 <div className="">
                     <CavityGrid2 column={column} />
@@ -151,15 +145,7 @@ const CavityBalance = () => {
                     </div>
                 </div>
                 <div>
-                    <ChartComponent title="Cavity Chart Analysis" primaryXAxis={{ valueType: "Category", title: "Part Weight" }} primaryYAxis={{ title: "Cavity ID" }}>
-                        <Inject services={[LineSeries, Category, DataLabel]} />
-                        <SeriesCollectionDirective>
-
-                            <SeriesDirective type="Line" dataSource={data} xName="Cavity_No" yName="value1" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
-
-                            {/* <SeriesDirective type="Line" dataSource={data} xName="Cavity_No" yName="value2" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective> */}
-
-                        </SeriesCollectionDirective>
+                    <ChartComponent>
                     </ChartComponent>
                 </div>
             </div>
