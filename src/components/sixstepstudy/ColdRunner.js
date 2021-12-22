@@ -7,8 +7,24 @@ import ColdAddColumn from '../columns&rows/ColdAddColumn';
 import ColdAddRow from '../columns&rows/ColdAddRow';
 import data from "../data/Cold_runner.json"
 import ColdGrid2 from '../Grids/ColdGrid2';
+import { HtmlEditor, Inject, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import '../App.css';
 
 const CavityBalance = () => {
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    let toolbarSettings = {
+        items: ['Bold', 'Italic', 'Underline', 'StrikeThrough',
+            'FontName', 'FontSize', 'FontColor', 'BackgroundColor',
+            'LowerCase', 'UpperCase', '|',
+            'Formats', 'Alignments', 'OrderedList', 'UnorderedList',
+            'Outdent', 'Indent', '|', 'Undo', 'Redo']
+    };
 
     const [modal, setModal] = useState();
 
@@ -118,12 +134,33 @@ const CavityBalance = () => {
     return (
         <>
             <div className="grid-chart-container">
-                <div className="row mb-4">
-                    <div style={{ marginLeft:'15px' }}>
-                        <ColdAddColumn modal={modal} toggle={toggle} addColumn={addColumn} addHeader={addHeader} />
+                <div className="d-flex justify-content-between mb-4">
+                    <div className="d-flex" >
+                        <div >
+                            <ColdAddColumn modal={modal} toggle={toggle} addColumn={addColumn} addHeader={addHeader} />
+                        </div>
+                        <div>
+                            <ColdAddRow modal2={modal2} toggle2={toggle2} addRow={addRow} increaseRow={increaseRow} />
+                        </div>
                     </div>
                     <div>
-                        <ColdAddRow modal2={modal2} toggle2={toggle2} addRow={addRow} increaseRow={increaseRow} />
+                        <Button color="fifth" className="btn btn-sm mr-4" type="button"> Print </Button>
+                        <Button onClick={handleShow} color="primary" className="btn btn-sm step-button2" type="button"> Comment </Button>
+                        <Modal isOpen={show} centered={true} >
+                            <ModalHeader toggle={handleClose}>
+                                Add Comment
+                            </ModalHeader>
+                            <ModalBody>
+                                <RichTextEditorComponent toolbarSettings={toolbarSettings} height={250}>
+
+                                    <Inject services={[Toolbar, HtmlEditor]} />
+                                </RichTextEditorComponent>
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="primary"> Save </Button>
+                                <Button color="dark" onClick={handleClose}> Cancel </Button>
+                            </ModalFooter>
+                        </Modal>
                     </div>
                 </div>
                 <div>
@@ -138,7 +175,7 @@ const CavityBalance = () => {
             <div className="grid-chart-container">
                 <div className="row mb-4">
                     <div className="col-md-4 chart_container_btn">
-                        <select className="form-control digits" id="exampleFormControlSelect30" onClick={(e) => setGrid2(e.target.value) }>
+                        <select className="form-control digits" id="exampleFormControlSelect30" onClick={(e) => setGrid2(e.target.value)}>
                             {column.map((value) => (
                                 <option> {value.header} </option>
                             ))}

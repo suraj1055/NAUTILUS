@@ -6,8 +6,24 @@ import CoolingAddRow from '../columns&rows/CoolingAddRow';
 import { nanoid } from 'nanoid';
 import data from "../data/Cooling_data.json"
 import CoolingGrid from '../Grids/CoolingGrid';
+import { HtmlEditor, Inject, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import '../App.css';
 
 const CoolingTimeStudy = () => {
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    let toolbarSettings = {
+        items: ['Bold', 'Italic', 'Underline', 'StrikeThrough',
+            'FontName', 'FontSize', 'FontColor', 'BackgroundColor',
+            'LowerCase', 'UpperCase', '|',
+            'Formats', 'Alignments', 'OrderedList', 'UnorderedList',
+            'Outdent', 'Indent', '|', 'Undo', 'Redo']
+    };
 
     const [modal, setModal] = useState();
 
@@ -118,19 +134,38 @@ const CoolingTimeStudy = () => {
     return (
         <>
             <div className="grid-chart-container">
-                <div className="row mb-4">
+                <div className="d-flex justify-content-between mb-4">
+                    <div className="d-flex">
+                        <div>
+                            <CoolingAddColumn modal={modal} toggle={toggle} addColumn={addColumn} addHeader={addHeader} />
+                        </div>
 
-                    <div>
-                       <CoolingAddColumn modal={modal} toggle={toggle} addColumn={addColumn} addHeader={addHeader} />
+                        <div>
+                            <CoolingAddRow modal2={modal2} toggle2={toggle2} addRow={addRow} increaseRow={increaseRow} />
+                        </div>
                     </div>
+                    <div>
+                        <Button color="fifth" className="btn btn-sm mr-4" type="button"> Print </Button>
+                        <Button onClick={handleShow} color="primary" className="btn btn-sm step-button2" type="button"> Comment </Button>
+                        <Modal isOpen={show} centered={true} >
+                            <ModalHeader toggle={handleClose}>
+                                Add Comment
+                            </ModalHeader>
+                            <ModalBody>
+                                <RichTextEditorComponent toolbarSettings={toolbarSettings} height={250}>
 
-                    <div>
-                        <CoolingAddRow modal2={modal2} toggle2={toggle2} addRow={addRow} increaseRow={increaseRow} />
+                                    <Inject services={[Toolbar, HtmlEditor]} />
+                                </RichTextEditorComponent>
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="primary"> Save </Button>
+                                <Button color="dark" onClick={handleClose}> Cancel </Button>
+                            </ModalFooter>
+                        </Modal>
                     </div>
-                   
                 </div>
                 <div>
-                    <CoolingGrid modal={modal} toggle={toggle} modal2={modal2} toggle2={toggle2} column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} addColumn={addColumn} NewRow2={NewRow2}deleteRow2={deleteRow2} />
+                    <CoolingGrid modal={modal} toggle={toggle} modal2={modal2} toggle2={toggle2} column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} addColumn={addColumn} NewRow2={NewRow2} deleteRow2={deleteRow2} />
                 </div>
             </div>
             <div className="grid-chart-container">
@@ -139,7 +174,9 @@ const CoolingTimeStudy = () => {
                         <div className="form-group">
                             <label htmlFor="exampleFormControlSelect30" className="lbl_design"> X-Axis: </label>
                             <select className="form-control digits" id="exampleFormControlSelect30">
-                                <option>{"Dim1"}</option>
+                            {column.map((value) => (
+                                <option> {value.header} </option>
+                            ))}
                             </select>
                         </div>
                     </div>

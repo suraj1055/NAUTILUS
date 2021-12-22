@@ -135,8 +135,6 @@ const ViscocityCurve = () => {
         setMaxViscosity(NewRow2[NewRow2.length - NewRow2.length].Viscosity + NewRow2[NewRow2.length - NewRow2.length].Viscosity / 5)
 
         setInterval((NewRow2[0].Viscosity - NewRow2[NewRow2.length - 1].Viscosity) / 3)
-
-        handleEditFormSubmit(event)
     }
 
     return (

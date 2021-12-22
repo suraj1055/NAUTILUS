@@ -15,8 +15,8 @@ const ColdGrid1 = ({ addHeader, column, deleteColumn, editColumn, isColumnId, ed
                                     {column.map((index) => (
                                         <>
                                             {isColumnId === index.id ? (<th style={{ width: '200px' }}>
-                                                <div className="table-heading-content">
-                                                    <div className="table-heading">
+                                                <div className="table-heading-content-editable">
+                                                    <div className="table-heading-editable">
                                                         <input type="text" defaultValue={index.header} onChange={addHeader} />
                                                     </div>
                                                     <div className="table-heading-icons">
