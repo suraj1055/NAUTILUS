@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { ChartComponent } from '@syncfusion/ej2-react-charts';
+import { ChartComponent, LineSeries, Inject, SeriesCollectionDirective, SeriesDirective, Category, DataLabel } from '@syncfusion/ej2-react-charts';
 import { Button } from 'reactstrap';
 import Cavity from '../columns&rows/CavityAddColumn';
 import CavityGrid from '../Grids/CavityGrid';
 import { nanoid } from 'nanoid'
 import CavityGrid2 from '../Grids/CavityGrid2';
 import '../App.css';
-import { HtmlEditor, Inject, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
+import { HtmlEditor, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { data, data2 } from '../data/cavity_balance_data';
 import CavityEdit from '../modals/CavityEdit'
@@ -46,7 +46,8 @@ const CavityBalance = () => {
     const [column, setColumn] = useState(data);
     const [isColumnId, setIsColumnId] = useState(null);
     const [toggleEdit, setToggleEdit] = useState(true);
-    const column2 = data2
+    const [column2, setColumn2] = useState(data2);
+    const [chartData, setChartData] = useState()
 
     const addHeader = (e) => {
         e.preventDefault();
@@ -99,6 +100,23 @@ const CavityBalance = () => {
         setToggleEdit(true)
     }
 
+    const handleEditFormChange = (event, id) => {
+
+        event.preventDefault();
+
+        const fieldName = event.target.getAttribute("name");
+        const fieldValue = event.target.value;
+
+        var newArray = data2[id];
+        newArray[fieldName] = fieldValue;
+    }
+
+    const setGraph = () => {
+        setChartData(data2)
+        // setColumn2(data2)
+        console.log(data2)
+    }
+
     return (
         <>
             <div className="grid-chart-container">
@@ -133,7 +151,7 @@ const CavityBalance = () => {
 
                 </div>
                 <div className="mb-4">
-                    <CavityGrid column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} toggle={toggle} column2={column2} />
+                    <CavityGrid column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} toggle={toggle} column2={column2} handleEditFormChange={handleEditFormChange} />
                 </div>
                 <div className="">
                     <CavityGrid2 column={column} />
@@ -142,18 +160,26 @@ const CavityBalance = () => {
             <div className="grid-chart-container">
                 <div className="row">
                     <div className="col-md-4 chart_container_btn">
-                        <Button color="primary"> {"Calculate & Show Graph"} </Button>
+                        <Button color="primary" onClick={setGraph}> Calculate & Show Graph </Button>
                     </div>
                 </div>
                 <div>
-                    <ChartComponent>
+                    <ChartComponent title="Cavity Chart Analysis" primaryXAxis={{ valueType: "Category", title: "Part Weight" }} primaryYAxis={{ title: "Cavity ID" }}>
+                        <Inject services={[LineSeries, Category, DataLabel]} />
+
+                        {column.map((value, key) => (
+                            <SeriesCollectionDirective>
+                                <SeriesDirective type="Line" dataSource={chartData} xName="Cavity_No" yName={"value" + key} marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
+                            </SeriesCollectionDirective>
+                        ))}
+
                     </ChartComponent>
                 </div>
             </div>
             <div className="row save_saveas_btn">
                 <div className="col-md-12">
                     <div className="text-right">
-                        <Button color="third" className="btn-save-chart"> {"Save"} </Button>
+                        <Button color="third" className="btn-save-chart"> Save </Button>
                     </div>
                 </div>
             </div>
