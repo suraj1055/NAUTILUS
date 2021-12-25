@@ -9,7 +9,7 @@ import Read from './PressureRead'
 import { HtmlEditor, Inject, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-const PressureGrid = ({ toggle2, modal2, addRow, increaseRow, NewRow2, deleteRow2, handleEditFormSubmit, handleEditFormChange, setId, isRowId, editFormData }) => {
+const PressureGrid = ({ toggle2, modal2, addRow, increaseRow, NewRow2, deleteRow2, handleEditFormSubmit, handleEditFormChange, setId, isRowId, editFormData, Max_Press_Available }) => {
 
   const [show, setShow] = useState(false);
 
@@ -26,7 +26,7 @@ const PressureGrid = ({ toggle2, modal2, addRow, increaseRow, NewRow2, deleteRow
 
   return (
     <div>
-      <div  className="mb-4 d-flex justify-content-between">
+      <div className="mb-4 d-flex justify-content-between">
         <div>
           <Button onClick={toggle2} color="secondary" className="btn btn-sm" type="button"> Add Row </Button>
           <PressureAddRow toggle2={toggle2} modal2={modal2} addRow={addRow} increaseRow={increaseRow} />
@@ -51,7 +51,7 @@ const PressureGrid = ({ toggle2, modal2, addRow, increaseRow, NewRow2, deleteRow
           </Modal>
         </div>
       </div>
-      <form>
+      <form autoComplete="off">
         <Table striped bordered hover responsive variant="light">
           <thead>
             <tr>
@@ -83,10 +83,12 @@ const PressureGrid = ({ toggle2, modal2, addRow, increaseRow, NewRow2, deleteRow
                 <>
                   {isRowId === NewRow.id ?
                     (
-                      <Edit NewRow={NewRow} setId={setId} NewRow2={NewRow2} handleEditFormChange={handleEditFormChange} deleteRow2={deleteRow2} rowId={rowId} editFormData={editFormData} />
+                      <Edit NewRow={NewRow} setId={setId} NewRow2={NewRow2} handleEditFormChange={handleEditFormChange} deleteRow2={deleteRow2} rowId={rowId} editFormData={editFormData} Max_Press_Available={Max_Press_Available} />
                     )
                     :
-                    (<Read NewRow={NewRow} NewRow2={NewRow2} setId={setId} deleteRow2={deleteRow2} rowId={rowId} editFormData={editFormData} />)
+                    (
+                      <Read NewRow={NewRow} NewRow2={NewRow2} setId={setId} deleteRow2={deleteRow2} rowId={rowId} editFormData={editFormData} Max_Press_Available={Max_Press_Available}/>
+                    )
                   }
                 </>
 

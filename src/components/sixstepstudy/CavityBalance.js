@@ -88,6 +88,11 @@ const CavityBalance = () => {
             return index.id !== id;
         })
         setColumn(updatedColumns)
+
+        const updatedColumns2 = column2.filter((index) => {
+            return index.id !== id;
+        })
+        setColumn2(updatedColumns2)
     }
 
     const editColumn = (id) => {
@@ -109,11 +114,12 @@ const CavityBalance = () => {
 
         var newArray = data2[id];
         newArray[fieldName] = fieldValue;
+
+        setColumn2(data2)
     }
 
     const setGraph = () => {
-        setChartData(data2)
-        // setColumn2(data2)
+        setChartData(column2)
         console.log(data2)
     }
 
@@ -166,12 +172,12 @@ const CavityBalance = () => {
                 <div>
                     <ChartComponent title="Cavity Chart Analysis" primaryXAxis={{ valueType: "Category", title: "Part Weight" }} primaryYAxis={{ title: "Cavity ID" }}>
                         <Inject services={[LineSeries, Category, DataLabel]} />
+                        <SeriesCollectionDirective>
 
-                        {column.map((value, key) => (
-                            <SeriesCollectionDirective>
+                            {column.map((value, key) => (
                                 <SeriesDirective type="Line" dataSource={chartData} xName="Cavity_No" yName={"value" + key} marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
-                            </SeriesCollectionDirective>
-                        ))}
+                            ))}
+                        </SeriesCollectionDirective>
 
                     </ChartComponent>
                 </div>

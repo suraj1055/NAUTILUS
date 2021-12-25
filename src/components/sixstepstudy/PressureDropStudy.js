@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChartComponent } from '@syncfusion/ej2-react-charts';
+import { ChartComponent, LineSeries, Inject, SeriesCollectionDirective, SeriesDirective, Category, DataLabel } from '@syncfusion/ej2-react-charts';
 import Pressure from "../modals/Pressure";
 import { Button } from 'reactstrap';
 import PressureGrid from '../Grids/PressureGrid';
@@ -23,13 +23,17 @@ const PressureDropStudy = () => {
     const row1 = [];
     const [row, setRow] = useState();
     const [NewRow2, setNewRow2] = useState(data);
+    const [Max_Press_Available, setMax_Press_Available] = useState()
+    // const [minViscosity, setMinViscosity] = useState()
+    // const [maxViscosity, setMaxViscosity] = useState()
+    // const [Interval, setInterval] = useState()
+
 
     const [editFormData, setEditFormData] = useState({
-        Injection_Speed: "",
-        Fill_Time: "",
-        Peak_Inj_Press: "",
-        Viscosity: "",
-        Shear_Rate: ""
+        Flow_Area: "",
+        Peak_Pressure: "",
+        Percent_Maximum: "",
+        Max_Press_Available: Max_Press_Available
     })
 
     const [isRowId, setIsRowId] = useState(null)
@@ -37,13 +41,19 @@ const PressureDropStudy = () => {
     const handleEditFormChange = (event) => {
         event.preventDefault();
 
-        const fieldName = event.target.getAttribute("name");
-        const fieldValue = event.target.value;
+        if (!Max_Press_Available) {
+            alert("Please Enter Max Pressure")
+        }
 
-        const newFormData = { ...editFormData };
-        newFormData[fieldName] = fieldValue;
+        else {
+            const fieldName = event.target.getAttribute("name");
+            const fieldValue = event.target.value;
 
-        setEditFormData(newFormData);
+            const newFormData = { ...editFormData };
+            newFormData[fieldName] = fieldValue;
+
+            setEditFormData(newFormData);
+        }
 
     }
 
@@ -52,11 +62,10 @@ const PressureDropStudy = () => {
 
         const editedValue = {
             id: isRowId,
-            Injection_Speed: editFormData.Injection_Speed,
-            Fill_Time: editFormData.Fill_Time,
-            Peak_Inj_Press: editFormData.Peak_Inj_Press,
-            Viscosity: Math.round(editFormData.Fill_Time * editFormData.Peak_Inj_Press),
-            Shear_Rate: Number(1 / editFormData.Fill_Time).toFixed(3),
+            Flow_Area: editFormData.Flow_Area,
+            Peak_Pressure: editFormData.Peak_Pressure,
+            Percent_Maximum: (editFormData.Peak_Pressure * 100) / Max_Press_Available,
+            Max_Press_Available: Max_Press_Available
         }
 
         const newValues = [...NewRow2];
@@ -80,11 +89,11 @@ const PressureDropStudy = () => {
         for (let i = 0; i < parseInt(row); i++) {
             row1.push({
                 id: nanoid(),
-                Injection_Speed: "",
-                Fill_Time: "",
-                Peak_Inj_Press: "",
-                Viscosity: "",
-                Shear_Rate: ""
+                Flow_Area: "",
+                Peak_Pressure: "",
+                Percent_Maximum: "",
+                Delta_P: "",
+                Percent_Delta_P: ""
             })
         }
         setNewRow2([...NewRow2, ...row1]);
@@ -104,24 +113,22 @@ const PressureDropStudy = () => {
         setIsRowId(NewRow.id);
 
         const formValues = {
-            Injection_Speed: NewRow.Injection_Speed,
-            Fill_Time: NewRow.Fill_Time,
-            Peak_Inj_Press: NewRow.Peak_Inj_Press,
+            Flow_Area: NewRow.Flow_Area,
+            Peak_Pressure: NewRow.Peak_Pressure,
+            Percent_Maximum: NewRow.Percent_Maximum,
         }
 
         setEditFormData(formValues);
     }
 
-    // const setGraph = (event) => {
+    const setGraph = (event) => {
 
-    //     setMinViscosity(NewRow2[NewRow2.length - 1].Viscosity - NewRow2[NewRow2.length - 1].Viscosity / 5)
+        // setMinViscosity(NewRow2[NewRow2.length - 1].Viscosity - NewRow2[NewRow2.length - 1].Viscosity / 5)
 
-    //     setMaxViscosity(NewRow2[NewRow2.length - NewRow2.length].Viscosity + NewRow2[NewRow2.length - NewRow2.length].Viscosity / 5)
+        // setMaxViscosity(NewRow2[NewRow2.length - NewRow2.length].Viscosity + NewRow2[NewRow2.length - NewRow2.length].Viscosity / 5)
 
-    //     setInterval((NewRow2[0].Viscosity - NewRow2[NewRow2.length - 1].Viscosity) / 3)
-
-    //     handleEditFormSubmit(event)
-    // }
+        // setInterval((NewRow2[0].Viscosity - NewRow2[NewRow2.length - 1].Viscosity) / 3)
+    }
 
     return (
         <>
@@ -152,9 +159,9 @@ const PressureDropStudy = () => {
                 </div>
                 <div className="row">
                     <div className="col-md-3">
-                        <div className="form-group">
+                        <div className="form-group" onMouseOut={handleEditFormSubmit}>
                             <label htmlFor="Max_Pressure_Available" className="lbl_design"> Max Pressure Available: </label>
-                            <input className="form-control" id="Max_Pressure_Available" type="text" />
+                            <input className="form-control" id="Max_Pressure_Available" type="text" onChange={(e) => setMax_Press_Available(e.target.value)} />
                         </div>
                     </div>
                     <div className="col-md-3">
@@ -170,15 +177,24 @@ const PressureDropStudy = () => {
             </div>
             <div className="grid-chart-container">
                 <div>
-                    <PressureGrid toggle2={toggle2} modal2={modal2} addRow={addRow} increaseRow={increaseRow} NewRow2={NewRow2} deleteRow2={deleteRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} setId={setId} isRowId={isRowId} editFormData={editFormData} />
+                    <PressureGrid toggle2={toggle2} modal2={modal2} addRow={addRow} increaseRow={increaseRow} NewRow2={NewRow2} deleteRow2={deleteRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} setId={setId} isRowId={isRowId} editFormData={editFormData} Max_Press_Available={Max_Press_Available} />
                 </div>
             </div>
             <div className="grid-chart-container">
                 <div className="chart_container_btn">
-                <Button color="primary"> Show Graph </Button>
+                    <Button color="primary" onClick={setGraph}> Show Graph </Button>
                 </div>
                 <div>
-                    <ChartComponent>
+                    <ChartComponent title="Pressure Drop Study" width="1100" primaryXAxis={{ valueType: "Category", title: "Flow Area" }} primaryYAxis={{ title: "Max Pressure"}}>
+
+                        <Inject services={[LineSeries, Category, DataLabel]} />
+
+                        <SeriesCollectionDirective>
+                            <SeriesDirective type="Line" dataSource={NewRow2} xName="Flow_Area" yName="Max_Press_Available" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
+
+                            <SeriesDirective type="Line" dataSource={NewRow2} xName="Flow_Area" yName="Peak_Pressure" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
+                        </SeriesCollectionDirective>
+
                     </ChartComponent>
                 </div>
             </div>
