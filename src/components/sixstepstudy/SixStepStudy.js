@@ -13,7 +13,7 @@ export default class SixStepStudy extends React.Component {
     render() {
 
         let headertext = [
-            { text: "Viscocity Curve" },
+            { text: "Viscosity Curve" },
             { text: "Cavity Balance" },
             { text: "Pressure Drop Study" },
             { text: "Cosmetic Process Window" },
