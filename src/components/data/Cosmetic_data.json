@@ -1,12 +1,16 @@
 [
     {
       "id": 1,
-      "header" : "Column 1"
+      "Melt_Temp": "",
+      "Low": "",
+      "High": ""
     },
 
     {
       "id": 2,
-      "header" : "Column 2"
+      "Melt_Temp": "",
+      "Low": "",
+      "High": ""
     }
 ]
 
