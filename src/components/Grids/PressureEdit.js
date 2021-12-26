@@ -4,9 +4,9 @@ const edit = ({ NewRow2, handleEditFormChange, deleteRow2, NewRow, rowId, editFo
     return (
         <tr key={rowId}>
 
-            <td> <input type='text' className="form-control" name="Flow_Area" value={editFormData.Flow_Area} onChange={handleEditFormChange} autofocus/> </td>
+            <td> <input type='text' className="form-control" name="Flow_Area" value={editFormData.Flow_Area} onChange={handleEditFormChange} autoFocus/> </td>
 
-            <td> <input type='text' className="form-control" name="Peak_Pressure" value={editFormData.Peak_Pressure} onChange={handleEditFormChange} autofocus/> </td>
+            <td> <input type='text' className="form-control" name="Peak_Pressure" value={editFormData.Peak_Pressure} onChange={handleEditFormChange} autoFocus/> </td>
 
             <td> <input type='text' className="form-control" name="Percent_Maximum" value={Number(NewRow2[rowId].Percent_Maximum).toFixed(3) === 0 ? ('-') : (Number(NewRow2[rowId].Percent_Maximum).toFixed(3))} readOnly /> </td>
 
