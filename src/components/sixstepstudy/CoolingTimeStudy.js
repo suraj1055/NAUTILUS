@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { ChartComponent } from '@syncfusion/ej2-react-charts'
+import { ChartComponent, LineSeries, SeriesCollectionDirective, SeriesDirective, Category, DataLabel } from '@syncfusion/ej2-react-charts';
 import { Button } from 'reactstrap';
 import CoolingAddColumn from '../columns&rows/CoolingAddColumn';
 import CoolingAddRow from '../columns&rows/CoolingAddRow';
 import { nanoid } from 'nanoid';
-import data from "../data/Cooling_data.json"
+import { data, data2 } from '../data/Cooling_data'
 import CoolingGrid from '../Grids/CoolingGrid';
 import { HtmlEditor, Inject, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import '../App.css';
+import CoolingEdit from '../modals/CoolingEdit'
 
 const CoolingTimeStudy = () => {
 
@@ -39,12 +40,19 @@ const CoolingTimeStudy = () => {
         setModal2(!modal2);
     }
 
+    const [modal3, setModal3] = useState();
+
+    const toggle3 = () => {
+        setModal3(!modal3);
+    }
+
     // ************ Functions to deal with column ************
 
     const [header, setHeader] = useState();
-    const [column, setColumn] = useState([]);
+    const [column, setColumn] = useState(data);
     const [isColumnId, setIsColumnId] = useState(null);
     const [toggleEdit, setToggleEdit] = useState(true);
+    const [grid2, setGrid2] = useState("");
 
     const addHeader = (e) => {
         e.preventDefault();
@@ -102,7 +110,7 @@ const CoolingTimeStudy = () => {
 
     const row1 = [];
     const [row, setRow] = useState();
-    const [NewRow2, setNewRow2] = useState(data);
+    const [NewRow2, setNewRow2] = useState(data2);
 
     const addRow = (e) => {
         e.preventDefault();
@@ -113,11 +121,8 @@ const CoolingTimeStudy = () => {
         for (let i = 0; i < parseInt(row); i++) {
             row1.push({
                 id: nanoid(),
-                Injection_Speed: "",
-                Fill_Time: "",
-                Peak_Inj_Press: "",
-                Viscosity: "",
-                Shear_Rate: ""
+                "edit": true,
+                "delete": true
             })
         }
         setNewRow2([...NewRow2, ...row1]);
@@ -142,6 +147,10 @@ const CoolingTimeStudy = () => {
 
                         <div>
                             <CoolingAddRow modal2={modal2} toggle2={toggle2} addRow={addRow} increaseRow={increaseRow} />
+                        </div>
+
+                        <div>
+                            <CoolingEdit modal3={modal3} toggle3={toggle3} column={column} addHeader={addHeader} editColumnHeader={editColumnHeader} editCancel={editCancel} editColumn={editColumn} />
                         </div>
                     </div>
                     <div>
@@ -173,10 +182,12 @@ const CoolingTimeStudy = () => {
                     <div className="col-md-3">
                         <div className="form-group">
                             <label htmlFor="exampleFormControlSelect30" className="lbl_design"> X-Axis: </label>
-                            <select className="form-control digits" id="exampleFormControlSelect30">
-                            {column.map((value) => (
-                                <option> {value.header} </option>
-                            ))}
+                            <select className="form-control digits" id="exampleFormControlSelect30" onClick={(e) => setGrid2(e.target.value)}>
+                                {column.map((value, key) => (
+                                    <>
+                                        { value.id === 0 ? '-' : <option> {value.header} </option> }
+                                    </>
+                                ))}
                             </select>
                         </div>
                     </div>
@@ -185,7 +196,14 @@ const CoolingTimeStudy = () => {
                     </div>
                 </div>
                 <div className="col-md-12">
-                    <ChartComponent>
+                    <ChartComponent title="Cooling Time Study Chart" width="1100" primaryXAxis={{ valueType: "Category", title: "Cooling Time Study" }} primaryYAxis={{ title: `${grid2}` }}>
+                        <Inject services={[LineSeries, Category, DataLabel]} />
+                        <SeriesCollectionDirective>
+
+                            <SeriesDirective type="Line" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
+
+                        </SeriesCollectionDirective>
+
                     </ChartComponent>
                 </div>
             </div>
@@ -201,4 +219,4 @@ const CoolingTimeStudy = () => {
     )
 }
 
-export default CoolingTimeStudy
+export default CoolingTimeStudy;

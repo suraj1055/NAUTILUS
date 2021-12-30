@@ -4,9 +4,9 @@ const Read = ({ setId, deleteRow2, NewRow, rowId, NewRow2, Max_Press_Available }
     return (
         <tr key={rowId} onClick={(event) => setId(event, NewRow)}>
 
-            <td> <input type='text' className="form-control" value={NewRow.Flow_Area} autofocus/> </td>
+            <td> <input type='text' className="form-control" value={NewRow.Flow_Area} /> </td>
 
-            <td> <input type='text' className="form-control" value={NewRow.Peak_Pressure} autofocus/> </td>
+            <td> <input type='text' className="form-control" value={NewRow.Peak_Pressure}/> </td>
 
             <td> <input type='text' className="form-control" value={NewRow2[rowId].Percent_Maximum === "" ? ('-') : (Number(NewRow2[rowId].Percent_Maximum).toFixed(3))} readOnly /> </td>
 

@@ -306,8 +306,9 @@ grid-gap: 2rem;
 }
 
 .cold_table{
-  height: 280px;
+  height: 350px;
   overflow-x: scroll;
+  width: 1000px;
 }
 
 .cold_table2{
@@ -360,6 +361,7 @@ grid-gap: 2rem;
   .cold_table{
     height: 250px;
     overflow-x: scroll;
+    width: 700px;
   }
 }
 

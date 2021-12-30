@@ -118,9 +118,11 @@ const CosmeticPressure = () => {
                         <Inject services={[LineSeries, Category, DataLabel]} />
 
                         <SeriesCollectionDirective>
+                            
                             <SeriesDirective type="Line" dataSource={NewRow2} xName="Melt_Temp" yName="Low" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
 
                             <SeriesDirective type="Line" dataSource={NewRow2} xName="Melt_Temp" yName="High" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
+
                         </SeriesCollectionDirective>
 
                     </ChartComponent>

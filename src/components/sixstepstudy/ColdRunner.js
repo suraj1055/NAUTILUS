@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
-import { ChartComponent } from '@syncfusion/ej2-react-charts'
+import { ChartComponent, LineSeries, SeriesCollectionDirective, SeriesDirective, Category, DataLabel } from '@syncfusion/ej2-react-charts';
 import { Button } from 'reactstrap';
 import ColdGrid1 from '../Grids/ColdGrid1';
 import { nanoid } from 'nanoid';
 import ColdAddColumn from '../columns&rows/ColdAddColumn';
 import ColdAddRow from '../columns&rows/ColdAddRow';
-import data from "../data/Cold_runner.json"
+import { data, data2 } from '../data/Cold_runner';
 import ColdGrid2 from '../Grids/ColdGrid2';
 import { HtmlEditor, Inject, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import '../App.css';
+import ColdEdit from '../modals/ColdEdit'
 
 const CavityBalance = () => {
 
@@ -38,13 +39,20 @@ const CavityBalance = () => {
         setModal2(!modal2);
     }
 
+    const [modal3, setModal3] = useState();
+
+    const toggle3 = () => {
+        setModal3(!modal3);
+    }
+
     // ************ Functions to deal with column ************
 
     const [header, setHeader] = useState();
-    const [column, setColumn] = useState([]);
+    const [column, setColumn] = useState(data);
     const [isColumnId, setIsColumnId] = useState(null);
     const [toggleEdit, setToggleEdit] = useState(true);
     const [grid2, setGrid2] = useState("");
+    const [chartData, setChartData] = useState()
 
     const addHeader = (e) => {
         e.preventDefault();
@@ -58,20 +66,18 @@ const CavityBalance = () => {
         else {
             const newColumn = { id: nanoid(), header: header }
             setColumn([...column, newColumn]);
-            console.log(newColumn)
             setHeader("");
         }
     };
 
     const editColumnHeader = () => {
         if (header && !toggleEdit) {
-            setColumn(
-                column.map((element) => {
-                    if (element.id === isColumnId) {
-                        return { ...element, header: header }
-                    }
-                    return element;
-                })
+            setColumn(column.map((element) => {
+                if (element.id === isColumnId) {
+                    return { ...element, header: header }
+                }
+                return element;
+            })
             )
             setHeader("");
             setIsColumnId(null)
@@ -81,11 +87,35 @@ const CavityBalance = () => {
         }
     }
 
+    const handleEditFormChange = (event, id) => {
+
+        event.preventDefault();
+
+        const fieldName = event.target.getAttribute("name");
+        const fieldValue = event.target.value;
+
+        // data2[id] = {id : id}
+        // data2[id][fieldName] = fieldValue;
+
+        // setEditFormData(data2[id]);
+
+        var newArray = data2[id];
+        newArray[fieldName] = fieldValue;
+
+        setNewRow2(data2)
+    }
+
     const deleteColumn = (id) => {
         const updatedColumns = column.filter((index) => {
             return index.id !== id;
         })
         setColumn(updatedColumns)
+    }
+
+    const setGraph = () => {
+        setChartData(data2)
+        console.log(data2)
+        console.log(grid2)
     }
 
     const editColumn = (id) => {
@@ -103,7 +133,7 @@ const CavityBalance = () => {
 
     const row1 = [];
     const [row, setRow] = useState();
-    const [NewRow2, setNewRow2] = useState(data);
+    const [NewRow2, setNewRow2] = useState(data2);
 
     const addRow = (e) => {
         e.preventDefault();
@@ -114,11 +144,8 @@ const CavityBalance = () => {
         for (let i = 0; i < parseInt(row); i++) {
             row1.push({
                 id: nanoid(),
-                Injection_Speed: "",
-                Fill_Time: "",
-                Peak_Inj_Press: "",
-                Viscosity: "",
-                Shear_Rate: ""
+                "edit": true,
+                "delete": true
             })
         }
         setNewRow2([...NewRow2, ...row1]);
@@ -141,6 +168,9 @@ const CavityBalance = () => {
                         </div>
                         <div>
                             <ColdAddRow modal2={modal2} toggle2={toggle2} addRow={addRow} increaseRow={increaseRow} />
+                        </div>
+                        <div>
+                            <ColdEdit modal3={modal3} toggle3={toggle3} column={column} addHeader={addHeader} editColumnHeader={editColumnHeader} editCancel={editCancel} editColumn={editColumn} />
                         </div>
                     </div>
                     <div>
@@ -167,7 +197,7 @@ const CavityBalance = () => {
                     <div className="mb-2">
                         {/* Grid 1 */}
 
-                        <ColdGrid1 modal={modal} toggle={toggle} modal2={modal2} toggle2={toggle2} column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} addColumn={addColumn} NewRow2={NewRow2} deleteRow2={deleteRow2} />
+                        <ColdGrid1 modal={modal} toggle={toggle} modal2={modal2} toggle2={toggle2} column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} addColumn={addColumn} NewRow2={NewRow2} deleteRow2={deleteRow2} handleEditFormChange={handleEditFormChange} />
 
                     </div>
                 </div>
@@ -176,13 +206,15 @@ const CavityBalance = () => {
                 <div className="row mb-4">
                     <div className="col-md-4 chart_container_btn">
                         <select className="form-control digits" id="exampleFormControlSelect30" onClick={(e) => setGrid2(e.target.value)}>
-                            {column.map((value) => (
-                                <option> {value.header} </option>
+                            {column.map((value, key) => (
+                                <>
+                                    {value.id === 0 ? '-' : <option> {value.header} </option>}
+                                </>
                             ))}
                         </select>
                     </div>
                     <div className="col-md-4 chart_container_btn">
-                        <Button color="primary"> Calculate & Show Graph </Button>
+                        <Button color="primary" onClick={setGraph}> Calculate & Show Graph </Button>
                     </div>
                 </div>
                 <div className="cold-runner-grid">
@@ -191,7 +223,14 @@ const CavityBalance = () => {
                         <ColdGrid2 column={column} NewRow2={NewRow2} grid2={grid2} />
                     </div>
                     <div className="cold-chart">
-                        <ChartComponent>
+                        <ChartComponent title="Cold Runner" primaryXAxis={{ valueType: "Category", title: "Time" }} primaryYAxis={{ title: `${grid2}` }}>
+                            <Inject services={[LineSeries, Category, DataLabel]} />
+                            <SeriesCollectionDirective>
+
+                                <SeriesDirective type="Line" dataSource={chartData} xName="Time" yName={grid2} marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
+
+                            </SeriesCollectionDirective>
+
                         </ChartComponent>
                     </div>
                 </div>
