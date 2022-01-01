@@ -89,14 +89,14 @@ const CavityBalance = () => {
         }
     }
 
-    const handleEditFormChange = (event) => {
+    const handleEditFormChange = (event, id) => {
 
         event.preventDefault();
 
         const fieldName = event.target.getAttribute("name");
         const fieldValue = event.target.value;
 
-        const newFormData = {...editFormData}
+        const newFormData = NewRow2[id]
         newFormData[fieldName] = fieldValue
 
         setEditFormData(newFormData)

@@ -41,7 +41,7 @@ const ColdGrid1 = ({ column, deleteColumn, NewRow2, deleteRow2, handleEditFormCh
 
                                         {column.map((index, key2) => (
 
-                                            (<td> <input type='text' name={index.header} className="form-control" onChange={handleEditFormChange} /> </td>)
+                                            (<td> <input type='text' name={index.header} className="form-control" onChange={(e) => handleEditFormChange(e, key1)} /> </td>)
                                         ))}
 
                                         <td> <i className="fa fa-trash viscocity_icons" onClick={() => deleteRow2(value.id)}></i> </td>
