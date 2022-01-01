@@ -2,7 +2,7 @@ import React from 'react';
 import Table from 'react-bootstrap/Table';
 import '../App.css';
 
-const ColdGrid1 = ({ column, deleteColumn, NewRow2, deleteRow2, handleEditFormChange, handleEditFormSubmit, setId }) => {
+const ColdGrid1 = ({ column, deleteColumn, NewRow2, deleteRow2, handleEditFormChange }) => {
     return (
         <>
             <div className="Cold-Grid-Container">
@@ -34,14 +34,13 @@ const ColdGrid1 = ({ column, deleteColumn, NewRow2, deleteRow2, handleEditFormCh
                                     <th> <h6> Action </h6> </th>
                                 </tr>
                             </thead>
-                            <tbody className="grid_style" onMouseOut={handleEditFormSubmit}>
+                            <tbody className="grid_style">
                                 {NewRow2.map((value, key1) => (
-                                    <tr key={key1} onClick={(event) => setId(event, value)}>
+                                    <tr key={key1}>
 
                                         {column.map((index, key2) => (
 
-                                            (<td> <input type='text' name={index.header} className="form-control" onChange={handleEditFormChange} /> </td>)
-
+                                            (<td> <input type='text' name={index.header} className="form-control" onChange={(e) => handleEditFormChange(e, key1)} /> </td>)
                                         ))}
 
                                         <td> <i className="fa fa-trash viscocity_icons" onClick={() => deleteRow2(value.id)}></i> </td>
