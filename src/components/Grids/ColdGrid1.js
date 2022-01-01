@@ -1,8 +1,10 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
 import '../App.css';
+import ColdEditRow from '../Grids/ColdEditRow'
+import ColdReadEdit from '../Grids/ColdReadEdit'
 
-const ColdGrid1 = ({ column, deleteColumn, NewRow2, deleteRow2, handleEditFormChange }) => {
+const ColdGrid1 = ({ column, deleteColumn, NewRow2, deleteRow2, handleEditFormChange, handleEditFormSubmit, setId, isRowId, editFormData }) => {
     return (
         <>
             <div className="Cold-Grid-Container">
@@ -34,18 +36,15 @@ const ColdGrid1 = ({ column, deleteColumn, NewRow2, deleteRow2, handleEditFormCh
                                     <th> <h6> Action </h6> </th>
                                 </tr>
                             </thead>
-                            <tbody className="grid_style">
+                            <tbody className="grid_style" onMouseOut={handleEditFormSubmit}>
                                 {NewRow2.map((value, key1) => (
-                                    <tr key={key1}>
-
-                                        {column.map((index, key2) => (
-
-                                            (<td> <input type='text' name={index.header} className="form-control" onChange={(e) => handleEditFormChange(e, key1)} /> </td>)
-                                        ))}
-
-                                        <td> <i className="fa fa-trash viscocity_icons" onClick={() => deleteRow2(value.id)}></i> </td>
-
-                                    </tr>
+                                    <>
+                                        {isRowId === value.id ?
+                                            (<ColdEditRow key1={key1} setId={setId} value={value} column={column} handleEditFormChange={handleEditFormChange} deleteRow2={deleteRow2} editFormData={editFormData} NewRow2={NewRow2} />)
+                                            :
+                                            (<ColdReadEdit key1={key1} setId={setId} value={value} column={column} deleteRow2={deleteRow2} editFormData={editFormData} NewRow2={NewRow2} />)
+                                        }
+                                    </>
                                 ))}
                             </tbody>
                         </Table>

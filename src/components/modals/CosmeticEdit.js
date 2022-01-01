@@ -24,7 +24,7 @@ const CosmeticEdit = ({ modal, toggle, setHeader1, setHeader2, Melting, Hydrauli
             {/* < !-- Using Form Modal --> */}
             <div className="mb-4 d-flex justify-content-between">
                 <div>
-                    <Button color="primary" onClick={toggle}>Edit</Button>
+                    <Button color="primary" onClick={toggle}> Edit Column Header </Button>
                 </div>
                 <div>
                     <Button color="fifth" className="btn btn-sm mr-4" type="button"> Print </Button>

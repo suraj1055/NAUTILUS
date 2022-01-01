@@ -52,7 +52,9 @@ const CavityBalance = () => {
     const [isColumnId, setIsColumnId] = useState(null);
     const [toggleEdit, setToggleEdit] = useState(true);
     const [grid2, setGrid2] = useState("");
-    const [chartData, setChartData] = useState()
+    const [chartData, setChartData] = useState();
+    const [editFormData, setEditFormData] = useState({})
+    const [isRowId, setIsRowId] = useState(null)
 
     const addHeader = (e) => {
         e.preventDefault();
@@ -94,15 +96,41 @@ const CavityBalance = () => {
         const fieldName = event.target.getAttribute("name");
         const fieldValue = event.target.value;
 
-        // data2[id] = {id : id}
-        // data2[id][fieldName] = fieldValue;
+        const newFormData = { ...editFormData };
+        newFormData[fieldName] = fieldValue;
 
-        // setEditFormData(data2[id]);
+        setEditFormData(newFormData)
+    }
 
-        var newArray = data2[id];
-        newArray[fieldName] = fieldValue;
+    const handleEditFormSubmit = (event) => {
 
-        setNewRow2(data2)
+        event.preventDefault()
+
+        const editedValue = { id: isRowId }
+
+        const newObject = Object.assign(editedValue, editFormData);
+
+        const newValues = [...NewRow2];
+
+        const index = NewRow2.findIndex(( value ) => value.id === isRowId)
+
+        newValues[index] = newObject;
+
+        setNewRow2(newValues)
+
+        setIsRowId(null);
+    }
+
+    const setId = (event, value) => {
+
+        event.preventDefault();
+
+        setIsRowId(value.id);
+
+        const formValues = Object.assign({}, value)
+
+        setEditFormData(formValues);
+
     }
 
     const deleteColumn = (id) => {
@@ -113,9 +141,8 @@ const CavityBalance = () => {
     }
 
     const setGraph = () => {
-        setChartData(data2)
-        console.log(data2)
-        console.log(grid2)
+        console.log(NewRow2)
+        setChartData(NewRow2)
     }
 
     const editColumn = (id) => {
@@ -182,7 +209,6 @@ const CavityBalance = () => {
                             </ModalHeader>
                             <ModalBody>
                                 <RichTextEditorComponent toolbarSettings={toolbarSettings} height={250}>
-
                                     <Inject services={[Toolbar, HtmlEditor]} />
                                 </RichTextEditorComponent>
                             </ModalBody>
@@ -197,7 +223,7 @@ const CavityBalance = () => {
                     <div className="mb-2">
                         {/* Grid 1 */}
 
-                        <ColdGrid1 modal={modal} toggle={toggle} modal2={modal2} toggle2={toggle2} column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} addColumn={addColumn} NewRow2={NewRow2} deleteRow2={deleteRow2} handleEditFormChange={handleEditFormChange} />
+                        <ColdGrid1 modal={modal} toggle={toggle} modal2={modal2} toggle2={toggle2} column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} addColumn={addColumn} NewRow2={NewRow2} deleteRow2={deleteRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} setId={setId} isRowId={isRowId} editFormData={editFormData} />
 
                     </div>
                 </div>
@@ -226,11 +252,8 @@ const CavityBalance = () => {
                         <ChartComponent title="Cold Runner" primaryXAxis={{ valueType: "Category", title: "Time" }} primaryYAxis={{ title: `${grid2}` }}>
                             <Inject services={[LineSeries, Category, DataLabel]} />
                             <SeriesCollectionDirective>
-
                                 <SeriesDirective type="Line" dataSource={chartData} xName="Time" yName={grid2} marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
-
                             </SeriesCollectionDirective>
-
                         </ChartComponent>
                     </div>
                 </div>

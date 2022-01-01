@@ -65,7 +65,7 @@ const ViscocityGrid = ({ toggle2, modal2, addRow, increaseRow, NewRow2, deleteRo
                 <h6> Peak Inj Press </h6>
               </th>
               <th className="viscosity_heading2">
-                <h6> Viscocity </h6>
+                <h6> Viscosity </h6>
               </th>
               <th className="viscosity_heading">
                 <h6> Shear Rate </h6>

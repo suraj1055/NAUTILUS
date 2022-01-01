@@ -29,5 +29,9 @@ export let data2 = [
     {
         "id": 3,
         "edit": true
+    },
+    {
+        "id": 4,
+        "edit": true
     }
 ];
