@@ -94,11 +94,6 @@ const CavityBalance = () => {
         const fieldName = event.target.getAttribute("name");
         const fieldValue = event.target.value;
 
-        // data2[id] = {id : id}
-        // data2[id][fieldName] = fieldValue;
-
-        // setEditFormData(data2[id]);
-
         var newArray = data2[id];
         newArray[fieldName] = fieldValue;
 
@@ -114,8 +109,7 @@ const CavityBalance = () => {
 
     const setGraph = () => {
         setChartData(data2)
-        console.log(data2)
-        console.log(grid2)
+        console.log(NewRow2)
     }
 
     const editColumn = (id) => {
