@@ -1,10 +1,8 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
 import '../App.css';
-import ColdEditRow from '../Grids/ColdEditRow'
-import ColdReadEdit from '../Grids/ColdReadEdit'
 
-const ColdGrid1 = ({ column, deleteColumn, NewRow2, deleteRow2, handleEditFormChange, handleEditFormSubmit, setId, isRowId, editFormData }) => {
+const ColdGrid1 = ({ column, deleteColumn, NewRow2, deleteRow2, handleEditFormChange, handleEditFormSubmit, setId }) => {
     return (
         <>
             <div className="Cold-Grid-Container">
@@ -38,13 +36,17 @@ const ColdGrid1 = ({ column, deleteColumn, NewRow2, deleteRow2, handleEditFormCh
                             </thead>
                             <tbody className="grid_style" onMouseOut={handleEditFormSubmit}>
                                 {NewRow2.map((value, key1) => (
-                                    <>
-                                        {isRowId === value.id ?
-                                            (<ColdEditRow key1={key1} setId={setId} value={value} column={column} handleEditFormChange={handleEditFormChange} deleteRow2={deleteRow2} editFormData={editFormData} NewRow2={NewRow2} />)
-                                            :
-                                            (<ColdReadEdit key1={key1} setId={setId} value={value} column={column} deleteRow2={deleteRow2} editFormData={editFormData} NewRow2={NewRow2} />)
-                                        }
-                                    </>
+                                    <tr key={key1} onClick={(event) => setId(event, value)}>
+
+                                        {column.map((index, key2) => (
+
+                                            (<td> <input type='text' name={index.header} className="form-control" onChange={handleEditFormChange} /> </td>)
+
+                                        ))}
+
+                                        <td> <i className="fa fa-trash viscocity_icons" onClick={() => deleteRow2(value.id)}></i> </td>
+
+                                    </tr>
                                 ))}
                             </tbody>
                         </Table>
