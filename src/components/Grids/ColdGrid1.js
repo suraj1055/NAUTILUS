@@ -1,8 +1,9 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
 import '../App.css';
+import { Button } from 'reactstrap';
 
-const ColdGrid1 = ({ column, deleteColumn, NewRow2, deleteRow2, handleEditFormChange }) => {
+const ColdGrid1 = ({ column, deleteColumn, NewRow2, deleteRow2, handleEditFormChange, handleEditFormSubmit, setId }) => {
     return (
         <>
             <div className="Cold-Grid-Container">
@@ -36,11 +37,11 @@ const ColdGrid1 = ({ column, deleteColumn, NewRow2, deleteRow2, handleEditFormCh
                             </thead>
                             <tbody className="grid_style">
                                 {NewRow2.map((value, key1) => (
-                                    <tr key={key1}>
+                                    <tr key={key1} onClick={(event) => setId(event, value)}>
 
                                         {column.map((index, key2) => (
 
-                                            (<td> <input type='text' name={index.header} className="form-control" onChange={(e) => handleEditFormChange(e, key1)} /> </td>)
+                                            (<td> <input type='text' name={index.header} className="form-control" onChange={handleEditFormChange} /> </td>)
                                         ))}
 
                                         <td> <i className="fa fa-trash viscocity_icons" onClick={() => deleteRow2(value.id)}></i> </td>
@@ -52,6 +53,7 @@ const ColdGrid1 = ({ column, deleteColumn, NewRow2, deleteRow2, handleEditFormCh
                     </div>
                 </form>
             </div>
+            <Button onClick={handleEditFormSubmit} className='mt-4'> save </Button>
         </>
     )
 }

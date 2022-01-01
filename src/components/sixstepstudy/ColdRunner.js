@@ -53,6 +53,8 @@ const CavityBalance = () => {
     const [toggleEdit, setToggleEdit] = useState(true);
     const [grid2, setGrid2] = useState("");
     const [chartData, setChartData] = useState()
+    const [editFormData, setEditFormData] = useState({ })
+    const [isRowId, setIsRowId] = useState(null)
 
     const addHeader = (e) => {
         e.preventDefault();
@@ -87,22 +89,42 @@ const CavityBalance = () => {
         }
     }
 
-    const handleEditFormChange = (event, id) => {
+    const handleEditFormChange = (event) => {
 
         event.preventDefault();
 
         const fieldName = event.target.getAttribute("name");
         const fieldValue = event.target.value;
 
-        // data2[id] = {id : id}
-        // data2[id][fieldName] = fieldValue;
+        const newFormData = editFormData
+        newFormData[fieldName] = fieldValue
 
-        // setEditFormData(data2[id]);
+        setEditFormData(newFormData)
+    }
 
-        var newArray = data2[id];
-        newArray[fieldName] = fieldValue;
+    const handleEditFormSubmit = (event) => {
 
-        setNewRow2(data2)
+        event.preventDefault()
+
+        const editedValue = { id: isRowId }
+
+        const newObject = Object.assign(editedValue, editFormData)
+
+        const newValues = [...NewRow2]
+
+        const index = NewRow2.findIndex( (value) => value.id === isRowId )
+
+        newValues[index] = newObject
+
+        setNewRow2(newValues)
+    }
+
+    const setId = (event, NewRow) => {
+
+        event.preventDefault();
+
+        setIsRowId(NewRow.id);
+
     }
 
     const deleteColumn = (id) => {
@@ -113,9 +135,8 @@ const CavityBalance = () => {
     }
 
     const setGraph = () => {
-        setChartData(data2)
-        console.log(data2)
-        console.log(grid2)
+        setChartData(NewRow2)
+        console.log(NewRow2)
     }
 
     const editColumn = (id) => {
@@ -197,7 +218,7 @@ const CavityBalance = () => {
                     <div className="mb-2">
                         {/* Grid 1 */}
 
-                        <ColdGrid1 modal={modal} toggle={toggle} modal2={modal2} toggle2={toggle2} column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} addColumn={addColumn} NewRow2={NewRow2} deleteRow2={deleteRow2} handleEditFormChange={handleEditFormChange} />
+                        <ColdGrid1 modal={modal} toggle={toggle} modal2={modal2} toggle2={toggle2} column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} addColumn={addColumn} NewRow2={NewRow2} deleteRow2={deleteRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} setId={setId} />
 
                     </div>
                 </div>
