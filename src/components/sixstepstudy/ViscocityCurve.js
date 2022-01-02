@@ -68,7 +68,7 @@ const ViscocityCurve = () => {
             Fill_Time: editFormData.Fill_Time,
             Peak_Inj_Press: editFormData.Peak_Inj_Press,
             Viscosity: Math.round(editFormData.Fill_Time * editFormData.Peak_Inj_Press * IntensificationRatio),
-            Shear_Rate: Number(1 / editFormData.Fill_Time).toFixed(3),
+            Shear_Rate: Number(1 / editFormData.Fill_Time).toFixed(3)
         }
 
         const newValues = [...NewRow2];

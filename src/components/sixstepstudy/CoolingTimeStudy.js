@@ -53,6 +53,8 @@ const CoolingTimeStudy = () => {
     const [isColumnId, setIsColumnId] = useState(null);
     const [toggleEdit, setToggleEdit] = useState(true);
     const [grid2, setGrid2] = useState("");
+    const [chartData, setChartData] = useState()
+
 
     const addHeader = (e) => {
         e.preventDefault();
@@ -87,6 +89,25 @@ const CoolingTimeStudy = () => {
         else {
 
         }
+    }
+
+    const handleEditFormChange = (event, id) => {
+
+        event.preventDefault();
+
+        const fieldName = event.target.getAttribute("name");
+        const fieldValue = event.target.value;
+
+        var newArray = data2[id];
+        newArray[fieldName] = fieldValue;
+
+        setNewRow2(data2)
+    }
+
+    const setGraph = () => {
+        setChartData(data2)
+        console.log(data2)
+        console.log(grid2)
     }
 
     const deleteColumn = (id) => {
@@ -174,7 +195,7 @@ const CoolingTimeStudy = () => {
                     </div>
                 </div>
                 <div>
-                    <CoolingGrid modal={modal} toggle={toggle} modal2={modal2} toggle2={toggle2} column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} addColumn={addColumn} NewRow2={NewRow2} deleteRow2={deleteRow2} />
+                    <CoolingGrid modal={modal} toggle={toggle} modal2={modal2} toggle2={toggle2} column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} addColumn={addColumn} NewRow2={NewRow2} deleteRow2={deleteRow2} handleEditFormChange={handleEditFormChange}/>
                 </div>
             </div>
             <div className="grid-chart-container">
@@ -185,14 +206,14 @@ const CoolingTimeStudy = () => {
                             <select className="form-control digits" id="exampleFormControlSelect30" onClick={(e) => setGrid2(e.target.value)}>
                                 {column.map((value, key) => (
                                     <>
-                                        { value.id === 0 ? '-' : <option> {value.header} </option> }
+                                        {value.id === 0 ? '-' : <option> {value.header} </option>}
                                     </>
                                 ))}
                             </select>
                         </div>
                     </div>
                     <div className="col-md-4 mt-4">
-                        <Button color="primary"> {"Calculate & Show Graph"} </Button>
+                        <Button color="primary" onClick={setGraph}> Calculate & Show Graph </Button>
                     </div>
                 </div>
                 <div className="col-md-12">
@@ -200,7 +221,7 @@ const CoolingTimeStudy = () => {
                         <Inject services={[LineSeries, Category, DataLabel]} />
                         <SeriesCollectionDirective>
 
-                            <SeriesDirective type="Line" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
+                            <SeriesDirective type="Line" dataSource={chartData} xName="Cooling Time Study" yName={grid2} marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
 
                         </SeriesCollectionDirective>
 

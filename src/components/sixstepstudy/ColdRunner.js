@@ -52,7 +52,9 @@ const CavityBalance = () => {
     const [isColumnId, setIsColumnId] = useState(null);
     const [toggleEdit, setToggleEdit] = useState(true);
     const [grid2, setGrid2] = useState("");
-    const [chartData, setChartData] = useState()
+    // const [chartData, setChartData] = useState()
+    const [editFormData, setEditFormData] = useState()
+    const [isRowId, setIsRowId] = useState(null)
 
     const addHeader = (e) => {
         e.preventDefault();
@@ -94,10 +96,41 @@ const CavityBalance = () => {
         const fieldName = event.target.getAttribute("name");
         const fieldValue = event.target.value;
 
-        var newArray = data2[id];
-        newArray[fieldName] = fieldValue;
+        const newFormData = {...editFormData}
+        newFormData[fieldName] = fieldValue
 
-        setNewRow2(data2)
+        setEditFormData(newFormData)
+    }
+
+    const handleEditFormSubmit = (event) => {
+
+        event.preventDefault()
+
+        const editedValue = { id: isRowId }
+
+        const newObject = Object.assign(editedValue, editFormData)
+
+        const newValues = [...NewRow2]
+
+        const index = NewRow2.findIndex( (value) => value.id === isRowId )
+
+        newValues[index] = newObject
+
+        setNewRow2(newValues)
+
+        setIsRowId(null);
+    }
+
+    const setId = (event, value) => {
+
+        event.preventDefault();
+
+        setIsRowId(value.id);
+
+        const formValues = Object.assign({}, value)
+
+        setEditFormData(formValues);
+
     }
 
     const deleteColumn = (id) => {
@@ -108,7 +141,6 @@ const CavityBalance = () => {
     }
 
     const setGraph = () => {
-        setChartData(data2)
         console.log(NewRow2)
     }
 
@@ -191,7 +223,7 @@ const CavityBalance = () => {
                     <div className="mb-2">
                         {/* Grid 1 */}
 
-                        <ColdGrid1 modal={modal} toggle={toggle} modal2={modal2} toggle2={toggle2} column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} addColumn={addColumn} NewRow2={NewRow2} deleteRow2={deleteRow2} handleEditFormChange={handleEditFormChange} />
+                        <ColdGrid1 modal={modal} toggle={toggle} modal2={modal2} toggle2={toggle2} column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} addColumn={addColumn} NewRow2={NewRow2} deleteRow2={deleteRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} setId={setId} isRowId={isRowId} editFormData={editFormData} />
 
                     </div>
                 </div>
@@ -221,7 +253,7 @@ const CavityBalance = () => {
                             <Inject services={[LineSeries, Category, DataLabel]} />
                             <SeriesCollectionDirective>
 
-                                <SeriesDirective type="Line" dataSource={chartData} xName="Time" yName={grid2} marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
+                                <SeriesDirective type="Line" dataSource={NewRow2} xName="Time" yName={grid2} marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
 
                             </SeriesCollectionDirective>
 
