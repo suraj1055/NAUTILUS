@@ -4,7 +4,7 @@ import '../App.css';
 import ColdEditRow from '../Grids/ColdEditRow';
 import ColdReadRow from '../Grids/ColdReadRow';
 
-const ColdGrid1 = ({ column, deleteColumn, NewRow2, deleteRow2, handleEditFormChange, handleEditFormSubmit, setId, isRowId, editFormData }) => {
+const ColdGrid1 = ({ column, deleteColumn, NewRow2, deleteRow2, handleEditFormChange, handleEditFormSubmit, setId, isRowId }) => {
     return (
         <>
             <div className="Cold-Grid-Container">
