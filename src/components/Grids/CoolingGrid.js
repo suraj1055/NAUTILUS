@@ -1,12 +1,14 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
 import '../App.css';
+import CoolingEditRow from '../Grids/CoolingEditRow';
+import CoolingReadRow from '../Grids/CoolingReadRow';
 
-const CoolingGrid = ({ column, deleteColumn, NewRow2, deleteRow2, handleEditFormChange }) => {
+const CoolingGrid = ({ column, deleteColumn, NewRow2, deleteRow2, handleEditFormChange, handleEditFormSubmit, setId, isRowId }) => {
     return (
         <>
-            <div className="Cold-Grid-Container">
-            <form autoComplete="off">
+             <div className="Cold-Grid-Container">
+                <form autoComplete="off">
                     <div className="cold_table">
                         <Table striped bordered hover responsive variant="light">
                             <thead>
@@ -36,16 +38,13 @@ const CoolingGrid = ({ column, deleteColumn, NewRow2, deleteRow2, handleEditForm
                             </thead>
                             <tbody className="grid_style">
                                 {NewRow2.map((value, key1) => (
-                                    <tr key={key1}>
-
-                                        {column.map((index, key2) => (
-
-                                            (<td> <input type='text' name={index.header} className="form-control" onChange={(e) => handleEditFormChange(e, key1)} /> </td>)
-                                        ))}
-
-                                        <td> <i className="fa fa-trash viscocity_icons" onClick={() => deleteRow2(value.id)}></i> </td>
-
-                                    </tr>
+                                    <>
+                                        {isRowId === value.id ?
+                                            (<CoolingEditRow key1={key1} setId={setId} value={value} column={column} NewRow2={NewRow2} handleEditFormChange={handleEditFormChange} deleteRow2={deleteRow2} handleEditFormSubmit={handleEditFormSubmit} />)
+                                            :
+                                            (<CoolingReadRow key1={key1} setId={setId} value={value} column={column} NewRow2={NewRow2} handleEditFormChange={handleEditFormChange} deleteRow2={deleteRow2} handleEditFormSubmit={handleEditFormSubmit}/>)
+                                        }
+                                    </>
                                 ))}
                             </tbody>
                         </Table>

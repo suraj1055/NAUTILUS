@@ -198,13 +198,12 @@ const CavityBalance = () => {
                     </div>
                 </div>
                 <div>
-                    <ChartComponent title="Cavity Chart Analysis" primaryXAxis={{ valueType: "Category", title: "Part Weight" }} primaryYAxis={{ title: "Cavity ID" }}>
+                    <ChartComponent title="Cavity Chart Analysis" primaryXAxis={{ valueType: "Category", title: "Cavity ID" }} primaryYAxis={{ title: "Part Weight" }}>
                         <Inject services={[LineSeries, Category, DataLabel]} />
                         <SeriesCollectionDirective>
 
-                            {column.map((value, key) => (
-                                <SeriesDirective type="Line" dataSource={NewRow2} xName="Cavity_No" yName={value.header} marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
-                            ))}
+                        <SeriesDirective type="Line" dataSource={NewRow2} xName="Cavity_No" yName="Column 1" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
+                           
                         </SeriesCollectionDirective>
 
                     </ChartComponent>

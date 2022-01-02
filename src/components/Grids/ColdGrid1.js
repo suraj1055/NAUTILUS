@@ -4,7 +4,7 @@ import '../App.css';
 import ColdEditRow from '../Grids/ColdEditRow';
 import ColdReadRow from '../Grids/ColdReadRow';
 
-const ColdGrid1 = ({ column, deleteColumn, NewRow2, deleteRow2, handleEditFormChange, handleEditFormSubmit, setId, isRowId, editFormData }) => {
+const ColdGrid1 = ({ column, deleteColumn, NewRow2, deleteRow2, handleEditFormChange, handleEditFormSubmit, setId, isRowId }) => {
     return (
         <>
             <div className="Cold-Grid-Container">
@@ -36,7 +36,7 @@ const ColdGrid1 = ({ column, deleteColumn, NewRow2, deleteRow2, handleEditFormCh
                                     <th> <h6> Action </h6> </th>
                                 </tr>
                             </thead>
-                            <tbody className="grid_style" onMouseOut={handleEditFormSubmit}>
+                            <tbody className="grid_style">
                                 {NewRow2.map((value, key1) => (
                                     <>
                                         {isRowId === value.id ?

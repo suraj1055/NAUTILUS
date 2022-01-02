@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ColdReadRow = ({ key1, setId, value, column, deleteRow2, NewRow2, handleEditFormSubmit }) => {
+const CavityReadRow = ({ key1, setId, value, column, NewRow2, handleEditFormSubmit }) => {
     return (
         <tr key={value.id} onClick={(event) => setId(event, value)} onMouseOut={handleEditFormSubmit}>
 
@@ -10,10 +10,8 @@ const ColdReadRow = ({ key1, setId, value, column, deleteRow2, NewRow2, handleEd
 
             ))}
 
-            <td> <i className="fa fa-trash viscocity_icons" onClick={() => deleteRow2(value.id)}></i> </td>
-
         </tr>
     )
 }
 
-export default ColdReadRow
+export default CavityReadRow

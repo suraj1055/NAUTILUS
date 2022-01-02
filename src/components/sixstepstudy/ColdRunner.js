@@ -108,17 +108,18 @@ const CavityBalance = () => {
 
         const editedValue = { id: isRowId }
 
-        const newObject = Object.assign(editedValue, editFormData)
+        const newObject = Object.assign(editedValue, editFormData);
 
-        const newValues = [...NewRow2]
+        const newValues = [...NewRow2];
 
-        const index = NewRow2.findIndex( (value) => value.id === isRowId )
+        const index = NewRow2.findIndex( (value) => value.id === isRowId );
 
-        newValues[index] = newObject
+        newValues[index] = newObject;
 
-        setNewRow2(newValues)
+        setNewRow2(newValues);
 
         setIsRowId(null);
+
     }
 
     const setId = (event, value) => {
