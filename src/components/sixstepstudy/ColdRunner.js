@@ -49,6 +49,7 @@ const CavityBalance = () => {
 
     const [header, setHeader] = useState();
     const [column, setColumn] = useState(data);
+    const [NewRow2, setNewRow2] = useState(data2);
     const [isColumnId, setIsColumnId] = useState(null);
     const [toggleEdit, setToggleEdit] = useState(true);
     const [grid2, setGrid2] = useState("");
@@ -89,17 +90,19 @@ const CavityBalance = () => {
         }
     }
 
-    const handleEditFormChange = (event, id) => {
+    const handleEditFormChange = (event) => {
 
-        event.preventDefault();
+        return new Promise((resolve, reject) => {
+            event.preventDefault();
 
-        const fieldName = event.target.getAttribute("name");
-        const fieldValue = event.target.value;
+            const fieldName = event.target.getAttribute("name");
+            const fieldValue = event.target.value;
 
-        const newFormData = {...editFormData}
-        newFormData[fieldName] = fieldValue
+            const newFormData = { ...editFormData }
+            newFormData[fieldName] = fieldValue
 
-        setEditFormData(newFormData)
+            setEditFormData(newFormData)
+        })
     }
 
     const handleEditFormSubmit = (event) => {
@@ -112,7 +115,7 @@ const CavityBalance = () => {
 
         const newValues = [...NewRow2]
 
-        const index = NewRow2.findIndex( (value) => value.id === isRowId )
+        const index = NewRow2.findIndex((value) => value.id === isRowId)
 
         newValues[index] = newObject
 
@@ -159,7 +162,6 @@ const CavityBalance = () => {
 
     const row1 = [];
     const [row, setRow] = useState();
-    const [NewRow2, setNewRow2] = useState(data2);
 
     const addRow = (e) => {
         e.preventDefault();
