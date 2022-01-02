@@ -49,7 +49,6 @@ const CavityBalance = () => {
 
     const [header, setHeader] = useState();
     const [column, setColumn] = useState(data);
-    const [NewRow2, setNewRow2] = useState(data2);
     const [isColumnId, setIsColumnId] = useState(null);
     const [toggleEdit, setToggleEdit] = useState(true);
     const [grid2, setGrid2] = useState("");
@@ -92,17 +91,15 @@ const CavityBalance = () => {
 
     const handleEditFormChange = (event) => {
 
-        return new Promise((resolve, reject) => {
-            event.preventDefault();
+        event.preventDefault();
 
-            const fieldName = event.target.getAttribute("name");
-            const fieldValue = event.target.value;
+        const fieldName = event.target.getAttribute("name");
+        const fieldValue = event.target.value;
 
-            const newFormData = { ...editFormData }
-            newFormData[fieldName] = fieldValue
+        const newFormData = {...editFormData}
+        newFormData[fieldName] = fieldValue
 
-            setEditFormData(newFormData)
-        })
+        setEditFormData(newFormData)
     }
 
     const handleEditFormSubmit = (event) => {
@@ -111,17 +108,18 @@ const CavityBalance = () => {
 
         const editedValue = { id: isRowId }
 
-        const newObject = Object.assign(editedValue, editFormData)
+        const newObject = Object.assign(editedValue, editFormData);
 
-        const newValues = [...NewRow2]
+        const newValues = [...NewRow2];
 
-        const index = NewRow2.findIndex((value) => value.id === isRowId)
+        const index = NewRow2.findIndex( (value) => value.id === isRowId );
 
-        newValues[index] = newObject
+        newValues[index] = newObject;
 
-        setNewRow2(newValues)
+        setNewRow2(newValues);
 
         setIsRowId(null);
+
     }
 
     const setId = (event, value) => {
@@ -162,6 +160,7 @@ const CavityBalance = () => {
 
     const row1 = [];
     const [row, setRow] = useState();
+    const [NewRow2, setNewRow2] = useState(data2);
 
     const addRow = (e) => {
         e.preventDefault();
