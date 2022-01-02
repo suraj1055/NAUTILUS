@@ -46,8 +46,10 @@ const CavityBalance = () => {
     const [column, setColumn] = useState(data);
     const [isColumnId, setIsColumnId] = useState(null);
     const [toggleEdit, setToggleEdit] = useState(true);
-    const [column2, setColumn2] = useState(data2);
-    const [chartData, setChartData] = useState()
+    const [NewRow2, setNewRow2] = useState(data2);
+    // const [chartData, setChartData] = useState()
+    const [editFormData, setEditFormData] = useState()
+    const [isRowId, setIsRowId] = useState(null)
 
     const addHeader = (e) => {
         e.preventDefault();
@@ -88,11 +90,6 @@ const CavityBalance = () => {
             return index.id !== id;
         })
         setColumn(updatedColumns)
-
-        const updatedColumns2 = column2.filter((index) => {
-            return index.id !== id;
-        })
-        setColumn2(updatedColumns2)
     }
 
     const editColumn = (id) => {
@@ -105,22 +102,53 @@ const CavityBalance = () => {
         setToggleEdit(true)
     }
 
-    const handleEditFormChange = (event, id) => {
+    const handleEditFormChange = (event) => {
 
         event.preventDefault();
 
         const fieldName = event.target.getAttribute("name");
         const fieldValue = event.target.value;
 
-        var newArray = data2[id];
-        newArray[fieldName] = fieldValue;
+        const newFormData = { ...editFormData }
+        newFormData[fieldName] = fieldValue
 
-        setColumn2(data2)
+        setEditFormData(newFormData)
+    }
+
+    const handleEditFormSubmit = (event) => {
+
+        event.preventDefault()
+
+        const editedValue = { id: isRowId }
+
+        const newObject = Object.assign(editedValue, editFormData);
+
+        const newValues = [...NewRow2];
+
+        const index = NewRow2.findIndex((value) => value.id === isRowId);
+
+        newValues[index] = newObject;
+
+        setNewRow2(newValues);
+
+        setIsRowId(null);
+
+    }
+
+    const setId = (event, value) => {
+
+        event.preventDefault();
+
+        setIsRowId(value.id);
+
+        const formValues = Object.assign({}, value)
+
+        setEditFormData(formValues);
+
     }
 
     const setGraph = () => {
-        setChartData(column2)
-        console.log(data2)
+        console.log(NewRow2)
     }
 
     return (
@@ -157,7 +185,7 @@ const CavityBalance = () => {
 
                 </div>
                 <div className="mb-4">
-                    <CavityGrid column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} toggle={toggle} column2={column2} handleEditFormChange={handleEditFormChange} />
+                    <CavityGrid modal={modal} toggle={toggle} modal2={modal2} toggle2={toggle2} column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} addColumn={addColumn} NewRow2={NewRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} setId={setId} isRowId={isRowId} editFormData={editFormData} />
                 </div>
                 <div className="">
                     <CavityGrid2 column={column} />
@@ -170,13 +198,12 @@ const CavityBalance = () => {
                     </div>
                 </div>
                 <div>
-                    <ChartComponent title="Cavity Chart Analysis" primaryXAxis={{ valueType: "Category", title: "Part Weight" }} primaryYAxis={{ title: "Cavity ID" }}>
+                    <ChartComponent title="Cavity Chart Analysis" primaryXAxis={{ valueType: "Category", title: "Cavity ID" }} primaryYAxis={{ title: "Part Weight" }}>
                         <Inject services={[LineSeries, Category, DataLabel]} />
                         <SeriesCollectionDirective>
 
-                            {column.map((value, key) => (
-                                <SeriesDirective type="Line" dataSource={chartData} xName="Cavity_No" yName={"value" + key} marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
-                            ))}
+                        <SeriesDirective type="Line" dataSource={NewRow2} xName="Cavity_No" yName="Column 1" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
+                           
                         </SeriesCollectionDirective>
 
                     </ChartComponent>
