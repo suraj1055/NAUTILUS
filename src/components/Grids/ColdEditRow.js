@@ -6,7 +6,7 @@ const ColdEditRow = ({ key1, value, column, handleEditFormChange, deleteRow2, ha
 
             {column.map((index, key2) => (
 
-                (<td> <input type='text' name={index.header} className="form-control" defaultValue={NewRow2[key1][index.header] || ''} onChange={(e) => handleEditFormChange(e, key1)} /> </td>)
+                (<td> <input type='text' name={index.header} className="form-control" defaultValue={NewRow2[key1][index.header] || ''} onChange={handleEditFormChange} /> </td>)
 
             ))}
 

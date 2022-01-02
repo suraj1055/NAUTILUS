@@ -89,7 +89,7 @@ const CavityBalance = () => {
         }
     }
 
-    const handleEditFormChange = (event, id) => {
+    const handleEditFormChange = (event) => {
 
         event.preventDefault();
 
