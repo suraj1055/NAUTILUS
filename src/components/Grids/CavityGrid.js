@@ -38,6 +38,9 @@ const CavityGrid = ({ column, deleteColumn, NewRow2, deleteRow2, handleEditFormC
                                 </tr>
                             </thead>
                             <tbody className="grid_style">
+                                
+                                
+
                                 {NewRow2.map((value, key1) => (
                                     <>
                                         {isRowId === value.id ?

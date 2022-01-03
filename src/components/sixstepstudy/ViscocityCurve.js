@@ -1,34 +1,84 @@
 import React, { useState } from 'react';
+
+// Syncfusion chart control
 import { ChartComponent, LineSeries, Inject, SeriesCollectionDirective, SeriesDirective, Category, DataLabel } from '@syncfusion/ej2-react-charts';
+
+// This is a modal imported from modals folder since we have a button i.e Generate Injection Speed this modal gets displayed
 import Viscocity from '../modals/Viscocity';
 import '../App.css';
 import { Button } from 'reactstrap';
+
+// This is the Grid/Table of our viscosity curve import from Grids folder
 import ViscocityGrid from '../Grids/ViscocityGrid';
+
+// Newrow2 array are holding this data.
 import data from "../data/Viscocity_curve_data.json"
+
+// Generates random id's
 import { nanoid } from 'nanoid'
 
 const ViscocityCurve = () => {
 
+    // Set's the visibility of the Generate Injection Speed modal
     const [modal, setModal] = useState();
-
     const toggle = () => {
         setModal(!modal)
     }
 
+    // Set's the visibility of the modal which we use to get the number of row's which is imported in Viscosity Grid.
     const [modal2, setModal2] = useState();
-
     const toggle2 = () => {
         setModal2(!modal2)
     }
 
-    const row1 = [];
-    const [row, setRow] = useState();
+    // This is our main array based on which all the row manupulation is done and which holds the row data as well.
     const [NewRow2, setNewRow2] = useState(data);
+
+    // As the user enter's the number of row's it get's set in this variable.
+    const [row, setRow] = useState();
+
+    // This is the event to the above said thing.
+    const addRow = (e) => {
+        e.preventDefault();
+        setRow(e.target.value)
+    }
+
+    // This is a simple array which holds the number of objects based on the row variable
+    const row1 = [];
+
+    // This is the event which gets called as the user click's ok in the add row modal, what it does is it run's a loop as many times the row variable and along with that it pushes an object containing all the key/value pair based on the grid with an id generated using nanoid library and then set's the row1 in the main array i.e NewRow2.
+    const increaseRow = () => {
+        for (let i = 0; i < parseInt(row); i++) {
+            row1.push({
+                id: nanoid(),
+                Injection_Speed: "",
+                Fill_Time: "",
+                Peak_Inj_Press: "",
+                Viscosity: "",
+                Shear_Rate: ""
+            })
+        }
+        setNewRow2([...NewRow2, ...row1]);
+    };
+
+    // This is the event which deletes the row as clicked on the delete icon, id of the row gets passed and using filter method that row is filtered out.
+    const deleteRow2 = (id) => {
+        const updatedRows = [...NewRow2].filter((value) => {
+            return value.id !== id;
+        });
+        setNewRow2(updatedRows);
+    };
+
+    // There is an input field in viscosity curve asking for Intensification Ratio so this is a variable which is holds the value of it and is used for calculations wherever needed
     const [IntensificationRatio, setIntensificationRatio] = useState()
+
+    // Based on the grid we will be showing two chart's one is Injection Speed and other is shear rate so this is a boolean variable which switches between true/false on a Drop Down below and due to that the respective chart code gets rendered
     const [Injection_Speed, setInjection_Speed] = useState(true);
-    const [minViscosity, setMinViscosity] = useState()
-    const [maxViscosity, setMaxViscosity] = useState()
-    const [Interval, setInterval] = useState()
+
+    // This is the event which does the switching part.
+    const ChangeGraph = () => {
+        setInjection_Speed(!Injection_Speed)
+    }
 
     const [editFormData, setEditFormData] = useState({
         Injection_Speed: "",
@@ -83,32 +133,6 @@ const ViscocityCurve = () => {
 
     }
 
-    const addRow = (e) => {
-        e.preventDefault();
-        setRow(e.target.value)
-    }
-
-    const increaseRow = () => {
-        for (let i = 0; i < parseInt(row); i++) {
-            row1.push({
-                id: nanoid(),
-                Injection_Speed: "",
-                Fill_Time: "",
-                Peak_Inj_Press: "",
-                Viscosity: "",
-                Shear_Rate: ""
-            })
-        }
-        setNewRow2([...NewRow2, ...row1]);
-    };
-
-    const deleteRow2 = (id) => {
-        const updatedRows = [...NewRow2].filter((value) => {
-            return value.id !== id;
-        });
-        setNewRow2(updatedRows);
-    };
-
     const setId = (event, NewRow) => {
 
         event.preventDefault();
@@ -124,16 +148,26 @@ const ViscocityCurve = () => {
         setEditFormData(formValues);
     }
 
-    const ChangeGraph = () => {
-        setInjection_Speed(!Injection_Speed)
-    }
+    // The below three variables are used to set the minimum, maximum and interval of the chart axis.
+    const [minViscosity, setMinViscosity] = useState()
+    const [maxViscosity, setMaxViscosity] = useState()
+    const [Interval, setInterval] = useState()
 
+    // This event get's called on the Show Graph button and based on the data in the NewRow2 array it set's the values.
     const setGraph = (event) => {
 
+        event.preventDefault();
+
+        // One of the axis in the chart contains by default values Viscosity.
+
+        // So using the above state functions we set them, like based on the data the values will vary
+
+        // The minimum value in the range of the axis will be diff of Highest Viscosity value and Lowest Vicosity value divided by 5, and vise versa for maximum value i.e summation, so that we can get somewhere around the Viscosity Values
         setMinViscosity(NewRow2[NewRow2.length - 1].Viscosity - NewRow2[NewRow2.length - 1].Viscosity / 5)
 
         setMaxViscosity(NewRow2[NewRow2.length - NewRow2.length].Viscosity + NewRow2[NewRow2.length - NewRow2.length].Viscosity / 5)
-
+        
+        // Interval is diff between two points on the axis and is found out by the diff between first two row's viscosity value divided by 3
         setInterval((NewRow2[0].Viscosity - NewRow2[NewRow2.length - 1].Viscosity) / 3)
     }
 
@@ -212,9 +246,7 @@ const ViscocityCurve = () => {
 
                             </ChartComponent>
                         )
-
                             :
-
                             (
                                 <ChartComponent title="Viscosity Curve" width="1100" primaryXAxis={{ valueType: "Category", title: "Shear Rate" }} primaryYAxis={{ title: "Viscosity", minimum: minViscosity, maximum: maxViscosity, interval: Interval }}>
 

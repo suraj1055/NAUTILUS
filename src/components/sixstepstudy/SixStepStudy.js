@@ -1,6 +1,8 @@
 import * as React from "react";
 import '../App.css';
+// Tab view component from syncfusion to navigate through six steps study
 import { TabComponent, TabItemDirective, TabItemsDirective } from "@syncfusion/ej2-react-navigations";
+// Import all the six step's component which are created outside this file in same folder to code complexity
 import ViscocityCurve from "./ViscocityCurve";
 import CavityBalance from "./CavityBalance";
 import PressureDropStudy from "./PressureDropStudy";
@@ -8,10 +10,10 @@ import CosmeticPressure from "./CosmeticProcess";
 import CoolingTimeStudy from "./CoolingTimeStudy";
 import ColdRunner from "./ColdRunner";
 
-export default class SixStepStudy extends React.Component {
-    
-    render() {
+// Using a Function Component
+const SixStepStudy = () => {
 
+    // Declare the names of the tab's
         let headertext = [
             { text: "Viscosity Curve" },
             { text: "Cavity Balance" },
@@ -21,6 +23,7 @@ export default class SixStepStudy extends React.Component {
             { text: "Cooling Time Study" },
         ];
 
+        // These are the event's which will get called when clicked on the respective step's tab and once they are called they render the component of that respective tab which we have imported above
         function content0() {
             return (<div>
                 <ViscocityCurve />
@@ -63,6 +66,7 @@ export default class SixStepStudy extends React.Component {
                     <div className="col-md-12">
                         <div className="row">
                             <div className="study-container">
+                                {/* This is Syncfusion Tab control in which header attribute is to display the name of that tab and content attribute to display the content under that tab */}
                                 <TabComponent heightAdjustMode="Auto" id="defaultTab">
                                     <TabItemsDirective>
                                         <TabItemDirective header={headertext[0]} content={content0} />
@@ -80,5 +84,6 @@ export default class SixStepStudy extends React.Component {
 
             </div>
         );
-    }
 }
+
+export default SixStepStudy
