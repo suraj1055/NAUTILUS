@@ -6,25 +6,26 @@ const ColdGrid2 = ({ NewRow2, grid2}) => {
     return (
         <>
             <div>
-                <div className="cold_table1">
+                <div className="cold_table2">
                     <Table striped bordered hover responsive variant="light">
                         <thead>
                             <tr>
-                                <th className='cold-heading'> <h6> WeightIncrease [{ grid2 }] </h6> </th>
-                                <th className='cold-heading'> <h6> %WeightIncrease [{ grid2 }] </h6> </th>
+                                <th className='cold-heading'> <h6> WeightIncrease [{grid2}] </h6> </th>
+                                <th className='cold-heading'> <h6> %WeightIncrease [{grid2}] </h6> </th>
                             </tr>
                         </thead>
-                    </Table>
-                </div>
-                <div className="cold_table2">
-                    <Table striped bordered hover responsive variant="light">
                         <tbody className="grid_style">
-                            { NewRow2.map(( index, rowId ) => (
-                                <tr key={rowId}>
-                                    <td className='cold-heading'> <input type="text" className="form-control" readOnly /> </td>
+                            {NewRow2.map((value, key1) => (
+                                <tr key={key1}>
+
+                                    <td className='cold-heading'> <input type="text" 
+                                    value={ key1 === 0 ? ('-') : ( isNaN(NewRow2[key1][`${grid2}`]) ? '-' : ( Number(NewRow2[key1][`${grid2}`] -  NewRow2[key1 - 1][`${grid2}`]).toFixed(1) ) )  }
+                                    className="form-control" readOnly /> </td>
+
+                                    <td className='cold-heading'> <input type="text" 
+                                    value={ key1 === 0 ? ('-') : ( isNaN(NewRow2[key1][`${grid2}`]) ? '-' : ( Number((NewRow2[key1][`${grid2}`] -  NewRow2[key1 - 1][`${grid2}`]) / (NewRow2[key1 - 1][`${grid2}`]) * 100).toFixed(3) ))} 
+                                    className="form-control" readOnly /> </td>
                                     
-                                    <td className='cold-heading'> <input type="text" className="form-control" readOnly /> </td>
-                                   
                                 </tr>
                             ))}
                         </tbody>

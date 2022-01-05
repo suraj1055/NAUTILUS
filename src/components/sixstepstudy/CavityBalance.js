@@ -202,8 +202,10 @@ const CavityBalance = () => {
                         <Inject services={[LineSeries, Category, DataLabel]} />
                         <SeriesCollectionDirective>
 
-                        <SeriesDirective type="Line" dataSource={NewRow2} xName="Cavity_No" yName="Column 1" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
-                           
+                            {column.map((value, key) => (
+                                <SeriesDirective type="Line" dataSource={NewRow2} xName="Cavity_No" yName={value.header} marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
+                            ))}
+
                         </SeriesCollectionDirective>
 
                     </ChartComponent>

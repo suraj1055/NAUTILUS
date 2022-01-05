@@ -11,7 +11,7 @@ import { Button } from 'reactstrap';
 // This is the Grid/Table of our viscosity curve import from Grids folder
 import ViscocityGrid from '../Grids/ViscocityGrid';
 
-// Newrow2 array are holding this data.
+// Newrow2 array is holding this data.
 import data from "../data/Viscocity_curve_data.json"
 
 // Generates random id's
@@ -25,7 +25,7 @@ const ViscocityCurve = () => {
         setModal(!modal)
     }
 
-    // Set's the visibility of the modal which we use to get the number of row's which is imported in Viscosity Grid.
+    // Set's the visibility of the modal which we use to get the number of row's to be generated which is imported in Viscosity Grid.
     const [modal2, setModal2] = useState();
     const toggle2 = () => {
         setModal2(!modal2)
@@ -37,7 +37,7 @@ const ViscocityCurve = () => {
     // As the user enter's the number of row's it get's set in this variable.
     const [row, setRow] = useState();
 
-    // This is the event to the above said thing.
+    // This is the event to do the above said thing.
     const addRow = (e) => {
         e.preventDefault();
         setRow(e.target.value)
@@ -46,7 +46,11 @@ const ViscocityCurve = () => {
     // This is a simple array which holds the number of objects based on the row variable
     const row1 = [];
 
-    // This is the event which gets called as the user click's ok in the add row modal, what it does is it run's a loop as many times the row variable and along with that it pushes an object containing all the key/value pair based on the grid with an id generated using nanoid library and then set's the row1 in the main array i.e NewRow2.
+
+    // This is the event which gets called as the user click's ok in the add row modal.
+    // what it does is it run's a loop as many times the row variable is and along with that it pushes an object containing all the key's based on the grid with an id generated using nanoid library and then set's the row1 in the main array i.e NewRow2. 
+
+    // Then using editFormData object, handleEditFormChange and handleEditFormSubmit we store the data in these objects as the user enter's in the grid's input field's  
     const increaseRow = () => {
         for (let i = 0; i < parseInt(row); i++) {
             row1.push({
@@ -69,10 +73,10 @@ const ViscocityCurve = () => {
         setNewRow2(updatedRows);
     };
 
-    // There is an input field in viscosity curve asking for Intensification Ratio so this is a variable which is holds the value of it and is used for calculations wherever needed
+    // There is an input field in viscosity curve asking for Intensification Ratio so this is a variable which holds the value of it and is used for calculations wherever needed.
     const [IntensificationRatio, setIntensificationRatio] = useState()
 
-    // Based on the grid we will be showing two chart's one is Injection Speed and other is shear rate so this is a boolean variable which switches between true/false on a Drop Down below and due to that the respective chart code gets rendered
+    // Based on the grid we will be showing two chart's one is Injection Speed and other is shear rate so this is a boolean variable which switches between true/false on a Drop Down below and due to that the respective chart code gets rendered.
     const [Injection_Speed, setInjection_Speed] = useState(true);
 
     // This is the event which does the switching part.
@@ -80,6 +84,7 @@ const ViscocityCurve = () => {
         setInjection_Speed(!Injection_Speed)
     }
 
+    // An object in which we Initially store the new values entered in row/column and then we replace this object with the existing object in our main array.
     const [editFormData, setEditFormData] = useState({
         Injection_Speed: "",
         Fill_Time: "",
@@ -88,15 +93,17 @@ const ViscocityCurve = () => {
         Shear_Rate: ""
     })
 
-    const [isRowId, setIsRowId] = useState(null)
-
+    // This event is called when the input field's of the grid get's changed.
     const handleEditFormChange = (event) => {
         event.preventDefault();
 
+        // Initially check's whether the user has entered the Intensification Ratio if not then alerts with the given statement.
         if (!IntensificationRatio) {
             alert("Please enter Intensification Ratio")
         }
 
+        // In the else part it does the job of storing the values entered by the user in the editFormData object.
+        // Here the logic is like, as the event get's called on change of the input field it get's the name and value of that input field and then it is stored in the editFormData object.
         else {
 
             const fieldName = event.target.getAttribute("name");
@@ -109,9 +116,15 @@ const ViscocityCurve = () => {
         }
     }
 
+    // When clicked on any row of the grid this event set's the id of that row in itself using this variable we check exactly in which row change has been done and help's to switch between editable and readOnly row.
+    const [isRowId, setIsRowId] = useState(null)
+
+    // Once the data in inside editFormData then using isRowId we check exactly in which row data has been entered and including that row's id and values inside editFormdata we create a new local object and this object is replaced with the existing row's object.
+    // In such way we store the initially entered values and the changed values in our main array. 
     const handleEditFormSubmit = (event) => {
         event.preventDefault();
 
+        // This is the local object mentioned above
         const editedValue = {
             id: isRowId,
             Injection_Speed: editFormData.Injection_Speed,
@@ -166,7 +179,7 @@ const ViscocityCurve = () => {
         setMinViscosity(NewRow2[NewRow2.length - 1].Viscosity - NewRow2[NewRow2.length - 1].Viscosity / 5)
 
         setMaxViscosity(NewRow2[NewRow2.length - NewRow2.length].Viscosity + NewRow2[NewRow2.length - NewRow2.length].Viscosity / 5)
-        
+
         // Interval is diff between two points on the axis and is found out by the diff between first two row's viscosity value divided by 3
         setInterval((NewRow2[0].Viscosity - NewRow2[NewRow2.length - 1].Viscosity) / 3)
     }
@@ -236,7 +249,7 @@ const ViscocityCurve = () => {
                 <div className="row">
                     <div className="col-md-12">
                         {Injection_Speed ? (
-                            <ChartComponent title="Viscosity Curve" width="1100" primaryXAxis={{ valueType: "Category", title: "Injection Speed" }} primaryYAxis={{ title: "Viscosity", minimum: minViscosity, maximum: maxViscosity, interval: Interval }}>
+                            <ChartComponent title="Viscosity Curve" primaryXAxis={{ valueType: "Category", title: "Injection Speed" }} primaryYAxis={{ title: "Viscosity", minimum: minViscosity, maximum: maxViscosity, interval: Interval }}>
 
                                 <Inject services={[LineSeries, Category, DataLabel]} />
 
@@ -248,7 +261,7 @@ const ViscocityCurve = () => {
                         )
                             :
                             (
-                                <ChartComponent title="Viscosity Curve" width="1100" primaryXAxis={{ valueType: "Category", title: "Shear Rate" }} primaryYAxis={{ title: "Viscosity", minimum: minViscosity, maximum: maxViscosity, interval: Interval }}>
+                                <ChartComponent title="Viscosity Curve" primaryXAxis={{ valueType: "Category", title: "Shear Rate" }} primaryYAxis={{ title: "Viscosity", minimum: minViscosity, maximum: maxViscosity, interval: Interval }}>
 
                                     <Inject services={[LineSeries, Category, DataLabel]} />
 

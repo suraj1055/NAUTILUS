@@ -1,21 +1,9 @@
 import React from 'react'
 
-const CavityEditRow = ({ key1, value, column, handleEditFormChange, handleEditFormSubmit, NewRow2 }) => {
+const CavityEditRow = ({ key1, handleEditFormChange, handleEditFormSubmit, value2, NewRow2 }) => {
     return (
-        <tr key={key1} onMouseOut={handleEditFormSubmit}>
 
-            {column.map((index, key2) => (
-
-                <>
-                    {index.edit === true ?
-                        (<td> <input type='text' name={index.header} className="form-control" defaultValue={NewRow2[key1][index.header] || ''} onChange={(e) => handleEditFormChange(e, key1)} /> </td>)
-                        :
-                        (<td> <input type='text' className="form-control" value={value.Cavity_No} readOnly /> </td>)}
-                </>
-
-            ))}
-
-        </tr>
+        <td onMouseOut={handleEditFormSubmit}> <input type='text' className="form-control" name={value2.header} onChange={ handleEditFormChange } defaultValue={NewRow2[key1][value2.header] || ''} autoFocus/> </td>
     )
 }
 

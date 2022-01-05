@@ -1,16 +1,9 @@
 import React from 'react'
 
-const CavityReadRow = ({ key1, setId, value, column, NewRow2, handleEditFormSubmit }) => {
+const CavityReadRow = ({ key1, setId, value, value2, NewRow2 }) => {
     return (
-        <tr key={value.id} onClick={(event) => setId(event, value)} onMouseOut={handleEditFormSubmit}>
 
-            {column.map((index, key2) => (
-
-                (<td> <input type='text' name={index.header} defaultValue={NewRow2[key1][index.header] || ''} className="form-control" readOnly/> </td>)
-
-            ))}
-
-        </tr>
+             <td onClick={(event) => setId(event, value)}> <input type='text' name={value2.header} className="form-control" defaultValue={NewRow2[key1][value2.header] || ''} readOnly /> </td>
     )
 }
 
