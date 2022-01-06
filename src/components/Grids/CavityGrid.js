@@ -55,16 +55,16 @@ const CavityGrid = ({ column, deleteColumn, NewRow2, handleEditFormChange, handl
                                 
                                 {NewRow2.map((value, key1) => (
                                     <tr>
-                                        {column.map((value2, key) => (
+                                        {column.map((value2, key2) => (
                                             <>
                                                 {value2.edit === false ?
                                                     (<td> <input type='text' className="form-control" value={value.Cavity_No} readOnly /> </td>)
                                                     :
                                                     <>
                                                         {isRowId === value.id ?
-                                                            (<CavityEditRow key1={key1} setId={setId} value={value} value2={value2} column={column} NewRow2={NewRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} />)
+                                                            (<CavityEditRow key1={key1} key2={key2} setId={setId} value={value} value2={value2} column={column} NewRow2={NewRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} />)
                                                             :
-                                                            (<CavityReadRow key1={key1} setId={setId} value={value} value2={value2} column={column} NewRow2={NewRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} />)
+                                                            (<CavityReadRow key1={key1} key2={key2} setId={setId} value={value} value2={value2} column={column} NewRow2={NewRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} />)
                                                         }
                                                     </>
                                                 }

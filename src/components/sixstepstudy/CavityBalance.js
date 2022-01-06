@@ -187,8 +187,8 @@ const CavityBalance = () => {
                 <div className="mb-4">
                     <CavityGrid modal={modal} toggle={toggle} modal2={modal2} toggle2={toggle2} column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} addColumn={addColumn} NewRow2={NewRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} setId={setId} isRowId={isRowId} editFormData={editFormData} />
                 </div>
-                <div className="">
-                    <CavityGrid2 column={column} />
+                <div>
+                    <CavityGrid2 column={column} NewRow2={NewRow2} />
                 </div>
             </div>
             <div className="grid-chart-container">
@@ -203,7 +203,7 @@ const CavityBalance = () => {
                         <SeriesCollectionDirective>
 
                             {column.map((value, key) => (
-                                <SeriesDirective type="Line" dataSource={NewRow2} xName="Cavity_No" yName={value.header} marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
+                                <SeriesDirective type="Line" dataSource={NewRow2} xName="Cavity_No" yName={`value${key}`} marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
                             ))}
 
                         </SeriesCollectionDirective>
