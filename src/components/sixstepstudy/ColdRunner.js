@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { ChartComponent, LineSeries, SeriesCollectionDirective, SeriesDirective, Category, DataLabel } from '@syncfusion/ej2-react-charts';
 import { Button } from 'reactstrap';
 import ColdGrid1 from '../Grids/ColdGrid1';
@@ -11,6 +11,8 @@ import { HtmlEditor, Inject, RichTextEditorComponent, Toolbar } from '@syncfusio
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import '../App.css';
 import ColdEdit from '../modals/ColdEdit'
+
+export let chartInstance;
 
 const CavityBalance = () => {
 
@@ -96,10 +98,11 @@ const CavityBalance = () => {
         const fieldName = event.target.getAttribute("name");
         const fieldValue = event.target.value;
 
-        const newFormData = {...editFormData}
+        const newFormData = { ...editFormData }
         newFormData[fieldName] = fieldValue
 
         setEditFormData(newFormData)
+
     }
 
     const handleEditFormSubmit = (event) => {
@@ -112,14 +115,13 @@ const CavityBalance = () => {
 
         const newValues = [...NewRow2];
 
-        const index = NewRow2.findIndex( (value) => value.id === isRowId );
+        const index = NewRow2.findIndex((value) => value.id === isRowId);
 
         newValues[index] = newObject;
 
         setNewRow2(newValues);
 
         setIsRowId(null);
-
     }
 
     const setId = (event, value) => {
@@ -185,6 +187,15 @@ const CavityBalance = () => {
         setNewRow2(updatedRows);
     };
 
+    const handleChange = (e) => {
+        chartInstance.series[0].dataSource = NewRow2;
+        chartInstance.refresh();
+    }
+
+    useEffect(() => {
+        handleChange()
+       }, [handleChange])
+
     return (
         <>
             <div className="grid-chart-container">
@@ -232,7 +243,7 @@ const CavityBalance = () => {
             <div className="grid-chart-container">
                 <div className="row mb-4">
                     <div className="col-md-4 chart_container_btn">
-                        <select className="form-control digits" id="exampleFormControlSelect30" onClick={(e) => setGrid2(e.target.value)}>
+                        <select className="form-control digits" onChange={(e) => handleChange(e)} onClick={(e) => setGrid2(e.target.value)}>
                             {column.map((value, key) => (
                                 <>
                                     {value.id === 0 ? '-' : <option> {value.header} </option>}
@@ -250,11 +261,12 @@ const CavityBalance = () => {
                         <ColdGrid2 column={column} NewRow2={NewRow2} grid2={grid2} />
                     </div>
                     <div className="cold-chart">
-                        <ChartComponent title="Cold Runner" primaryXAxis={{ valueType: "Category", title: "Time" }} primaryYAxis={{ title: `${grid2}` }}>
+                        <ChartComponent id='charts' ref={chart => chartInstance = chart} title="Cold Runner" primaryXAxis={{ valueType: "Category", title: "Time" }} primaryYAxis={{ title: `${grid2}` }}>
                             <Inject services={[LineSeries, Category, DataLabel]} />
                             <SeriesCollectionDirective>
 
-                                <SeriesDirective type="Line" dataSource={NewRow2} xName="Time" yName={grid2} marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
+                                {/* NewRow2 is the name of the Array which contains our data and again grid2 will be varying */}
+                                <SeriesDirective type="Line" dataSource={NewRow2} xName="Time" yName={grid2} marker={{ dataLabel: { visible: true }, visible: true }}></SeriesDirective>
 
                             </SeriesCollectionDirective>
 

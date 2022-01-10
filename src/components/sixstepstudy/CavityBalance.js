@@ -64,6 +64,7 @@ const CavityBalance = () => {
             const newColumn = { id: nanoid(), "header": header, "edit": true, "delete": true }
             setColumn([...column, newColumn]);
             setHeader("");
+            console.log(column)
         }
     };
 

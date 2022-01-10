@@ -12,10 +12,11 @@ const CavityGrid2 = ({ column, NewRow2 }) => {
     let [MinPart, setMinPart] = useState([]);
     let [Percentage, setPercentage] = useState([]);
 
-    const Total_Average = () => {
-        for (let i = 1; i < column.length; i++) {
+    let total = 0, average = 0, range, Range_Array = [], percent=[];
 
-            let total = 0, average = 0, range, Range_Array = [], percent = [];
+    const Total_Average = () => {
+
+        for (let i = 1; i < column.length; i++) {
 
             const compare = (a, b) => {
                 return a - b;
@@ -23,13 +24,12 @@ const CavityGrid2 = ({ column, NewRow2 }) => {
 
             for (let j = 1; j <= NewRow2.length; j++) {
 
-                total += parseInt(NewRow2[j - 1][`value${i}`])
-                setTotal([...Total, total])
+                total += parseFloat(NewRow2[j - 1][`value${i}`])
 
                 average = total / NewRow2.length
                 setAverage([...Average, average])
 
-                Range_Array.push(parseInt(NewRow2[j - 1][`value${i}`]))
+                Range_Array.push(parseFloat(NewRow2[j - 1][`value${i}`]))
                 const Sorted_Array = Range_Array.sort(compare)
                 range = Sorted_Array[Sorted_Array.length - 1] - Sorted_Array[Sorted_Array.length - Sorted_Array.length]
                 setRange([...Range, range])
@@ -39,12 +39,17 @@ const CavityGrid2 = ({ column, NewRow2 }) => {
 
                 let min = Sorted_Array[Sorted_Array.length - Sorted_Array.length]
                 setMinPart([...MinPart, min])
-
-                percent.push(Number((Range_Array[j - 1] - Average[j]) * 100 / Average[j]).toFixed(3))
-                setPercentage([...Percentage, percent])
-                console.log(percent)
             }
+
+            setTotal([...Total, total])
+            console.log(Total)
         }
+
+        for(let i = 1; i <= NewRow2.length; i++){
+            percent[i - 1] = ( Number(((Range_Array[i - 1] - average) * 100) / average).toFixed(3) )
+        }
+        // console.log(percent)
+        setPercentage(percent)
     }
 
     return (
@@ -118,13 +123,12 @@ const CavityGrid2 = ({ column, NewRow2 }) => {
                             {column.map((value) => (
                                 <>
                                     {value.edit === true ?
-                                        (<td> <input type='text' className="form-control" readOnly /> </td>)
+                                        (<td> <input type='text' className="form-control" value='-' readOnly /> </td>)
                                         :
                                         (<td> <input type='text' className="form-control" value="% Variation From Average" readOnly /> </td>)}
                                 </>
                             ))}
                         </tr>
-
                         {NewRow2.map((value, key1) => (
                             <tr>
                                 {column.map((value2, key) => (
@@ -132,7 +136,7 @@ const CavityGrid2 = ({ column, NewRow2 }) => {
                                         {value2.edit === false ?
                                             (<td> <input type='text' className="form-control" value={value.Cavity_No} readOnly /> </td>)
                                             :
-                                            ((<td> <input type='text' className="form-control" value={Percentage[key1 - 1]} readOnly /> </td>))
+                                            (<td> <input type='text' className="form-control" value={Percentage[key1]} readOnly /> </td>)
                                         }
                                     </>
                                 ))}

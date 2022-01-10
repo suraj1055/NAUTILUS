@@ -2,7 +2,7 @@ import React from 'react'
 
 const ColdReadRow = ({ key1, setId, value, column, deleteRow2, NewRow2, handleEditFormSubmit }) => {
     return (
-        <tr key={value.id} onClick={(event) => setId(event, value)} onMouseOut={handleEditFormSubmit}>
+        <tr key={value.id} onClick={(event) => setId(event, value)}>
 
             {column.map((index, key2) => (
 

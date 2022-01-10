@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChartComponent, LineSeries, SeriesCollectionDirective, SeriesDirective, Category, DataLabel } from '@syncfusion/ej2-react-charts';
 import { Button } from 'reactstrap';
 import CoolingAddColumn from '../columns&rows/CoolingAddColumn';
@@ -10,6 +10,8 @@ import { HtmlEditor, Inject, RichTextEditorComponent, Toolbar } from '@syncfusio
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import '../App.css';
 import CoolingEdit from '../modals/CoolingEdit'
+
+export let chartInstance;
 
 const CoolingTimeStudy = () => {
 
@@ -100,7 +102,7 @@ const CoolingTimeStudy = () => {
         const fieldName = event.target.getAttribute("name");
         const fieldValue = event.target.value;
 
-        const newFormData = {...editFormData}
+        const newFormData = { ...editFormData }
         newFormData[fieldName] = fieldValue
 
         setEditFormData(newFormData)
@@ -116,7 +118,7 @@ const CoolingTimeStudy = () => {
 
         const newValues = [...NewRow2];
 
-        const index = NewRow2.findIndex( (value) => value.id === isRowId );
+        const index = NewRow2.findIndex((value) => value.id === isRowId);
 
         newValues[index] = newObject;
 
@@ -188,6 +190,14 @@ const CoolingTimeStudy = () => {
         setNewRow2(updatedRows);
     };
 
+    const handleChange = (e) => {
+        chartInstance.series[0].dataSource = NewRow2;
+        chartInstance.refresh();
+    }
+
+    useEffect(() => {
+        handleChange()
+       }, [handleChange])
 
     return (
         <>
@@ -235,7 +245,7 @@ const CoolingTimeStudy = () => {
                     <div className="col-md-3">
                         <div className="form-group">
                             <label htmlFor="exampleFormControlSelect30" className="lbl_design"> X-Axis: </label>
-                            <select className="form-control digits" id="exampleFormControlSelect30" onClick={(e) => setGrid2(e.target.value)}>
+                            <select className="form-control digits" onChange={(e) => handleChange(e)} onClick={(e) => setGrid2(e.target.value)}>
                                 {column.map((value, key) => (
                                     <>
                                         {value.id === 0 ? '-' : <option> {value.header} </option>}
@@ -249,11 +259,12 @@ const CoolingTimeStudy = () => {
                     </div>
                 </div>
                 <div className="col-md-12">
-                    <ChartComponent title="Cooling Time Study Chart" width="1100" primaryXAxis={{ valueType: "Category", title: "Cooling Time Study" }} primaryYAxis={{ title: `${grid2}` }}>
+                    <ChartComponent id='charts' ref={chart => chartInstance = chart} title="Cold Runner" primaryXAxis={{ valueType: "Category", title: "Cooling Time Study" }} primaryYAxis={{ title: `${grid2}` }}>
                         <Inject services={[LineSeries, Category, DataLabel]} />
                         <SeriesCollectionDirective>
 
-                            <SeriesDirective type="Line" dataSource={NewRow2} xName="Cooling Time Study" yName={grid2} marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
+                            {/* NewRow2 is the name of the Array which contains our data and again grid2 will be varying */}
+                            <SeriesDirective type="Line" dataSource={NewRow2} xName="Cooling Time Study" yName={grid2} marker={{ dataLabel: { visible: true }, visible: true }}></SeriesDirective>
 
                         </SeriesCollectionDirective>
 
@@ -263,7 +274,7 @@ const CoolingTimeStudy = () => {
 
             <div className="row save_saveas_btn">
                 <div className="col-md-12 text-right">
-                    <Button color="third" className="btn-save-chart"> {"Save"} </Button>
+                    <Button color="third" className="btn-save-chart"> Save </Button>
                 </div>
             </div>
 
