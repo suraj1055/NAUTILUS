@@ -153,6 +153,8 @@ const CavityBalance = () => {
                 Total += parseFloat(Range_Array[j-1])
             }
             console.log(Total)
+            setColumn_Data([...Column_Data, Total])
+            console.log(Column_Data)
         }
     }
 
