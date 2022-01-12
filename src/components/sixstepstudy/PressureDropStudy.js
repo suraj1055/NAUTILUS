@@ -185,7 +185,7 @@ const PressureDropStudy = () => {
                     <Button color="primary" onClick={setGraph}> Show Graph </Button>
                 </div>
                 <div>
-                    <ChartComponent title="Pressure Drop Study" width="1100" primaryXAxis={{ valueType: "Category", title: "Flow Area" }} primaryYAxis={{ title: "Max Pressure"}}>
+                    <ChartComponent title="Pressure Drop Study" primaryXAxis={{ valueType: "Category", title: "Flow Area" }} primaryYAxis={{ title: "Max Pressure"}}>
 
                         <Inject services={[LineSeries, Category, DataLabel]} />
 

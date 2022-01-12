@@ -190,14 +190,16 @@ const CoolingTimeStudy = () => {
         setNewRow2(updatedRows);
     };
 
-    const handleChange = (e) => {
-        chartInstance.series[0].dataSource = NewRow2;
-        chartInstance.refresh();
-    }
-
     useEffect(() => {
+
+        const handleChange = (e) => {
+            chartInstance.series[0].dataSource = NewRow2;
+            chartInstance.refresh();
+        }
+
         handleChange()
-       }, [handleChange])
+
+       }, [NewRow2])
 
     return (
         <>
@@ -245,7 +247,7 @@ const CoolingTimeStudy = () => {
                     <div className="col-md-3">
                         <div className="form-group">
                             <label htmlFor="exampleFormControlSelect30" className="lbl_design"> X-Axis: </label>
-                            <select className="form-control digits" onChange={(e) => handleChange(e)} onClick={(e) => setGrid2(e.target.value)}>
+                            <select className="form-control digits" onClick={(e) => setGrid2(e.target.value)}>
                                 {column.map((value, key) => (
                                     <>
                                         {value.id === 0 ? '-' : <option> {value.header} </option>}

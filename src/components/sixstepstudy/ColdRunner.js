@@ -187,14 +187,16 @@ const CavityBalance = () => {
         setNewRow2(updatedRows);
     };
 
-    const handleChange = (e) => {
-        chartInstance.series[0].dataSource = NewRow2;
-        chartInstance.refresh();
-    }
-
     useEffect(() => {
+
+        const handleChange = (e) => {
+            chartInstance.series[0].dataSource = NewRow2;
+            chartInstance.refresh();
+        }
+
         handleChange()
-       }, [handleChange])
+
+       }, [NewRow2])
 
     return (
         <>
@@ -243,7 +245,7 @@ const CavityBalance = () => {
             <div className="grid-chart-container">
                 <div className="row mb-4">
                     <div className="col-md-4 chart_container_btn">
-                        <select className="form-control digits" onChange={(e) => handleChange(e)} onClick={(e) => setGrid2(e.target.value)}>
+                        <select className="form-control digits" onClick={(e) => setGrid2(e.target.value)}>
                             {column.map((value, key) => (
                                 <>
                                     {value.id === 0 ? '-' : <option> {value.header} </option>}

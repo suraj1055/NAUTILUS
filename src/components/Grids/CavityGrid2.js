@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import '../App.css';
 import Table from 'react-bootstrap/Table';
 import { Button } from 'reactstrap';

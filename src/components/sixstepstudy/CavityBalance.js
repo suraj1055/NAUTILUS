@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChartComponent, LineSeries, Inject, SeriesCollectionDirective, SeriesDirective, Category, DataLabel } from '@syncfusion/ej2-react-charts';
 import { Button } from 'reactstrap';
 import Cavity from '../columns&rows/CavityAddColumn';
@@ -10,6 +10,8 @@ import { HtmlEditor, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-re
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { data, data2 } from '../data/cavity_balance_data';
 import CavityEdit from '../modals/CavityEdit'
+
+export let chartInstance;
 
 const CavityBalance = () => {
 
@@ -48,12 +50,15 @@ const CavityBalance = () => {
     const [toggleEdit, setToggleEdit] = useState(true);
     const [NewRow2, setNewRow2] = useState(data2);
     // const [chartData, setChartData] = useState()
-    const [editFormData, setEditFormData] = useState()
-    const [isRowId, setIsRowId] = useState(null)
+    const [editFormData, setEditFormData] = useState();
+    const [isRowId, setIsRowId] = useState(null);
+
+    // states for calculations
+    const [Total, setTotal] = useState([]);
 
     const addHeader = (e) => {
         e.preventDefault();
-        setHeader(e.target.value)
+        setHeader(e.target.value);
     }
 
     const addColumn = () => {
@@ -64,7 +69,6 @@ const CavityBalance = () => {
             const newColumn = { id: nanoid(), "header": header, "edit": true, "delete": true }
             setColumn([...column, newColumn]);
             setHeader("");
-            console.log(column)
         }
     };
 
@@ -105,20 +109,21 @@ const CavityBalance = () => {
 
     const handleEditFormChange = (event) => {
 
-        event.preventDefault();
+            event.preventDefault();
 
-        const fieldName = event.target.getAttribute("name");
-        const fieldValue = event.target.value;
+            const fieldName = event.target.getAttribute("name");
+            const fieldValue = event.target.value;
 
-        const newFormData = { ...editFormData }
-        newFormData[fieldName] = fieldValue
+            const newFormData = { ...editFormData }
+            newFormData[fieldName] = fieldValue
 
-        setEditFormData(newFormData)
+            setEditFormData(newFormData)
+
+            setTotal(newFormData)
+
     }
 
-    const handleEditFormSubmit = (event) => {
-
-        event.preventDefault()
+    const handleEditFormSubmit = () => {
 
         const editedValue = { id: isRowId }
 
@@ -149,8 +154,20 @@ const CavityBalance = () => {
     }
 
     const setGraph = () => {
-        console.log(NewRow2)
+        console.log(editFormData)
+        console.log(Total)
     }
+
+    useEffect(() => {
+
+        const handleChange = (e) => {
+            chartInstance.series[0].dataSource = NewRow2;
+            chartInstance.refresh();
+        }
+
+        handleChange()
+
+    }, [NewRow2])
 
     return (
         <>
@@ -199,7 +216,7 @@ const CavityBalance = () => {
                     </div>
                 </div>
                 <div>
-                    <ChartComponent title="Cavity Chart Analysis" primaryXAxis={{ valueType: "Category", title: "Cavity ID" }} primaryYAxis={{ title: "Part Weight" }}>
+                    <ChartComponent id='charts' ref={chart => chartInstance = chart} title="Cavity Chart Analysis" primaryXAxis={{ valueType: "Category", title: "Cavity ID" }} primaryYAxis={{ title: "Part Weight" }}>
                         <Inject services={[LineSeries, Category, DataLabel]} />
                         <SeriesCollectionDirective>
 
@@ -208,7 +225,6 @@ const CavityBalance = () => {
                             ))}
 
                         </SeriesCollectionDirective>
-
                     </ChartComponent>
                 </div>
             </div>
