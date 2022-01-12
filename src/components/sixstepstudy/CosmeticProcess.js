@@ -86,14 +86,16 @@ const CosmeticPressure = () => {
         setHydraulic(e.target.value)
     }
 
-    // const setGraph = () => {
+    const setGraph = () => {
 
-    //     setMinCosmetic( (NewRow2[0].Low + NewRow2[1].Low) / 2)
+        // setMinCosmetic( (NewRow2[0].Low + NewRow2[1].Low) / 2)
 
-    //     setMaxCosmetic( (NewRow2[0].High + NewRow2[1].High) / 2)
+        // setMaxCosmetic( (NewRow2[0].High + NewRow2[1].High) / 2)
 
-    //     setInterval(NewRow2[0].Low - NewRow2[1].Low)
-    // }
+        // setInterval(NewRow2[0].Low - NewRow2[1].Low)
+
+        console.log(NewRow2)
+    }
 
     return (
 
@@ -109,7 +111,7 @@ const CosmeticPressure = () => {
             <div className="grid-chart-container">
                 <div className="row">
                     <div className="col-md-4 chart_container_btn">
-                        <Button color="primary"> Show Graph </Button>
+                        <Button color="primary" onClick={setGraph}> Show Graph </Button>
                     </div>
                 </div>
                 <div>
@@ -118,10 +120,12 @@ const CosmeticPressure = () => {
                         <Inject services={[LineSeries, Category, DataLabel]} />
 
                         <SeriesCollectionDirective>
-                            
+                        
                             <SeriesDirective type="Line" dataSource={NewRow2} xName="Melt_Temp" yName="Low" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
 
                             <SeriesDirective type="Line" dataSource={NewRow2} xName="Melt_Temp" yName="High" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
+
+                            <SeriesDirective type="Line" dataSource={NewRow2} xName="Low" yName="High" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
 
                         </SeriesCollectionDirective>
 
