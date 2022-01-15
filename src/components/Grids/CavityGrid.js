@@ -7,7 +7,7 @@ import '../../assets/custom-stylesheet/grid_stylecss.css';
 import CavityEditRow from '../Grids/CavityEditRow';
 import CavityReadRow from '../Grids/CavityReadRow';
 
-const CavityGrid = ({ column, deleteColumn, NewRow2, handleEditFormChange, handleEditFormSubmit, setId, isRowId }) => {
+const CavityGrid = ({ column, deleteColumn, NewRow2, handleEditFormChange, handleEditFormSubmit, setId, isRowId,Total_Average }) => {
 
     return (
         <>
@@ -62,7 +62,7 @@ const CavityGrid = ({ column, deleteColumn, NewRow2, handleEditFormChange, handl
                                                     :
                                                     <>
                                                         {isRowId === value.id ?
-                                                            (<CavityEditRow key1={key1} key2={key2} setId={setId} value={value} value2={value2} column={column} NewRow2={NewRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} />)
+                                                            (<CavityEditRow key1={key1} key2={key2} setId={setId} value={value} value2={value2} column={column} NewRow2={NewRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} Total_Average={Total_Average}/>)
                                                             :
                                                             (<CavityReadRow key1={key1} key2={key2} setId={setId} value={value} value2={value2} column={column} NewRow2={NewRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} />)
                                                         }
