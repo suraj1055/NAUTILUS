@@ -1,15 +1,18 @@
 import React from 'react';
 
-const CavityEditRow = ({ key1, handleEditFormChange, handleEditFormSubmit, NewRow2, key2, calculate  }) => {
+const CavityEditRow = ({ key1, handleEditFormChange, handleEditFormSubmit, NewRow2, key2, calculate, handleCalculationEdit, handleCalculationSubmit }) => {
 
-    const submit = () => {
-        handleEditFormSubmit();
-        calculate();
+    const submit = (e) => {
+        handleEditFormSubmit(e);
+        // handleCalculationSubmit();
+    }
+
+    const change = (e) => {
+        handleEditFormChange(e)
     }
 
     return (
-
-        <td onMouseOut={submit}> <input type='text' className="form-control" name={`value${key2}`} onChange={handleEditFormChange} defaultValue={NewRow2[key1][`value${key2}`] || ''} autoFocus/> </td>
+        <td onMouseOut={e => submit(e) }> <input type='text' className="form-control" name={`value${key2}`} onChange={(e) => change(e)} defaultValue={NewRow2[key1][`value${key2}`] || ''} /> </td>
     )
 }
 

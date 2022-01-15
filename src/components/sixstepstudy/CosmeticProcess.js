@@ -121,11 +121,7 @@ const CosmeticPressure = () => {
 
                         <SeriesCollectionDirective>
                         
-                            <SeriesDirective type="Line" dataSource={NewRow2} xName="Melt_Temp" yName="Low" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
-
-                            <SeriesDirective type="Line" dataSource={NewRow2} xName="Melt_Temp" yName="High" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
-
-                            <SeriesDirective type="Line" dataSource={NewRow2} xName="Low" yName="High" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
+                            <SeriesDirective type="Line" dataSource={NewRow2} xName="High" yName="High" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
 
                         </SeriesCollectionDirective>
 
