@@ -53,6 +53,9 @@ const CavityBalance = () => {
     const [editFormData, setEditFormData] = useState();
     const [isRowId, setIsRowId] = useState(null);
 
+    // states for calculations
+    const [Total, setTotal] = useState([]);
+
     const addHeader = (e) => {
         e.preventDefault();
         setHeader(e.target.value);
@@ -106,40 +109,35 @@ const CavityBalance = () => {
 
     const handleEditFormChange = (event) => {
 
-        event.preventDefault();
+            event.preventDefault();
 
-        const fieldName = event.target.getAttribute("name");
-        const fieldValue = event.target.value;
+            const fieldName = event.target.getAttribute("name");
+            const fieldValue = event.target.value;
 
-        const newFormData = { ...editFormData }
-        newFormData[fieldName] = fieldValue
+            const newFormData = { ...editFormData }
+            newFormData[fieldName] = fieldValue
 
-        setEditFormData(newFormData)
+            setEditFormData(newFormData)
 
-        setTotal(newFormData)
+            setTotal(newFormData)
 
     }
 
     const handleEditFormSubmit = () => {
 
-        return new Promise((resolve, reject) => {
+        const editedValue = { id: isRowId }
 
-            const editedValue = { id: isRowId }
+        const newObject = Object.assign(editedValue, editFormData);
 
-            const newObject = Object.assign(editedValue, editFormData);
+        const newValues = [...NewRow2];
 
-            const newValues = [...NewRow2];
+        const index = NewRow2.findIndex((value) => value.id === isRowId);
 
-            const index = NewRow2.findIndex((value) => value.id === isRowId);
+        newValues[index] = newObject;
 
-            newValues[index] = newObject;
+        setNewRow2(newValues);
 
-            setNewRow2(newValues);
-
-            setIsRowId(null);
-
-            resolve();
-        })
+        setIsRowId(null);
 
     }
 
@@ -156,11 +154,8 @@ const CavityBalance = () => {
     }
 
     const setGraph = () => {
+        console.log(editFormData)
         console.log(Total)
-        console.log(Average)
-        console.log(Range)
-        console.log(MaxPart)
-        console.log(MinPart)
     }
 
     useEffect(() => {
@@ -173,47 +168,6 @@ const CavityBalance = () => {
         handleChange()
 
     }, [NewRow2])
-
-    let [Total, setTotal] = useState([]);
-    let [Average, setAverage] = useState([]);
-    let [Range, setRange] = useState([]);
-    let [MaxPart, setMaxPart] = useState([]);
-    let [MinPart, setMinPart] = useState([]);
-    // let [Percentage, setPercentage] = useState([]);
-
-    let total = 0, average = 0, range, Range_Array = [];
-
-    const Total_Average = () => {
-
-        for (let i = 1; i < column.length; i++) {
-
-            const compare = (a, b) => {
-                return a - b;
-            }
-
-            for (let j = 1; j <= NewRow2.length; j++) {
-
-                total += parseFloat(NewRow2[j - 1][`value${i}`])
-                setTotal([...Total, total])
-
-                average = total / NewRow2.length
-                setAverage([...Average, average])
-
-                Range_Array.push(parseFloat(NewRow2[j - 1][`value${i}`]))
-                const Sorted_Array = Range_Array.sort(compare)
-                range = Sorted_Array[Sorted_Array.length - 1] - Sorted_Array[Sorted_Array.length - Sorted_Array.length]
-                setRange([...Range, range])
-
-                let max = Sorted_Array[Sorted_Array.length - 1]
-                setMaxPart([...MaxPart, max])
-
-                let min = Sorted_Array[Sorted_Array.length - Sorted_Array.length]
-                setMinPart([...MinPart, min])
-            }
-
-        }
-
-    }
 
     return (
         <>
@@ -249,10 +203,10 @@ const CavityBalance = () => {
 
                 </div>
                 <div className="mb-4">
-                    <CavityGrid modal={modal} toggle={toggle} modal2={modal2} toggle2={toggle2} column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} addColumn={addColumn} NewRow2={NewRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} setId={setId} isRowId={isRowId} editFormData={editFormData} Total_Average={Total_Average} />
+                    <CavityGrid modal={modal} toggle={toggle} modal2={modal2} toggle2={toggle2} column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} addColumn={addColumn} NewRow2={NewRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} setId={setId} isRowId={isRowId} editFormData={editFormData} />
                 </div>
                 <div>
-                    <CavityGrid2 column={column} NewRow2={NewRow2} Total={Total} Average={Average} MaxPart={MaxPart} MinPart={MinPart} Range={Range} />
+                    <CavityGrid2 column={column} NewRow2={NewRow2} />
                 </div>
             </div>
             <div className="grid-chart-container">
