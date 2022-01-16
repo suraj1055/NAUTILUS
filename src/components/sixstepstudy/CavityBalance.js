@@ -53,9 +53,6 @@ const CavityBalance = () => {
     const [editFormData, setEditFormData] = useState();
     const [isRowId, setIsRowId] = useState(null);
 
-    // states for calculations
-    const [Total, setTotal] = useState([]);
-
     const addHeader = (e) => {
         e.preventDefault();
         setHeader(e.target.value);
@@ -109,18 +106,15 @@ const CavityBalance = () => {
 
     const handleEditFormChange = (event) => {
 
-            event.preventDefault();
+        event.preventDefault();
 
-            const fieldName = event.target.getAttribute("name");
-            const fieldValue = event.target.value;
+        const fieldName = event.target.getAttribute("name");
+        const fieldValue = event.target.value;
 
-            const newFormData = { ...editFormData }
-            newFormData[fieldName] = fieldValue
+        const newFormData = { ...editFormData }
+        newFormData[fieldName] = fieldValue
 
-            setEditFormData(newFormData)
-
-            setTotal(newFormData)
-
+        setEditFormData(newFormData)
     }
 
     const handleEditFormSubmit = () => {
@@ -154,8 +148,7 @@ const CavityBalance = () => {
     }
 
     const setGraph = () => {
-        console.log(editFormData)
-        console.log(Total)
+        console.log(NewRow2)
     }
 
     useEffect(() => {
