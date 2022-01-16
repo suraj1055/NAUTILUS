@@ -53,16 +53,6 @@ const CavityBalance = () => {
     const [isRowId, setIsRowId] = useState(null);
     const [isColumnId, setIsColumnId] = useState(null);
 
-    // states for calculations
-    // let [Total, setTotal] = useState([]);
-    // let [Average, setAverage] = useState([]);
-    // let [Range, setRange] = useState([]);
-    // let [MaxPart, setMaxPart] = useState([]);
-    // let [MinPart, setMinPart] = useState([]);
-
-    let [Local_Array, setLocal_Array] = useState([]);
-    let [Column_Data, setColumn_Data] = useState([]);
-
     const addHeader = (e) => {
         e.preventDefault();
         setHeader(e.target.value);
@@ -117,20 +107,14 @@ const CavityBalance = () => {
     const handleEditFormChange = (event) => {
 
         event.preventDefault();
-        
-        return new Promise((resolve, reject) => {
 
-            const fieldName = event.target.getAttribute("name");
-            const fieldValue = event.target.value;
+        const fieldName = event.target.getAttribute("name");
+        const fieldValue = event.target.value;
 
-            const newFormData = { ...editFormData }
-            newFormData[fieldName] = fieldValue;
+        const newFormData = { ...editFormData }
+        newFormData[fieldName] = fieldValue
 
-            setEditFormData(newFormData)
-
-            resolve();
-        })
-
+        setEditFormData(newFormData)
     }
 
     const handleEditFormSubmit = (event) => {
@@ -153,58 +137,21 @@ const CavityBalance = () => {
 
     }
 
-    const handleCalculationEdit = () => {
-
-        for (let i = 1; i < column.length; i++) {
-
-            let Temp_Array = [];
-
-            for (let j = 1; j <= NewRow2.length; j++) {
-
-                Temp_Array.push(isNaN(parseFloat(NewRow2[j - 1][`value${i}`])) ? 0 : parseFloat(NewRow2[j - 1][`value${i}`]));
-
-            }
-            setLocal_Array(Temp_Array);
-        }
-    }
-
-    const handleCalculationSubmit = () => {
-
-        const index = column.findIndex((value) => value.id === isColumnId);
-
-        const newValues = [...Column_Data];
-
-        newValues[index - 1] = Local_Array;
-
-        setColumn_Data(newValues)
-
-    }
-
     const setId = (event, value) => {
 
         event.preventDefault();
 
         setIsRowId(value.id);
 
-        // const formValues = Object.assign({}, value)
+        const formValues = Object.assign({}, value)
 
-        // setEditFormData(formValues);
-
-    }
-
-    const setId2 = (event, value) => {
-
-        event.preventDefault();
-
-        setIsColumnId(value.id);
+        setEditFormData(formValues);
 
     }
+
 
     const setGraph = () => {
-        // console.log(Local_Array)
-        // console.log(Column_Data)
-        // console.log(NewRow2)
-        console.log(editFormData)
+        console.log(NewRow2)
     }
 
     useEffect(() => {
@@ -252,7 +199,7 @@ const CavityBalance = () => {
 
                 </div>
                 <div className="mb-4">
-                    <CavityGrid modal={modal} toggle={toggle} modal2={modal2} toggle2={toggle2} column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} addColumn={addColumn} NewRow2={NewRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} setId={setId} isRowId={isRowId} editFormData={editFormData} setId2={setId2} handleCalculationEdit={handleCalculationEdit} handleCalculationSubmit={handleCalculationSubmit} />
+                    <CavityGrid modal={modal} toggle={toggle} modal2={modal2} toggle2={toggle2} column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} addColumn={addColumn} NewRow2={NewRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} setId={setId} isRowId={isRowId} editFormData={editFormData} />
                 </div>
                 <div>
                     <CavityGrid2 column={column} NewRow2={NewRow2} />
