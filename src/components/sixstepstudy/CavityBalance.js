@@ -153,9 +153,7 @@ const CavityBalance = () => {
 
     }
 
-    const handleCalculationEdit = (e) => {
-
-        e.preventDefault();
+    const handleCalculationEdit = () => {
 
         for (let i = 1; i < column.length; i++) {
 
@@ -205,8 +203,8 @@ const CavityBalance = () => {
     const setGraph = () => {
         // console.log(Local_Array)
         // console.log(Column_Data)
-        console.log(NewRow2)
-        // console.log(editFormData)
+        // console.log(NewRow2)
+        console.log(editFormData)
     }
 
     useEffect(() => {

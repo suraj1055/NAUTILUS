@@ -4,7 +4,8 @@ const CavityEditRow = ({ key1, handleEditFormChange, handleEditFormSubmit, NewRo
 
     const submit = (e) => {
         handleEditFormSubmit(e);
-        // handleCalculationSubmit();
+        handleCalculationSubmit();
+        handleCalculationEdit(e)
     }
 
     const change = (e) => {
