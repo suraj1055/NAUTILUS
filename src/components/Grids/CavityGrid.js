@@ -62,7 +62,7 @@ const CavityGrid = ({ column, deleteColumn, NewRow2, handleEditFormChange, handl
                                                     :
                                                     <>
                                                         {isRowId === value.id ?
-                                                            (<CavityEditRow key1={key1} key2={key2} setId={setId} value={value} value2={value2} column={column} NewRow2={NewRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} setId2={setId2} />)
+                                                            (<CavityEditRow key1={key1} key2={key2} setId={setId} value={value} value2={value2} column={column} NewRow2={NewRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} />)
                                                             :
                                                             (<CavityReadRow key1={key1} key2={key2} setId={setId} value={value} value2={value2} column={column} NewRow2={NewRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} />)
                                                         }
