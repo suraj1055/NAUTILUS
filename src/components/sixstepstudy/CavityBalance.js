@@ -208,7 +208,7 @@ const CavityBalance = () => {
             <div className="grid-chart-container">
                 <div className="row">
                     <div className="col-md-4 chart_container_btn">
-                        <Button color="primary" onClick={setGraph}> Calculate & Show Graph </Button>
+                        <Button color="primary" onClick={setGraph}> Show Graph </Button>
                     </div>
                 </div>
                 <div>

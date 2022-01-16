@@ -10,15 +10,15 @@ const CavityGrid2 = ({ column, NewRow2 }) => {
     let [Range, setRange] = useState([]);
     let [MaxPart, setMaxPart] = useState([]);
     let [MinPart, setMinPart] = useState([]);
-    // let [Percentage, setPercentage] = useState([]);
+    let [Percentage, setPercentage] = useState([]);
 
     const Total_Average = () => {
 
-        let columnTotal = [], columnAverage = [], columnRange = [], columnMaxPart = [], columnMinPart = [];
+        let columnTotal = [], columnAverage = [], columnRange = [], columnMaxPart = [], columnMinPart = [], columnPercent = [];
 
         for (let i = 1; i < column.length; i++) {
 
-            let total = 0, average = 0, range, Range_Array = [], max, min;
+            let total = 0, average = 0, range, Range_Array = [], max, min, percent = [];
 
             const compare = (a, b) => {
                 return a - b;
@@ -30,7 +30,7 @@ const CavityGrid2 = ({ column, NewRow2 }) => {
 
                 total += Range_Array[j - 1]
 
-                average = Number(total / NewRow2.length).toFixed(1)
+                average = Number(parseFloat(total) / parseInt(NewRow2.length)).toFixed(3)
 
                 const Sorted_Array = Range_Array.sort(compare)
                 range = Number(Sorted_Array[Sorted_Array.length - 1] - Sorted_Array[Sorted_Array.length - Sorted_Array.length]).toFixed(2)
@@ -38,21 +38,29 @@ const CavityGrid2 = ({ column, NewRow2 }) => {
                 max = Sorted_Array[Sorted_Array.length - 1]
 
                 min = (Sorted_Array[Sorted_Array.length - Sorted_Array.length] === 0 ? Sorted_Array[(Sorted_Array.length - Sorted_Array.length) + 1] : Sorted_Array[Sorted_Array.length - Sorted_Array.length])
+
             }
+
+            for (let k = 1; k <= NewRow2.length; k++) {
+                percent.push(Number((Range_Array[k - 1] - average) * 100 / average).toFixed(3))
+            }
+            
+            columnPercent[i - 1] = percent
+            setPercentage(columnPercent)
 
             columnTotal[i - 1] = total
             setTotal(columnTotal)
 
-            columnAverage[i-1] = average
+            columnAverage[i - 1] = average
             setAverage(columnAverage)
 
-            columnRange[i-1] = range
+            columnRange[i - 1] = range
             setRange(columnRange)
 
-            columnMaxPart[i-1] = max
+            columnMaxPart[i - 1] = max
             setMaxPart(columnMaxPart)
 
-            columnMinPart[i-1] = min
+            columnMinPart[i - 1] = min
             setMinPart(columnMinPart)
         }
     }
@@ -141,7 +149,7 @@ const CavityGrid2 = ({ column, NewRow2 }) => {
                                         {value2.edit === false ?
                                             (<td> <input type='text' className="form-control" value={value.Cavity_No} readOnly /> </td>)
                                             :
-                                            (<td> <input type='text' className="form-control" readOnly /> </td>)
+                                            (<td> <input type='text' className="form-control" value={ Percentage[key - 1] === undefined ? ('-') : (Percentage[key - 1][key1]) } readOnly /> </td>)
                                         }
                                     </>
                                 ))}
