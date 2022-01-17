@@ -1,172 +1,134 @@
 import React, { useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { Cancel } from "../../constant";
-import DatePicker from "react-datepicker";
 import "../../assets/custom-stylesheet/app2_style.css";
 import "../../assets/custom-stylesheet/samplepage_style.css";
 import SessionMold from '../pages/SessionMold';
 import { useHistory } from 'react-router-dom';
 import '../App.css';
+import { nanoid } from 'nanoid'
+import Mold from '../modals/Mold';
+import Session from '../modals/Session';
+import { mold, session } from '../data/Session_Mold_data';
 
 const Samplepage = () => {
 
   const history = useHistory();
   const [modal2, setModal2] = useState();
+  const [modal3, setModal3] = useState();
+
+  const [MoldData, setMoldData] = useState(mold);
+  const [SessionData, setSessionData] = useState(session);
+
+  const [addMoldData, setAddMoldData] = useState({
+    Mold_ID: "",
+    Platen_Orientation: "",
+    Number_Of_Bases: "",
+    Is_This_A_New_Mold: "",
+    Number_Of_Parts: ""
+  });
+
+  const [addSessionData, setAddSessionData] = useState({
+    Select_Mold_Id: "",
+    Session_Name: "",
+    Date: ""
+  });
 
   const toggle2 = () => {
     setModal2(!modal2)
   }
 
-  const [modal3, setModal3] = useState();
-
   const toggle3 = () => {
     setModal3(!modal3)
   }
 
-  const [startDate, setstartDate] = useState(new Date())
+  const handleAddFormChange = (event) => {
+    event.preventDefault();
 
-  const handleChange = date => {
-    setstartDate(date);
+    const fieldName = event.target.getAttribute("name");
+    const fieldValue = event.target.value;
+
+    const newFormData = { ...addMoldData };
+    newFormData[fieldName] = fieldValue;
+
+    setAddMoldData(newFormData);
   };
 
+  const handleAddFormChange2 = (event) => {
+    event.preventDefault();
+
+    const fieldName = event.target.getAttribute("name");
+    const fieldValue = event.target.value;
+
+    const newFormData = { ...addSessionData };
+    newFormData[fieldName] = fieldValue;
+
+    setAddSessionData(newFormData);
+  };
+
+  const handleAddFormSubmit = (event) => {
+    event.preventDefault();
+
+    if (!addMoldData.Mold_ID) {
+      alert("Please enter Mold Data")
+    }
+    else {
+      const newMold = {
+        id: nanoid(),
+        Mold_ID: addMoldData.Mold_ID,
+        Platen_Orientation: addMoldData.Platen_Orientation,
+        Number_Of_Bases: addMoldData.Number_Of_Bases,
+        Is_This_A_New_Mold: addMoldData.Is_This_A_New_Mold,
+        Number_Of_Parts: addMoldData.Number_Of_Parts
+      };
+
+      const newMolds = [...MoldData, newMold];
+      setMoldData(newMolds);
+    }
+
+  };
+
+  const handleAddFormSubmit2 = (event) => {
+    event.preventDefault();
+
+    if (!addSessionData.Session_Name) {
+      alert("Please enter Session Data")
+    }
+    else {
+      const newSession = {
+        id: nanoid(),
+        Select_Mold_Id: addSessionData.Select_Mold_Id,
+        Session_Name: addSessionData.Session_Name,
+        Date: addSessionData.Date
+      };
+
+      const newSessions = [...SessionData, newSession];
+      setSessionData(newSessions);
+    }
+    console.log(SessionData)
+  };
+
+  const saveData = (e) => {
+    handleAddFormSubmit(e)
+  }
+
+  const saveData2 = (e) => {
+    handleAddFormSubmit2(e)
+  }
 
   return (
-        <>
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-md-6 col-sm-12">
-              <Button className="create_mold_btn" color="primary" onClick={toggle3}>Create Mold</Button>
-              <Modal isOpen={modal3} toggle={toggle3} className="modal-body" centered={true}>
-                <ModalHeader toggle={toggle3}> Add Mold </ModalHeader>
-                <ModalBody>
-                  <div className="row">
-                    <div className="col-md-4">
-                      <div className="form-group">
-                        <label htmlFor="exampleFormControlSelect23" className="lbl_style">Enter New Mold ID:</label>
-                      </div>
-                    </div>
-                    <div className="col-md-8">
-                      <input className="form-control " id="exampleInputPassword27" type="text" placeholder="Mold ID" />
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-4">
-                      <div className="form-group">
-                        <label htmlFor="exampleFormControlSelect23" className="lbl_style">Platen Orientation :</label>
-                      </div>
-                    </div>
-                    <div className="col-md-8">
-                      <div className="form-group">
-                        <select className="form-control digits" id="exampleFormControlSelect30">
-                          <option>select</option>
-                          <option>{"2"}</option>
-                          <option>{"3"}</option>
-                          <option>{"4"}</option>
-                          <option>{"5"}</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-4">
-                      <div className="form-group">
-                        <label htmlFor="exampleFormControlSelect23" className="lbl_style"> Number of Bases : </label>
-                      </div>
-                    </div>
-                    <div className="col-md-8">
-                      <input className="form-control " id="exampleInputPassword27" type="text" placeholder="Number of Bases" />
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-4">
-                      <div className="form-group">
-                        <label htmlFor="exampleFormControlSelect23" className="lbl_style"> Is this a New Mold : </label>
-                      </div>
-                    </div>
-                    <div className="col-md-8">
-                      <div className="form-group">
-                        <select className="form-control" id="exampleFormControlSelect30" >
-                          <option>Yes</option>
-                          <option>No</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-4">
-                      <div className="form-group">
-                        <label htmlFor="exampleFormControlSelect23" className="lbl_style"> Number of Parts :</label>
-                      </div>
-                    </div>
-                    <div className="col-md-8">
-                      <input className="form-control " id="exampleInputPassword27" type="text" placeholder="Number of Parts" />
-                    </div>
-                  </div>
-                </ModalBody>
-                <ModalFooter>
-                  <Button color="primary">Create</Button>
-                  <Button color="fourth" onClick={toggle3}>{Cancel}</Button>
-                </ModalFooter>
-              </Modal>
-            </div>
-            <div className="col-md-6 col-sm-12">
-              <Button color="primary" onClick={toggle2}>Create session</Button>
-              <Modal isOpen={modal2} toggle={toggle2} className="modal-body" centered={true}>
-                <ModalHeader toggle={toggle2}>Add Session</ModalHeader>
-                <ModalBody>
-                  <div className="row">
-                    <div className="col-md-4">
-                      <div className="form-group">
-                        <label htmlFor="exampleFormControlSelect23" className="lbl_style">Select Mold ID :</label>
-                      </div>
-                    </div>
-                    <div className="col-md-8">
-                      <div className="form-group">
-                        <select className="form-control digits" id="exampleFormControlSelect30">
-                          <option>select</option>
-                          <option>{"2"}</option>
-                          <option>{"3"}</option>
-                          <option>{"4"}</option>
-                          <option>{"5"}</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-4">
-                      <div className="form-group">
-                        <label htmlFor="exampleFormControlSelect23" className="lbl_style">Session Name :</label>
-                      </div>
-                    </div>
-                    <div className="col-md-8">
-                      <input className="form-control " id="exampleInputPassword27" type="text" />
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-4">
-                      <div className="form-group">
-                        <label htmlFor="exampleFormControlSelect23" className="lbl_style">Date :</label>
-                      </div>
-                    </div>
-                    <div className="col-md-8">
-                      <div className="input-group">
-                        <DatePicker className="form-control digits" selected={startDate} onChange={handleChange} />
-                      </div>
-                    </div>
-                  </div>
-                </ModalBody>
-                <ModalFooter>
-                  <Button color="primary">Create</Button>
-                  <Button color="fourth" onClick={toggle2}>{Cancel}</Button>
-                </ModalFooter>
-              </Modal>
-            </div>
+    <>
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-md-6 col-sm-12">
+            <Mold modal3={modal3} toggle3={toggle3} handleAddFormChange={handleAddFormChange} handleAddFormSubmit={handleAddFormSubmit} saveData={saveData} />
+          </div>
+          <div className="col-md-6 col-sm-12">
+            <Session modal2={modal2} toggle2={toggle2} handleAddFormChange2={handleAddFormChange2} handleAddFormSubmit2={handleAddFormSubmit2} saveData2={saveData2} />
           </div>
         </div>
-
-        <div className="container-fluid">
-          <SessionMold history={history} />
-        </div>
+      </div>
+      <div className="container-fluid">
+        <SessionMold history={history} MoldData={MoldData} SessionData={SessionData} />
+      </div>
     </>
 
   );

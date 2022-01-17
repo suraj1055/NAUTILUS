@@ -54,7 +54,6 @@ const CavityBalance = () => {
     const [isColumnId, setIsColumnId] = useState(null);
     const [toggleEdit, setToggleEdit] = useState(true);
     const [grid2, setGrid2] = useState("");
-    // const [chartData, setChartData] = useState()
     const [editFormData, setEditFormData] = useState()
     const [isRowId, setIsRowId] = useState(null)
 
@@ -141,10 +140,6 @@ const CavityBalance = () => {
             return index.id !== id;
         })
         setColumn(updatedColumns)
-    }
-
-    const setGraph = () => {
-        console.log(NewRow2)
     }
 
     const editColumn = (id) => {
@@ -252,9 +247,6 @@ const CavityBalance = () => {
                                 </>
                             ))}
                         </select>
-                    </div>
-                    <div className="col-md-4 chart_container_btn">
-                        <Button color="primary" onClick={setGraph}> Calculate & Show Graph </Button>
                     </div>
                 </div>
                 <div className="cold-runner-grid">
