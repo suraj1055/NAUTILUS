@@ -13,13 +13,13 @@ class SessionMold extends Component {
     this.childGrid = {
       columns: [
         { headerText: 'Open', textAlign: 'Center', width: 120, commands: [{ buttonOption: { iconCss: 'e-icons e-add' } }] },
-        { field: 'Select_Mold_Id', headerText: 'Mold ID', textAlign: 'Center', width: 150 },
+        { field: 'Mold_Id', headerText: 'Mold ID', textAlign: 'Center', width: 150 },
         { field: 'Session_Name', headerText: 'Session Name', textAlign: 'Center', width: 120 },
         { field: 'Date', headerText: 'Date', textAlign: 'Center', width: 150 }
       ],
       commandClick: this.onChildCommandClick.bind(this),
       dataSource: this.props.SessionData,
-      queryString: 'Select_Mold_Id',
+      queryString: 'Mold_Id',
     };
 }
 

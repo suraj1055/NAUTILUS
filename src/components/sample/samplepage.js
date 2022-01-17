@@ -27,7 +27,7 @@ const Samplepage = () => {
   });
 
   const [addSessionData, setAddSessionData] = useState({
-    Select_Mold_Id: "",
+    Mold_Id: "",
     Session_Name: "",
     Date: ""
   });
@@ -95,7 +95,7 @@ const Samplepage = () => {
     else {
       const newSession = {
         id: nanoid(),
-        Select_Mold_Id: addSessionData.Select_Mold_Id,
+        Mold_Id: addSessionData.Mold_Id,
         Session_Name: addSessionData.Session_Name,
         Date: addSessionData.Date
       };

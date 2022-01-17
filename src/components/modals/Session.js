@@ -17,12 +17,12 @@ const Session = ({ toggle2, modal2, handleAddFormChange2, saveData2, handleAddFo
               </div>
               <div className="col-md-8">
                 <div className="form-group">
-                  <select className="form-control digits" name="Select_Mold_Id" onChange={handleAddFormChange2}>
+                  <select className="form-control digits" name="Mold_Id" onChange={handleAddFormChange2}>
                     <option> 1 </option>
-                    <option>{"2"}</option>
-                    <option>{"3"}</option>
-                    <option>{"4"}</option>
-                    <option>{"5"}</option>
+                    <option> 2 </option>
+                    <option> 3 </option>
+                    <option> 4 </option>
+                    <option> 5 </option>
                   </select>
                 </div>
               </div>

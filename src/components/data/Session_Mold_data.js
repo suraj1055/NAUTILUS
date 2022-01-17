@@ -33,10 +33,10 @@ export let mold = [
 
 export const session = [
     {
-        Select_Mold_Id: 1, Session_Name: 'Session1',  Date: '20-09-2021'
+        Mold_Id: 1, Session_Name: 'Session1',  Date: '20-09-2021'
     },  
     {
-        Select_Mold_Id: 1, Session_Name: 'Session1', Date: '20-09-2021'
+        Mold_Id: 1, Session_Name: 'Session1', Date: '20-09-2021'
     }
     // {
     //    Name: 'Session2', MoldID: 2, Date: '20-09-2021'
