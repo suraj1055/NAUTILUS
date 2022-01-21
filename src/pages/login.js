@@ -1,28 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../assets/custom-stylesheet/login_style.css';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux'
 
 const LogIn = () => {
-
-    const [formData, setFormData] = useState({
-        email: '',
-        password: ''
-    })
-
-    const { email, password } = formData
-
-    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
-
-    const onSubmit = e => {
-        e.preventDefault();
-
-        // login(email, password)
-
-    };
-
-    // Is the User Authenticated ?
-    // Redirect them to Dashboard
 
     return (
         <div>
@@ -40,13 +20,13 @@ const LogIn = () => {
                                                 <div className="text-center">
                                                     <h5 className="card_head"> LOGIN </h5>
                                                 </div>
-                                                <form className="theme-form" onSubmit={e => onSubmit(e)}>
+                                                <form className="theme-form" >
 
                                                     <div className="form-group">
 
                                                         <label className="col-form-label pt-0"> Email </label>
 
-                                                        <input className="form-control " type="email" name="email" value={email} onChange={e => onChange(e)} required />
+                                                        <input className="form-control " type="email" name="email" required />
 
                                                     </div>
 
@@ -54,7 +34,7 @@ const LogIn = () => {
 
                                                         <label className="col-form-label"> Password </label>
 
-                                                        <input className="form-control" type="password" name="password" value={password} onChange={e => onChange(e)} required />
+                                                        <input className="form-control" type="password" name="password" required />
 
                                                     </div>
 
@@ -96,4 +76,4 @@ const LogIn = () => {
     );
 };
 
-export default connect(null)(LogIn);
+export default LogIn;

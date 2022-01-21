@@ -3,7 +3,6 @@ import '../assets/custom-stylesheet/login_style.css';
 import { Link } from 'react-router-dom';
 import { Email, Resetpassword, Forgotpassword, SignUp2 } from '../constant';
 
-
 const ResetPwd = () => {
 
     return (

@@ -1,6 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Nav, NavItem, NavLink } from 'reactstrap';
-import { useDispatch } from 'react-redux';
 
 const ThemeCustomizer = () => {
 
@@ -11,20 +10,8 @@ const ThemeCustomizer = () => {
     const body_sidebar_type = localStorage.getItem('bodyWrapper');
     const [activeTab1, setActiveTab1] = useState('1');
     const color = localStorage.getItem('color')
-    const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch({ type: 'ADD_COSTOMIZER' });
-
-        dispatch({
-            type: 'ADD_COLOR',
-            payload: {
-                color,
-                primary_color,
-                secondary_color,
-                layout_version,
-            }
-        })
 
         //set sidebar wrapper
         if(sidebar_type === null && body_sidebar_type === null){
@@ -35,7 +22,7 @@ const ThemeCustomizer = () => {
         }
 
         
-    }, [body_sidebar_type, color, dispatch, layout_version, primary_color, secondary_color, sidebar_type]);
+    }, [body_sidebar_type, color, layout_version, primary_color, secondary_color, sidebar_type]);
 
     return (
         <Fragment>
