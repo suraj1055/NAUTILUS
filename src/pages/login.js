@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../assets/custom-stylesheet/login_style.css';
-import { LOGIN,Login, Email, Password, RememberMe, SignUp2 } from '../constant';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
 
-const SignIn = ({ history }) => {
+const LogIn = () => {
 
-    const loginAuth = () => {
-        history.push(`${process.env.PUBLIC_URL}/dashboard/default`);
-    }
+    const [formData, setFormData] = useState({
+        email: '',
+        password: ''
+    })
+
+    const { email, password } = formData
+
+    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
+
+    const onSubmit = e => {
+        e.preventDefault();
+
+        // login(email, password)
+
+    };
+
+    // Is the User Authenticated ?
+    // Redirect them to Dashboard
 
     return (
         <div>
@@ -23,28 +38,48 @@ const SignIn = ({ history }) => {
                                             <div className="bg_txture"></div>
                                             <div className="card-body card_css">
                                                 <div className="text-center">
-                                                    <h5 className="card_head">{LOGIN}</h5>
+                                                    <h5 className="card_head"> LOGIN </h5>
                                                 </div>
-                                                <form className="theme-form">
+                                                <form className="theme-form" onSubmit={e => onSubmit(e)}>
+
                                                     <div className="form-group">
-                                                        <label className="col-form-label pt-0">{Email}</label>
-                                                        <input className="form-control " type="email" required/>
+
+                                                        <label className="col-form-label pt-0"> Email </label>
+
+                                                        <input className="form-control " type="email" name="email" value={email} onChange={e => onChange(e)} required />
+
                                                     </div>
+
                                                     <div className="form-group">
-                                                        <label className="col-form-label">{Password}</label>
-                                                        <input className="form-control" type="password" required="" />
+
+                                                        <label className="col-form-label"> Password </label>
+
+                                                        <input className="form-control" type="password" name="password" value={password} onChange={e => onChange(e)} required />
+
                                                     </div>
+
                                                     <div className="form-group form-row mt-3 mb-0 text-center">
-                                                        <button className="btn btn-primary btn-block btn_txt " type="button" onClick={() => loginAuth()}>{Login}</button>
+                                                        <button className="btn btn-primary btn-block btn_txt " type="submit">
+                                                            Login
+                                                        </button>
                                                     </div>
+
                                                     <div className="row checkbox">
-                                                        <input id="checkbox1" type="checkbox" />
-                                                        <label htmlFor="checkbox1 txt-col">{RememberMe}</label>
-                                                        <Link to={`${process.env.PUBLIC_URL}/pages/resetPwd`} className="col-md-8 btn-link text-capitalize text-right mt-2 remember_me"> Forgot Password ? </Link>
+
+                                                        <Link to={`${process.env.PUBLIC_URL}/reset-password`} className="col-md-8 btn-link text-capitalize text-right mt-2 sign_up">
+                                                            Forgot Password ?
+                                                        </Link>
                                                     </div>
 
                                                     <div className="login_links text-center">
-                                                        <div className="mt-2">{"Don't have an Account?"} <Link className="btn-link text-capitalize sign_up" to={`${process.env.PUBLIC_URL}/pages/signup`}>{SignUp2}</Link></div>
+
+                                                        <div className="mt-2">
+                                                            Don't have an Account ?
+                                                            <Link className="btn-link text-capitalize sign_up" to={`${process.env.PUBLIC_URL}/signup`}>
+                                                                Sign Up
+                                                            </Link>
+                                                        </div>
+
                                                     </div>
 
                                                 </form>
@@ -61,4 +96,4 @@ const SignIn = ({ history }) => {
     );
 };
 
-export default SignIn;
+export default connect(null)(LogIn);

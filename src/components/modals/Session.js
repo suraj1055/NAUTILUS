@@ -1,11 +1,11 @@
 import React from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-const Session = ({ toggle2, modal2, handleAddFormChange2, saveData2, handleAddFormSubmit2 }) => {
+const Session = ({ toggle2, modal2, handleAddFormChange2, handleAddFormSubmit2 }) => {
   return (
     <>
       <Button color="primary" onClick={toggle2}>Create session</Button>
-      <form onSubmit={handleAddFormSubmit2}> 
+      <form> 
         <Modal isOpen={modal2} toggle={toggle2} className="modal-body" centered={true}>
           <ModalHeader toggle={toggle2}>Add Session</ModalHeader>
           <ModalBody>
@@ -51,7 +51,7 @@ const Session = ({ toggle2, modal2, handleAddFormChange2, saveData2, handleAddFo
             </div>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={saveData2}> Create </Button>
+            <Button color="primary" onClick={handleAddFormSubmit2}> Create </Button>
             <Button color="fourth" onClick={toggle2}> Cancel </Button>
           </ModalFooter>
         </Modal>

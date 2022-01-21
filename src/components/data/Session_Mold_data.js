@@ -1,6 +1,6 @@
 export let mold = [
     {
-        Mold_ID: 1, Platen_Orientation: 'Yes', Number_Of_Bases: 2, Is_This_A_New_Mold: 'No', Number_Of_Parts: 2
+        Mold_Id: 1, Platen_Orientation: 'Yes', Number_Of_Bases: 2, Is_This_A_New_Mold: 'No', Number_Of_Parts: 2
     },
     // {
     //     MoldID: 2, PlatenOrientation: 'Yes', NumberofBases: 2, Isthisanewmold: 'No', NumberofParts: 2
@@ -33,11 +33,13 @@ export let mold = [
 
 export const session = [
     {
-        Mold_Id: 1, Session_Name: 'Session1',  Date: '20-09-2021'
+        Mold_Id: '1',
+        Session_Name: 'Session1', 
+        Date: '20-09-2021'
     },  
-    {
-        Mold_Id: 1, Session_Name: 'Session1', Date: '20-09-2021'
-    }
+    // {
+    //     Mold_Id: 1, Session_Name: 'Session1', Date: '20-09-2021'
+    // }
     // {
     //    Name: 'Session2', MoldID: 2, Date: '20-09-2021'
     // },  

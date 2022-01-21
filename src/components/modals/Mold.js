@@ -1,11 +1,11 @@
 import React from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-const Mold = ({ toggle3, modal3, handleAddFormChange, handleAddFormSubmit, saveData }) => {
+const Mold = ({ toggle3, modal3, handleAddFormChange, handleAddFormSubmit }) => {
     return (
         <>
             <Button className="create_mold_btn" color="primary" onClick={toggle3}>Create Mold</Button>
-            <form onSubmit={handleAddFormSubmit}>
+            <form>
                 <Modal isOpen={modal3} toggle={toggle3} className="modal-body" centered={true}>
                     <ModalHeader toggle={toggle3}> Add Mold </ModalHeader>
                     <ModalBody>
@@ -16,7 +16,7 @@ const Mold = ({ toggle3, modal3, handleAddFormChange, handleAddFormSubmit, saveD
                                 </div>
                             </div>
                             <div className="col-md-8">
-                                <input className="form-control" name="Mold_ID" type="text" placeholder="Mold ID" onChange={handleAddFormChange} />
+                                <input className="form-control" name="Mold_Id" type="text" placeholder="Mold ID" onChange={handleAddFormChange} />
                             </div>
                         </div>
                         <div className="row">
@@ -71,7 +71,7 @@ const Mold = ({ toggle3, modal3, handleAddFormChange, handleAddFormSubmit, saveD
                         </div>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" type='submit' onClick={saveData}>Create</Button>
+                        <Button color="primary" type='submit' onClick={handleAddFormSubmit}>Create</Button>
                         <Button color="fourth" onClick={toggle3}>Cancel</Button>
                     </ModalFooter>
                 </Modal>

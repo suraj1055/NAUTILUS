@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import '../assets/custom-stylesheet/login_style.css';
-import { Email,Password,RetypePassword ,NewUser,SignUp2} from '../constant';
+import { Email, Password, RetypePassword, NewUser, SignUp2 } from '../constant';
 import { Link } from 'react-router-dom';
 
 const Signup = () => {
@@ -11,8 +11,8 @@ const Signup = () => {
                     <div className="authentication-main">
                         <div className="row">
                             <div className="col-sm-12 p-0">
-                                <div className="auth-innerright">                                    
-                                   
+                                <div className="auth-innerright">
+
                                     <div className="authentication-box">
 
                                         <div className="card mt-4">
@@ -30,18 +30,18 @@ const Signup = () => {
                                                         <label className="col-form-label">{Password}</label>
                                                         <input className="form-control" type="password" required="" />
                                                     </div>
-                                                <div className="form-group">
-                                                    <label className="col-form-label">{RetypePassword}</label>
-                                                    <input className="form-control" type="password"/>
-                                                </div>
-                                                <div className="form-group form-row mt-3 mb-0">
-                                                        <button className="btn btn-primary btn-block" type="button">{SignUp2}</button>
-                                                </div>
-                                                    <div className="login_links text-center">
-                                                     <div className="mt-2">{"Are you already user?"} <Link className="btn-link text-capitalize sign_in" to={`${process.env.PUBLIC_URL}/pages/login`}> Sign In </Link>
-                                                     </div>
+                                                    <div className="form-group">
+                                                        <label className="col-form-label">{RetypePassword}</label>
+                                                        <input className="form-control" type="password" />
                                                     </div>
-                                            </form>
+                                                    <div className="form-group form-row mt-3 mb-0">
+                                                        <button className="btn btn-primary btn-block" type="button">{SignUp2}</button>
+                                                    </div>
+                                                    <div className="login_links text-center">
+                                                        <div className="mt-2">{"Are you already user?"} <Link className="btn-link text-capitalize sign_in" to={`${process.env.PUBLIC_URL}/login`}> Sign In </Link>
+                                                        </div>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

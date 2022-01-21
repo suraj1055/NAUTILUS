@@ -40,7 +40,7 @@ const Header = () => {
           </div>
           <div className="nav-right col p-0">
             <div className="pull-right mt-2">
-              <Link to={`${process.env.PUBLIC_URL}/pages/login`}>
+              <Link to={`${process.env.PUBLIC_URL}/login`}>
                 <LogOut style={{ height: '18px' }}/>
               </Link>
             </div>

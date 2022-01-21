@@ -1,11 +1,8 @@
-import React from 'react';
+import React from 'react'
 import '../assets/custom-stylesheet/login_style.css';
 import { Link } from 'react-router-dom';
-import { Email, Resetpassword, Forgotpassword, SignUp2 } from '../constant';
 
-
-const ResetPwd = () => {
-
+const Activate = () => {
     return (
         <div>
             <div className="page-wrapper">
@@ -21,25 +18,21 @@ const ResetPwd = () => {
                                             <div className="bg_txture"></div>
                                             <div className="card-body">
                                                 <div className="text-center">
-                                                    <h5 className="card_head">{Forgotpassword}</h5>
+                                                    <h5 className="card_head"> Account Activation </h5>
                                                 </div>
                                                 <form className="theme-form">
                                                     <div className="form-group">
-                                                        <label className="col-form-label pt-0">{Email}</label>
+                                                        <label className="col-form-label pt-0"> Email </label>
                                                         <input className="form-control" type="email" required="" />
                                                     </div>
 
-                                                    <div className="form-group form-row mt-3 mb-0">
-                                                        <button className="btn btn-primary btn-block" type="button">{Resetpassword}</button>
-                                                    </div>
-
                                                     <div className="login_links text-center">
-                                                        <div className="mt-2"><Link className="btn-link text-capitalize sign_in" to={`${process.env.PUBLIC_URL}/login`}> Back to Log In </Link>
-                                                        </div>
-                                                    </div>
+                                                        <button className="btn btn-primary btn-block" type="button">
+                                                            <Link className="text-capitalize btn-link" style= {{ color: '#fff' }} to={`${process.env.PUBLIC_URL}/activate/:uid/:token`}>
+                                                                Activate Account
+                                                            </Link>
 
-                                                    <div className="login_links text-center">
-                                                        <div className="mt-2">{"Don't have an Account?"} <Link className="btn-link text-capitalize sign_in" to={`${process.env.PUBLIC_URL}/signup`}> {SignUp2} </Link></div>
+                                                        </button>
                                                     </div>
 
                                                 </form>
@@ -53,7 +46,7 @@ const ResetPwd = () => {
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default ResetPwd;
+export default Activate

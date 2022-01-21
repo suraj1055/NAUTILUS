@@ -19,7 +19,7 @@ const Samplepage = () => {
   const [SessionData, setSessionData] = useState(session);
 
   const [addMoldData, setAddMoldData] = useState({
-    Mold_ID: "",
+    Mold_Id: "",
     Platen_Orientation: "",
     Number_Of_Bases: "",
     Is_This_A_New_Mold: "",
@@ -67,13 +67,13 @@ const Samplepage = () => {
   const handleAddFormSubmit = (event) => {
     event.preventDefault();
 
-    if (!addMoldData.Mold_ID) {
+    if (!addMoldData.Mold_Id) {
       alert("Please enter Mold Data")
     }
     else {
       const newMold = {
         id: nanoid(),
-        Mold_ID: addMoldData.Mold_ID,
+        Mold_Id: addMoldData.Mold_Id,
         Platen_Orientation: addMoldData.Platen_Orientation,
         Number_Of_Bases: addMoldData.Number_Of_Bases,
         Is_This_A_New_Mold: addMoldData.Is_This_A_New_Mold,
@@ -83,7 +83,7 @@ const Samplepage = () => {
       const newMolds = [...MoldData, newMold];
       setMoldData(newMolds);
     }
-
+   console.log(MoldData)
   };
 
   const handleAddFormSubmit2 = (event) => {
@@ -103,26 +103,17 @@ const Samplepage = () => {
       const newSessions = [...SessionData, newSession];
       setSessionData(newSessions);
     }
-    console.log(SessionData)
   };
-
-  const saveData = (e) => {
-    handleAddFormSubmit(e)
-  }
-
-  const saveData2 = (e) => {
-    handleAddFormSubmit2(e)
-  }
 
   return (
     <>
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-6 col-sm-12">
-            <Mold modal3={modal3} toggle3={toggle3} handleAddFormChange={handleAddFormChange} handleAddFormSubmit={handleAddFormSubmit} saveData={saveData} />
+            <Mold modal3={modal3} toggle3={toggle3} handleAddFormChange={handleAddFormChange} handleAddFormSubmit={handleAddFormSubmit} />
           </div>
           <div className="col-md-6 col-sm-12">
-            <Session modal2={modal2} toggle2={toggle2} handleAddFormChange2={handleAddFormChange2} handleAddFormSubmit2={handleAddFormSubmit2} saveData2={saveData2} />
+            <Session modal2={modal2} toggle2={toggle2} handleAddFormChange2={handleAddFormChange2} handleAddFormSubmit2={handleAddFormSubmit2} />
           </div>
         </div>
       </div>
