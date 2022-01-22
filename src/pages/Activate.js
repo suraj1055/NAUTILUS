@@ -28,7 +28,7 @@ const Activate = () => {
 
                                                     <div className="login_links text-center">
                                                         <button className="btn btn-primary btn-block" type="button">
-                                                            <Link className="text-capitalize btn-link" style= {{ color: '#fff' }} to={`${process.env.PUBLIC_URL}/activate/:uid/:token`}>
+                                                            <Link className="text-capitalize btn-link" style= {{ color: '#fff' }} to="/activate/:uid/:token">
                                                                 Activate Account
                                                             </Link>
 

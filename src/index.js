@@ -25,27 +25,27 @@ const Root = () => {
                     <Switch>
 
                         <Route exact path='/' render={() => {
-                            return (<Redirect to={`${process.env.PUBLIC_URL}/login`} />)
+                            return (<Redirect to="/login" />)
                         }} />
 
                         <Route exact path='/endless' render={() => {
-                            return (<Redirect to={`${process.env.PUBLIC_URL}/login`} />)
+                            return (<Redirect to="/login" />)
                         }} />
 
-                        <Route path={`${process.env.PUBLIC_URL}/login`} component={SignIn} />
+                        <Route path="/login" component={SignIn} />
 
-                        <Route path={`${process.env.PUBLIC_URL}/signup`} component={Signup} />
+                        <Route path="/signup" component={Signup} />
 
-                        <Route path={`${process.env.PUBLIC_URL}/reset-password`} component={ResetPwd} />
+                        <Route path="/reset-password" component={ResetPwd} />
 
-                        <Route path={`${process.env.PUBLIC_URL}/activate/:uid/:token`} component={Activate} />
+                        <Route path="/activate/:uid/:token" component={Activate} />
 
-                        <Route path={`${process.env.PUBLIC_URL}/password/reset/:uid/:token`} component={ResetPwdCofirm} />
+                        <Route path="/password/reset/:uid/:token" component={ResetPwdCofirm} />
 
                         <App>
-                            <Route exact path={`${process.env.PUBLIC_URL}/sixstepstudy/sixstepstudy`} component={SixStepStudy} />
+                            <Route exact path="/sixstepstudy/sixstepstudy" component={SixStepStudy} />
 
-                            <Route path={`${process.env.PUBLIC_URL}/dashboard/default`} component={Default} />
+                            <Route path="/dashboard/default" component={Default} />
                         </App>
 
                     </Switch>

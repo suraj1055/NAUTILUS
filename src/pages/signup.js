@@ -37,7 +37,7 @@ const Signup = () => {
                                                         <button className="btn btn-primary btn-block" type="button"> SignUp2 </button>
                                                     </div>
                                                     <div className="login_links text-center">
-                                                        <div className="mt-2">{"Are you already user?"} <Link className="btn-link text-capitalize sign_in" to={`${process.env.PUBLIC_URL}/login`}> Sign In </Link>
+                                                        <div className="mt-2">{"Are you already user?"} <Link className="btn-link text-capitalize sign_in" to="/login"> Sign In </Link>
                                                         </div>
                                                     </div>
                                                 </form>

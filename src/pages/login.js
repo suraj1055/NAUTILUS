@@ -46,7 +46,7 @@ const LogIn = () => {
 
                                                     <div className="row checkbox">
 
-                                                        <Link to={`${process.env.PUBLIC_URL}/reset-password`} className="col-md-8 btn-link text-capitalize text-right mt-2 sign_up">
+                                                        <Link to="/reset-password" className="col-md-8 btn-link text-capitalize text-right mt-2 sign_up">
                                                             Forgot Password ?
                                                         </Link>
                                                     </div>
@@ -55,7 +55,7 @@ const LogIn = () => {
 
                                                         <div className="mt-2">
                                                             Don't have an Account ?
-                                                            <Link className="btn-link text-capitalize sign_up" to={`${process.env.PUBLIC_URL}/signup`}>
+                                                            <Link className="btn-link text-capitalize sign_up" to="/signup">
                                                                 Sign Up
                                                             </Link>
                                                         </div>

@@ -32,12 +32,12 @@ const ResetPwd = () => {
                                                     </div>
 
                                                     <div className="login_links text-center">
-                                                        <div className="mt-2"><Link className="btn-link text-capitalize sign_in" to={`${process.env.PUBLIC_URL}/login`}> Back to Log In </Link>
+                                                        <div className="mt-2"><Link className="btn-link text-capitalize sign_in" to="/login"> Back to Log In </Link>
                                                         </div>
                                                     </div>
 
                                                     <div className="login_links text-center">
-                                                        <div className="mt-2">{"Don't have an Account?"} <Link className="btn-link text-capitalize sign_in" to={`${process.env.PUBLIC_URL}/signup`}> SignUp2 </Link></div>
+                                                        <div className="mt-2">{"Don't have an Account?"} <Link className="btn-link text-capitalize sign_in" to="/signup"> SignUp2 </Link></div>
                                                     </div>
 
                                                 </form>
