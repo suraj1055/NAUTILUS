@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import '../assets/custom-stylesheet/login_style.css';
-import { Email, Password, RetypePassword, NewUser, SignUp2 } from '../constant';
 import { Link } from 'react-router-dom';
 
 const Signup = () => {
@@ -19,23 +18,23 @@ const Signup = () => {
                                             <div className="bg_txture"></div>
                                             <div className="card-body card_css">
                                                 <div className="text-center">
-                                                    <h5 className="card_head">{NewUser}</h5>
+                                                    <h5 className="card_head">NewUser</h5>
                                                 </div>
                                                 <form className="theme-form">
                                                     <div className="form-group">
-                                                        <label className="col-form-label">{Email}</label>
+                                                        <label className="col-form-label"> Email </label>
                                                         <input className="form-control" type="email" required="" />
                                                     </div>
                                                     <div className="form-group">
-                                                        <label className="col-form-label">{Password}</label>
+                                                        <label className="col-form-label"> Password </label>
                                                         <input className="form-control" type="password" required="" />
                                                     </div>
                                                     <div className="form-group">
-                                                        <label className="col-form-label">{RetypePassword}</label>
+                                                        <label className="col-form-label"> RetypePassword </label>
                                                         <input className="form-control" type="password" />
                                                     </div>
                                                     <div className="form-group form-row mt-3 mb-0">
-                                                        <button className="btn btn-primary btn-block" type="button">{SignUp2}</button>
+                                                        <button className="btn btn-primary btn-block" type="button"> SignUp2 </button>
                                                     </div>
                                                     <div className="login_links text-center">
                                                         <div className="mt-2">{"Are you already user?"} <Link className="btn-link text-capitalize sign_in" to={`${process.env.PUBLIC_URL}/login`}> Sign In </Link>
