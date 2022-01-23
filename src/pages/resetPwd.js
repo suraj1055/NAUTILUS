@@ -37,7 +37,7 @@ const ResetPwd = () => {
                                                     </div>
 
                                                     <div className="login_links text-center">
-                                                        <div className="mt-2">{"Don't have an Account?"} <Link className="btn-link text-capitalize sign_in" to="/signup"> SignUp2 </Link></div>
+                                                        <div className="mt-2">{"Don't have an Account?"} <Link className="btn-link text-capitalize sign_in" to="/signup"> SignUp </Link></div>
                                                     </div>
 
                                                 </form>
