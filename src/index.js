@@ -20,7 +20,6 @@ const Root = () => {
 
     return (
         <div className="App">
-
                 <BrowserRouter basename={`/`}>
                     <Switch>
 

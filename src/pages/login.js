@@ -26,7 +26,7 @@ const LogIn = () => {
 
                                                         <label className="col-form-label pt-0"> Email </label>
 
-                                                        <input className="form-control " type="email" name="email" required />
+                                                        <input className="form-control" type="email" name="email" placeholder='Please Enter Your Email' required />
 
                                                     </div>
 
@@ -34,12 +34,12 @@ const LogIn = () => {
 
                                                         <label className="col-form-label"> Password </label>
 
-                                                        <input className="form-control" type="password" name="password" required />
+                                                        <input className="form-control" type="password" name="password" placeholder='Please Enter Your Password' required />
 
                                                     </div>
 
                                                     <div className="form-group form-row mt-3 mb-0 text-center">
-                                                        <button className="btn btn-primary btn-block btn_txt " type="submit">
+                                                        <button className="btn btn-primary btn-block btn_txt" type="submit">
                                                             Login
                                                         </button>
                                                     </div>
