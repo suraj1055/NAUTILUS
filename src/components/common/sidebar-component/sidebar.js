@@ -97,6 +97,7 @@ const Sidebar = (props) => {
         setMainMenu({ mainmenu: MENUITEMS })
     }
 
+    // Click Toggle menu
     const toggletNavActive = (item) => {
         if (!item.active) {
             MENUITEMS.forEach(a => {
@@ -135,7 +136,7 @@ const Sidebar = (props) => {
     }
 
     const scrollToLeft = () => {
-
+        // If Margin is reach between screen resolution
         if (margin >= -width) {
             setMargin(0)
             setHideLeftArrow(true);
@@ -160,7 +161,7 @@ const Sidebar = (props) => {
 
     const scrollToRightRTL = () => {
         const temp = width + margin
-
+        // Checking condition for remaing margin
         if (temp === 0) {
             setMargin(temp);
             setHideRightArrowRTL(true);
@@ -177,10 +178,13 @@ const Sidebar = (props) => {
             <div className="page-sidebar">
                 <div className="main-header-left d-none d-lg-block">
                     <div className="logo-wrapper compactLogo">
-                            <h3 style={{ color: '#fff', margin: '5px' }}> NAUTILUS </h3>
+                        <h1>
+                            Nautilus
+                        </h1>
                     </div>
                 </div>
                 <div className="sidebar custom-scrollbar">
+                    {/* <UserPanel /> */}
                     <ul
                         className="sidebar-menu"
                         id="myDIV"
@@ -199,6 +203,7 @@ const Sidebar = (props) => {
                                         <a className="sidebar-header" href="#javascript" onClick={() => toggletNavActive(menuItem)}>
                                             <menuItem.icon />
                                             <span>{props.t(menuItem.title)}</span>
+                                            <i className="fa fa-angle-right pull-right"></i>
                                         </a>
                                         : ''}
                                     {(menuItem.type === 'link') ?
