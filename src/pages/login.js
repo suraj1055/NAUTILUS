@@ -2,7 +2,11 @@ import React from 'react';
 import '../assets/custom-stylesheet/login_style.css';
 import { Link } from 'react-router-dom';
 
-const LogIn = () => {
+const LogIn = ({ history }) => {
+
+    const loginAuth = () => {
+        history.push(`${process.env.PUBLIC_URL}/dashboard/default`);
+    }
 
     return (
         <div>
@@ -26,7 +30,7 @@ const LogIn = () => {
 
                                                         <label className="col-form-label pt-0"> Email </label>
 
-                                                        <input className="form-control " type="email" name="email" required />
+                                                        <input className="form-control" type="email" name="email" placeholder='Please Enter Your Email' required />
 
                                                     </div>
 
@@ -34,19 +38,19 @@ const LogIn = () => {
 
                                                         <label className="col-form-label"> Password </label>
 
-                                                        <input className="form-control" type="password" name="password" required />
+                                                        <input className="form-control" type="password" name="password" placeholder='Please Enter Your Password' required />
 
                                                     </div>
 
                                                     <div className="form-group form-row mt-3 mb-0 text-center">
-                                                        <button className="btn btn-primary btn-block btn_txt " type="submit">
+                                                        <button className="btn btn-primary btn-block btn_txt" type="submit" onClick={loginAuth}>
                                                             Login
                                                         </button>
                                                     </div>
 
                                                     <div className="row checkbox">
 
-                                                        <Link to={`${process.env.PUBLIC_URL}/reset-password`} className="col-md-8 btn-link text-capitalize text-right mt-2 sign_up">
+                                                        <Link to="/reset-password" className="col-md-8 btn-link text-capitalize text-right mt-2 sign_up">
                                                             Forgot Password ?
                                                         </Link>
                                                     </div>
@@ -55,7 +59,7 @@ const LogIn = () => {
 
                                                         <div className="mt-2">
                                                             Don't have an Account ?
-                                                            <Link className="btn-link text-capitalize sign_up" to={`${process.env.PUBLIC_URL}/signup`}>
+                                                            <Link className="btn-link text-capitalize sign_up" to="/signup">
                                                                 Sign Up
                                                             </Link>
                                                         </div>

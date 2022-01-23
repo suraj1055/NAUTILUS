@@ -24,7 +24,7 @@ const Header = () => {
         <div className="main-header-right row">
           <div className="main-header-left d-lg-none">
             <div className="logo-wrapper">
-              <Link to={`${process.env.PUBLIC_URL}/dashboard/default`}>
+              <Link to="/dashboard/default">
 
               </Link>
             </div>
@@ -40,7 +40,7 @@ const Header = () => {
           </div>
           <div className="nav-right col p-0">
             <div className="pull-right mt-2">
-              <Link to={`${process.env.PUBLIC_URL}/login`}>
+              <Link to="/login">
                 <LogOut style={{ height: '18px' }}/>
               </Link>
             </div>

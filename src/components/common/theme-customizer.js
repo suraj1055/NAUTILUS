@@ -28,12 +28,12 @@ const ThemeCustomizer = () => {
                 <div className="nav flex-column nac-pills" id="c-pills-tab" role="tablist" aria-orientation="vertical">
                     <Nav tabs className="tab-list-bottom border-tab-primary">
                         <NavItem className="nav nav-tabs" id="myTab" role="tablist">
-                           
+                            
                             <NavLink className={activeTab1 == '1' ? 'active' : ''} onClick={() => setActiveTab1('1')}>
                             </NavLink>
                         </NavItem>
                         <NavItem className="nav nav-tabs" id="myTab" role="tablist">
-                           
+                            
                             <NavLink className={activeTab1 == '2' ? 'active' : ''} onClick={() => setActiveTab1('2')}>
                             </NavLink>
                         </NavItem>
