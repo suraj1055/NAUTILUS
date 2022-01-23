@@ -1,5 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import { Nav, NavItem, NavLink } from 'reactstrap';
+import React, { Fragment, useEffect } from 'react';
 
 const ThemeCustomizer = () => {
 
@@ -8,7 +7,6 @@ const ThemeCustomizer = () => {
     const layout_version = localStorage.getItem('layout_version');
     const sidebar_type = localStorage.getItem('wrapper')
     const body_sidebar_type = localStorage.getItem('bodyWrapper');
-    const [activeTab1, setActiveTab1] = useState('1');
     const color = localStorage.getItem('color')
 
     useEffect(() => {
@@ -26,22 +24,22 @@ const ThemeCustomizer = () => {
 
     return (
         <Fragment>
-            <div className="customizer-links">
+            {/* <div className="customizer-links">
                 <div className="nav flex-column nac-pills" id="c-pills-tab" role="tablist" aria-orientation="vertical">
                     <Nav tabs className="tab-list-bottom border-tab-primary">
                         <NavItem className="nav nav-tabs" id="myTab" role="tablist">
-                            {/* eslint-disable-next-line */}
+                           
                             <NavLink className={activeTab1 == '1' ? 'active' : ''} onClick={() => setActiveTab1('1')}>
                             </NavLink>
                         </NavItem>
                         <NavItem className="nav nav-tabs" id="myTab" role="tablist">
-                            {/* eslint-disable-next-line */}
+                           
                             <NavLink className={activeTab1 == '2' ? 'active' : ''} onClick={() => setActiveTab1('2')}>
                             </NavLink>
                         </NavItem>
                     </Nav>
                 </div>
-            </div>
+            </div> */}
         </Fragment>
     )
 }
