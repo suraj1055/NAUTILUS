@@ -34,7 +34,7 @@ const Signup = () => {
                                                         <input className="form-control" type="password" />
                                                     </div>
                                                     <div className="form-group form-row mt-3 mb-0">
-                                                        <button className="btn btn-primary btn-block" type="button"> SignUp2 </button>
+                                                        <button className="btn btn-primary btn-block" type="button"> SignUp </button>
                                                     </div>
                                                     <div className="login_links text-center">
                                                         <div className="mt-2">{"Are you already user?"} <Link className="btn-link text-capitalize sign_in" to="/login"> Sign In </Link>
