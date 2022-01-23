@@ -2,7 +2,11 @@ import React from 'react';
 import '../assets/custom-stylesheet/login_style.css';
 import { Link } from 'react-router-dom';
 
-const LogIn = () => {
+const LogIn = ({ history }) => {
+
+    const loginAuth = () => {
+        history.push(`${process.env.PUBLIC_URL}/dashboard/default`);
+    }
 
     return (
         <div>
@@ -39,7 +43,7 @@ const LogIn = () => {
                                                     </div>
 
                                                     <div className="form-group form-row mt-3 mb-0 text-center">
-                                                        <button className="btn btn-primary btn-block btn_txt" type="submit">
+                                                        <button className="btn btn-primary btn-block btn_txt" type="submit" onClick={loginAuth}>
                                                             Login
                                                         </button>
                                                     </div>
