@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {
     ChartComponent, LineSeries, Inject, SeriesCollectionDirective, SeriesDirective, Category, DataLabel, AnnotationsDirective,
-    AnnotationDirective,  ChartAnnotation
+    AnnotationDirective, ChartAnnotation
 } from '@syncfusion/ej2-react-charts';
 import { Button } from 'reactstrap';
 import CosmeticGrid from '../Grids/CosmeticGrid';
@@ -15,14 +15,13 @@ const CosmeticPressure = () => {
     const [Hydraulic, setHydraulic] = useState("Hydraulic");
     const [NewRow2, setNewRow2] = useState(data);
 
-    var centerPoints = [], x,y;
-    var centerPointData = []
+    var centerPoints = [];
     const [chartData, setChartData] = useState([]);
     const [editFormData, setEditFormData] = useState({
         Melt_Temp: "",
         Low: "",
         High: ""
-    })
+    });
 
     const [isRowId, setIsRowId] = useState(null)
 
@@ -169,13 +168,12 @@ const CosmeticPressure = () => {
         var polygon = Coordinates,
             region = new Region(polygon);
 
-        centerPoints.push(region.centroid())
-
-        centerPointData.push([ centerPoints[0]['x'] ? centerPoints[0]['x'] : 0, centerPoints[0]['y'] ? centerPoints[0]['y'] : 0])
-
-        x = centerPointData[0]
-        y = centerPointData[1]
+        centerPoints.push(region.centroid());
+        // console.log(centerPoints)
+        console.log(centerPoints[0]['x'], centerPoints[0]['y'])
     }
+
+    // center(polygonData);
 
     return (
 
@@ -197,13 +195,13 @@ const CosmeticPressure = () => {
                 <div>
                     <ChartComponent title="Cosmetic Process Study" width="1100" primaryXAxis={{ title: `${Melting}` }} primaryYAxis={{ title: `${Hydraulic}` }}>
 
-                        <Inject services={[LineSeries, Category, DataLabel,  ChartAnnotation]} />
+                        <Inject services={[LineSeries, Category, DataLabel, ChartAnnotation]} />
 
                         <AnnotationsDirective>
                             <AnnotationDirective
-                                content="0"
-                                x={x}
-                                y={y}
+                                content="+"
+                                x='498'
+                                y='1152.5'
                                 region="Series"
                                 coordinateUnits="Point"
                             ></AnnotationDirective>
@@ -214,6 +212,15 @@ const CosmeticPressure = () => {
                             <SeriesDirective type="Line" dataSource={chartData} xName="x" yName="y" marker={{ visible: true }} ></SeriesDirective>
 
                         </SeriesCollectionDirective>
+
+                        <SeriesDirective
+                            dataSource={centerPoints}
+                            xName="x"
+                            yName="y"
+                            width={2}
+                            marker={{ visible: true, width: 10, height: 10 }}
+                            type="Line"
+                        ></SeriesDirective>
 
                     </ChartComponent>
                 </div>

@@ -27,7 +27,7 @@ const ColdGrid1 = ({ column, deleteColumn, NewRow2, deleteRow2, handleEditFormCh
                                                         <h6> {value.header} </h6>
                                                     </div>
                                                     <div className="table-heading-icons">
-                                                        <div> <i className="fa fa-trash" onClick={() => deleteColumn(value.id)} ></i> </div>
+                                                        <div> <i className="fas fa-trash" onClick={() => deleteColumn(value.id)} ></i> </div>
                                                     </div>
                                                 </div>
                                             </th>)}

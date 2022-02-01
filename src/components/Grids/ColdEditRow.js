@@ -10,7 +10,7 @@ const ColdEditRow = ({ key1, value, column, handleEditFormChange, deleteRow2, ha
 
             ))}
 
-            <td> <i className="fa fa-trash viscocity_icons" onClick={() => deleteRow2(value.id)}></i> </td>
+            <td> <i className="fas fa-trash viscocity_icons" onClick={() => deleteRow2(value.id)}></i> </td>
 
         </tr>
     )

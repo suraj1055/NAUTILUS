@@ -1,27 +1,35 @@
-import React,{ Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import Header from './common/header-component/header';
 import Sidebar from './common/sidebar-component/sidebar';
 // import Footer from './common/footer';
 import ThemeCustomizer from './common/theme-customizer'
 import Loader from './common/loader';
+import { checkAuthenticated, load_user } from '../actions/auth'
+import { connect } from 'react-redux';
 
 const App = (props) => {
-        return (
-            <Fragment>
-                <Loader />
-                <div className="page-wrapper">
-                    <div className="page-body-wrapper">
-                        <Header />
-                        <Sidebar />
-                        <div className="page-body">
-                            { props.children }
-                        </div>
-                        {/* <Footer /> */}
-                        <ThemeCustomizer />
+
+    useEffect(() => {
+        props.checkAuthenticated();
+        props.load_user();
+    }, [props])
+
+    return (
+        <Fragment>
+            <Loader />
+            <div className="page-wrapper">
+                <div className="page-body-wrapper">
+                    <Header />
+                    <Sidebar />
+                    <div className="page-body">
+                        {props.children}
                     </div>
+                    {/* <Footer /> */}
+                    <ThemeCustomizer />
                 </div>
-            </Fragment>
-        );
+            </div>
+        </Fragment>
+    );
 }
 
-export default App;
+export default connect(null, { checkAuthenticated, load_user })(App);

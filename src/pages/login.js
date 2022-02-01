@@ -1,11 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../assets/custom-stylesheet/login_style.css';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { login } from '../actions/auth';
 
-const LogIn = ({ history }) => {
+const LogIn = ({ login, isAuthenticated, inValid }) => {
 
-    const loginAuth = () => {
-        history.push(`${process.env.PUBLIC_URL}/dashboard/default`);
+    const [show1, setShow1] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+
+    const [formData, setFormData] = useState({
+        email: '',
+        password: ''
+    });
+
+    const { email, password } = formData;
+
+    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    const onSubmit = e => {
+        e.preventDefault();
+
+        if (inValid) {
+            setShow1(true)
+            window.reload();
+        }
+        else {
+            login(email, password)
+        }
+        
+    };
+
+    // Check isAuthenticated ?
+    if (isAuthenticated) {
+        return <Redirect to="/dashboard/default" />
     }
 
     return (
@@ -19,18 +47,25 @@ const LogIn = ({ history }) => {
                                     <div className="authentication-box">
 
                                         <div className="card mt-4">
-                                            <div className="bg_txture"></div>
+                                            {show1 && <div className="alert alert-danger alert-dismissible fade show" role="alert">
+                                                <strong> Invalid !! </strong>
+                                                Email/Password combination
+                                                <button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={() => setShow1(false)}>
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>}
                                             <div className="card-body card_css">
                                                 <div className="text-center">
                                                     <h5 className="card_head"> LOGIN </h5>
                                                 </div>
-                                                <form className="theme-form" >
+                                                <form className="theme-form" onSubmit={e => onSubmit(e)}>
 
                                                     <div className="form-group">
 
                                                         <label className="col-form-label pt-0"> Email </label>
 
-                                                        <input className="form-control" type="email" name="email" placeholder='Please Enter Your Email' required />
+                                                        <input className="form-control" type="email" name="email" value={email}
+                                                            onChange={e => onChange(e)} placeholder='Please Enter Your Email' required />
 
                                                     </div>
 
@@ -38,12 +73,15 @@ const LogIn = ({ history }) => {
 
                                                         <label className="col-form-label"> Password </label>
 
-                                                        <input className="form-control" type="password" name="password" placeholder='Please Enter Your Password' required />
+                                                        <div className="d-flex mt-2">
+                                                            <input className="form-control" placeholder="Enter Your Password" onChange={e => onChange(e)} value={password} minLength={8} name="password" type={showPassword ? "text" : "password"} required />
+                                                            <i className="far fa-eye m-2" style={{ cursor : "pointer" }} onClick={ () => setShowPassword(!showPassword) }></i>
+                                                        </div>
 
                                                     </div>
 
                                                     <div className="form-group form-row mt-3 mb-0 text-center">
-                                                        <button className="btn btn-primary btn-block btn_txt" type="submit" onClick={loginAuth}>
+                                                        <button className="btn btn-primary btn-block btn_txt" type="submit">
                                                             Login
                                                         </button>
                                                     </div>
@@ -59,7 +97,7 @@ const LogIn = ({ history }) => {
 
                                                         <div className="mt-2">
                                                             Don't have an Account ?
-                                                            <Link className="btn-link text-capitalize sign_up" to="/signup">
+                                                            <Link className="btn-link text-capitalize sign_up ml-2" to="/signup">
                                                                 Sign Up
                                                             </Link>
                                                         </div>
@@ -80,4 +118,9 @@ const LogIn = ({ history }) => {
     );
 };
 
-export default LogIn;
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated,
+    inValid: state.auth.inValid
+})
+
+export default connect(mapStateToProps, { login })(LogIn);
