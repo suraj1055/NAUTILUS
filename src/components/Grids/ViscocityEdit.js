@@ -4,7 +4,6 @@ const edit = ({ NewRow2, handleEditFormChange, deleteRow2, NewRow, rowId, editFo
 
     return (
         <>
-
                 <td> <input type='text' className="form-control" name="Injection_Speed" value={editFormData.Injection_Speed} onChange={handleEditFormChange} /> </td>
 
                 <td> <input type='text' className="form-control" name="Fill_Time" value={editFormData.Fill_Time} onChange={handleEditFormChange} /> </td>

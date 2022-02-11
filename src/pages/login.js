@@ -31,7 +31,7 @@ const LogIn = ({ login, isAuthenticated, inValid }) => {
 
     // Check isAuthenticated ?
     if (isAuthenticated) {
-        return <Redirect to="/dashboard/default" />
+        return <Redirect to="/dashboard/mold" />
     }   
 
     return (
