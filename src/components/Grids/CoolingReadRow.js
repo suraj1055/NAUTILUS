@@ -10,7 +10,7 @@ const CoolingReadRow = ({ key1, setId, value, column, deleteRow2, NewRow2, handl
 
         ))}
 
-        <td> <i className="fa fa-trash viscocity_icons" onClick={() => deleteRow2(value.id)}></i> </td>
+        <td> <i className="fas fa-trash viscocity_icons" onClick={() => deleteRow2(value.id)}></i> </td>
 
     </tr>
     )

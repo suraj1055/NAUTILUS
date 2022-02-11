@@ -6,7 +6,7 @@ import { TabComponent, TabItemDirective, TabItemsDirective } from "@syncfusion/e
 import ViscocityCurve from "./ViscocityCurve";
 import CavityBalance from "./CavityBalance";
 import PressureDropStudy from "./PressureDropStudy";
-import CosmeticPressure from "./CosmeticProcess";
+import CosmeticPressure from "./CosmeticPressure";
 import CoolingTimeStudy from "./CoolingTimeStudy";
 import ColdRunner from "./ColdRunner";
 
