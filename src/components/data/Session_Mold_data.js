@@ -1,7 +1,7 @@
 export let mold = [
-    {
-        Mold_Id: 1, Platen_Orientation: 'Yes', Number_Of_Bases: 2, Is_This_A_New_Mold: 'No', Number_Of_Parts: 2
-    }
+    // {
+    //     Mold_Id: 1, Platen_Orientation: 'Yes', Number_Of_Bases: 2, Is_This_A_New_Mold: 'No', Number_Of_Parts: 2
+    // }
 ];
 
 export const session = [

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "../../assets/custom-stylesheet/app2_style.css";
 import "../../assets/custom-stylesheet/samplepage_style.css";
-import SessionMold from '../pages/Mold';
+import SessionMold from '../pages/MoldGrid';
 import { useHistory } from 'react-router-dom';
 import '../App.css';
 import { nanoid } from 'nanoid'
