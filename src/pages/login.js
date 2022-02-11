@@ -23,18 +23,16 @@ const LogIn = ({ login, isAuthenticated, inValid }) => {
 
         if (inValid) {
             setShow1(true)
-            window.reload();
         }
         else {
             login(email, password)
         }
-        
     };
 
     // Check isAuthenticated ?
     if (isAuthenticated) {
         return <Redirect to="/dashboard/default" />
-    }
+    }   
 
     return (
         <div>
@@ -120,7 +118,8 @@ const LogIn = ({ login, isAuthenticated, inValid }) => {
 
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated,
-    inValid: state.auth.inValid
+    inValid: state.auth.inValid,
+    user: state.auth.user
 })
 
 export default connect(mapStateToProps, { login })(LogIn);

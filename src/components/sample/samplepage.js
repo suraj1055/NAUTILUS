@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "../../assets/custom-stylesheet/app2_style.css";
 import "../../assets/custom-stylesheet/samplepage_style.css";
-import SessionMold from '../pages/SessionMold';
+import SessionMold from '../pages/Mold';
 import { useHistory } from 'react-router-dom';
 import '../App.css';
 import { nanoid } from 'nanoid'
 import Mold from '../modals/Mold';
 import Session from '../modals/Session';
 import { mold, session } from '../data/Session_Mold_data';
+import { connect } from 'react-redux';
 
-const Samplepage = () => {
+const Samplepage = ({ user }) => {
 
   const history = useHistory();
   const [modal2, setModal2] = useState();
@@ -83,7 +84,6 @@ const Samplepage = () => {
       const newMolds = [...MoldData, newMold];
       setMoldData(newMolds);
     }
-   console.log(MoldData)
   };
 
   const handleAddFormSubmit2 = (event) => {
@@ -103,7 +103,13 @@ const Samplepage = () => {
       const newSessions = [...SessionData, newSession];
       setSessionData(newSessions);
     }
+
+    console.log(session)
   };
+
+  useEffect(() => {
+    console.log(user)
+  }, [user])
 
   return (
     <>
@@ -125,4 +131,8 @@ const Samplepage = () => {
   );
 };
 
-export default Samplepage;
+const mapStateToProps = state => ({
+  user: state.auth.user
+})
+
+export default connect(mapStateToProps)(Samplepage);

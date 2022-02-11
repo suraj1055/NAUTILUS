@@ -102,8 +102,7 @@ export const login = (email, password) => async dispatch => {
             type: LOGIN_SUCCESS,
             payload: res.data
         });
-        console.log(res)
-        dispatch(load_user());
+        // dispatch(load_user());
     } catch (err) {
         dispatch({
             type: LOGIN_FAIL

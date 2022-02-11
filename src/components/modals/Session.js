@@ -40,7 +40,7 @@ const Session = ({ toggle2, modal2, handleAddFormChange2, handleAddFormSubmit2 }
             <div className="row">
               <div className="col-md-4">
                 <div className="form-group">
-                  <label htmlFor="exampleFormControlSelect23" className="lbl_style">Date :</label>
+                  <label className="lbl_style">Date :</label>
                 </div>
               </div>
               <div className="col-md-8">

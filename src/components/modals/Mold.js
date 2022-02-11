@@ -47,7 +47,7 @@ const Mold = ({ toggle3, modal3, handleAddFormChange, handleAddFormSubmit }) => 
                         <div className="row">
                             <div className="col-md-4">
                                 <div className="form-group">
-                                    <label htmlFor="exampleFormControlSelect23" className="lbl_style"> Is this a New Mold : </label>
+                                    <label htmlFor="exampleFormControlSelect23" className="lbl_style"> Is this a Family Mold : </label>
                                 </div>
                             </div>
                             <div className="col-md-8">

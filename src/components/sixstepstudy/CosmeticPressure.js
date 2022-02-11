@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
-    ChartComponent, LineSeries, Inject, SeriesCollectionDirective, SeriesDirective, Category, DataLabel, AnnotationsDirective,
-    AnnotationDirective, ChartAnnotation
+    ChartComponent, LineSeries, Inject, SeriesCollectionDirective, ScatterSeries, Category, DataLabel, SeriesDirective
 } from '@syncfusion/ej2-react-charts';
 import { Button } from 'reactstrap';
 import CosmeticGrid from '../Grids/CosmeticGrid';
 import CosmeticEdit from '../modals/CosmeticEdit';
-import data from '../data/Cosmetic_data.json'
+import data from '../data/Cosmetic_data.json';
+
+export let chartInstance;
 
 const CosmeticPressure = () => {
 
@@ -108,8 +109,6 @@ const CosmeticPressure = () => {
     const setGraph = () => {
 
         setChartData(polygonData)
-
-        center(Coordinates);
     }
 
     // Event to calculate the centroid
@@ -168,12 +167,20 @@ const CosmeticPressure = () => {
         var polygon = Coordinates,
             region = new Region(polygon);
 
-        centerPoints.push(region.centroid());
-        // console.log(centerPoints)
-        console.log(centerPoints[0]['x'], centerPoints[0]['y'])
+        centerPoints.push(region.centroid())
     }
 
-    // center(polygonData);
+    center(Coordinates);
+
+    useEffect(() => {
+
+        const handleChange = (e) => {
+          chartInstance.refresh();
+        }
+    
+        handleChange()
+    
+      }, [])
 
     return (
 
@@ -193,34 +200,30 @@ const CosmeticPressure = () => {
                     </div>
                 </div>
                 <div>
-                    <ChartComponent title="Cosmetic Process Study" width="1100" primaryXAxis={{ title: `${Melting}` }} primaryYAxis={{ title: `${Hydraulic}` }}>
+                    <ChartComponent id='charts' ref={chart => chartInstance = chart} title="Cosmetic Process Study" width="1100" primaryXAxis={{ title: `${Melting}` }} primaryYAxis={{ title: `${Hydraulic}` }}>
 
-                        <Inject services={[LineSeries, Category, DataLabel, ChartAnnotation]} />
-
-                        <AnnotationsDirective>
-                            <AnnotationDirective
-                                content="+"
-                                x='498'
-                                y='1152.5'
-                                region="Series"
-                                coordinateUnits="Point"
-                            ></AnnotationDirective>
-                        </AnnotationsDirective>
+                        <Inject services={[LineSeries, Category, DataLabel, ScatterSeries]} />
 
                         <SeriesCollectionDirective>
 
-                            <SeriesDirective type="Line" dataSource={chartData} xName="x" yName="y" marker={{ visible: true }} ></SeriesDirective>
+                            <SeriesDirective type="Line" dataSource={chartData} xName="x" yName="y" marker={{ visible: true, margin: 100 }} ></SeriesDirective>
+
+                            <SeriesDirective
+                                dataSource={centerPoints}
+                                xName="x"
+                                yName="y"
+                                width={2}
+                                marker={{
+                                    dataLabel: { visible: true },
+                                    shape: 'Diamond',
+                                    visible: true,
+                                    width: 10,
+                                    height: 10,
+                                }}
+                                type="Scatter"
+                            ></SeriesDirective>
 
                         </SeriesCollectionDirective>
-
-                        <SeriesDirective
-                            dataSource={centerPoints}
-                            xName="x"
-                            yName="y"
-                            width={2}
-                            marker={{ visible: true, width: 10, height: 10 }}
-                            type="Line"
-                        ></SeriesDirective>
 
                     </ChartComponent>
                 </div>

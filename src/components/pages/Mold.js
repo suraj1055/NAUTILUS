@@ -24,7 +24,8 @@ class SessionMold extends Component {
 }
 
 onChildCommandClick(args) {
-  this.props.history.push("/sixstepstudy/sixstepstudy");
+  this.props.history.push(`/sixstepstudy/sixstepstudy`);
+  console.log(args)
 }
 
 render() {

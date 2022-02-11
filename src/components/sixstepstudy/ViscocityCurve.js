@@ -17,7 +17,54 @@ import data from "../data/Viscocity_curve_data.json"
 // Generates random id's
 import { nanoid } from 'nanoid'
 
+// Axios library to deal with api call's
+import Axios from 'axios'
+
 const ViscocityCurve = () => {
+
+    // Making an GET request to get the data from the database.
+    const getData = () => {
+
+        Axios.get(`${process.env.REACT_APP_API_URL}/six-step/viscosity/39`).then(
+            (res) => {
+                if (res.data.Grid_Data) {
+                    setNewRow2(res.data.Grid_Data);
+                    setIntensificationRatio(res.data.IntensificationRatio)
+                }
+                else {
+                    alert("No Data Found in the Database !!!")
+                }
+                // console.log(res.data.Grid_Data)
+            }).catch  ( (err) =>
+                console.log(err)
+            )
+    }
+
+    // Making an post request to store the data to the database
+    const saveData = () => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        };
+
+        const body = JSON.stringify({
+            "Injection_Speed_Units": Injection_Speed_Units,
+            "Intensification_Ratio": IntensificationRatio,
+            "Pressure_Units": Pressure_Units,
+            "Grid_Data": NewRow2
+        })
+
+        setMain_Data(body)
+
+        console.log(Main_Data)
+
+        Axios.post(`${process.env.REACT_APP_API_URL}/six-step/viscosity_save/`, Main_Data, config).then((res) => console.log(res))
+    }
+
+    // This is the Main Array in which the data will be sent to database.
+    const [Main_Data, setMain_Data] = useState();
 
     // Set's the visibility of the Generate Injection Speed modal
     const [modal, setModal] = useState();
@@ -45,7 +92,6 @@ const ViscocityCurve = () => {
 
     // This is a simple array which holds the number of objects based on the row variable
     const row1 = [];
-
 
     // This is the event which gets called as the user click's ok in the add row modal.
     // what it does is it run's a loop as many times the row variable is and along with that it pushes an object containing all the key's based on the grid with an id generated using nanoid library and then set's the row1 in the main array i.e NewRow2. 
@@ -75,6 +121,8 @@ const ViscocityCurve = () => {
 
     // There is an input field in viscosity curve asking for Intensification Ratio so this is a variable which holds the value of it and is used for calculations wherever needed.
     const [IntensificationRatio, setIntensificationRatio] = useState()
+    const [Injection_Speed_Units, setInjection_Speed_Units] = useState()
+    const [Pressure_Units, setPressure_Units] = useState()
 
     // Based on the grid we will be showing two chart's one is Injection Speed and other is shear rate so this is a boolean variable which switches between true/false on a Drop Down below and due to that the respective chart code gets rendered.
     const [Injection_Speed, setInjection_Speed] = useState(true);
@@ -182,6 +230,8 @@ const ViscocityCurve = () => {
 
         // Interval is diff between two points on the axis and is found out by the diff between first two row's viscosity value divided by 3
         setInterval((NewRow2[0].Viscosity - NewRow2[NewRow2.length - 1].Viscosity) / 3)
+
+        console.log(NewRow2)
     }
 
     return (
@@ -193,7 +243,7 @@ const ViscocityCurve = () => {
                             <div className="col-md-3">
                                 <div className="form-group">
                                     <label htmlFor="Injection_Speed_Units" className="lbl_design"> Injection Speed Units: </label>
-                                    <select className="form-control digits" id="Injection_Speed_Units">
+                                    <select className="form-control digits" onChange={(e) => setInjection_Speed_Units(e.target.value)} name="Injection_Speed_Units">
                                         <option>{"1"}</option>
                                         <option>{"2"}</option>
                                         <option>{"3"}</option>
@@ -205,18 +255,18 @@ const ViscocityCurve = () => {
                             <div className="col-md-3">
                                 <div className="form-group">
                                     <label htmlFor="Intensification_Ratio" className="lbl_design">Intensification Ratio:</label>
-                                    <input className="form-control" onChange={(e) => setIntensificationRatio(e.target.value)} id="Intensification_Ratio" type="text" />
+                                    <input className="form-control" onChange={(e) => setIntensificationRatio(e.target.value)} name="Intensification_Ratio" defaultValue={IntensificationRatio} type="text" />
                                 </div>
                             </div>
                             <div className="col-md-3">
                                 <div className="form-group">
                                     <label htmlFor="Pressure_Units" className="lbl_design"> Pressure Units: </label>
-                                    <input className="form-control" id="Pressure_Units" type="text" />
+                                    <input className="form-control" onChange={(e) => setPressure_Units(e.target.value)} name="Pressure_Units" type="text" />
                                 </div>
                             </div>
                             <div className="col-md-3">
                                 <div className="step-button">
-                                    <Button color="primary" className="step-button2" onClick={toggle}> {"Generate Injection Speed"} </Button>
+                                    <Button color="primary" className="step-button2" onClick={toggle}> Generate Injection Speed </Button>
                                     {modal && <Viscocity toggle={toggle} modal={modal} />}
                                 </div >
                             </div>
@@ -228,6 +278,14 @@ const ViscocityCurve = () => {
             <div className="grid-chart-container">
                 <div>
                     <ViscocityGrid toggle2={toggle2} modal2={modal2} addRow={addRow} increaseRow={increaseRow} NewRow2={NewRow2} deleteRow2={deleteRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} setId={setId} isRowId={isRowId} editFormData={editFormData} IntensificationRatio={IntensificationRatio} />
+                </div>
+                <div className='d-flex'>
+                    <div className="m-4">
+                        <Button color="secondary" onClick={getData}> Import Data </Button>
+                    </div>
+                    <div className="m-4">
+                        <Button color="secondary" onClick={saveData}> Save Data </Button>
+                    </div>
                 </div>
             </div>
 
@@ -274,13 +332,6 @@ const ViscocityCurve = () => {
                     </div>
                 </div>
 
-            </div>
-            <div className="row save_saveas_btn">
-                <div className="col-md-12">
-                    <div className="text-right">
-                        <Button color="third"> {"Save"} </Button>
-                    </div>
-                </div>
             </div>
         </>
     )

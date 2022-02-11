@@ -26,6 +26,7 @@ const initialState = {
 };
 
 export default function (state = initialState, action) {
+
     const { type, payload } = action;
 
     switch (type) {
@@ -70,14 +71,14 @@ export default function (state = initialState, action) {
                 refresh: null,
                 isAuthenticated: false,
                 user: null,
-                inValid: true,
+                inValid: null,
                 alreadyExists: true
             }
 
         case AUTHENTICATED_SUCCESS:
             return {
                 ...state,
-                isAuthenticated: true,
+                isAuthenticated: true
             }
 
         case AUTHENTICATED_FAIL:
