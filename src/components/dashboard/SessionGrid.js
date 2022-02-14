@@ -1,18 +1,14 @@
 import React, { useState } from 'react'
-// import { useHistory } from 'react-router-dom';
 import "../../assets/custom-stylesheet/app2_style.css";
 import "../../assets/custom-stylesheet/samplepage_style.css";
 import '../App.css';
-import { nanoid } from 'nanoid'
 import Session from '../modals/Session';
 import { connect } from 'react-redux';
 import Table from 'react-bootstrap/Table'
 import '../App.css';
 import '../../assets/custom-stylesheet/grid_stylecss.css';
 
-const SessionGrid = ({ user, setshowSixStep, setSession_Id }) => {
-
-  // const history = useHistory();
+const SessionGrid = ({ user, setshowSixStep, setSession_Id, Mold_Id, setShowGrid, SessionData, setSessionData, handleAddFormChange2, handleAddFormSubmit2 }) => {
 
   const [modal2, setModal2] = useState();
 
@@ -25,50 +21,11 @@ const SessionGrid = ({ user, setshowSixStep, setSession_Id }) => {
     setshowSixStep(true)
   }
 
-  const [SessionData, setSessionData] = useState([]);
-
-  const [addSessionData, setAddSessionData] = useState({
-    Mold_Id: "",
-    Session_Name: "",
-    Date: ""
-  });
-
   const [editSessionData, setEditSessionData] = useState({
     Mold_Id: "",
     Session_Name: "",
     Date: ""
   })
-
-  const handleAddFormChange2 = (event) => {
-    event.preventDefault();
-
-    const fieldName = event.target.getAttribute("name");
-    const fieldValue = event.target.value;
-
-    const newFormData = { ...addSessionData };
-    newFormData[fieldName] = fieldValue;
-
-    setAddSessionData(newFormData);
-  };
-
-  const handleAddFormSubmit2 = (event) => {
-    event.preventDefault();
-
-    if (!addSessionData.Session_Name) {
-      alert("Please enter Session Data")
-    }
-    else {
-      const newSession = {
-        id: nanoid(),
-        Mold_Id: addSessionData.Mold_Id ? addSessionData.Mold_Id : '1',
-        Session_Name: addSessionData.Session_Name,
-        Date: addSessionData.Date
-      };
-
-      const newSessions = [...SessionData, newSession];
-      setSessionData(newSessions);
-    }
-  };
 
   const [isRowId, setIsRowId] = useState(null)
 
@@ -134,9 +91,12 @@ const SessionGrid = ({ user, setshowSixStep, setSession_Id }) => {
   return (
     <>
       <div className="container-fluid">
-        <div className="row m-4">
-          <div>
-            <Session modal2={modal2} toggle2={toggle2} handleAddFormChange2={handleAddFormChange2} handleAddFormSubmit2={handleAddFormSubmit2} />
+        <div className="row">
+          <div className="m-2">
+            <i className="fas fa-backward viscocity_icons" onClick={() => setShowGrid(false)}>Go Back</i>
+          </div>
+          <div className="m-2">
+            <Session modal2={modal2} toggle2={toggle2} handleAddFormChange2={handleAddFormChange2} handleAddFormSubmit2={handleAddFormSubmit2} Mold_Id={Mold_Id} />
           </div>
         </div>
       </div>
@@ -154,7 +114,7 @@ const SessionGrid = ({ user, setshowSixStep, setSession_Id }) => {
                 <th className="Pressure_Heading">
                   <h6> Date </h6>
                 </th>
-                <th className="Pressure_Heading">
+                <th style={{ width: '200px' }}>
                   <h6> Go to Six Step Study</h6>
                 </th>
               </tr>
@@ -173,7 +133,7 @@ const SessionGrid = ({ user, setshowSixStep, setSession_Id }) => {
 
                             <td> <input type='text' className="form-control" name="Session_Name" onChange={handleEditFormChange} value={editSessionData.Platen_Orientation} /> </td>
 
-                            <td> <input type='text' className="form-control" name="Date" onChange={handleEditFormChange} value={editSessionData.Number_Of_Bases} /> </td>
+                            <td> <input type='text' className="form-control" name="Date" value={editSessionData.Number_Of_Bases} readOnly /> </td>
 
                             <td style={{ width: '200px' }}> <i className="fas fa-link viscocity_icons" onClick={() => handleSession(session.id)}></i> </td>
                           </>

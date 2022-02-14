@@ -14,13 +14,21 @@ const Dashboard = ({ user }) => {
     const toggle3 = () => {
         setModal3(!modal3)
     }
-    
+
     const [Mold_Id, setMold_Id] = useState(null)
     const [Session_Id, setSession_Id] = useState(null)
     const [showGrid, setShowGrid] = useState();
     const [showSixStep, setshowSixStep] = useState();
 
     const [MoldData, setMoldData] = useState([]);
+
+    const [SessionData, setSessionData] = useState([]);
+
+    const [addSessionData, setAddSessionData] = useState({
+        Mold_Id: "",
+        Session_Name: "",
+        Date: ""
+    });
 
     const [addMoldData, setAddMoldData] = useState({
         Mold_Id: "",
@@ -63,14 +71,52 @@ const Dashboard = ({ user }) => {
         }
     };
 
+    const handleAddFormChange2 = (event) => {
+        event.preventDefault();
+
+        const fieldName = event.target.getAttribute("name");
+        const fieldValue = event.target.value;
+
+        const newFormData = { ...addSessionData };
+        newFormData[fieldName] = fieldValue;
+
+        setAddSessionData(newFormData);
+    };
+
+    const handleAddFormSubmit2 = (event) => {
+        event.preventDefault();
+
+        if (!addSessionData.Session_Name) {
+            alert("Please enter Session Data")
+        }
+        else {
+            const newSession = {
+                id: nanoid(),
+                Mold_Id: addSessionData.Mold_Id ? addSessionData.Mold_Id : '1',
+                Session_Name: addSessionData.Session_Name,
+                Date: addSessionData.Date
+            };
+
+            const newSessions = [...SessionData, newSession];
+            setSessionData(newSessions);
+        }
+    };
+
     return (
         <>
-           {showGrid ?  (showSixStep ? <Breadcrumb parent="Dashboard / Six Step Study" title="Default" /> : <Breadcrumb parent="Dashboard / Sessions" title="Default" />) :  <Breadcrumb parent="Dashboard / Molds" title="Default" />}
+            {showGrid ? (showSixStep ? <div className='row'>
+                <div className='mt-3'>
+                    <i className="fas fa-backward viscocity_icons" onClick={() => setshowSixStep(false)}>Go Back</i>
+                </div>
+                <div>
+                    <Breadcrumb parent="Dashboard / Six Step Study" title="Default" />
+                </div>
+            </div> : <Breadcrumb parent="Dashboard / Sessions" title="Default" />) : <Breadcrumb parent="Dashboard / Molds" title="Default" />}
             <div className="container-fluid">
                 {showGrid ?
-                    (showSixStep ? <SixStepStudy /> : <SessionGrid setshowSixStep={setshowSixStep} setSession_Id={setSession_Id} Session_Id={Session_Id} />)
+                    (showSixStep ? <SixStepStudy /> : <SessionGrid setshowSixStep={setshowSixStep} setSession_Id={setSession_Id} Session_Id={Session_Id} Mold_Id={Mold_Id} setShowGrid={setShowGrid} SessionData={SessionData} setSessionData={setSessionData} handleAddFormChange2={handleAddFormChange2} handleAddFormSubmit2={handleAddFormSubmit2} />)
                     :
-                    (<MoldGrid handleAddFormChange={handleAddFormChange} handleAddFormSubmit={handleAddFormSubmit} MoldData={MoldData} setMoldData={setMoldData} setShowGrid={setShowGrid} modal3={modal3} toggle3={toggle3} setMold_Id={setMold_Id} Mold_Id={Mold_Id} />)
+                    (<MoldGrid handleAddFormChange={handleAddFormChange} handleAddFormSubmit={handleAddFormSubmit} MoldData={MoldData} setMoldData={setMoldData} setShowGrid={setShowGrid} modal3={modal3} toggle3={toggle3} setMold_Id={setMold_Id} />)
                 }
             </div>
         </>
