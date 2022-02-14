@@ -1,23 +1,34 @@
 import React, { useState } from 'react';
 import Breadcrumb from '../common/breadcrumb';
-import "../../assets/custom-stylesheet/app2_style.css";
-import "../../assets/custom-stylesheet/samplepage_style.css";
-// import { useHistory } from 'react-router-dom';
 import '../App.css';
-import { nanoid } from 'nanoid'
-import Mold from '../modals/Mold';
+import MoldGrid from './MoldGrid';
+import { nanoid } from 'nanoid';
 import { connect } from 'react-redux';
-import Table from 'react-bootstrap/Table'
-import '../App.css';
-import '../../assets/custom-stylesheet/grid_stylecss.css';
+import SessionGrid from './SessionGrid';
+import SixStepStudy from '../sixstepstudy/SixStepStudy';
 
 const Dashboard = ({ user }) => {
 
-    // const history = useHistory();
-
     const [modal3, setModal3] = useState();
 
+    const toggle3 = () => {
+        setModal3(!modal3)
+    }
+
+    const [Mold_Id, setMold_Id] = useState(null)
+    const [Session_Id, setSession_Id] = useState(null)
+    const [showGrid, setShowGrid] = useState();
+    const [showSixStep, setshowSixStep] = useState();
+
     const [MoldData, setMoldData] = useState([]);
+
+    const [SessionData, setSessionData] = useState([]);
+
+    const [addSessionData, setAddSessionData] = useState({
+        Mold_Id: "",
+        Session_Name: "",
+        Date: ""
+    });
 
     const [addMoldData, setAddMoldData] = useState({
         Mold_Id: "",
@@ -26,18 +37,6 @@ const Dashboard = ({ user }) => {
         Is_This_A_New_Mold: "",
         Number_Of_Parts: ""
     });
-
-    const [editMoldData, setEditMoldData] = useState({
-        Mold_Id: "",
-        Platen_Orientation: "",
-        Number_Of_Bases: "",
-        Is_This_A_New_Mold: "",
-        Number_Of_Parts: ""
-    })
-
-    const toggle3 = () => {
-        setModal3(!modal3)
-    }
 
     const handleAddFormChange = (event) => {
         event.preventDefault();
@@ -72,162 +71,53 @@ const Dashboard = ({ user }) => {
         }
     };
 
-    const [isRowId, setIsRowId] = useState(null)
-
-    const handleEditFormChange = (event) => {
+    const handleAddFormChange2 = (event) => {
         event.preventDefault();
 
         const fieldName = event.target.getAttribute("name");
         const fieldValue = event.target.value;
 
-        const newFormData = { ...editMoldData };
+        const newFormData = { ...addSessionData };
         newFormData[fieldName] = fieldValue;
 
-        setEditMoldData(newFormData);
-
-    }
-
-    const handleEditFormSubmit = (event) => {
-        event.preventDefault();
-
-        const editedValue = {
-            id: isRowId,
-            Mold_Id: editMoldData.Mold_Id,
-            Platen_Orientation: editMoldData.Platen_Orientation,
-            Number_Of_Bases: editMoldData.Number_Of_Bases,
-            Is_This_A_New_Mold: editMoldData.Is_This_A_New_Mold,
-            Number_Of_Parts: editMoldData.Number_Of_Parts
-        }
-
-        const newValues = [...MoldData];
-
-        const index = MoldData.findIndex((value) => value.id === isRowId)
-
-        newValues[index] = editedValue;
-
-        setMoldData(newValues);
-
-        setIsRowId(null);
-
-    }
-
-    const deleteRow2 = (id) => {
-        const updatedRows = [...MoldData].filter((value) => {
-            return value.id !== id;
-        });
-        setMoldData(updatedRows);
+        setAddSessionData(newFormData);
     };
 
-    const setId = (event, mold) => {
-
+    const handleAddFormSubmit2 = (event) => {
         event.preventDefault();
 
-        setIsRowId(mold.id);
-
-        const formValues = {
-            Mold_Id: mold.Mold_Id,
-            Platen_Orientation: mold.Platen_Orientation,
-            Number_Of_Bases: mold.Number_Of_Bases,
-            Is_This_A_New_Mold: mold.Is_This_A_New_Mold,
-            Number_Of_Parts: mold.Number_Of_Parts
+        if (!addSessionData.Session_Name) {
+            alert("Please enter Session Data")
         }
+        else {
+            const newSession = {
+                id: nanoid(),
+                Mold_Id: addSessionData.Mold_Id ? addSessionData.Mold_Id : '1',
+                Session_Name: addSessionData.Session_Name,
+                Date: addSessionData.Date
+            };
 
-        setEditMoldData(formValues);
-
-        console.log(mold.Mold_Id)
-    }
-
-    // useEffect(() => {
-    //     if (user) {
-    //         console.log(user.id)
-    //     }
-    //     else {
-    //         console.log("N/A")
-    //     }
-    // }, [user])
+            const newSessions = [...SessionData, newSession];
+            setSessionData(newSessions);
+        }
+    };
 
     return (
         <>
-            <Breadcrumb parent="Dashboard / Mold" title="Default" />
-            <div className="container-fluid">
-                <div className="row m-4">
-                    <div>
-                        <Mold modal3={modal3} toggle3={toggle3} handleAddFormChange={handleAddFormChange} handleAddFormSubmit={handleAddFormSubmit} />
-                    </div>
+            {showGrid ? (showSixStep ? <div className='row'>
+                <div className='mt-3'>
+                    <i className="fas fa-backward viscocity_icons" onClick={() => setshowSixStep(false)}>Go Back</i>
                 </div>
-            </div>
+                <div>
+                    <Breadcrumb parent="Dashboard / Six Step Study" title="Default" />
+                </div>
+            </div> : <Breadcrumb parent="Dashboard / Sessions" title="Default" />) : <Breadcrumb parent="Dashboard / Molds" title="Default" />}
             <div className="container-fluid">
-                <form autoComplete="off">
-                    <Table striped bordered hover responsive variant="light">
-                        <thead>
-                            <tr>
-                                <th className="Pressure_Heading">
-                                    <h6> Mold ID </h6>
-                                </th>
-                                <th className="Pressure_Heading">
-                                    <h6> Platen Orientation  </h6>
-                                </th>
-                                <th className="Pressure_Heading">
-                                    <h6> Number of Bases </h6>
-                                </th>
-                                <th className="Pressure_Heading">
-                                    <h6> Is a Family Mold </h6>
-                                </th>
-                                <th className="Pressure_Heading">
-                                    <h6> Number of Parts </h6>
-                                </th>
-                                <th >
-                                    <h6> Action </h6>
-                                </th>
-                            </tr>
-                        </thead>
-                    </Table>
-                    <div className="viscosity_table" onMouseOut={handleEditFormSubmit}>
-                        <Table striped bordered hover responsive variant="light">
-                            <tbody className="grid_style">
-                                {MoldData.map((mold, moldId) => (
-                                    <tr key={MoldData[moldId].id} onClick={(event) => setId(event, mold)}>
-                                        <>
-                                            {isRowId === mold.id ?
-                                                (
-                                                    <>
-                                                        <td> <input type='text' className="form-control" name="Mold_Id" onChange={handleEditFormChange} value={editMoldData.Mold_Id} /> </td>
-
-                                                        <td> <input type='text' className="form-control" name="Platen_Orientation" onChange={handleEditFormChange} value={editMoldData.Platen_Orientation} /> </td>
-
-                                                        <td> <input type='text' className="form-control" name="Number_Of_Bases" onChange={handleEditFormChange} value={editMoldData.Number_Of_Bases} /> </td>
-
-                                                        <td> <input type='text' className="form-control" name="Is_This_A_New_Mold" onChange={handleEditFormChange} value={editMoldData.Is_This_A_New_Mold} /> </td>
-
-                                                        <td> <input type='text' className="form-control" name="Number_Of_Parts" onChange={handleEditFormChange} value={editMoldData.Number_Of_Parts} /> </td>
-
-                                                        <td> <i className="fas fa-trash viscocity_icons" onClick={() => deleteRow2(mold.id)}></i> </td>
-                                                    </>
-                                                )
-                                                :
-                                                (
-                                                    <>
-                                                        <td> <input type='text' className="form-control" name="Mold_Id" value={mold.Mold_Id} readOnly /> </td>
-
-                                                        <td> <input type='text' className="form-control" name="Platen_Orientation" value={mold.Platen_Orientation} readOnly /> </td>
-
-                                                        <td> <input type='text' className="form-control" name="Number_Of_Bases" value={mold.Number_Of_Bases} readOnly /> </td>
-
-                                                        <td> <input type='text' className="form-control" name="Is_This_A_New_Mold" value={mold.Is_This_A_New_Mold} readOnly /> </td>
-
-                                                        <td> <input type='text' className="form-control" name="Number_Of_Parts" value={mold.Number_Of_Parts} readOnly /> </td>
-
-                                                        <td> <i className="fas fa-trash viscocity_icons" onClick={() => deleteRow2(mold.id)}></i> </td>
-                                                    </>
-                                                )
-                                            }
-                                        </>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </Table>
-                    </div>
-                </form>
+                {showGrid ?
+                    (showSixStep ? <SixStepStudy /> : <SessionGrid setshowSixStep={setshowSixStep} setSession_Id={setSession_Id} Session_Id={Session_Id} Mold_Id={Mold_Id} setShowGrid={setShowGrid} SessionData={SessionData} setSessionData={setSessionData} handleAddFormChange2={handleAddFormChange2} handleAddFormSubmit2={handleAddFormSubmit2} />)
+                    :
+                    (<MoldGrid handleAddFormChange={handleAddFormChange} handleAddFormSubmit={handleAddFormSubmit} MoldData={MoldData} setMoldData={setMoldData} setShowGrid={setShowGrid} modal3={modal3} toggle3={toggle3} setMold_Id={setMold_Id} />)
+                }
             </div>
         </>
     );
