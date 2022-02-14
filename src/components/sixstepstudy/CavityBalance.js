@@ -48,7 +48,7 @@ const CavityBalance = () => {
     const [column, setColumn] = useState(data);
     const [toggleEdit, setToggleEdit] = useState(true);
     const [NewRow2, setNewRow2] = useState(data2);
-    // const [chartData, setChartData] = useState()
+    const [chartData, setChartData] = useState([])
     const [editFormData, setEditFormData] = useState();
     const [isRowId, setIsRowId] = useState(null);
     const [isColumnId, setIsColumnId] = useState(null);
@@ -151,7 +151,7 @@ const CavityBalance = () => {
 
 
     const setGraph = () => {
-        console.log(NewRow2)
+        setChartData(column);
     }
 
     useEffect(() => {
@@ -216,7 +216,7 @@ const CavityBalance = () => {
                         <Inject services={[LineSeries, Category, DataLabel]} />
                         <SeriesCollectionDirective>
 
-                            {column.map((value, key) => (
+                            {chartData.map((value, key) => (
                                 <SeriesDirective type="Line" dataSource={NewRow2} xName="Cavity_No" yName={`value${key}`} marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
                             ))}
 

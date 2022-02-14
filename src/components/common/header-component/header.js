@@ -2,10 +2,12 @@ import React, { useState, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { AlignLeft, LogOut } from 'react-feather';
 import '../../../assets/custom-stylesheet/header_style.css';
+import { connect } from 'react-redux';
+import { logout } from '../../../actions/auth';
 
-const Header = () => {
+const Header = ({ logout }) => {
   const [sidebar, setSidebar] = useState(false);
-
+  
   const openCloseSidebar = () => {
     if (sidebar) {
       setSidebar(!sidebar)
@@ -24,9 +26,9 @@ const Header = () => {
         <div className="main-header-right row">
           <div className="main-header-left d-lg-none">
             <div className="logo-wrapper">
-              <Link to={`${process.env.PUBLIC_URL}/dashboard/default`}>
 
-              </Link>
+
+
             </div>
           </div>
           <div className="d-block">
@@ -40,8 +42,8 @@ const Header = () => {
           </div>
           <div className="nav-right col p-0">
             <div className="pull-right mt-2">
-              <Link to={`${process.env.PUBLIC_URL}/pages/login`}>
-                <LogOut style={{ height: '18px' }}/>
+              <Link to="/login">
+                <LogOut style={{ height: '18px' }} onClick={logout} />
               </Link>
             </div>
           </div>
@@ -50,4 +52,10 @@ const Header = () => {
     </Fragment>
   )
 };
-export default Header;
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+})
+
+
+export default connect(mapStateToProps, { logout })(Header);

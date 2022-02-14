@@ -86,7 +86,7 @@ const ViscocityGrid = ({ toggle2, modal2, addRow, increaseRow, NewRow2, deleteRo
           <Table striped bordered hover responsive variant="light">
             <tbody className="grid_style">
               {NewRow2.map((NewRow, rowId) => (
-                <>
+                <tr key={NewRow2[rowId].id} onClick={(event) => setId(event, NewRow)}>
                   {isRowId === NewRow.id ?
                     (
                       <Edit NewRow={NewRow} setId={setId} NewRow2={NewRow2} handleEditFormChange={handleEditFormChange} deleteRow2={deleteRow2} rowId={rowId} editFormData={editFormData} IntensificationRatio={IntensificationRatio} />
@@ -94,7 +94,7 @@ const ViscocityGrid = ({ toggle2, modal2, addRow, increaseRow, NewRow2, deleteRo
                     :
                     (<Read NewRow={NewRow} NewRow2={NewRow2} setId={setId} deleteRow2={deleteRow2} rowId={rowId} editFormData={editFormData} IntensificationRatio={IntensificationRatio} />)
                   }
-                </>
+                </tr>
 
               ))}
             </tbody>

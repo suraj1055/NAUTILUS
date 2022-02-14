@@ -42,7 +42,7 @@ const CavityGrid2 = ({ column, NewRow2 }) => {
             }
 
             for (let k = 1; k <= NewRow2.length; k++) {
-                percent.push(Number((Range_Array[k - 1] - average) * 100 / average).toFixed(3))
+                percent.push( isNaN((Range_Array[k - 1] - average) * 100 / average) ? 0 : Number(((Range_Array[k - 1] - average) * 100 / average).toFixed(3) ))
             }
             
             columnPercent[i - 1] = percent

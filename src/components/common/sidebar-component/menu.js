@@ -4,7 +4,7 @@ import {
 
 export const MENUITEMS = [
     {
-        path:'/dashboard/default', title: 'Dashboard', icon: Home, type: 'link', badgeType: 'primary', active: false
+        path:'/dashboard/mold', title: 'Dashboard', icon: Home, type: 'link', badgeType: 'primary', active: false
     }
 
 ]
