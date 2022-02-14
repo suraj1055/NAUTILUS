@@ -35,7 +35,7 @@ const ViscocityCurve = () => {
                     alert("No Data Found in the Database !!!")
                 }
                 // console.log(res.data.Grid_Data)
-            }).catch  ( (err) =>
+            }).catch((err) =>
                 console.log(err)
             )
     }
@@ -145,23 +145,26 @@ const ViscocityCurve = () => {
     const handleEditFormChange = (event) => {
         event.preventDefault();
 
-        // Initially check's whether the user has entered the Intensification Ratio if not then alerts with the given statement.
-        if (!IntensificationRatio) {
-            alert("Please enter Intensification Ratio")
-        }
+        return new Promise((resolve, reject) => {
+            // Initially check's whether the user has entered the Intensification Ratio if not then alerts with the given statement.
+            if (!IntensificationRatio) {
+                reject("Please enter Intensification Ratio")
+            }
 
-        // In the else part it does the job of storing the values entered by the user in the editFormData object.
-        // Here the logic is like, as the event get's called on change of the input field it get's the name and value of that input field and then it is stored in the editFormData object.
-        else {
+            // In the else part it does the job of storing the values entered by the user in the editFormData object.
+            // Here the logic is like, as the event get's called on change of the input field it get's the name and value of that input field and then it is stored in the editFormData object.
+            else {
 
-            const fieldName = event.target.getAttribute("name");
-            const fieldValue = event.target.value;
+                const fieldName = event.target.getAttribute("name");
+                const fieldValue = event.target.value;
 
-            const newFormData = { ...editFormData };
-            newFormData[fieldName] = fieldValue;
+                const newFormData = { ...editFormData };
+                newFormData[fieldName] = fieldValue;
 
-            setEditFormData(newFormData);
-        }
+                setEditFormData(newFormData);
+                resolve();
+            }
+        })
     }
 
     // When clicked on any row of the grid this event set's the id of that row in itself using this variable we check exactly in which row change has been done and help's to switch between editable and readOnly row.
