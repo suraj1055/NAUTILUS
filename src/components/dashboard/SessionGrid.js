@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import "../../assets/custom-stylesheet/app2_style.css";
 import "../../assets/custom-stylesheet/samplepage_style.css";
 import '../App.css';
-import Session from '../modals/Session';
+import Session from './Session';
 import { connect } from 'react-redux';
 import Table from 'react-bootstrap/Table'
 import '../App.css';
@@ -16,8 +16,8 @@ const SessionGrid = ({ user, setshowSixStep, setSession_Id, Mold_Id, setShowGrid
     setModal2(!modal2)
   }
 
-  const handleSession = (moldid) => {
-    setSession_Id(moldid)
+  const handleSession = (moldId) => {
+    setSession_Id(moldId)
     setshowSixStep(true)
   }
 

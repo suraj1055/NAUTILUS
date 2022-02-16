@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import SixStepStudy from './components/sixstepstudy/SixStepStudy';
 import App from "./components/app";
 import { Provider } from 'react-redux';
 import store from './store';
@@ -36,6 +37,8 @@ const Root = () => {
 
                         <App>
                             <Route path="/dashboard" component={Dashboard} />
+
+                            <Route exact path="/sixstepstudy/sixstepstudy" component={SixStepStudy} />
                         </App>
 
                     </Switch>

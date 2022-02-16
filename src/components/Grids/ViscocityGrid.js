@@ -22,10 +22,6 @@ const ViscocityGrid = ({ toggle2, modal2, addRow, increaseRow, NewRow2, deleteRo
       'Outdent', 'Indent', '|', 'Undo', 'Redo']
   };
 
-  const calculate = async () => {
-
-  }
-
   return (
     <div>
       <div className="mb-4 d-flex justify-content-between">

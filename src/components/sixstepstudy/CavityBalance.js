@@ -48,7 +48,7 @@ const CavityBalance = () => {
     const [column, setColumn] = useState(data);
     const [toggleEdit, setToggleEdit] = useState(true);
     const [NewRow2, setNewRow2] = useState(data2);
-    const [chartData, setChartData] = useState([])
+    const [chartData, setChartData] = useState([]);
     const [editFormData, setEditFormData] = useState();
     const [isRowId, setIsRowId] = useState(null);
     const [isColumnId, setIsColumnId] = useState(null);
@@ -149,9 +149,10 @@ const CavityBalance = () => {
 
     }
 
-
     const setGraph = () => {
         setChartData(column);
+        console.log(NewRow2)
+        console.log(column)
     }
 
     useEffect(() => {

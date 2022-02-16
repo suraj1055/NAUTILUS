@@ -3,7 +3,7 @@ import "../../assets/custom-stylesheet/app2_style.css";
 import "../../assets/custom-stylesheet/samplepage_style.css";
 // import { useHistory } from 'react-router-dom';
 import '../App.css';
-import Mold from '../modals/Mold';
+import Mold from './Mold';
 import Table from 'react-bootstrap/Table'
 import '../App.css';
 import '../../assets/custom-stylesheet/grid_stylecss.css';

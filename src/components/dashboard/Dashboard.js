@@ -6,6 +6,7 @@ import { nanoid } from 'nanoid';
 import { connect } from 'react-redux';
 import SessionGrid from './SessionGrid';
 import SixStepStudy from '../sixstepstudy/SixStepStudy';
+import { row_data } from './Mold_Data';
 
 const Dashboard = ({ user }) => {
 
@@ -19,6 +20,10 @@ const Dashboard = ({ user }) => {
     const [Session_Id, setSession_Id] = useState(null)
     const [showGrid, setShowGrid] = useState();
     const [showSixStep, setshowSixStep] = useState();
+
+    const [NewRow2, setNewRow2] = useState(row_data);
+    const [editFormData, setEditFormData] = useState();
+    const [isRowId, setIsRowId] = useState(null);
 
     const [MoldData, setMoldData] = useState([]);
 
@@ -101,6 +106,51 @@ const Dashboard = ({ user }) => {
             setSessionData(newSessions);
         }
     };
+
+    const handleEditFormChange = (event) => {
+
+        event.preventDefault();
+
+        const fieldName = event.target.getAttribute("name");
+        const fieldValue = event.target.value;
+
+        const newFormData = { ...editFormData }
+        newFormData[fieldName] = fieldValue
+
+        setEditFormData(newFormData)
+    }
+
+    const handleEditFormSubmit = (event) => {
+
+        event.preventDefault();
+
+        const editedValue = { id: isRowId };
+
+        const newObject = Object.assign(editedValue, editFormData);
+
+        const newValues = [...NewRow2];
+
+        const index = NewRow2.findIndex((value) => value.id === isRowId);
+
+        newValues[index] = newObject;
+
+        setNewRow2(newValues);
+
+        setIsRowId(null);
+
+    }
+
+    const setId = (event, value) => {
+
+        event.preventDefault();
+
+        setIsRowId(value.id);
+
+        const formValues = Object.assign({}, value)
+
+        setEditFormData(formValues);
+
+    }
 
     return (
         <>
