@@ -42,9 +42,9 @@ const CavityGrid2 = ({ column, NewRow2 }) => {
             }
 
             for (let k = 1; k <= NewRow2.length; k++) {
-                percent.push( isNaN((Range_Array[k - 1] - average) * 100 / average) ? 0 : Number(((Range_Array[k - 1] - average) * 100 / average).toFixed(3) ))
+                percent.push(isNaN((Range_Array[k - 1] - average) * 100 / average) ? 0 : Number(((Range_Array[k - 1] - average) * 100 / average).toFixed(3)))
             }
-            
+
             columnPercent[i - 1] = percent
             setPercentage(columnPercent)
 
@@ -70,94 +70,108 @@ const CavityGrid2 = ({ column, NewRow2 }) => {
             <div className='mb-4'>
                 <Button color="dark" onClick={Total_Average}> Calculate </Button>
             </div>
-            <div className="Cavity-Grid-Container">
-                <Table striped bordered hover responsive variant="light">
-                    <thead>
-                        <tr>
-                            {column.map((value, key) => (
-                                <>
-                                    <th key={key}> <h6> {value.header} </h6> </th>
-                                </>
-                            ))}
-                        </tr>
-                    </thead>
-                    <tbody className="grid_style">
-                        <tr>
-                            {column.map((value1, key1) => (
-                                <>
-                                    {value1.edit === true ?
-                                        (<td> <input type='text' className="form-control" value={Total[key1 - 1]} readOnly /> </td>)
-                                        :
-                                        (<td> <input type='text' className="form-control" value="Total Fill" readOnly /> </td>)}
-                                </>
-                            ))}
-                        </tr>
-                        <tr>
-                            {column.map((value1, key1) => (
-                                <>
-                                    {value1.edit === true ?
-                                        (<td> <input type='text' className="form-control" value={Average[key1 - 1]} readOnly /> </td>)
-                                        :
-                                        (<td> <input type='text' className="form-control" value="Average Fill" readOnly /> </td>)}
-                                </>
-                            ))}
-                        </tr>
-                        <tr>
-                            {column.map((value1, key1) => (
-                                <>
-                                    {value1.edit === true ?
-                                        (<td> <input type='text' className="form-control" value={Range[key1 - 1]} readOnly /> </td>)
-                                        :
-                                        (<td> <input type='text' className="form-control" value="Range" readOnly /> </td>)}
-                                </>
-                            ))}
-                        </tr>
-                        <tr>
-                            {column.map((value1, key1) => (
-                                <>
-                                    {value1.edit === true ?
-                                        (<td> <input type='text' className="form-control" value={MaxPart[key1 - 1]} readOnly /> </td>)
-                                        :
-                                        (<td> <input type='text' className="form-control" value="Max Part Wt." readOnly /> </td>)}
-                                </>
-                            ))}
-                        </tr>
-                        <tr>
-                            {column.map((value1, key1) => (
-                                <>
-                                    {value1.edit === true ?
-                                        (<td> <input type='text' className="form-control" value={MinPart[key1 - 1]} readOnly /> </td>)
-                                        :
-                                        (<td> <input type='text' className="form-control" value="Min Part Wt." readOnly /> </td>)}
-                                </>
-                            ))}
-                        </tr>
-                        <tr>
-                            {column.map((value) => (
-                                <>
-                                    {value.edit === true ?
-                                        (<td> <input type='text' className="form-control" value='-' readOnly /> </td>)
-                                        :
-                                        (<td> <input type='text' className="form-control" value="% Variation From Average" readOnly /> </td>)}
-                                </>
-                            ))}
-                        </tr>
-                        {NewRow2.map((value, key1) => (
-                            <tr>
-                                {column.map((value2, key) => (
-                                    <>
-                                        {value2.edit === false ?
-                                            (<td> <input type='text' className="form-control" value={value.Cavity_No} readOnly /> </td>)
-                                            :
-                                            (<td> <input type='text' className="form-control" value={ Percentage[key - 1] === undefined ? ('-') : (Percentage[key - 1][key1]) } readOnly /> </td>)
-                                        }
-                                    </>
-                                ))}
-                            </tr>
-                        ))}
-                    </tbody>
-                </Table>
+            <div className='container-fluid'>
+                <div className='row'>
+                    <div className='col-md-12'>
+                        <div className='row'>
+                            <div className='col-md-6'>
+                                <div className="Cavity-Grid-Container">
+                                    <div>
+                                        <Table striped bordered hover responsive variant="light">
+                                            <thead>
+                                                <tr>
+                                                    {column.map((value, key) => (
+                                                        <>
+                                                            <th key={key}> <span> {value.header} </span> </th>
+                                                        </>
+                                                    ))}
+                                                </tr>
+                                            </thead>
+                                            <tbody className="grid_style">
+                                                <tr>
+                                                    {column.map((value1, key1) => (
+                                                        <>
+                                                            {value1.edit === true ?
+                                                                (<td> <input type='text' className="form-control" value={Total[key1 - 1]} readOnly /> </td>)
+                                                                :
+                                                                (<td> <input type='text' className="form-control" value="Total Fill" readOnly /> </td>)}
+                                                        </>
+                                                    ))}
+                                                </tr>
+                                                <tr>
+                                                    {column.map((value1, key1) => (
+                                                        <>
+                                                            {value1.edit === true ?
+                                                                (<td> <input type='text' className="form-control" value={Average[key1 - 1]} readOnly /> </td>)
+                                                                :
+                                                                (<td> <input type='text' className="form-control" value="Average Fill" readOnly /> </td>)}
+                                                        </>
+                                                    ))}
+                                                </tr>
+                                                <tr>
+                                                    {column.map((value1, key1) => (
+                                                        <>
+                                                            {value1.edit === true ?
+                                                                (<td> <input type='text' className="form-control" value={Range[key1 - 1]} readOnly /> </td>)
+                                                                :
+                                                                (<td> <input type='text' className="form-control" value="Range" readOnly /> </td>)}
+                                                        </>
+                                                    ))}
+                                                </tr>
+                                                <tr>
+                                                    {column.map((value1, key1) => (
+                                                        <>
+                                                            {value1.edit === true ?
+                                                                (<td> <input type='text' className="form-control" value={MaxPart[key1 - 1]} readOnly /> </td>)
+                                                                :
+                                                                (<td> <input type='text' className="form-control" value="Max Part Wt." readOnly /> </td>)}
+                                                        </>
+                                                    ))}
+                                                </tr>
+                                                <tr>
+                                                    {column.map((value1, key1) => (
+                                                        <>
+                                                            {value1.edit === true ?
+                                                                (<td> <input type='text' className="form-control" value={MinPart[key1 - 1]} readOnly /> </td>)
+                                                                :
+                                                                (<td> <input type='text' className="form-control" value="Min Part Wt." readOnly /> </td>)}
+                                                        </>
+                                                    ))}
+                                                </tr>
+                                                <tr>
+                                                    {column.map((value) => (
+                                                        <>
+                                                            {value.edit === true ?
+                                                                (<td> <input type='text' className="form-control" value='-' readOnly /> </td>)
+                                                                :
+                                                                (<td> <input type='text' className="form-control" value="% Variation From Average" readOnly /> </td>)}
+                                                        </>
+                                                    ))}
+                                                </tr>
+                                                {NewRow2.map((value, key1) => (
+                                                    <tr>
+                                                        {column.map((value2, key) => (
+                                                            <>
+                                                                {value2.edit === false ?
+                                                                    (<td> <input type='text' className="form-control" value={value.Cavity_No} readOnly /> </td>)
+                                                                    :
+                                                                    (<td> <input type='text' className="form-control" value={Percentage[key - 1] === undefined ? ('-') : (Percentage[key - 1][key1])} readOnly /> </td>)
+                                                                }
+                                                            </>
+                                                        ))}
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </Table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
+
         </>
     )
 }

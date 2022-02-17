@@ -56,34 +56,62 @@ const ViscocityGrid = ({ toggle2, modal2, addRow, increaseRow, NewRow2, deleteRo
           <thead>
             <tr>
               <th className="viscosity_heading2">
-                <h6> Injection Speed </h6>
+                <span> Injection Speed </span>
               </th>
               <th className="viscosity_heading2">
-                <h6> Fill Time </h6>
+                <span> Fill Time </span>
               </th>
               <th className="viscosity_heading2">
-                <h6> Peak Inj Press </h6>
+                <span> Peak Inj Press </span>
               </th>
               <th className="viscosity_heading2">
-                <h6> Viscosity </h6>
+                <span> Viscosity </span>
               </th>
               <th className="viscosity_heading">
-                <h6> Shear Rate </h6>
+                <span> Shear Rate </span>
               </th>
               <th className="viscosity_heading">
-                <h6> AbsoluteDropViscosity </h6>
+                <span> AbsoluteDropViscosity </span>
               </th>
               <th className="viscosity_heading">
-                <h6> %DropViscosity </h6>
+                <span> %DropViscosity </span>
               </th>
               <th >
-                <h6> Action </h6>
+                <span> Action </span>
               </th>
             </tr>
           </thead>
         </Table>
         <div className="viscosity_table" onMouseOut={handleEditFormSubmit}>
           <Table striped bordered hover responsive variant="light">
+          {/* <thead>
+            <tr>
+              <th className="viscosity_heading2">
+                <span> Injection Speed </span>
+              </th>
+              <th className="viscosity_heading2">
+                <span> Fill Time </span>
+              </th>
+              <th className="viscosity_heading2">
+                <span> Peak Inj Press </span>
+              </th>
+              <th className="viscosity_heading2">
+                <span> Viscosity </span>
+              </th>
+              <th className="viscosity_heading">
+                <span> Shear Rate </span>
+              </th>
+              <th className="viscosity_heading">
+                <span> AbsoluteDropViscosity </span>
+              </th>
+              <th className="viscosity_heading">
+                <span> %DropViscosity </span>
+              </th>
+              <th >
+                <span> Action </span>
+              </th>
+            </tr>
+          </thead> */}
             <tbody className="grid_style">
               {NewRow2.map((NewRow, rowId) => (
                 <tr key={NewRow2[rowId].id} onClick={(event) => setId(event, NewRow)}>

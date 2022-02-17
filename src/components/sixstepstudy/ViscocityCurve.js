@@ -35,7 +35,7 @@ const ViscocityCurve = () => {
                     alert("No Data Found in the Database !!!")
                 }
                 // console.log(res.data.Grid_Data)
-            }).catch  ( (err) =>
+            }).catch((err) =>
                 console.log(err)
             )
     }
@@ -240,7 +240,7 @@ const ViscocityCurve = () => {
                 <div className="row">
                     <div className="col-md-12">
                         <div className="row">
-                            <div className="col-md-3">
+                            <div className="col-md-2 ">
                                 <div className="form-group">
                                     <label htmlFor="Injection_Speed_Units" className="lbl_design"> Injection Speed Units: </label>
                                     <select className="form-control digits" onChange={(e) => setInjection_Speed_Units(e.target.value)} name="Injection_Speed_Units">
@@ -252,19 +252,19 @@ const ViscocityCurve = () => {
                                     </select>
                                 </div>
                             </div>
-                            <div className="col-md-3">
+                            <div className="col-md-2">
                                 <div className="form-group">
                                     <label htmlFor="Intensification_Ratio" className="lbl_design">Intensification Ratio:</label>
                                     <input className="form-control" onChange={(e) => setIntensificationRatio(e.target.value)} name="Intensification_Ratio" defaultValue={IntensificationRatio} type="text" />
                                 </div>
                             </div>
-                            <div className="col-md-3">
+                            <div className="col-md-2">
                                 <div className="form-group">
                                     <label htmlFor="Pressure_Units" className="lbl_design"> Pressure Units: </label>
                                     <input className="form-control" onChange={(e) => setPressure_Units(e.target.value)} name="Pressure_Units" type="text" />
                                 </div>
                             </div>
-                            <div className="col-md-3">
+                            <div className="col-md-2">
                                 <div className="step-button">
                                     <Button color="primary" className="step-button2" onClick={toggle}> Generate Injection Speed </Button>
                                     {modal && <Viscocity toggle={toggle} modal={modal} />}

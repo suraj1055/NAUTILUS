@@ -14,6 +14,7 @@ import SignIn from './pages/login';
 import Signup from './pages/signup';
 import ResetPwd from './pages/resetPwd';
 import Activate from './pages/Activate';
+import Sixstepstudy from './components/sixstepstudy/SixStepStudy'
 import ResetPwdConfirm from './pages/ResetPwdConfirm';
 
 const Root = () => {
@@ -36,6 +37,7 @@ const Root = () => {
 
                         <App>
                             <Route path="/dashboard" component={Dashboard} />
+                            <Route path="/sixstepstudy" component={Sixstepstudy} />
                         </App>
 
                     </Switch>
