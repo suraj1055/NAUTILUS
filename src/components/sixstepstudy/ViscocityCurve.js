@@ -35,7 +35,7 @@ const ViscocityCurve = () => {
                     alert("No Data Found in the Database !!!")
                 }
                 // console.log(res.data.Grid_Data)
-            }).catch  ( (err) =>
+            }).catch((err) =>
                 console.log(err)
             )
     }
@@ -149,7 +149,6 @@ const ViscocityCurve = () => {
         if (!IntensificationRatio) {
             alert("Please enter Intensification Ratio")
         }
-
         // In the else part it does the job of storing the values entered by the user in the editFormData object.
         // Here the logic is like, as the event get's called on change of the input field it get's the name and value of that input field and then it is stored in the editFormData object.
         else {
@@ -312,7 +311,7 @@ const ViscocityCurve = () => {
                                 <Inject services={[LineSeries, Category, DataLabel]} />
 
                                 <SeriesCollectionDirective>
-                                    <SeriesDirective type="Line" dataSource={NewRow2} xName="Injection_Speed" yName="Viscosity" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
+                                    <SeriesDirective type="Line" dataSource={NewRow2} xName={Injection_Speed ? Injection_Speed : ''} yName="Viscosity" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
                                 </SeriesCollectionDirective>
 
                             </ChartComponent>
