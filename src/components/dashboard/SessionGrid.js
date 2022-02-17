@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import "../../assets/custom-stylesheet/app2_style.css";
 import "../../assets/custom-stylesheet/samplepage_style.css";
 import '../App.css';
-import Session from '../modals/Session';
+import Session from './Session';
 import { connect } from 'react-redux';
 import Table from 'react-bootstrap/Table'
 import '../App.css';
 import '../../assets/custom-stylesheet/grid_stylecss.css';
+import { nanoid } from 'nanoid';
 
-const SessionGrid = ({ user, setshowSixStep, setSession_Id, Mold_Id, setShowGrid, SessionData, setSessionData, handleAddFormChange2, handleAddFormSubmit2 }) => {
+const SessionGrid = ({ user }) => {
 
   const [modal2, setModal2] = useState();
 
@@ -16,10 +17,15 @@ const SessionGrid = ({ user, setshowSixStep, setSession_Id, Mold_Id, setShowGrid
     setModal2(!modal2)
   }
 
-  const handleSession = (moldid) => {
-    setSession_Id(moldid)
-    setshowSixStep(true)
-  }
+  // These are the state's which store the Mold's and Session's created by the user.
+  const [SessionData, setSessionData] = useState([]);
+
+  // An Local Object to store the Session Data which is stored in the Above Session Array.
+  const [addSessionData, setAddSessionData] = useState({
+    Mold_Id: "",
+    Session_Name: "",
+    Date: ""
+  });
 
   const [editSessionData, setEditSessionData] = useState({
     Mold_Id: "",
@@ -64,6 +70,39 @@ const SessionGrid = ({ user, setshowSixStep, setSession_Id, Mold_Id, setShowGrid
 
   }
 
+  // This Event store's the Local Session Object in the main Session Data array.
+  const handleAddFormSubmit2 = (event) => {
+    event.preventDefault();
+
+    if (!addSessionData.Session_Name) {
+      alert("Please enter Session Data")
+    }
+    else {
+      const newSession = {
+        id: nanoid(),
+        Mold_Id: addSessionData.Mold_Id ? addSessionData.Mold_Id : '1',
+        Session_Name: addSessionData.Session_Name,
+        Date: addSessionData.Date
+      };
+
+      const newSessions = [...SessionData, newSession];
+      setSessionData(newSessions);
+    }
+  };
+
+  // The event to store the Session Data into the local Object
+  const handleAddFormChange2 = (event) => {
+    event.preventDefault();
+
+    const fieldName = event.target.getAttribute("name");
+    const fieldValue = event.target.value;
+
+    const newFormData = { ...addSessionData };
+    newFormData[fieldName] = fieldValue;
+
+    setAddSessionData(newFormData);
+  };
+
   const setId = (event, session) => {
 
     event.preventDefault();
@@ -92,11 +131,8 @@ const SessionGrid = ({ user, setshowSixStep, setSession_Id, Mold_Id, setShowGrid
     <>
       <div className="container-fluid">
         <div className="row">
-          <div className="m-2">
-            <i className="fas fa-backward viscocity_icons" onClick={() => setShowGrid(false)}>Go Back</i>
-          </div>
-          <div className="m-2">
-            <Session modal2={modal2} toggle2={toggle2} handleAddFormChange2={handleAddFormChange2} handleAddFormSubmit2={handleAddFormSubmit2} Mold_Id={Mold_Id} />
+          <div className="m-4">
+            <Session modal2={modal2} toggle2={toggle2} handleAddFormChange2={handleAddFormChange2} handleAddFormSubmit2={handleAddFormSubmit2} />
           </div>
         </div>
       </div>
@@ -135,7 +171,7 @@ const SessionGrid = ({ user, setshowSixStep, setSession_Id, Mold_Id, setShowGrid
 
                             <td> <input type='text' className="form-control" name="Date" value={editSessionData.Number_Of_Bases} readOnly /> </td>
 
-                            <td style={{ width: '200px' }}> <i className="fas fa-link viscocity_icons" onClick={() => handleSession(session.id)}></i> </td>
+                            <td style={{ width: '200px' }}> <i className="fas fa-link viscocity_icons" ></i> </td>
                           </>
                         )
                         :
@@ -147,7 +183,7 @@ const SessionGrid = ({ user, setshowSixStep, setSession_Id, Mold_Id, setShowGrid
 
                             <td> <input type='text' className="form-control" name="Date" value={session.Date} readOnly /> </td>
 
-                            <td style={{ width: '200px' }}> <i className="fas fa-link viscocity_icons" onClick={() => handleSession(session.id)}></i> </td>
+                            <td style={{ width: '200px' }}> <i className="fas fa-link viscocity_icons" ></i> </td>
                           </>
                         )
                       }

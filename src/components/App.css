@@ -410,3 +410,11 @@ grid-gap: 2rem;
     width: 400px;
   } */
 }
+
+/* ************************** Mold ***************************** */
+.mold{
+  width: 470px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
