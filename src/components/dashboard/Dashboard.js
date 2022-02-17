@@ -4,37 +4,28 @@ import '../App.css';
 import MoldGrid from './MoldGrid';
 import { nanoid } from 'nanoid';
 import { connect } from 'react-redux';
-import SessionGrid from './SessionGrid';
-import SixStepStudy from '../sixstepstudy/SixStepStudy';
-import { row_data } from './Mold_Data';
+import { column_data, row_data } from './Mold_Data';
 
 const Dashboard = ({ user }) => {
 
+    // Toggle for showing create mold modal
     const [modal3, setModal3] = useState();
 
     const toggle3 = () => {
         setModal3(!modal3)
     }
 
-    const [Mold_Id, setMold_Id] = useState(null)
-    const [Session_Id, setSession_Id] = useState(null)
-    const [showGrid, setShowGrid] = useState();
-    const [showSixStep, setshowSixStep] = useState();
-
+    // These are the states which deal with Part data details for storing and editing
     const [NewRow2, setNewRow2] = useState(row_data);
     const [editFormData, setEditFormData] = useState();
-    const [isRowId, setIsRowId] = useState(null);
+    const [isPartId, setIsPartId] = useState(null);
+    const [partColumn, setpartColumn] = useState(column_data);
+    const [PartNumber, setPartNumber] = useState(null);
 
+    // These are the state's which store the Mold's and Session's created by the user.
     const [MoldData, setMoldData] = useState([]);
 
-    const [SessionData, setSessionData] = useState([]);
-
-    const [addSessionData, setAddSessionData] = useState({
-        Mold_Id: "",
-        Session_Name: "",
-        Date: ""
-    });
-
+    // An Local Object to store the Mold Data which is stored in the Above Mold Array.
     const [addMoldData, setAddMoldData] = useState({
         Mold_Id: "",
         Platen_Orientation: "",
@@ -43,6 +34,18 @@ const Dashboard = ({ user }) => {
         Number_Of_Parts: ""
     });
 
+    const setPart = () => {
+        let col = []
+        for (let i = 0; i < parseInt(PartNumber); i++) {
+            col.push({
+                id: nanoid(),
+                Part_No: "Part"
+            })
+        }
+        setpartColumn([...partColumn, ...col]);
+    };
+
+    // The event to store the Mold Data into the local Object.
     const handleAddFormChange = (event) => {
         event.preventDefault();
 
@@ -55,6 +58,7 @@ const Dashboard = ({ user }) => {
         setAddMoldData(newFormData);
     };
 
+    // This Event store's the Local Mold Object in the main Mold Data array.
     const handleAddFormSubmit = (event) => {
         event.preventDefault();
 
@@ -68,7 +72,8 @@ const Dashboard = ({ user }) => {
                 Platen_Orientation: addMoldData.Platen_Orientation ? addMoldData.Platen_Orientation : 'Vertical',
                 Number_Of_Bases: addMoldData.Number_Of_Bases,
                 Is_This_A_New_Mold: addMoldData.Is_This_A_New_Mold ? addMoldData.Is_This_A_New_Mold : 'Yes',
-                Number_Of_Parts: addMoldData.Number_Of_Parts
+                Number_Of_Parts: addMoldData.Number_Of_Parts,
+                Part_Details: NewRow2 ? NewRow2 : ''
             };
 
             const newMolds = [...MoldData, newMold];
@@ -76,38 +81,9 @@ const Dashboard = ({ user }) => {
         }
     };
 
-    const handleAddFormChange2 = (event) => {
-        event.preventDefault();
-
-        const fieldName = event.target.getAttribute("name");
-        const fieldValue = event.target.value;
-
-        const newFormData = { ...addSessionData };
-        newFormData[fieldName] = fieldValue;
-
-        setAddSessionData(newFormData);
-    };
-
-    const handleAddFormSubmit2 = (event) => {
-        event.preventDefault();
-
-        if (!addSessionData.Session_Name) {
-            alert("Please enter Session Data")
-        }
-        else {
-            const newSession = {
-                id: nanoid(),
-                Mold_Id: addSessionData.Mold_Id ? addSessionData.Mold_Id : '1',
-                Session_Name: addSessionData.Session_Name,
-                Date: addSessionData.Date
-            };
-
-            const newSessions = [...SessionData, newSession];
-            setSessionData(newSessions);
-        }
-    };
-
-    const handleEditFormChange = (event) => {
+    // Now these are the event's which deal with the part detail's
+    // There is an Local Object 'editFormData' to store the Part Data which is stored in the NewRow2 Array.
+    const handleEditPartChange = (event) => {
 
         event.preventDefault();
 
@@ -120,31 +96,32 @@ const Dashboard = ({ user }) => {
         setEditFormData(newFormData)
     }
 
-    const handleEditFormSubmit = (event) => {
+    // This the event which store the editFormData in the NewRow2 Array
+    const handleEditPartSubmit = (event) => {
 
         event.preventDefault();
 
-        const editedValue = { id: isRowId };
+        const editedValue = { id: isPartId };
 
         const newObject = Object.assign(editedValue, editFormData);
 
         const newValues = [...NewRow2];
 
-        const index = NewRow2.findIndex((value) => value.id === isRowId);
+        const index = NewRow2.findIndex((value) => value.id === isPartId);
 
         newValues[index] = newObject;
 
         setNewRow2(newValues);
 
-        setIsRowId(null);
+        setIsPartId(null);
 
     }
 
-    const setId = (event, value) => {
+    const setPartId = (event, value) => {
 
         event.preventDefault();
 
-        setIsRowId(value.id);
+        setIsPartId(value.id);
 
         const formValues = Object.assign({}, value)
 
@@ -154,21 +131,10 @@ const Dashboard = ({ user }) => {
 
     return (
         <>
-            {showGrid ? (showSixStep ? <div className='row'>
-                <div className='mt-3'>
-                    <i className="fas fa-backward viscocity_icons" onClick={() => setshowSixStep(false)}>Go Back</i>
-                </div>
-                <div>
-                    <Breadcrumb parent="Dashboard / Six Step Study" title="Default" />
-                </div>
-            </div> : <Breadcrumb parent="Dashboard / Sessions" title="Default" />) : <Breadcrumb parent="Dashboard / Molds" title="Default" />}
-            <div className="container-fluid">
-                {showGrid ?
-                    (showSixStep ? <SixStepStudy /> : <SessionGrid setshowSixStep={setshowSixStep} setSession_Id={setSession_Id} Session_Id={Session_Id} Mold_Id={Mold_Id} setShowGrid={setShowGrid} SessionData={SessionData} setSessionData={setSessionData} handleAddFormChange2={handleAddFormChange2} handleAddFormSubmit2={handleAddFormSubmit2} />)
-                    :
-                    (<MoldGrid handleAddFormChange={handleAddFormChange} handleAddFormSubmit={handleAddFormSubmit} MoldData={MoldData} setMoldData={setMoldData} setShowGrid={setShowGrid} modal3={modal3} toggle3={toggle3} setMold_Id={setMold_Id} />)
-                }
-            </div>
+            <Breadcrumb parent="Dashboard / Molds" title="Default" />
+
+            <MoldGrid handleAddFormChange={handleAddFormChange} handleAddFormSubmit={handleAddFormSubmit} MoldData={MoldData} setMoldData={setMoldData} modal3={modal3} toggle3={toggle3} handleEditPartSubmit={handleEditPartSubmit} handleEditPartChange={handleEditPartChange} NewRow2={NewRow2} setPartId={setPartId} isPartId={isPartId} setPartNumber={setPartNumber} PartNumber={PartNumber} setPart={setPart} partColumn={partColumn} />
+
         </>
     );
 };

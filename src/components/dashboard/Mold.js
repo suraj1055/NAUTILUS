@@ -1,26 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Table from 'react-bootstrap/Table';
 import '../App.css';
-import { column_data } from './Mold_Data';
-import { nanoid } from 'nanoid';
 
-const Mold = ({ toggle3, modal3, handleAddFormChange, handleAddFormSubmit, isRowId, handleEditFormSubmit, handleEditFormChange, NewRow2, setId }) => {
-
-    const [partColumn, setpartColumn] = useState(column_data);
-  
-    const [PartNumber, setPartNumber] = useState(null);
-
-    const setPart = () => {
-        let col = []
-        for (let i = 0; i < parseInt(PartNumber); i++) {
-            col.push({
-                id: nanoid(),
-                Part_No: "Part"
-            })
-        }
-        setpartColumn([...partColumn, ...col]);
-    };
+const Mold = ({ toggle3, modal3, handleAddFormChange, handleAddFormSubmit, handleEditPartSubmit, handleEditPartChange, NewRow2, setPartId, isPartId, setPartNumber, PartNumber, setPart, partColumn }) => {
 
     const handlePartNumber = (e) => {
         setPartNumber(e.target.value)
@@ -35,9 +18,14 @@ const Mold = ({ toggle3, modal3, handleAddFormChange, handleAddFormSubmit, isRow
         }
     }
 
+    const handleSubmit = (e) => {
+        handleCreateMold(e);
+        toggle3()
+    }
+
     return (
         <>
-            <Button className='Primary' onClick={() => console.log(NewRow2) }> Show Data </Button>
+    
             <Button className="create_mold_btn" color="primary" onClick={toggle3}>Create Mold</Button>
             <form>
                 <Modal isOpen={modal3} toggle={toggle3} className="modal-body" centered={true}>
@@ -141,17 +129,17 @@ const Mold = ({ toggle3, modal3, handleAddFormChange, handleAddFormSubmit, isRow
                                                             (<td> <input type='text' className="form-control" value={value.Cavity_Data} readOnly /> </td>)
                                                             :
                                                             <>
-                                                                {isRowId === value.id ?
+                                                                {isPartId === value.id ?
                                                                     (
-                                                                        <td onMouseOut={handleEditFormSubmit}>
+                                                                        <td onMouseOut={handleEditPartSubmit}>
 
-                                                                            <input type='text' className="form-control" name={`Part${key2}`} onChange={handleEditFormChange} defaultValue={NewRow2[key1][`Part${key2}`] || ''} autoFocus />
+                                                                            <input type='text' className="form-control" name={`Part${key2}`} onChange={handleEditPartChange} defaultValue={NewRow2[key1][`Part${key2}`] || ''} autoFocus />
 
                                                                         </td>
                                                                     )
                                                                     :
                                                                     (
-                                                                        <td onClick={(event) => setId(event, value)}>
+                                                                        <td onClick={(event) => setPartId(event, value)}>
 
                                                                             <input type='text' name={`Part${key2}`} className="form-control" defaultValue={NewRow2[key1][`Part${key2}`] || ''} readOnly />
 
@@ -170,8 +158,8 @@ const Mold = ({ toggle3, modal3, handleAddFormChange, handleAddFormSubmit, isRow
                         </div>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" type='submit' onClick={handleCreateMold}>Create</Button>
-                        <Button color="fourth" onClick={toggle3}>Cancel</Button>
+                        <Button color="primary" type='submit' onClick={handleSubmit}>Save</Button>
+                        <Button color="primary" type='submit' onClick={toggle3}>Close</Button>
                     </ModalFooter>
                 </Modal>
 

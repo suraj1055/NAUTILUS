@@ -8,8 +8,9 @@ import Table from 'react-bootstrap/Table'
 import '../App.css';
 import '../../assets/custom-stylesheet/grid_stylecss.css';
 
-const MoldGrid = ({ MoldData, setMoldData, setShowGrid, modal3, toggle3, handleAddFormChange, handleAddFormSubmit, setMold_Id }) => {
+const MoldGrid = ({ MoldData, setMoldData, setShowGrid, modal3, toggle3, handleAddFormChange, handleAddFormSubmit, setMold_Id, handleEditPartSubmit, handleEditPartChange, NewRow2, setPartId, isPartId, setPartNumber, PartNumber, setPart, partColumn }) => {
 
+    // This an local object which stores the edit mold data.
     const [editMoldData, setEditMoldData] = useState({
         Mold_Id: "",
         Platen_Orientation: "",
@@ -18,13 +19,16 @@ const MoldGrid = ({ MoldData, setMoldData, setShowGrid, modal3, toggle3, handleA
         Number_Of_Parts: ""
     })
 
+    // Set's the Id of the Mold in which the data has been edited.
     const [isRowId, setIsRowId] = useState(null)
 
-    const handleSession = (moldid) => {
-        setMold_Id(moldid)
+    // Set's the Mold Id for which we should get the session's.
+    const handleSession = (moldId) => {
+        setMold_Id(moldId)
         setShowGrid(true)
     }
 
+    // This is the event which first store's the edited data in the local object.
     const handleEditFormChange = (event) => {
         event.preventDefault();
 
@@ -38,6 +42,7 @@ const MoldGrid = ({ MoldData, setMoldData, setShowGrid, modal3, toggle3, handleA
 
     }
 
+    // This the event which then updates the previos object with the edited object.
     const handleEditFormSubmit = (event) => {
         event.preventDefault();
 
@@ -100,7 +105,7 @@ const MoldGrid = ({ MoldData, setMoldData, setShowGrid, modal3, toggle3, handleA
             <div className="container-fluid">
                 <div className="row m-4">
                     <div>
-                        <Mold modal3={modal3} toggle3={toggle3} handleAddFormChange={handleAddFormChange} handleAddFormSubmit={handleAddFormSubmit} />
+                        <Mold modal3={modal3} toggle3={toggle3} handleAddFormChange={handleAddFormChange} handleAddFormSubmit={handleAddFormSubmit} handleEditFormSubmit={handleEditFormSubmit} handleEditPartSubmit={handleEditPartSubmit} handleEditPartChange={handleEditPartChange} NewRow2={NewRow2} setPartId={setPartId} isPartId={isPartId} setPartNumber={setPartNumber} PartNumber={PartNumber} setPart={setPart} partColumn={partColumn} />
                     </div>
                 </div>
             </div>
