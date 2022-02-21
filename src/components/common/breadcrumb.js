@@ -15,7 +15,7 @@ const Breadcrumb = props => {
                                 <ol className="breadcrumb ">
                                     <li className="breadcrumb-item">
                                         <Link to={`${process.env.PUBLIC_URL}/dashboard/default`}>
-                                            <Home />
+                                            <Home style={{color:'#573dac'}} />
                                         </Link>
                                     </li>
                                     <li className="breadcrumb-item active">{breadcrumb.parent}</li>                        

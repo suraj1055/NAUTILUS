@@ -119,11 +119,9 @@
 .text-box-disabled{
   background-color: #573DAC;
 }
-.form-control:disabled, .form-control[readonly] {
-  background-color: #f9fafc;
-  /* opacity: 1; */
-  border: none;
-  text-align: center;
+
+.frm-cntr{
+  background-color: aqua;
 }
 
 .icon-position{
@@ -140,6 +138,32 @@
 
 .tab-view{
   margin-top: 7px;
+}
+
+.scrollbar{
+  height: 260px;
+  overflow-y: scroll;
+  display: block;
+ }
+/* .Cavity-Grid-Container2{
+  width:74rem;
+  overflow-x: scroll;
+} */
+input[name="Injection_Speed"]{
+  background-color: #fff;
+}
+.back-conatainer{
+  padding: 20px 10px;
+  background-color:#DEE2E8;
+}
+.current-page-lable{
+  height: 40px;
+  background-color: #8590A0;
+  padding: 6px 15px ;  
+}
+.current-page-lable p{
+  font-size:18px;
+  color:rgb(255, 255, 255);
 }
 
 
@@ -226,17 +250,17 @@ grid-gap: 2rem;
 /* ***************** CAVITY_BALANCE_GRID_CSS ******************** */
 
 .Cavity-Grid-Container{
-  /* display: flex; */
-  /* align-items: center; */
-  /* justify-content: center; */
-  /* width: 100%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .Cavity-Grid-1-Container{
   display: flex;
   align-items: center;
   justify-content: center;
-  /* width: 1000%; */
+  width: 74rem;
 }
 
 .Cavity-Grid-2-Container tr th{
@@ -247,6 +271,7 @@ grid-gap: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100px;
 }
 
 .table-heading-content-editable{
@@ -304,7 +329,7 @@ grid-gap: 2rem;
 /* ******************* VISCOCITY_GRID_CSS ******************* */
 .viscocity_icons{
   font-size: 16px;
-  margin-left: 20px;
+  /* margin-left: 20px; */
   cursor: pointer;
  
 }
@@ -313,6 +338,7 @@ grid-gap: 2rem;
   height: 300px;
   overflow-y: scroll;
   border: 1px solid #e8e8e8;
+  background-color: #fff;
 }
 
 .viscosity_heading{
@@ -320,7 +346,7 @@ grid-gap: 2rem;
 }
 
 .viscosity_heading2{
-  width: 170px;
+  width: 190px;
 }
 
 /* ****************** Pressure Drop ********************** */
@@ -340,7 +366,7 @@ grid-gap: 2rem;
 
 .cold_table{
   height: 300px;
-  overflow-x: scroll;
+  /* overflow-x: scroll; */
   /* width: 1000px; */
   
 }

@@ -6,11 +6,11 @@ const CoolingReadRow = ({ key1, setId, value, column, deleteRow2, NewRow2, handl
 
         {column.map((index, key2) => (
 
-            (<td> <input type='text' name={index.header} defaultValue={NewRow2[key1][index.header] || ''} className="form-control" readOnly/> </td>)
+            (<td> <input type='text' name={index.header} style={{backgroundColor:'#fff'}} defaultValue={NewRow2[key1][index.header] || ''} className="form-control" readOnly/> </td>)
 
         ))}
 
-        <td> <i className="fas fa-trash viscocity_icons" onClick={() => deleteRow2(value.id)}></i> </td>
+        <td className='icon-position'> <i className="fas fa-trash viscocity_icons" onClick={() => deleteRow2(value.id)}></i> </td>
 
     </tr>
     )

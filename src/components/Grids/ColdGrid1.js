@@ -10,8 +10,8 @@ const ColdGrid1 = ({ column, deleteColumn, NewRow2, deleteRow2, handleEditFormCh
             <div className='container-fluid'>
                 <div className='row'>
                     <div className='col-md-12'>
-                        <div className='row'>
-                            <div className='col-md-12'>
+                        <div className='row' style={{overflowX:'scroll'}}>
+                            <div>
                                 <div className="Cold-Grid-Container">
                                     <form autoComplete="off">
                                         <div className="cold_table">

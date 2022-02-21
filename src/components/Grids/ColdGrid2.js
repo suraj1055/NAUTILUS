@@ -10,8 +10,8 @@ const ColdGrid2 = ({ NewRow2, grid2}) => {
                     <Table striped bordered hover responsive variant="light">
                         <thead>
                             <tr>
-                                <th className='cold-heading'> <h6> WeightIncrease [{grid2}] </h6> </th>
-                                <th className='cold-heading'> <h6> %WeightIncrease [{grid2}] </h6> </th>
+                                <th className='cold-heading'> <span> WeightIncrease [{grid2}] </span> </th>
+                                <th className='cold-heading'> <span> %WeightIncrease [{grid2}] </span> </th>
                             </tr>
                         </thead>
                         <tbody className="grid_style">
