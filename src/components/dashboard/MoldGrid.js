@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "../../assets/custom-stylesheet/app2_style.css";
 import "../../assets/custom-stylesheet/samplepage_style.css";
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import '../App.css';
 import Mold from './Mold';
 import Table from 'react-bootstrap/Table'
 import '../App.css';
 import '../../assets/custom-stylesheet/grid_stylecss.css';
 
-const MoldGrid = ({ MoldData, setMoldData, setShowGrid, modal3, toggle3, handleAddFormChange, handleAddFormSubmit, setMold_Id, handleEditPartSubmit, handleEditPartChange, NewRow2, setPartId, isPartId, setPartNumber, PartNumber, setPart, partColumn }) => {
+const MoldGrid = ({ MoldData, setMoldData, modal3, toggle3, handleAddFormChange, handleAddFormSubmit, handleEditPartSubmit, handleEditPartChange, NewRow2, setPartId, isPartId, setPartNumber, PartNumber, setPart, partColumn, setpartColumn, setNewRow2 }) => {
+
+    const history = useHistory();
 
     // This an local object which stores the edit mold data.
     const [editMoldData, setEditMoldData] = useState({
@@ -20,12 +22,14 @@ const MoldGrid = ({ MoldData, setMoldData, setShowGrid, modal3, toggle3, handleA
     })
 
     // Set's the Id of the Mold in which the data has been edited.
-    const [isRowId, setIsRowId] = useState(null)
+    const [isRowId, setIsRowId] = useState(null);
+
+    // An Variable to store the mold Id
+    const [moldId, setMoldId] = useState();
 
     // Set's the Mold Id for which we should get the session's.
-    const handleSession = (moldId) => {
-        setMold_Id(moldId)
-        setShowGrid(true)
+    const handleSession = (MoldId) => {
+        history.push(`/dashboard/session/${MoldId}`)
     }
 
     // This is the event which first store's the edited data in the local object.
@@ -91,20 +95,13 @@ const MoldGrid = ({ MoldData, setMoldData, setShowGrid, modal3, toggle3, handleA
         setEditMoldData(formValues);
     }
 
-    // useEffect(() => {
-    //     if (user) {
-    //         console.log(user.id)
-    //     }
-    //     else {
-    //         console.log("N/A")
-    //     }
-    // }, [user])
-
     return (
         <>
-            <div className='container-fluid'>
-                <div className='current-page-lable mt-2'>
-                    <p>Molds</p>
+            <div className="container-fluid">
+                <div className="row m-4">
+                    <div>
+                        <Mold modal3={modal3} toggle3={toggle3} handleAddFormChange={handleAddFormChange} handleAddFormSubmit={handleAddFormSubmit} handleEditFormSubmit={handleEditFormSubmit} handleEditPartSubmit={handleEditPartSubmit} handleEditPartChange={handleEditPartChange} NewRow2={NewRow2} setPartId={setPartId} isPartId={isPartId} setPartNumber={setPartNumber} PartNumber={PartNumber} setPart={setPart} partColumn={partColumn} setpartColumn={setpartColumn} setNewRow2={setNewRow2} />
+                    </div>
                 </div>
                 <div className='back-conatainer'>
                     <div className="container-fluid ">
