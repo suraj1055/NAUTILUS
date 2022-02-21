@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import SixStepStudy from './components/sixstepstudy/SixStepStudy';
 import App from "./components/app";
 import { Provider } from 'react-redux';
 import store from './store';
@@ -11,11 +10,11 @@ import store from './store';
 import Dashboard from './components/dashboard/Dashboard';
 
 // pages 
+import SixStepStudy from './components/sixstepstudy/SixStepStudy';
 import SignIn from './pages/login';
 import Signup from './pages/signup';
 import ResetPwd from './pages/resetPwd';
-import Activate from './pages/Activate';
-import Sixstepstudy from './components/sixstepstudy/SixStepStudy'
+import Activate from './pages/Activate'
 import ResetPwdConfirm from './pages/ResetPwdConfirm';
 import SessionGrid from './components/dashboard/SessionGrid';
 
