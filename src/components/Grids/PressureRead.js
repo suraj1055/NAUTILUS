@@ -14,7 +14,7 @@ const Read = ({ setId, deleteRow2, NewRow, rowId, NewRow2, Max_Press_Available }
 
             <td> <input type='text' className="form-control" name="Percent_Delta_P" value={ rowId === 0 ? (NewRow2[rowId].Percent_Maximum === "" ? '-' : Number(NewRow2[rowId].Percent_Maximum).toFixed(3)) : ( NewRow2[rowId].Peak_Pressure === "" ? '-' : ( Number((NewRow2[rowId].Peak_Pressure - NewRow2[rowId - 1].Peak_Pressure) * 100 / (Max_Press_Available)).toFixed(3) ) ) } readOnly /> </td>
 
-            <td> <i className="fas fa-trash viscocity_icons" onClick={() => deleteRow2(NewRow.id)}></i> </td>
+            <td className='icon-position'> <i className="fas fa-trash viscocity_icons" onClick={() => deleteRow2(NewRow.id)}></i> </td>
         </tr>
     )
 }

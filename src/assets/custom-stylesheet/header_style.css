@@ -51008,3 +51008,22 @@ body.swal2-toast-column .swal2-toast {
     position: absolute;
     top: 0;
     left: 0; }
+
+/* custom */
+.table{
+  border: 1px solid #a6a6a6 ;
+}
+    .table th{
+      color: #3d3d3d;
+      font-weight: 600;
+      padding:10px;
+      text-align: center;
+      background-color: #d2d2d2;      
+    }
+    .table thead th{
+      border:1px solid #c4c4c4;
+    }
+    .table-bordered td{
+      border-bottom: 1px solid #d8d7d7;
+      border-color: #ececec;
+    }

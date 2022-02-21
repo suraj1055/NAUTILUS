@@ -15,6 +15,7 @@ import SignIn from './pages/login';
 import Signup from './pages/signup';
 import ResetPwd from './pages/resetPwd';
 import Activate from './pages/Activate';
+import Sixstepstudy from './components/sixstepstudy/SixStepStudy'
 import ResetPwdConfirm from './pages/ResetPwdConfirm';
 import SessionGrid from './components/dashboard/SessionGrid';
 

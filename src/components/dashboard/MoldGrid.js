@@ -106,35 +106,60 @@ const MoldGrid = ({ MoldData, setMoldData, modal3, toggle3, handleAddFormChange,
             </div>
             <div className="container-fluid">
                 <form autoComplete="off">
-                    <Table striped bordered hover responsive variant="light">
+                    {/* <Table striped bordered hover responsive variant="light">
                         <thead>
                             <tr>
-                                <th className="Pressure_Heading">
-                                    <h6> Mold ID </h6>
-                                </th>
-                                <th className="Pressure_Heading">
-                                    <h6> Platen Orientation  </h6>
-                                </th>
-                                <th className="Pressure_Heading">
-                                    <h6> Number of Bases </h6>
-                                </th>
-                                <th className="Pressure_Heading">
-                                    <h6> Is a Family Mold </h6>
-                                </th>
-                                <th className="Pressure_Heading">
-                                    <h6> Number of Parts </h6>
+                                <th>
+                                   <span className='Pressure_Heading'>Mold ID</span> 
                                 </th>
                                 <th>
-                                    <h6> Go to Sessions </h6>
+                                    <span className="Pressure_Heading"> Platen Orientation  </span>
                                 </th>
                                 <th>
-                                    <h6> Action </h6>
+                                    <span className="Pressure_Heading"> Number of Bases </span>
+                                </th>
+                                <th>
+                                    <span className="Pressure_Heading"> Is a Family Mold </span>
+                                </th>
+                                <th>
+                                    <span className="Pressure_Heading"> Number of Parts </span>
+                                </th>
+                                <th>
+                                    <span> Go to Sessions </span>
+                                </th>
+                                <th>
+                                    <span> Action </span>
                                 </th>
                             </tr>
                         </thead>
-                    </Table>
+                    </Table> */}
                     <div className="viscosity_table" onMouseOut={handleEditFormSubmit}>
                         <Table striped bordered hover responsive variant="light">
+                            <thead>
+                                <tr>
+                                    <th className='Pressure_Heading'>
+                                        <span>Mold ID</span>
+                                    </th>
+                                    <th className='Pressure_Heading'>
+                                        <span> Platen Orientation  </span>
+                                    </th>
+                                    <th className='Pressure_Heading'>
+                                        <span> Number of Bases </span>
+                                    </th>
+                                    <th className='Pressure_Heading'>
+                                        <span> Is a Family Mold </span>
+                                    </th>
+                                    <th className='Pressure_Heading'>
+                                        <span> Number of Parts </span>
+                                    </th>
+                                    <th className='Pressure_Heading'>
+                                        <span> Go to Sessions </span>
+                                    </th>
+                                    <th className='Pressure_Heading'>
+                                        <span> Action </span>
+                                    </th>
+                                </tr>
+                            </thead>
                             <tbody className="grid_style">
                                 {MoldData.map((mold, moldId) => (
                                     <tr key={MoldData[moldId].id} onClick={(event) => setId(event, mold)}>
@@ -152,7 +177,7 @@ const MoldGrid = ({ MoldData, setMoldData, modal3, toggle3, handleAddFormChange,
 
                                                         <td> <input type='text' className="form-control" name="Number_Of_Parts" onChange={handleEditFormChange} value={editMoldData.Number_Of_Parts} /> </td>
 
-                                                        <td style={{ width: '90px' }}> <i className="fas fa-link viscocity_icons" onClick={() => handleSession(mold.Mold_Id)}></i> </td>
+                                                        <td> <i className="fas fa-link viscocity_icons" onClick={() => handleSession(mold.Mold_Id)}></i> </td>
 
                                                         <td>
                                                             <i className="fas fa-trash viscocity_icons" onClick={() => deleteRow2(mold.id)}></i>
@@ -162,7 +187,7 @@ const MoldGrid = ({ MoldData, setMoldData, modal3, toggle3, handleAddFormChange,
                                                 :
                                                 (
                                                     <>
-                                                        <td> <input type='text' className="form-control" name="Mold_Id" value={mold.Mold_Id} readOnly /> </td>
+                                                        <td> <input type='text' className="form-control text-box-disabled" name="Mold_Id" value={mold.Mold_Id} readOnly /> </td>
 
                                                         <td> <input type='text' className="form-control" name="Platen_Orientation" value={mold.Platen_Orientation} readOnly /> </td>
 
@@ -172,9 +197,9 @@ const MoldGrid = ({ MoldData, setMoldData, modal3, toggle3, handleAddFormChange,
 
                                                         <td> <input type='text' className="form-control" name="Number_Of_Parts" value={mold.Number_Of_Parts} readOnly /> </td>
 
-                                                        <td style={{ width: '90px' }}> <i className="fas fa-link viscocity_icons" onClick={() => handleSession(mold.Mold_Id)}></i> </td>
+                                                        <td className='icon-position'> <i className="fas fa-link viscocity_icons" onClick={() => handleSession(mold.Mold_Id)}></i> </td>
 
-                                                        <td>
+                                                        <td className='icon-position'>
                                                             <i className="fas fa-trash viscocity_icons" onClick={() => deleteRow2(mold.id)}></i>
                                                         </td>
                                                     </>
