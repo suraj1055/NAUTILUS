@@ -22,6 +22,7 @@ const ThemeCustomizer = () => {
         
     }, [body_sidebar_type, color, layout_version, primary_color, secondary_color, sidebar_type]);
 
+   
     return (
         <Fragment>
             {/* <div className="customizer-links">
@@ -30,11 +31,17 @@ const ThemeCustomizer = () => {
                         <NavItem className="nav nav-tabs" id="myTab" role="tablist">
                             
                             <NavLink className={activeTab1 == '1' ? 'active' : ''} onClick={() => setActiveTab1('1')}>
+                                <div className="settings">
+                                    <i className="icofont icofont-ui-settings" onClick={openCustomizer}></i>
+                                </div>
                             </NavLink>
                         </NavItem>
                         <NavItem className="nav nav-tabs" id="myTab" role="tablist">
                             
                             <NavLink className={activeTab1 == '2' ? 'active' : ''} onClick={() => setActiveTab1('2')}>
+                                <div className="settings color-settings">
+                                    <i className="icofont icofont-color-bucket" onClick={openCustomizer}></i>
+                                </div>
                             </NavLink>
                         </NavItem>
                     </Nav>

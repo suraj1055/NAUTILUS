@@ -53,10 +53,10 @@ const PressureGrid = ({ toggle2, modal2, addRow, increaseRow, NewRow2, deleteRow
       </div>
       <form autoComplete="off">
         <Table striped bordered hover responsive variant="light">
-          <thead>
+          {/* <thead>
             <tr>
               <th className="Pressure_Heading">
-                <h6> Flow Area </h6>
+                <span> Flow Area </h6>
               </th>
               <th className="Pressure_Heading">
                 <h6> Peak Pressure </h6>
@@ -74,10 +74,32 @@ const PressureGrid = ({ toggle2, modal2, addRow, increaseRow, NewRow2, deleteRow
                 <h6> Action </h6>
               </th>
             </tr>
-          </thead>
+          </thead> */}
         </Table>
         <div className="viscosity_table" onMouseOut={handleEditFormSubmit}>
           <Table striped bordered hover responsive variant="light">
+          <thead>
+            <tr>
+              <th className="Pressure_Heading">
+                <span> Flow Area </span>
+              </th>
+              <th className="Pressure_Heading">
+                <span> Peak Pressure </span>
+              </th>
+              <th className="Pressure_Heading">
+                <span> % Maximum </span>
+              </th>
+              <th className="Pressure_Heading">
+                <span> Delta P </span>
+              </th>
+              <th className="Pressure_Heading">
+                <span> % Delta P </span>
+              </th>
+              <th >
+                <span> Action </span>
+              </th>
+            </tr>
+          </thead>
             <tbody className="grid_style">
               {NewRow2.map((NewRow, rowId) => (
                 <>

@@ -82,7 +82,7 @@
 .study-container{
   width: 100%; 
   margin: 0 auto;
-  padding: 30px 30px;
+  padding: 10px 10px;
 }
 
 .e-content .e-item {
@@ -114,6 +114,34 @@
   grid-template-columns: 200px 200px 200px 200px 200px;
   grid-gap: 1.5rem;
 }
+/*------------ custom from anurag landing page table css --------------*/
+
+.text-box-disabled{
+  background-color: #573DAC;
+}
+.form-control:disabled, .form-control[readonly] {
+  background-color: #f9fafc;
+  /* opacity: 1; */
+  border: none;
+  text-align: center;
+}
+
+.icon-position{
+  text-align: center;
+  margin: 0 auto;
+}
+
+.e-content .e-item{
+  font-size:14px
+}
+.e-tab .e-tab-header .e-toolbar-item .e-tab-wrap{
+  color:#000000
+}
+
+.tab-view{
+  margin-top: 7px;
+}
+
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:landscape) {
     .study-container{
@@ -198,17 +226,17 @@ grid-gap: 2rem;
 /* ***************** CAVITY_BALANCE_GRID_CSS ******************** */
 
 .Cavity-Grid-Container{
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* width: 100%; */
 }
 
 .Cavity-Grid-1-Container{
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1000%;
+  /* width: 1000%; */
 }
 
 .Cavity-Grid-2-Container tr th{
@@ -217,7 +245,7 @@ grid-gap: 2rem;
 
 .table-heading-content{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
@@ -275,14 +303,16 @@ grid-gap: 2rem;
 
 /* ******************* VISCOCITY_GRID_CSS ******************* */
 .viscocity_icons{
-  font-size: 15px;
+  font-size: 16px;
   margin-left: 20px;
   cursor: pointer;
+ 
 }
 
 .viscosity_table{
-  height: 280px;
-  overflow: scroll;
+  height: 300px;
+  overflow-y: scroll;
+  border: 1px solid #e8e8e8;
 }
 
 .viscosity_heading{
@@ -295,7 +325,10 @@ grid-gap: 2rem;
 
 /* ****************** Pressure Drop ********************** */
 .Pressure_Heading{
-  width: 300px;
+  width: auto;
+}
+.Pressure_Heading_column1{
+  width: 60px;
 }
 
 /* *********************** Cold Runner *************** */
@@ -306,9 +339,10 @@ grid-gap: 2rem;
 }
 
 .cold_table{
-  height: 350px;
+  height: 300px;
   overflow-x: scroll;
-  width: 1000px;
+  /* width: 1000px; */
+  
 }
 
 .cold_table2{
@@ -361,6 +395,26 @@ grid-gap: 2rem;
   .cold_table{
     height: 250px;
     overflow-x: scroll;
-    width: 700px;
+    /* width: 700px; */
   }
+  .lbl_design{
+    font-size: 13px;
+  }
+  .tab-view{
+    margin-top: 23px;
+  }
+  .btn-max-pre{
+  margin-top:20px
+  }
+  /* .cold_table{
+    width: 400px;
+  } */
+}
+
+/* ************************** Mold ***************************** */
+.mold{
+  width: 470px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
 }

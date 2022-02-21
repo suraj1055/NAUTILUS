@@ -38,7 +38,6 @@ const ViscocityGrid = ({ toggle2, modal2, addRow, increaseRow, NewRow2, deleteRo
             </ModalHeader>
             <ModalBody>
               <RichTextEditorComponent toolbarSettings={toolbarSettings} height={250}>
-
                 <Inject services={[Toolbar, HtmlEditor]} />
               </RichTextEditorComponent>
             </ModalBody>
@@ -54,34 +53,62 @@ const ViscocityGrid = ({ toggle2, modal2, addRow, increaseRow, NewRow2, deleteRo
           <thead>
             <tr>
               <th className="viscosity_heading2">
-                <h6> Injection Speed </h6>
+                <span> Injection Speed </span>
               </th>
               <th className="viscosity_heading2">
-                <h6> Fill Time </h6>
+                <span> Fill Time </span>
               </th>
               <th className="viscosity_heading2">
-                <h6> Peak Inj Press </h6>
+                <span> Peak Inj Press </span>
               </th>
               <th className="viscosity_heading2">
-                <h6> Viscosity </h6>
+                <span> Viscosity </span>
               </th>
               <th className="viscosity_heading">
-                <h6> Shear Rate </h6>
+                <span> Shear Rate </span>
               </th>
               <th className="viscosity_heading">
-                <h6> AbsoluteDropViscosity </h6>
+                <span> AbsoluteDropViscosity </span>
               </th>
               <th className="viscosity_heading">
-                <h6> %DropViscosity </h6>
+                <span> %DropViscosity </span>
               </th>
               <th >
-                <h6> Action </h6>
+                <span> Action </span>
               </th>
             </tr>
           </thead>
         </Table>
         <div className="viscosity_table" onMouseOut={handleEditFormSubmit}>
           <Table striped bordered hover responsive variant="light">
+          {/* <thead>
+            <tr>
+              <th className="viscosity_heading2">
+                <span> Injection Speed </span>
+              </th>
+              <th className="viscosity_heading2">
+                <span> Fill Time </span>
+              </th>
+              <th className="viscosity_heading2">
+                <span> Peak Inj Press </span>
+              </th>
+              <th className="viscosity_heading2">
+                <span> Viscosity </span>
+              </th>
+              <th className="viscosity_heading">
+                <span> Shear Rate </span>
+              </th>
+              <th className="viscosity_heading">
+                <span> AbsoluteDropViscosity </span>
+              </th>
+              <th className="viscosity_heading">
+                <span> %DropViscosity </span>
+              </th>
+              <th >
+                <span> Action </span>
+              </th>
+            </tr>
+          </thead> */}
             <tbody className="grid_style">
               {NewRow2.map((NewRow, rowId) => (
                 <tr key={NewRow2[rowId].id} onClick={(event) => setId(event, NewRow)}>
@@ -106,25 +133,23 @@ const ViscocityGrid = ({ toggle2, modal2, addRow, increaseRow, NewRow2, deleteRo
                       </>
                     )
                     :
-                    (
-                      <>
-                        <td> <input type='text' className="form-control" value={NewRow.Injection_Speed} readOnly /> </td>
+                    (<>
+                      <td> <input type='text' className="form-control" value={NewRow.Injection_Speed} readOnly /> </td>
 
-                        <td> <input type='text' className="form-control" value={NewRow.Fill_Time} readOnly /> </td>
+                      <td> <input type='text' className="form-control" value={NewRow.Fill_Time} readOnly /> </td>
 
-                        <td> <input type='text' className="form-control" value={NewRow.Peak_Inj_Press} readOnly /> </td>
+                      <td> <input type='text' className="form-control" value={NewRow.Peak_Inj_Press} readOnly /> </td>
 
-                        <td> <input type='text' className="form-control" name="Viscosity" value={NewRow2[rowId].Viscosity === "" ? ('-') : (Math.round(NewRow2[rowId].Fill_Time * NewRow2[rowId].Peak_Inj_Press * IntensificationRatio))} readOnly /> </td>
+                      <td> <input type='text' className="form-control" name="Viscosity" value={NewRow2[rowId].Viscosity === "" ? ('-') : (Math.round(NewRow2[rowId].Fill_Time * NewRow2[rowId].Peak_Inj_Press * IntensificationRatio))} readOnly /> </td>
 
-                        <td> <input type='text' className="form-control" name="Shear_Rate" value={NewRow2[rowId].Shear_Rate === "" ? '-' : Number(NewRow.Shear_Rate).toFixed(3)} readOnly /> </td>
+                      <td> <input type='text' className="form-control" name="Shear_Rate" value={NewRow2[rowId].Shear_Rate === "" ? '-' : Number(NewRow.Shear_Rate).toFixed(3)} readOnly /> </td>
 
-                        <td> <input type='text' className="form-control" name="Absolute_Viscosity" value={rowId === 0 ? ('-') : (NewRow2[rowId].Viscosity === "" ? '-' : (Math.round(NewRow2[rowId - 1].Viscosity - NewRow2[rowId].Viscosity)))} readOnly /> </td>
+                      <td> <input type='text' className="form-control" name="Absolute_Viscosity" value={rowId === 0 ? ('-') : (NewRow2[rowId].Viscosity === "" ? '-' : (Math.round(NewRow2[rowId - 1].Viscosity - NewRow2[rowId].Viscosity)))} readOnly /> </td>
 
-                        <td> <input type='text' className="form-control" name="Drop_Viscosity" value={rowId === 0 ? ('-') : (NewRow2[rowId].Viscosity === "" ? '-' : Number((Math.round(NewRow2[rowId - 1].Viscosity - NewRow2[rowId].Viscosity) * 100) / (NewRow2[rowId - 1].Viscosity)).toFixed(1))} readOnly /> </td>
+                      <td> <input type='text' className="form-control" name="Drop_Viscosity" value={rowId === 0 ? ('-') : (NewRow2[rowId].Viscosity === "" ? '-' : Number((Math.round(NewRow2[rowId - 1].Viscosity - NewRow2[rowId].Viscosity) * 100) / (NewRow2[rowId - 1].Viscosity)).toFixed(1))} readOnly /> </td>
 
-                        <td> <i className="fas fa-trash viscocity_icons" onClick={() => deleteRow2(NewRow.id)}></i> </td>
-                      </>
-                    )
+                      <td> <i className="fas fa-trash viscocity_icons" onClick={() => deleteRow2(NewRow.id)}></i> </td>
+                    </>)
                   }
                 </tr>
 

@@ -10,18 +10,18 @@ const Sidebar = (props) => {
             MENUITEMS.forEach(a => {
                 if (MENUITEMS.includes(item))
                     a.active = false
-                if (!a.children) return false
-                a.children.forEach(b => {
-                    if (a.children.includes(item)) {
-                        b.active = false
-                    }
-                    if (!b.children) return false
-                    b.children.forEach(c => {
-                        if (b.children.includes(item)) {
-                            c.active = false
-                        }
-                    })
-                })
+                // if (!a.children) return false
+                // a.children.forEach(b => {
+                //     if (a.children.includes(item)) {
+                //         b.active = false
+                //     }
+                //     if (!b.children) return false
+                //     b.children.forEach(c => {
+                //         if (b.children.includes(item)) {
+                //             c.active = false
+                //         }
+                //     })
+                // })
             });
         }
         item.active = !item.active
@@ -64,7 +64,7 @@ const Sidebar = (props) => {
                                                 <i className="fa fa-angle-right pull-right"></i> : ''}
                                         </Link>
                                         : ''}
-                                    {menuItem.children ?
+                                    {/* {menuItem.children ?
                                         <ul
                                             className={`sidebar-submenu ${menuItem.active ? 'menu-open' : ''}`}
                                             style={menuItem.active ? { opacity: 1, transition: 'opacity 500ms ease-in' } : {}}
@@ -103,7 +103,7 @@ const Sidebar = (props) => {
                                                 </li>
                                             )}
                                         </ul>
-                                        : ''}
+                                        : ''} */}
                                 </li>
                             )
                         }
@@ -115,4 +115,3 @@ const Sidebar = (props) => {
 };
 
 export default translate(Sidebar);
-

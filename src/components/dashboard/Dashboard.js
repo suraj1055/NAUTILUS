@@ -1,24 +1,31 @@
 import React, { useState } from 'react';
 import Breadcrumb from '../common/breadcrumb';
-import "../../assets/custom-stylesheet/app2_style.css";
-import "../../assets/custom-stylesheet/samplepage_style.css";
-// import { useHistory } from 'react-router-dom';
 import '../App.css';
-import { nanoid } from 'nanoid'
-import Mold from '../modals/Mold';
+import MoldGrid from './MoldGrid';
+import { nanoid } from 'nanoid';
 import { connect } from 'react-redux';
-import Table from 'react-bootstrap/Table'
-import '../App.css';
-import '../../assets/custom-stylesheet/grid_stylecss.css';
+import { column_data, row_data } from './Mold_Data';
 
 const Dashboard = ({ user }) => {
 
-    // const history = useHistory();
-
+    // Toggle for showing create mold modal
     const [modal3, setModal3] = useState();
 
+    const toggle3 = () => {
+        setModal3(!modal3)
+    }
+
+    // These are the states which deal with Part data details for storing and editing
+    const [NewRow2, setNewRow2] = useState(row_data);
+    const [editFormData, setEditFormData] = useState();
+    const [isPartId, setIsPartId] = useState(null);
+    const [partColumn, setpartColumn] = useState(column_data);
+    const [PartNumber, setPartNumber] = useState(null);
+
+    // These are the state's which store the Mold's and Session's created by the user.
     const [MoldData, setMoldData] = useState([]);
 
+    // An Local Object to store the Mold Data which is stored in the Above Mold Array.
     const [addMoldData, setAddMoldData] = useState({
         Mold_Id: "",
         Platen_Orientation: "",
@@ -27,18 +34,18 @@ const Dashboard = ({ user }) => {
         Number_Of_Parts: ""
     });
 
-    const [editMoldData, setEditMoldData] = useState({
-        Mold_Id: "",
-        Platen_Orientation: "",
-        Number_Of_Bases: "",
-        Is_This_A_New_Mold: "",
-        Number_Of_Parts: ""
-    })
+    const setPart = () => {
+        let col = []
+        for (let i = 0; i < parseInt(PartNumber); i++) {
+            col.push({
+                id: nanoid(),
+                Part_No: "Part"
+            })
+        }
+        setpartColumn([...partColumn, ...col]);
+    };
 
-    const toggle3 = () => {
-        setModal3(!modal3)
-    }
-
+    // The event to store the Mold Data into the local Object.
     const handleAddFormChange = (event) => {
         event.preventDefault();
 
@@ -51,6 +58,7 @@ const Dashboard = ({ user }) => {
         setAddMoldData(newFormData);
     };
 
+    // This Event store's the Local Mold Object in the main Mold Data array.
     const handleAddFormSubmit = (event) => {
         event.preventDefault();
 
@@ -64,171 +72,71 @@ const Dashboard = ({ user }) => {
                 Platen_Orientation: addMoldData.Platen_Orientation ? addMoldData.Platen_Orientation : 'Vertical',
                 Number_Of_Bases: addMoldData.Number_Of_Bases,
                 Is_This_A_New_Mold: addMoldData.Is_This_A_New_Mold ? addMoldData.Is_This_A_New_Mold : 'Yes',
-                Number_Of_Parts: addMoldData.Number_Of_Parts
+                Number_Of_Parts: addMoldData.Number_Of_Parts,
+                Part_Details: NewRow2 ? NewRow2 : ''
             };
 
             const newMolds = [...MoldData, newMold];
             setMoldData(newMolds);
         }
+
+        console.log(MoldData)
     };
 
-    const [isRowId, setIsRowId] = useState(null)
+    // Now these are the event's which deal with the part detail's
+    // There is an Local Object 'editFormData' to store the Part Data which is stored in the NewRow2 Array.
+    const handleEditPartChange = (event) => {
 
-    const handleEditFormChange = (event) => {
         event.preventDefault();
 
         const fieldName = event.target.getAttribute("name");
         const fieldValue = event.target.value;
 
-        const newFormData = { ...editMoldData };
-        newFormData[fieldName] = fieldValue;
+        const newFormData = { ...editFormData }
+        newFormData[fieldName] = fieldValue
 
-        setEditMoldData(newFormData);
-
+        setEditFormData(newFormData)
     }
 
-    const handleEditFormSubmit = (event) => {
-        event.preventDefault();
-
-        const editedValue = {
-            id: isRowId,
-            Mold_Id: editMoldData.Mold_Id,
-            Platen_Orientation: editMoldData.Platen_Orientation,
-            Number_Of_Bases: editMoldData.Number_Of_Bases,
-            Is_This_A_New_Mold: editMoldData.Is_This_A_New_Mold,
-            Number_Of_Parts: editMoldData.Number_Of_Parts
-        }
-
-        const newValues = [...MoldData];
-
-        const index = MoldData.findIndex((value) => value.id === isRowId)
-
-        newValues[index] = editedValue;
-
-        setMoldData(newValues);
-
-        setIsRowId(null);
-
-    }
-
-    const deleteRow2 = (id) => {
-        const updatedRows = [...MoldData].filter((value) => {
-            return value.id !== id;
-        });
-        setMoldData(updatedRows);
-    };
-
-    const setId = (event, mold) => {
+    // This the event which store the editFormData in the NewRow2 Array
+    const handleEditPartSubmit = (event) => {
 
         event.preventDefault();
 
-        setIsRowId(mold.id);
+        const editedValue = { id: isPartId };
 
-        const formValues = {
-            Mold_Id: mold.Mold_Id,
-            Platen_Orientation: mold.Platen_Orientation,
-            Number_Of_Bases: mold.Number_Of_Bases,
-            Is_This_A_New_Mold: mold.Is_This_A_New_Mold,
-            Number_Of_Parts: mold.Number_Of_Parts
-        }
+        const newObject = Object.assign(editedValue, editFormData);
 
-        setEditMoldData(formValues);
+        const newValues = [...NewRow2];
 
-        console.log(mold.Mold_Id)
+        const index = NewRow2.findIndex((value) => value.id === isPartId);
+
+        newValues[index] = newObject;
+
+        setNewRow2(newValues);
+
+        setIsPartId(null);
+
     }
 
-    // useEffect(() => {
-    //     if (user) {
-    //         console.log(user.id)
-    //     }
-    //     else {
-    //         console.log("N/A")
-    //     }
-    // }, [user])
+    const setPartId = (event, value) => {
+
+        event.preventDefault();
+
+        setIsPartId(value.id);
+
+        const formValues = Object.assign({}, value)
+
+        setEditFormData(formValues);
+
+    }
 
     return (
         <>
-            <Breadcrumb parent="Dashboard / Mold" title="Default" />
-            <div className="container-fluid">
-                <div className="row m-4">
-                    <div>
-                        <Mold modal3={modal3} toggle3={toggle3} handleAddFormChange={handleAddFormChange} handleAddFormSubmit={handleAddFormSubmit} />
-                    </div>
-                </div>
-            </div>
-            <div className="container-fluid">
-                <form autoComplete="off">
-                    <Table striped bordered hover responsive variant="light">
-                        <thead>
-                            <tr>
-                                <th className="Pressure_Heading">
-                                    <h6> Mold ID </h6>
-                                </th>
-                                <th className="Pressure_Heading">
-                                    <h6> Platen Orientation  </h6>
-                                </th>
-                                <th className="Pressure_Heading">
-                                    <h6> Number of Bases </h6>
-                                </th>
-                                <th className="Pressure_Heading">
-                                    <h6> Is a Family Mold </h6>
-                                </th>
-                                <th className="Pressure_Heading">
-                                    <h6> Number of Parts </h6>
-                                </th>
-                                <th >
-                                    <h6> Action </h6>
-                                </th>
-                            </tr>
-                        </thead>
-                    </Table>
-                    <div className="viscosity_table" onMouseOut={handleEditFormSubmit}>
-                        <Table striped bordered hover responsive variant="light">
-                            <tbody className="grid_style">
-                                {MoldData.map((mold, moldId) => (
-                                    <tr key={MoldData[moldId].id} onClick={(event) => setId(event, mold)}>
-                                        <>
-                                            {isRowId === mold.id ?
-                                                (
-                                                    <>
-                                                        <td> <input type='text' className="form-control" name="Mold_Id" onChange={handleEditFormChange} value={editMoldData.Mold_Id} /> </td>
+            <Breadcrumb parent="Dashboard / Molds" title="Default" />
 
-                                                        <td> <input type='text' className="form-control" name="Platen_Orientation" onChange={handleEditFormChange} value={editMoldData.Platen_Orientation} /> </td>
+            <MoldGrid handleAddFormChange={handleAddFormChange} handleAddFormSubmit={handleAddFormSubmit} MoldData={MoldData} setMoldData={setMoldData} modal3={modal3} toggle3={toggle3} handleEditPartSubmit={handleEditPartSubmit} handleEditPartChange={handleEditPartChange} NewRow2={NewRow2} setPartId={setPartId} isPartId={isPartId} setPartNumber={setPartNumber} PartNumber={PartNumber} setPart={setPart} partColumn={partColumn} setpartColumn={setpartColumn} setNewRow2={setNewRow2} />
 
-                                                        <td> <input type='text' className="form-control" name="Number_Of_Bases" onChange={handleEditFormChange} value={editMoldData.Number_Of_Bases} /> </td>
-
-                                                        <td> <input type='text' className="form-control" name="Is_This_A_New_Mold" onChange={handleEditFormChange} value={editMoldData.Is_This_A_New_Mold} /> </td>
-
-                                                        <td> <input type='text' className="form-control" name="Number_Of_Parts" onChange={handleEditFormChange} value={editMoldData.Number_Of_Parts} /> </td>
-
-                                                        <td> <i className="fas fa-trash viscocity_icons" onClick={() => deleteRow2(mold.id)}></i> </td>
-                                                    </>
-                                                )
-                                                :
-                                                (
-                                                    <>
-                                                        <td> <input type='text' className="form-control" name="Mold_Id" value={mold.Mold_Id} readOnly /> </td>
-
-                                                        <td> <input type='text' className="form-control" name="Platen_Orientation" value={mold.Platen_Orientation} readOnly /> </td>
-
-                                                        <td> <input type='text' className="form-control" name="Number_Of_Bases" value={mold.Number_Of_Bases} readOnly /> </td>
-
-                                                        <td> <input type='text' className="form-control" name="Is_This_A_New_Mold" value={mold.Is_This_A_New_Mold} readOnly /> </td>
-
-                                                        <td> <input type='text' className="form-control" name="Number_Of_Parts" value={mold.Number_Of_Parts} readOnly /> </td>
-
-                                                        <td> <i className="fas fa-trash viscocity_icons" onClick={() => deleteRow2(mold.id)}></i> </td>
-                                                    </>
-                                                )
-                                            }
-                                        </>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </Table>
-                    </div>
-                </form>
-            </div>
         </>
     );
 };
