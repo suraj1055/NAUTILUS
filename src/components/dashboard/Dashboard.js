@@ -9,10 +9,19 @@ import { column_data, row_data } from './Mold_Data';
 const Dashboard = ({ user }) => {
 
     // Toggle for showing create mold modal
-    const [modal3, setModal3] = useState();
+    const [modal3, setModal3] = useState(false);
 
+    // Toggle for showing edit modal
+    const [editMold, setEditMold] =  useState(false);
+
+    // Event to do the toggling create Mold Modal
     const toggle3 = () => {
         setModal3(!modal3)
+    }
+
+    // Event to do the toggling part of the edit mold
+    const setEdit = () => {
+        setEditMold(!editMold)
     }
 
     // These are the states which deal with Part data details for storing and editing
@@ -80,7 +89,6 @@ const Dashboard = ({ user }) => {
             setMoldData(newMolds);
         }
 
-        console.log(MoldData)
     };
 
     // Now these are the event's which deal with the part detail's
@@ -135,7 +143,7 @@ const Dashboard = ({ user }) => {
         <>
             <Breadcrumb parent="Dashboard / Molds" title="Default" />
 
-            <MoldGrid handleAddFormChange={handleAddFormChange} handleAddFormSubmit={handleAddFormSubmit} MoldData={MoldData} setMoldData={setMoldData} modal3={modal3} toggle3={toggle3} handleEditPartSubmit={handleEditPartSubmit} handleEditPartChange={handleEditPartChange} NewRow2={NewRow2} setPartId={setPartId} isPartId={isPartId} setPartNumber={setPartNumber} PartNumber={PartNumber} setPart={setPart} partColumn={partColumn} setpartColumn={setpartColumn} setNewRow2={setNewRow2} />
+            <MoldGrid handleAddFormChange={handleAddFormChange} handleAddFormSubmit={handleAddFormSubmit} MoldData={MoldData} setMoldData={setMoldData} modal3={modal3} toggle3={toggle3} handleEditPartSubmit={handleEditPartSubmit} handleEditPartChange={handleEditPartChange} NewRow2={NewRow2} setPartId={setPartId} isPartId={isPartId} setPartNumber={setPartNumber} PartNumber={PartNumber} setPart={setPart} partColumn={partColumn} setpartColumn={setpartColumn} setNewRow2={setNewRow2} setEdit={setEdit} editMold={editMold} />
 
         </>
     );
