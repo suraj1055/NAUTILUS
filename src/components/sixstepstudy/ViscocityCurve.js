@@ -311,7 +311,7 @@ const ViscocityCurve = () => {
                                 <Inject services={[LineSeries, Category, DataLabel]} />
 
                                 <SeriesCollectionDirective>
-                                    <SeriesDirective type="Line" dataSource={NewRow2} xName={Injection_Speed ? Injection_Speed : ''} yName="Viscosity" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
+                                    <SeriesDirective type="Line" dataSource={NewRow2} xName="Injection_Speed" yName="Viscosity" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
                                 </SeriesCollectionDirective>
 
                             </ChartComponent>

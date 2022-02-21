@@ -79,6 +79,8 @@ const Dashboard = ({ user }) => {
             const newMolds = [...MoldData, newMold];
             setMoldData(newMolds);
         }
+
+        console.log(MoldData)
     };
 
     // Now these are the event's which deal with the part detail's
@@ -133,7 +135,7 @@ const Dashboard = ({ user }) => {
         <>
             <Breadcrumb parent="Dashboard / Molds" title="Default" />
 
-            <MoldGrid handleAddFormChange={handleAddFormChange} handleAddFormSubmit={handleAddFormSubmit} MoldData={MoldData} setMoldData={setMoldData} modal3={modal3} toggle3={toggle3} handleEditPartSubmit={handleEditPartSubmit} handleEditPartChange={handleEditPartChange} NewRow2={NewRow2} setPartId={setPartId} isPartId={isPartId} setPartNumber={setPartNumber} PartNumber={PartNumber} setPart={setPart} partColumn={partColumn} />
+            <MoldGrid handleAddFormChange={handleAddFormChange} handleAddFormSubmit={handleAddFormSubmit} MoldData={MoldData} setMoldData={setMoldData} modal3={modal3} toggle3={toggle3} handleEditPartSubmit={handleEditPartSubmit} handleEditPartChange={handleEditPartChange} NewRow2={NewRow2} setPartId={setPartId} isPartId={isPartId} setPartNumber={setPartNumber} PartNumber={PartNumber} setPart={setPart} partColumn={partColumn} setpartColumn={setpartColumn} setNewRow2={setNewRow2} />
 
         </>
     );

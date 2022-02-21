@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-const Session = ({ toggle2, modal2, handleAddFormChange2, handleAddFormSubmit2, Mold_Id }) => {
+const Session = ({ toggle2, modal2, handleAddFormChange2, handleAddFormSubmit2, moldId }) => {
   return (
     <>
       <Button color="primary" onClick={toggle2}>Create session</Button>
@@ -16,7 +16,7 @@ const Session = ({ toggle2, modal2, handleAddFormChange2, handleAddFormSubmit2, 
                 </div>
               </div>
               <div className="col-md-8">
-                <input className="form-control" name="Mold_Id" type="text" value={Mold_Id} readOnly/>
+                <input className="form-control" name="Mold_Id" type="text" value={moldId} readOnly/>
               </div>
             </div>
             <div className="row">

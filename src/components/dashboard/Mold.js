@@ -2,8 +2,9 @@ import React from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Table from 'react-bootstrap/Table';
 import '../App.css';
+import { column_data, row_data } from './Mold_Data';
 
-const Mold = ({ toggle3, modal3, handleAddFormChange, handleAddFormSubmit, handleEditPartSubmit, handleEditPartChange, NewRow2, setPartId, isPartId, setPartNumber, PartNumber, setPart, partColumn }) => {
+const Mold = ({ toggle3, modal3, handleAddFormChange, handleAddFormSubmit, handleEditPartSubmit, handleEditPartChange, NewRow2, setPartId, isPartId, setPartNumber, PartNumber, setPart, partColumn, setpartColumn, setNewRow2 }) => {
 
     const handlePartNumber = (e) => {
         setPartNumber(e.target.value)
@@ -20,7 +21,9 @@ const Mold = ({ toggle3, modal3, handleAddFormChange, handleAddFormSubmit, handl
 
     const handleSubmit = (e) => {
         handleCreateMold(e);
-        toggle3()
+        toggle3();
+        setpartColumn(column_data);
+        setNewRow2(row_data)
     }
 
     return (

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "../../assets/custom-stylesheet/app2_style.css";
 import "../../assets/custom-stylesheet/samplepage_style.css";
 import '../App.css';
@@ -8,8 +8,31 @@ import Table from 'react-bootstrap/Table'
 import '../App.css';
 import '../../assets/custom-stylesheet/grid_stylecss.css';
 import { nanoid } from 'nanoid';
+import { useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const SessionGrid = ({ user }) => {
+
+  const history = useHistory();
+
+  // To get the Mold Id from url using useParams hook
+  var { MoldId } = useParams();
+
+  // An Variable to store the mold Id
+  const [moldId, setMoldId] = useState();
+
+  // Event to set the current mold Id
+  useEffect(() => {
+    const setMold = () => {
+      setMoldId(MoldId)
+    }
+    setMold();
+  })
+
+  // Redirect's to sixStepstudy of that respective session
+  const handleSession = (session) => {
+    history.push(`/sixstepstudy/${session}/sixstepstudy`)
+  }
 
   const [modal2, setModal2] = useState();
 
@@ -132,7 +155,7 @@ const SessionGrid = ({ user }) => {
       <div className="container-fluid">
         <div className="row">
           <div className="m-4">
-            <Session modal2={modal2} toggle2={toggle2} handleAddFormChange2={handleAddFormChange2} handleAddFormSubmit2={handleAddFormSubmit2} />
+            <Session modal2={modal2} toggle2={toggle2} handleAddFormChange2={handleAddFormChange2} handleAddFormSubmit2={handleAddFormSubmit2} moldId={moldId} />
           </div>
         </div>
       </div>
@@ -167,11 +190,11 @@ const SessionGrid = ({ user }) => {
                           <>
                             <td> <input type='text' className="form-control" name="Mold_Id" value={session.Mold_Id} readOnly /> </td>
 
-                            <td> <input type='text' className="form-control" name="Session_Name" onChange={handleEditFormChange} value={editSessionData.Platen_Orientation} /> </td>
+                            <td> <input type='text' className="form-control" name="Session_Name" onChange={handleEditFormChange} value={editSessionData.Session_Name} /> </td>
 
-                            <td> <input type='text' className="form-control" name="Date" value={editSessionData.Number_Of_Bases} readOnly /> </td>
+                            <td> <input type='text' className="form-control" name="Date" value={editSessionData.Date} readOnly /> </td>
 
-                            <td style={{ width: '200px' }}> <i className="fas fa-link viscocity_icons" ></i> </td>
+                            <td style={{ width: '200px' }}> <i className="fas fa-link viscocity_icons" onClick={() => handleSession(session.id)}></i> </td>
                           </>
                         )
                         :
@@ -183,7 +206,7 @@ const SessionGrid = ({ user }) => {
 
                             <td> <input type='text' className="form-control" name="Date" value={session.Date} readOnly /> </td>
 
-                            <td style={{ width: '200px' }}> <i className="fas fa-link viscocity_icons" ></i> </td>
+                            <td style={{ width: '200px' }}> <i className="fas fa-link viscocity_icons" onClick={() => handleSession(session.id)}></i> </td>
                           </>
                         )
                       }

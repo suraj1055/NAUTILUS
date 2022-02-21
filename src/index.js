@@ -39,9 +39,9 @@ const Root = () => {
                         <App>
                             <Route path="/dashboard/mold" component={Dashboard} />
 
-                            <Route path="/dashboard/session" component={SessionGrid} />
+                            <Route path="/dashboard/session/:MoldId" component={SessionGrid} />
 
-                            <Route exact path="/sixstepstudy/sixstepstudy" component={SixStepStudy} />
+                            <Route exact path="/sixstepstudy/:SessionId/sixstepstudy" component={SixStepStudy} />
                         </App>
 
                     </Switch>
