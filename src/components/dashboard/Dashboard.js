@@ -143,8 +143,6 @@ const Dashboard = ({ user }) => {
         <>
             <Breadcrumb parent="Dashboard / Molds" title="Default" />
 
-            <button onClick={() => console.log(NewRow2)}> click Me </button>
-
             <MoldGrid handleAddFormChange={handleAddFormChange} handleAddFormSubmit={handleAddFormSubmit} MoldData={MoldData} setMoldData={setMoldData} modal3={modal3} toggle3={toggle3} handleEditPartSubmit={handleEditPartSubmit} handleEditPartChange={handleEditPartChange} NewRow2={NewRow2} setPartId={setPartId} isPartId={isPartId} setPartNumber={setPartNumber} PartNumber={PartNumber} setPart={setPart} partColumn={partColumn} setpartColumn={setpartColumn} setNewRow2={setNewRow2} setEdit={setEdit} editMold={editMold} />
 
         </>
