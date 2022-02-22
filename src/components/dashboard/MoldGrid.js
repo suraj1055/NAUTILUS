@@ -102,12 +102,16 @@ const MoldGrid = ({ MoldData, setMoldData, modal3, toggle3, handleAddFormChange,
     return (
         <>
             <div className="container-fluid">
-                <div className="row m-4">
-                    <div>
-                        <Mold modal3={modal3} toggle3={toggle3} handleAddFormChange={handleAddFormChange} handleAddFormSubmit={handleAddFormSubmit} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} handleEditPartSubmit={handleEditPartSubmit} handleEditPartChange={handleEditPartChange} NewRow2={NewRow2} setPartId={setPartId} isPartId={isPartId} setPartNumber={setPartNumber} PartNumber={PartNumber} setPart={setPart} partColumn={partColumn} setpartColumn={setpartColumn} setNewRow2={setNewRow2} editMold={editMold} setEdit={setEdit} editMoldData={editMoldData} />
-                    </div>
+                <div className="current-page-lable mt-2">
+                    <p> Molds </p>
                 </div>
                 <div className='back-conatainer'>
+                    <div className="container-fluid">
+                        <div className="row">
+                            <Mold modal3={modal3} toggle3={toggle3} handleAddFormChange={handleAddFormChange} handleAddFormSubmit={handleAddFormSubmit} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} handleEditPartSubmit={handleEditPartSubmit} handleEditPartChange={handleEditPartChange} NewRow2={NewRow2} setPartId={setPartId} isPartId={isPartId} setPartNumber={setPartNumber} PartNumber={PartNumber} setPart={setPart} partColumn={partColumn} setpartColumn={setpartColumn} setNewRow2={setNewRow2} editMold={editMold} setEdit={setEdit} editMoldData={editMoldData} />
+
+                        </div>
+                    </div>
                     <div className="mt-2">
                         <form autoComplete="off">
                             <div className="viscosity_table" style={{ height: '510px' }}>
@@ -154,7 +158,7 @@ const MoldGrid = ({ MoldData, setMoldData, modal3, toggle3, handleAddFormChange,
                                                 <td className='icon-position'> <i className="fas fa-link viscocity_icons" onClick={() => handleSession(mold.Mold_Id)}></i> </td>
 
                                                 <td className='icon-position'>
-                                                    <i className="fas fa-edit viscocity_icons" onClick={(event) => handleEdit(event, mold)}></i>
+                                                    <i className="fas fa-edit viscocity_icons" style={{ paddingRight: '5px' }} onClick={(event) => handleEdit(event, mold)}></i>
 
                                                     <i className="fas fa-trash viscocity_icons" onClick={() => deleteRow2(mold.id)}></i>
                                                 </td>
