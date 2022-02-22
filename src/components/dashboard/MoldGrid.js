@@ -108,41 +108,9 @@ const MoldGrid = ({ MoldData, setMoldData, modal3, toggle3, handleAddFormChange,
                     </div>
                 </div>
                 <div className='back-conatainer'>
-                    <div className="container-fluid ">
-                        <div className="row">
-                            <Mold modal3={modal3} toggle3={toggle3} handleAddFormChange={handleAddFormChange} handleAddFormSubmit={handleAddFormSubmit} handleEditFormSubmit={handleEditFormSubmit} handleEditPartSubmit={handleEditPartSubmit} handleEditPartChange={handleEditPartChange} NewRow2={NewRow2} setPartId={setPartId} isPartId={isPartId} setPartNumber={setPartNumber} PartNumber={PartNumber} setPart={setPart} partColumn={partColumn} />
-                        </div>
-                    </div>
                     <div className="mt-2">
                         <form autoComplete="off">
-                            {/* <Table striped bordered hover responsive variant="light">
-                        <thead>
-                            <tr>
-                                <th>
-                                   <span className='Pressure_Heading'>Mold ID</span> 
-                                </th>
-                                <th>
-                                    <span className="Pressure_Heading"> Platen Orientation  </span>
-                                </th>
-                                <th>
-                                    <span className="Pressure_Heading"> Number of Bases </span>
-                                </th>
-                                <th>
-                                    <span className="Pressure_Heading"> Is a Family Mold </span>
-                                </th>
-                                <th>
-                                    <span className="Pressure_Heading"> Number of Parts </span>
-                                </th>
-                                <th>
-                                    <span> Go to Sessions </span>
-                                </th>
-                                <th>
-                                    <span> Action </span>
-                                </th>
-                            </tr>
-                        </thead>
-                    </Table> */}
-                            <div className="viscosity_table" onMouseOut={handleEditFormSubmit} style={{height:'510px'}}>
+                            <div className="viscosity_table" onMouseOut={handleEditFormSubmit} style={{ height: '510px' }}>
                                 <Table striped bordered hover responsive variant="light">
                                     <thead>
                                         <tr>
