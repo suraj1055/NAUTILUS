@@ -64,6 +64,8 @@ const MoldGrid = ({ MoldData, setMoldData, modal3, toggle3, handleAddFormChange,
         newValues[index] = editedValue;
 
         setMoldData(newValues);
+
+        console.log(MoldData)
     }
 
     const deleteRow2 = (id) => {
@@ -92,6 +94,8 @@ const MoldGrid = ({ MoldData, setMoldData, modal3, toggle3, handleAddFormChange,
         setpartColumn(formValues.Number_Of_Parts);
         setPart();
         setNewRow2(formValues.Part_Details);
+
+        console.log(editMoldData)
     }
 
     const handleEdit = (e, mold) => {
@@ -108,7 +112,7 @@ const MoldGrid = ({ MoldData, setMoldData, modal3, toggle3, handleAddFormChange,
                 <div className='back-conatainer'>
                     <div className="container-fluid">
                         <div className="row">
-                            <Mold modal3={modal3} toggle3={toggle3} handleAddFormChange={handleAddFormChange} handleAddFormSubmit={handleAddFormSubmit} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} handleEditPartSubmit={handleEditPartSubmit} handleEditPartChange={handleEditPartChange} NewRow2={NewRow2} setPartId={setPartId} isPartId={isPartId} setPartNumber={setPartNumber} PartNumber={PartNumber} setPart={setPart} partColumn={partColumn} setpartColumn={setpartColumn} setNewRow2={setNewRow2} editMold={editMold} setEdit={setEdit} editMoldData={editMoldData} />
+                            <Mold modal3={modal3} toggle3={toggle3} handleAddFormChange={handleAddFormChange} handleAddFormSubmit={handleAddFormSubmit} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} handleEditPartSubmit={handleEditPartSubmit} handleEditPartChange={handleEditPartChange} NewRow2={NewRow2} setPartId={setPartId} isPartId={isPartId} setPartNumber={setPartNumber} PartNumber={PartNumber} setPart={setPart} partColumn={partColumn} setpartColumn={setpartColumn} setNewRow2={setNewRow2} editMold={editMold} setEdit={setEdit} editMoldData={editMoldData} setIsRowId={setIsRowId} />
 
                         </div>
                     </div>
