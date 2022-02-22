@@ -110,7 +110,7 @@ const MoldGrid = ({ MoldData, setMoldData, modal3, toggle3, handleAddFormChange,
                 <div className='back-conatainer'>
                     <div className="mt-2">
                         <form autoComplete="off">
-                            <div className="viscosity_table" onMouseOut={handleEditFormSubmit} style={{ height: '510px' }}>
+                            <div className="viscosity_table" style={{ height: '510px' }}>
                                 <Table striped bordered hover responsive variant="light">
                                     <thead>
                                         <tr>
@@ -139,50 +139,26 @@ const MoldGrid = ({ MoldData, setMoldData, modal3, toggle3, handleAddFormChange,
                                     </thead>
                                     <tbody className="grid_style">
                                         {MoldData.map((mold, moldId) => (
-                                            <tr key={MoldData[moldId].id} onClick={(event) => setId(event, mold)}>
-                                                <>
-                                                    {isRowId === mold.id ?
-                                                        (
-                                                            <>
-                                                                <td> <input type='text' className="form-control" name="Mold_Id" onChange={handleEditFormChange} value={editMoldData.Mold_Id} /> </td>
+                                            <tr key={MoldData[moldId].id}>
 
-                                                                <td> <input type='text' className="form-control" name="Platen_Orientation" onChange={handleEditFormChange} value={editMoldData.Platen_Orientation} /> </td>
+                                                <td> <input type='text' className="form-control text-box-disabled" name="Mold_Id" value={mold.Mold_Id} readOnly /> </td>
 
-                                                                <td> <input type='text' className="form-control" name="Number_Of_Bases" onChange={handleEditFormChange} value={editMoldData.Number_Of_Bases} /> </td>
+                                                <td> <input type='text' className="form-control" name="Platen_Orientation" value={mold.Platen_Orientation} readOnly /> </td>
 
-                                                                <td> <input type='text' className="form-control" name="Is_This_A_New_Mold" onChange={handleEditFormChange} value={editMoldData.Is_This_A_New_Mold} /> </td>
+                                                <td> <input type='text' className="form-control" name="Number_Of_Bases" value={mold.Number_Of_Bases} readOnly /> </td>
 
-                                                                <td> <input type='text' className="form-control" name="Number_Of_Parts" onChange={handleEditFormChange} value={editMoldData.Number_Of_Parts} /> </td>
+                                                <td> <input type='text' className="form-control" name="Is_This_A_New_Mold" value={mold.Is_This_A_New_Mold} readOnly /> </td>
 
-                                                                <td> <i className="fas fa-link viscocity_icons" onClick={() => handleSession(mold.Mold_Id)}></i> </td>
+                                                <td> <input type='text' className="form-control" name="Number_Of_Parts" value={mold.Number_Of_Parts} readOnly /> </td>
 
-                                                                <td>
-                                                                    <i className="fas fa-trash viscocity_icons" onClick={() => deleteRow2(mold.id)}></i>
-                                                                </td>
-                                                            </>
-                                                        )
-                                                        :
-                                                        (
-                                                            <>
-                                                                <td> <input type='text' className="form-control text-box-disabled" name="Mold_Id" value={mold.Mold_Id} readOnly /> </td>
+                                                <td className='icon-position'> <i className="fas fa-link viscocity_icons" onClick={() => handleSession(mold.Mold_Id)}></i> </td>
 
-                                                                <td> <input type='text' className="form-control" name="Platen_Orientation" value={mold.Platen_Orientation} readOnly /> </td>
+                                                <td className='icon-position'>
+                                                    <i className="fas fa-edit viscocity_icons" onClick={(event) => handleEdit(event, mold)}></i>
 
-                                                                <td> <input type='text' className="form-control" name="Number_Of_Bases" value={mold.Number_Of_Bases} readOnly /> </td>
+                                                    <i className="fas fa-trash viscocity_icons" onClick={() => deleteRow2(mold.id)}></i>
+                                                </td>
 
-                                                                <td> <input type='text' className="form-control" name="Is_This_A_New_Mold" value={mold.Is_This_A_New_Mold} readOnly /> </td>
-
-                                                                <td> <input type='text' className="form-control" name="Number_Of_Parts" value={mold.Number_Of_Parts} readOnly /> </td>
-
-                                                                <td className='icon-position'> <i className="fas fa-link viscocity_icons" onClick={() => handleSession(mold.Mold_Id)}></i> </td>
-
-                                                                <td className='icon-position'>
-                                                                    <i className="fas fa-trash viscocity_icons" onClick={() => deleteRow2(mold.id)}></i>
-                                                                </td>
-                                                            </>
-                                                        )
-                                                    }
-                                                </>
                                             </tr>
                                         ))}
                                     </tbody>
