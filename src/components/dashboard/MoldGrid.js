@@ -65,7 +65,6 @@ const MoldGrid = ({ MoldData, setMoldData, modal3, toggle3, handleAddFormChange,
 
         setMoldData(newValues);
 
-        console.log(MoldData)
     }
 
     const deleteRow2 = (id) => {
@@ -94,8 +93,6 @@ const MoldGrid = ({ MoldData, setMoldData, modal3, toggle3, handleAddFormChange,
         setpartColumn(formValues.Number_Of_Parts);
         setPart();
         setNewRow2(formValues.Part_Details);
-
-        console.log(editMoldData)
     }
 
     const handleEdit = (e, mold) => {
