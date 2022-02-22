@@ -161,26 +161,24 @@ const SessionGrid = ({ user }) => {
       </div>
       <div className="container-fluid">
         <form autoComplete="off">
-          <Table striped bordered hover responsive variant="light">
+          <div className="viscosity_table" onMouseOut={handleEditFormSubmit}>
+            <Table striped bordered hover responsive variant="light">
             <thead>
               <tr>
                 <th className="Pressure_Heading">
-                  <h6> Mold ID </h6>
+                  <span> Mold ID </span>
                 </th>
                 <th className="Pressure_Heading">
-                  <h6> Session Name </h6>
+                  <span> Session Name </span>
                 </th>
                 <th className="Pressure_Heading">
-                  <h6> Date </h6>
+                  <span> Date </span>
                 </th>
                 <th style={{ width: '200px' }}>
-                  <h6> Go to Six Step Study</h6>
+                  <span> Go to Six Step Study</span>
                 </th>
               </tr>
             </thead>
-          </Table>
-          <div className="viscosity_table" onMouseOut={handleEditFormSubmit}>
-            <Table striped bordered hover responsive variant="light">
               <tbody className="grid_style">
                 {SessionData.map((session, sessionId) => (
                   <tr key={SessionData[sessionId].id} onClick={(event) => setId(event, session)}>
@@ -194,7 +192,7 @@ const SessionGrid = ({ user }) => {
 
                             <td> <input type='text' className="form-control" name="Date" value={editSessionData.Date} readOnly /> </td>
 
-                            <td style={{ width: '200px' }}> <i className="fas fa-link viscocity_icons" onClick={() => handleSession(session.id)}></i> </td>
+                            <td style={{ width: '200px' }} className="icon-position"> <i className="fas fa-link viscocity_icons" onClick={() => handleSession(session.id)}></i> </td>
                           </>
                         )
                         :
@@ -206,7 +204,7 @@ const SessionGrid = ({ user }) => {
 
                             <td> <input type='text' className="form-control" name="Date" value={session.Date} readOnly /> </td>
 
-                            <td style={{ width: '200px' }}> <i className="fas fa-link viscocity_icons" onClick={() => handleSession(session.id)}></i> </td>
+                            <td style={{ width: '200px' }} className="icon-position"> <i className="fas fa-link viscocity_icons" onClick={() => handleSession(session.id)}></i> </td>
                           </>
                         )
                       }

@@ -49,7 +49,7 @@ const ViscocityGrid = ({ toggle2, modal2, addRow, increaseRow, NewRow2, deleteRo
         </div>
       </div>
       <form autoComplete="off">
-        <Table striped bordered hover responsive variant="light">
+        {/* <Table striped bordered hover responsive variant="light">
           <thead>
             <tr>
               <th className="viscosity_heading2">
@@ -78,38 +78,38 @@ const ViscocityGrid = ({ toggle2, modal2, addRow, increaseRow, NewRow2, deleteRo
               </th>
             </tr>
           </thead>
-        </Table>
+        </Table> */}
         <div className="viscosity_table" onMouseOut={handleEditFormSubmit}>
-          <Table striped bordered hover responsive variant="light">
-          {/* <thead>
-            <tr>
-              <th className="viscosity_heading2">
-                <span> Injection Speed </span>
-              </th>
-              <th className="viscosity_heading2">
-                <span> Fill Time </span>
-              </th>
-              <th className="viscosity_heading2">
-                <span> Peak Inj Press </span>
-              </th>
-              <th className="viscosity_heading2">
-                <span> Viscosity </span>
-              </th>
-              <th className="viscosity_heading">
-                <span> Shear Rate </span>
-              </th>
-              <th className="viscosity_heading">
-                <span> AbsoluteDropViscosity </span>
-              </th>
-              <th className="viscosity_heading">
-                <span> %DropViscosity </span>
-              </th>
-              <th >
-                <span> Action </span>
-              </th>
-            </tr>
-          </thead> */}
-            <tbody className="grid_style">
+          <Table striped bordered hover responsive variant="light" >
+            <thead>
+              <tr>
+                <th className="viscosity_heading2" >
+                  <span> Injection Speed </span>
+                </th>
+                <th className="viscosity_heading2">
+                  <span> Fill Time </span>
+                </th>
+                <th className="viscosity_heading2">
+                  <span> Peak Inj Press </span>
+                </th>
+                <th className="viscosity_heading2">
+                  <span> Viscosity </span>
+                </th>
+                <th className="viscosity_heading">
+                  <span> Shear Rate </span>
+                </th>
+                <th className="viscosity_heading">
+                  <span> AbsoluteDropViscosity </span>
+                </th>
+                <th className="viscosity_heading">
+                  <span> %DropViscosity </span>
+                </th>
+                <th>
+                  <span> Action </span>
+                </th>
+              </tr>
+            </thead>
+            <tbody className="grid_style"> 
               {NewRow2.map((NewRow, rowId) => (
                 <tr key={NewRow2[rowId].id} onClick={(event) => setId(event, NewRow)}>
                   {isRowId === NewRow.id ?
@@ -129,16 +129,16 @@ const ViscocityGrid = ({ toggle2, modal2, addRow, increaseRow, NewRow2, deleteRo
 
                         <td> <input type='text' className="form-control" name="Drop_Viscosity" value={rowId === 0 ? ('-') : (NewRow2[rowId].Viscosity === "" ? '-' : Number((Math.round(NewRow2[rowId - 1].Viscosity - NewRow2[rowId].Viscosity) * 100) / (NewRow2[rowId - 1].Viscosity)).toFixed(1))} readOnly /> </td>
 
-                        <td> <i className="fas fa-trash viscocity_icons" onClick={() => deleteRow2(NewRow.id)}></i> </td>
+                        <td className='icon-position'> <i className="fas fa-trash" onClick={() => deleteRow2(NewRow.id)}></i> </td>
                       </>
                     )
                     :
                     (<>
-                      <td> <input type='text' className="form-control" value={NewRow.Injection_Speed} readOnly /> </td>
+                      <td> <input type='text' className="form-control" style={{backgroundColor:'#fff'}} value={NewRow.Injection_Speed} readOnly /> </td>
 
-                      <td> <input type='text' className="form-control" value={NewRow.Fill_Time} readOnly /> </td>
+                      <td> <input type='text' className="form-control" style={{backgroundColor:'#fff'}} value={NewRow.Fill_Time} readOnly /> </td>
 
-                      <td> <input type='text' className="form-control" value={NewRow.Peak_Inj_Press} readOnly /> </td>
+                      <td> <input type='text' className="form-control" style={{backgroundColor:'#fff'}} value={NewRow.Peak_Inj_Press} readOnly /> </td>
 
                       <td> <input type='text' className="form-control" name="Viscosity" value={NewRow2[rowId].Viscosity === "" ? ('-') : (Math.round(NewRow2[rowId].Fill_Time * NewRow2[rowId].Peak_Inj_Press * IntensificationRatio))} readOnly /> </td>
 
@@ -148,7 +148,7 @@ const ViscocityGrid = ({ toggle2, modal2, addRow, increaseRow, NewRow2, deleteRo
 
                       <td> <input type='text' className="form-control" name="Drop_Viscosity" value={rowId === 0 ? ('-') : (NewRow2[rowId].Viscosity === "" ? '-' : Number((Math.round(NewRow2[rowId - 1].Viscosity - NewRow2[rowId].Viscosity) * 100) / (NewRow2[rowId - 1].Viscosity)).toFixed(1))} readOnly /> </td>
 
-                      <td> <i className="fas fa-trash viscocity_icons" onClick={() => deleteRow2(NewRow.id)}></i> </td>
+                      <td className='icon-position'> <i className="fas fa-trash" onClick={() => deleteRow2(NewRow.id)}></i> </td>
                     </>)
                   }
                 </tr>
