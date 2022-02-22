@@ -53,7 +53,8 @@ const MoldGrid = ({ MoldData, setMoldData, modal3, toggle3, handleAddFormChange,
             Platen_Orientation: editMoldData.Platen_Orientation,
             Number_Of_Bases: editMoldData.Number_Of_Bases,
             Is_This_A_New_Mold: editMoldData.Is_This_A_New_Mold,
-            Number_Of_Parts: editMoldData.Number_Of_Parts
+            Number_Of_Parts: editMoldData.Number_Of_Parts,
+            Part_Details: NewRow2 ? NewRow2 : ''
         }
 
         const newValues = [...MoldData];
@@ -63,7 +64,6 @@ const MoldGrid = ({ MoldData, setMoldData, modal3, toggle3, handleAddFormChange,
         newValues[index] = editedValue;
 
         setMoldData(newValues);
-
     }
 
     const deleteRow2 = (id) => {
@@ -104,14 +104,14 @@ const MoldGrid = ({ MoldData, setMoldData, modal3, toggle3, handleAddFormChange,
             <div className="container-fluid">
                 <div className="row m-4">
                     <div>
-                        <Mold modal3={modal3} toggle3={toggle3} handleAddFormChange={handleAddFormChange} handleAddFormSubmit={handleAddFormSubmit} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} handleEditPartSubmit={handleEditPartSubmit} handleEditPartChange={handleEditPartChange} NewRow2={NewRow2} setPartId={setPartId} isPartId={isPartId} setPartNumber={setPartNumber} PartNumber={PartNumber} setPart={setPart} partColumn={partColumn} setpartColumn={setpartColumn} setNewRow2={setNewRow2} editMold={editMold} setEdit={setEdit} editMoldData={editMoldData} />
+                        <Mold modal3={modal3} toggle3={toggle3} handleAddFormChange={handleAddFormChange} handleAddFormSubmit={handleAddFormSubmit} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} handleEditPartSubmit={handleEditPartSubmit} handleEditPartChange={handleEditPartChange} NewRow2={NewRow2} setPartId={setPartId} isPartId={isPartId} setPartNumber={setPartNumber} PartNumber={PartNumber} setPart={setPart} partColumn={partColumn} setpartColumn={setpartColumn} setNewRow2={setNewRow2} editMold={editMold} setEdit={setEdit} editMoldData={editMoldData} setIsRowId={setIsRowId} />
                     </div>
                 </div>
             </div>
             <div className="container-fluid">
                 <form autoComplete="off">
 
-                    <div className="viscosity_table" onMouseOut={handleEditFormSubmit}>
+                    <div className="viscosity_table">
                         <Table striped bordered hover responsive variant="light">
                             <thead>
                                 <tr>

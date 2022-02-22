@@ -5,7 +5,7 @@ import '../App.css';
 import { column_data, row_data } from './Mold_Data';
 import EditMold from './EditMold';
 
-const CreateMold = ({ toggle3, modal3, handleAddFormChange, handleAddFormSubmit, handleEditPartSubmit, handleEditPartChange, NewRow2, setPartId, isPartId, setPartNumber, PartNumber, setPart, partColumn, setpartColumn, setNewRow2, editMold, setEdit, handleEditFormChange, handleEditFormSubmit, editMoldData }) => {
+const CreateMold = ({ toggle3, modal3, handleAddFormChange, handleAddFormSubmit, handleEditPartSubmit, handleEditPartChange, NewRow2, setPartId, isPartId, setPartNumber, PartNumber, setPart, partColumn, setpartColumn, setNewRow2, editMold, setEdit, handleEditFormChange, handleEditFormSubmit, editMoldData, setIsRowId }) => {
 
     const handlePartNumber = (e) => {
         setPartNumber(e.target.value)
@@ -34,7 +34,7 @@ const CreateMold = ({ toggle3, modal3, handleAddFormChange, handleAddFormSubmit,
             <Button className="create_mold_btn" color="primary" onClick={toggle3}>Create Mold</Button>
             <form>
                 {editMold ?
-                    (<EditMold editMold={editMold} setEdit={setEdit} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} handleEditPartChange={handleEditPartChange} NewRow2={NewRow2} setPartId={setPartId} isPartId={isPartId} setPartNumber={setPartNumber} PartNumber={PartNumber} setPart={setPart} partColumn={partColumn} setpartColumn={setpartColumn} setNewRow2={setNewRow2} editMoldData={editMoldData} />)
+                    (<EditMold editMold={editMold} setEdit={setEdit} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} handleEditPartChange={handleEditPartChange} NewRow2={NewRow2} setPartId={setPartId} isPartId={isPartId} setPartNumber={setPartNumber} PartNumber={PartNumber} setPart={setPart} partColumn={partColumn} setpartColumn={setpartColumn} setNewRow2={setNewRow2} editMoldData={editMoldData} setIsRowId={setIsRowId} />)
 
                     :
 

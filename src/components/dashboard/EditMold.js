@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table';
 import '../App.css';
 import { column_data, row_data } from './Mold_Data';
 
-const EditMold = ({ setEdit, editMold, handleEditFormSubmit, handleEditPartSubmit, handleEditPartChange, NewRow2, setPartId, isPartId, setPartNumber, setPart, partColumn, setpartColumn, setNewRow2, handleEditFormChange, editMoldData }) => {
+const EditMold = ({ setEdit, editMold, handleEditFormSubmit, handleEditPartSubmit, handleEditPartChange, NewRow2, setPartId, isPartId, setPartNumber, setPart, partColumn, setpartColumn, setNewRow2, handleEditFormChange, editMoldData, setIsRowId }) => {
 
     const handlePartNumber = (e) => {
         setPartNumber(e.target.value)
@@ -14,11 +14,13 @@ const EditMold = ({ setEdit, editMold, handleEditFormSubmit, handleEditPartSubmi
     const handleSubmit = (e) => {
         handleEditFormSubmit(e);
         setEdit();
+        setIsRowId(null)
         setpartColumn(column_data);
         setNewRow2(row_data)
     }
 
     const handleClose = () => {
+        setIsRowId(null)
         setpartColumn(column_data);
         setNewRow2(row_data)
         setEdit();
