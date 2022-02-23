@@ -26,9 +26,26 @@ const EditMold = ({ setEdit, editMold, handleEditFormSubmit, handleEditPartSubmi
         setEdit();
     }
 
+    const deletePartColumn = (id, key) => {
+
+        const updatedColumns = partColumn.filter((index) => {
+            return index.id !== id;
+        })
+        setpartColumn(updatedColumns)
+
+        for (let j = 1; j < partColumn.length; j++) {
+
+            delete partColumn[j][`Part${key}`]
+
+            for (let i = 0; i < 4; i++) {
+                delete NewRow2[i][`Part${key}`]
+            }
+        }
+    }
+
     return (
         <Modal isOpen={editMold} className="modal-body" centered={true}>
-            <ModalHeader toggle={setEdit}> Edit Mold Detail's </ModalHeader>
+            <ModalHeader> Edit Mold Detail's </ModalHeader>
             <ModalBody>
                 <div className="row">
                     <div className="col-md-3">
@@ -99,17 +116,32 @@ const EditMold = ({ setEdit, editMold, handleEditFormSubmit, handleEditPartSubmi
                         <Table striped bordered hover responsive variant="light">
                             <thead>
                                 <tr>
-
                                     {partColumn.map((value, key1) => (
+                                        <React.Fragment key={value.id}>
 
-                                        <th key={value.id}>
-                                            <div className="table-heading-content">
-                                                <div className="table-heading">
-                                                    {key1 === 0 ? <h6> {value.Part} </h6> : <h6> {`Part ${key1}`} </h6>}
-                                                </div>
-                                            </div>
-                                        </th>
-
+                                            {value.delete === false ?
+                                                (<th key={value.id}>
+                                                    <div className="table-heading-content">
+                                                        <div className="table-heading">
+                                                            {key1 === 0 ? <span> {value.Part} </span> : <span> {value.Part_No} </span>}
+                                                        </div>
+                                                    </div>
+                                                </th>
+                                                )
+                                                :
+                                                (<th key={value.id}>
+                                                    <div className="table-heading-content">
+                                                        <div className="table-heading">
+                                                            {key1 === 0 ? <span> {value.Part} </span> : <span> {value.Part_No} </span>}
+                                                        </div>
+                                                        <div className="table-heading-icons">
+                                                            <div> <i className="fas fa-trash" onClick={() => deletePartColumn(value.id, key1)} ></i> </div>
+                                                        </div>
+                                                    </div>
+                                                </th>
+                                                )
+                                            }
+                                        </React.Fragment>
                                     ))}
                                 </tr>
                             </thead>

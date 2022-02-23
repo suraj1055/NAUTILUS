@@ -24,7 +24,7 @@ const MoldGrid = ({ MoldData, setMoldData, modal3, toggle3, handleAddFormChange,
     // Set's the Id of the Mold in which the data has been edited.
     const [isRowId, setIsRowId] = useState(null);
 
-    // Set's the Mold Id for which we should get the session's.
+    // Redirect's to Session's page with the Id of the mold on which the user has clicked
     const handleSession = (MoldId) => {
         history.push(`/dashboard/session/${MoldId}`)
     }
@@ -65,8 +65,11 @@ const MoldGrid = ({ MoldData, setMoldData, modal3, toggle3, handleAddFormChange,
 
         setMoldData(newValues);
 
+        console.log(partColumn)
+
     }
 
+    // Get's called when clicked on the delete icon and Removes that row of the grid
     const deleteRow2 = (id) => {
         const updatedRows = [...MoldData].filter((value) => {
             return value.id !== id;
@@ -74,6 +77,7 @@ const MoldGrid = ({ MoldData, setMoldData, modal3, toggle3, handleAddFormChange,
         setMoldData(updatedRows);
     };
 
+    // Set's the Id of that row using which we do the editing of the data
     const setId = (event, mold) => {
 
         event.preventDefault();
@@ -90,11 +94,12 @@ const MoldGrid = ({ MoldData, setMoldData, modal3, toggle3, handleAddFormChange,
         }
 
         setEditMoldData(formValues);
-        setpartColumn(formValues.Number_Of_Parts);
+        setpartColumn(editMoldData.Number_Of_Parts);
         setPart();
         setNewRow2(formValues.Part_Details);
     }
 
+    // Get's called when clicked on the edited icon and set's the id of that row along with that set's the visibilty of edit modal to true.
     const handleEdit = (e, mold) => {
         setId(e, mold)
         setEdit()

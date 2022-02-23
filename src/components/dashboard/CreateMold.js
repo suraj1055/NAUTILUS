@@ -34,12 +34,12 @@ const CreateMold = ({ toggle3, modal3, handleAddFormChange, handleAddFormSubmit,
             <Button className="create_mold_btn" color="primary" onClick={toggle3}>Create Mold</Button>
             <form>
                 {editMold ?
-                    (<EditMold editMold={editMold} setEdit={setEdit} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} handleEditPartChange={handleEditPartChange} NewRow2={NewRow2} setPartId={setPartId} isPartId={isPartId} setPartNumber={setPartNumber} PartNumber={PartNumber} setPart={setPart} partColumn={partColumn} setpartColumn={setpartColumn} setNewRow2={setNewRow2} editMoldData={editMoldData} setIsRowId={setIsRowId} handleEditPartSubmit={handleEditPartSubmit}/>)
+                    (<EditMold editMold={editMold} setEdit={setEdit} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} handleEditPartChange={handleEditPartChange} NewRow2={NewRow2} setPartId={setPartId} isPartId={isPartId} setPartNumber={setPartNumber} PartNumber={PartNumber} setPart={setPart} partColumn={partColumn} setpartColumn={setpartColumn} setNewRow2={setNewRow2} editMoldData={editMoldData} setIsRowId={setIsRowId} handleEditPartSubmit={handleEditPartSubmit} />)
 
                     :
 
                     (<Modal isOpen={modal3} className="modal-body" centered={true}>
-                        <ModalHeader toggle={toggle3}> Add Mold </ModalHeader>
+                        <ModalHeader> Add Mold </ModalHeader>
                         <ModalBody>
                             <div className="row">
                                 <div className="col-md-3">
@@ -110,9 +110,7 @@ const CreateMold = ({ toggle3, modal3, handleAddFormChange, handleAddFormSubmit,
                                     <Table striped bordered hover responsive variant="light">
                                         <thead>
                                             <tr>
-
                                                 {partColumn.map((value, key1) => (
-
                                                     <th key={value.id}>
                                                         <div className="table-heading-content">
                                                             <div className="table-heading">
@@ -120,7 +118,6 @@ const CreateMold = ({ toggle3, modal3, handleAddFormChange, handleAddFormSubmit,
                                                             </div>
                                                         </div>
                                                     </th>
-
                                                 ))}
                                             </tr>
                                         </thead>

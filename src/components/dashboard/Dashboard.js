@@ -12,7 +12,7 @@ const Dashboard = ({ user }) => {
     const [modal3, setModal3] = useState(false);
 
     // Toggle for showing edit modal
-    const [editMold, setEditMold] =  useState(false);
+    const [editMold, setEditMold] = useState(false);
 
     // Event to do the toggling create Mold Modal
     const toggle3 = () => {
@@ -47,8 +47,9 @@ const Dashboard = ({ user }) => {
         let col = []
         for (let i = 0; i < parseInt(PartNumber); i++) {
             col.push({
-                id: nanoid(),
-                Part_No: "Part"
+                "id": nanoid(),
+                "Part_No": `Part${i + 1}`,
+                "delete": true
             })
         }
         setpartColumn([...partColumn, ...col]);
@@ -88,7 +89,6 @@ const Dashboard = ({ user }) => {
             const newMolds = [...MoldData, newMold];
             setMoldData(newMolds);
         }
-
     };
 
     // Now these are the event's which deal with the part detail's

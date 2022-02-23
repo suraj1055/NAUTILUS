@@ -10,18 +10,6 @@ const Sidebar = (props) => {
             MENUITEMS.forEach(a => {
                 if (MENUITEMS.includes(item))
                     a.active = false
-                // if (!a.children) return false
-                // a.children.forEach(b => {
-                //     if (a.children.includes(item)) {
-                //         b.active = false
-                //     }
-                //     if (!b.children) return false
-                //     b.children.forEach(c => {
-                //         if (b.children.includes(item)) {
-                //             c.active = false
-                //         }
-                //     })
-                // })
             });
         }
         item.active = !item.active
@@ -64,46 +52,6 @@ const Sidebar = (props) => {
                                                 <i className="fa fa-angle-right pull-right"></i> : ''}
                                         </Link>
                                         : ''}
-                                    {/* {menuItem.children ?
-                                        <ul
-                                            className={`sidebar-submenu ${menuItem.active ? 'menu-open' : ''}`}
-                                            style={menuItem.active ? { opacity: 1, transition: 'opacity 500ms ease-in' } : {}}
-                                        >
-                                            {menuItem.children.map((childrenItem, index) =>
-                                                <li key={index} className={childrenItem.children ? childrenItem.active ? 'active' : '' : ''}>
-                                                    {(childrenItem.type === 'sub') ?
-                                                        <a href="#javascript" onClick={() => toggletNavActive(childrenItem)} >
-                                                            <i className="fa fa-circle"></i>{props.t(childrenItem.title)} <i className="fa fa-angle-right pull-right"></i></a>
-                                                        : ''}
-
-                                                    {(childrenItem.type === 'link') ?
-                                                        <Link
-                                                            to={`${process.env.PUBLIC_URL}${childrenItem.path}`}
-                                                            className={childrenItem.active ? 'active' : ''}
-                                                            onClick={() => toggletNavActive(childrenItem)}
-                                                        >
-                                                            <i className="fa fa-circle"></i>{props.t(childrenItem.title)} </Link>
-                                                        : ''}
-                                                    {childrenItem.children ?
-                                                        <ul className={`sidebar-submenu ${childrenItem.active ? 'menu-open' : 'active'}`}>
-                                                            {childrenItem.children.map((childrenSubItem, key) =>
-                                                                <li className={childrenSubItem.active ? 'active' : ''} key={key}>
-                                                                    {(childrenSubItem.type === 'link') ?
-                                                                        <Link
-                                                                            to={`${process.env.PUBLIC_URL}${childrenSubItem.path}`}
-                                                                            className={childrenSubItem.active ? 'active' : ''}
-                                                                            onClick={() => toggletNavActive(childrenSubItem)}
-                                                                        >
-                                                                            <i className="fa fa-circle"></i>{props.t(childrenSubItem.title)}</Link>
-                                                                        : ''}
-                                                                </li>
-                                                            )}
-                                                        </ul>
-                                                        : ''}
-                                                </li>
-                                            )}
-                                        </ul>
-                                        : ''} */}
                                 </li>
                             )
                         }
