@@ -29,7 +29,7 @@ const ViscocityCurve = () => {
             (res) => {
                 if (res.data.Grid_Data) {
                     setNewRow2(res.data.Grid_Data);
-                    setIntensificationRatio(res.data.IntensificationRatio)
+                    setIntensificationRatio(res.data.IntensificationRatio);
                 }
                 else {
                     alert("No Data Found in the Database !!!")
@@ -311,7 +311,7 @@ const ViscocityCurve = () => {
                                 <Inject services={[LineSeries, Category, DataLabel]} />
 
                                 <SeriesCollectionDirective>
-                                    <SeriesDirective type="Line" dataSource={NewRow2} xName={Injection_Speed ? Injection_Speed : ""} yName="Viscosity" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
+                                    <SeriesDirective type="Line" dataSource={NewRow2} xName="Injection_Speed" yName="Viscosity" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
                                 </SeriesCollectionDirective>
 
                             </ChartComponent>
