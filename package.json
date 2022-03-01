@@ -24,6 +24,7 @@
     "emoji-mart": "^3.0.0",
     "feather-icons": "^4.28.0",
     "firebase": "^7.14.6",
+    "framer-motion": "^6.2.8",
     "jkanban": "^1.2.1",
     "jquery": "^3.6.0",
     "json-loader": "^0.5.7",

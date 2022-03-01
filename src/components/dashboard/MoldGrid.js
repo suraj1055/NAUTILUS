@@ -85,6 +85,7 @@ const MoldGrid = ({ MoldData, setMoldData, modal3, toggle3, handleAddFormChange,
         setIsRowId(mold.id);
 
         const formValues = {
+            id: mold.id,
             Mold_Id: mold.Mold_Id,
             Platen_Orientation: mold.Platen_Orientation,
             Number_Of_Bases: mold.Number_Of_Bases,

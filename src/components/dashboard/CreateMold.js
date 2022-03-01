@@ -35,16 +35,14 @@ const CreateMold = ({ toggle3, modal3, handleAddFormChange, handleAddFormSubmit,
             <form>
                 {editMold ?
                     (<EditMold editMold={editMold} setEdit={setEdit} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} handleEditPartChange={handleEditPartChange} NewRow2={NewRow2} setPartId={setPartId} isPartId={isPartId} setPartNumber={setPartNumber} PartNumber={PartNumber} setPart={setPart} partColumn={partColumn} setpartColumn={setpartColumn} setNewRow2={setNewRow2} editMoldData={editMoldData} setIsRowId={setIsRowId} handleEditPartSubmit={handleEditPartSubmit} />)
-
                     :
-
-                    (<Modal isOpen={modal3} className="modal-body" centered={true}>
+                    (<Modal isOpen={modal3} className="modal-body" centered={true} data-keyboard="false" data-backdrop="static" >
                         <ModalHeader> Add Mold </ModalHeader>
                         <ModalBody>
                             <div className="row">
                                 <div className="col-md-3">
                                     <div className="form-group">
-                                        <label htmlFor="exampleFormControlSelect23" className="lbl_style">Enter New Mold ID:</label>
+                                        <label className="lbl_style">Enter New Mold ID:</label>
                                     </div>
                                 </div>
                                 <div className="col-md-8">
@@ -54,7 +52,7 @@ const CreateMold = ({ toggle3, modal3, handleAddFormChange, handleAddFormSubmit,
                             <div className="row">
                                 <div className="col-md-3">
                                     <div className="form-group">
-                                        <label htmlFor="exampleFormControlSelect23" className="lbl_style">Platen Orientation :</label>
+                                        <label className="lbl_style">Platen Orientation :</label>
                                     </div>
                                 </div>
                                 <div className="col-md-8">
@@ -69,7 +67,7 @@ const CreateMold = ({ toggle3, modal3, handleAddFormChange, handleAddFormSubmit,
                             <div className="row">
                                 <div className="col-md-3">
                                     <div className="form-group">
-                                        <label htmlFor="exampleFormControlSelect23" className="lbl_style"> Number of Bases : </label>
+                                        <label className="lbl_style"> Number of Bases : </label>
                                     </div>
                                 </div>
                                 <div className="col-md-8">
@@ -140,7 +138,7 @@ const CreateMold = ({ toggle3, modal3, handleAddFormChange, handleAddFormSubmit,
                                                                         (
                                                                             <td onMouseOut={handleEditPartSubmit}>
 
-                                                                                <input type='text' className="form-control" name={`Part${key2}`} onChange={handleEditPartChange} defaultValue={NewRow2[key1][`Part${key2}`] || ''} autoFocus />
+                                                                                <input type='text' className="form-control" name={`Part${key2}`} onChange={handleEditPartChange} defaultValue={NewRow2[key1][`Part${key2}`] || ''} required />
 
                                                                             </td>
                                                                         )
@@ -148,7 +146,7 @@ const CreateMold = ({ toggle3, modal3, handleAddFormChange, handleAddFormSubmit,
                                                                         (
                                                                             <td onClick={(event) => setPartId(event, value)}>
 
-                                                                                <input type='text' name={`Part${key2}`} className="form-control" defaultValue={NewRow2[key1][`Part${key2}`] || ''} readOnly />
+                                                                                <input type='text' name={`Part${key2}`} className="form-control" defaultValue={NewRow2[key1][`Part${key2}`] || ''} required />
 
                                                                             </td>
                                                                         )
