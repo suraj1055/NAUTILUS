@@ -11,13 +11,13 @@ const Dashboard = ({ user }) => {
     // Toggle for showing create mold modal
     const [modal3, setModal3] = useState(false);
 
-    // Toggle for showing edit modal
-    const [editMold, setEditMold] = useState(false);
-
-    // Event to do the toggling create Mold Modal
-    const toggle3 = () => {
+      // Event to do the toggling create Mold Modal
+      const toggle3 = () => {
         setModal3(!modal3)
     }
+
+    // Toggle for showing edit modal
+    const [editMold, setEditMold] = useState(false);
 
     // Event to do the toggling part of the edit mold
     const setEdit = () => {
