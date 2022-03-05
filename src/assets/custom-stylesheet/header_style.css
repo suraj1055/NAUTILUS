@@ -1,4 +1,4 @@
-@charset "UTF-8";
+/* @charset "UTF-8";
 /*!
  * Bootstrap v4.1.1 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
@@ -51011,7 +51011,7 @@ body.swal2-toast-column .swal2-toast {
     display: block;
     position: absolute;
     top: 0;
-    left: 0; }
+    left: 0; } */
 
 /* custom */
 .table{
@@ -51039,4 +51039,4 @@ body.swal2-toast-column .swal2-toast {
     .table-bordered td{
       border-bottom: 1px solid #d8d7d7;
       border-color: #e6e6e6;      
-    }
+    } 
