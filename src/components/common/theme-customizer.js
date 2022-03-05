@@ -12,12 +12,12 @@ const ThemeCustomizer = () => {
     useEffect(() => {
 
         //set sidebar wrapper
-        if(sidebar_type === null && body_sidebar_type === null){
+        // if(sidebar_type === null && body_sidebar_type === null){
             
-        }else{
-            document.querySelector(".page-wrapper").className = 'page-wrapper ' + sidebar_type;
-            document.querySelector(".page-body-wrapper").className = 'page-body-wrapper ' + body_sidebar_type;
-        }
+        // }else{
+        //     document.querySelector(".page-wrapper").className = 'page-wrapper ' + sidebar_type;
+        //     document.querySelector(".page-body-wrapper").className = 'page-body-wrapper ' + body_sidebar_type;
+        // }
 
         
     }, [body_sidebar_type, color, layout_version, primary_color, secondary_color, sidebar_type]);
