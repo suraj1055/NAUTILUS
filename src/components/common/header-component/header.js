@@ -7,7 +7,7 @@ import { logout } from '../../../actions/auth';
 
 const Header = ({ logout }) => {
   const [sidebar, setSidebar] = useState(false);
-  
+
   const openCloseSidebar = () => {
     if (sidebar) {
       setSidebar(!sidebar)
@@ -24,13 +24,6 @@ const Header = ({ logout }) => {
     <Fragment>
       <div className="page-main-header" >
         <div className="main-header-right row">
-          <div className="main-header-left d-lg-none">
-            <div className="logo-wrapper">
-
-
-
-            </div>
-          </div>
           <div className="d-block">
             <div className="media-body text-right switch-sm">
               <label className="switch">

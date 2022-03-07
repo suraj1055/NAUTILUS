@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Home } from 'react-feather';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 const Breadcrumb = props => {
     const breadcrumb = props;
@@ -11,18 +11,21 @@ const Breadcrumb = props => {
                 <div className="page-header">
                     <div className="row">
                         <div className="col">
-                            <div className="page-header-left" style={{marginLeft:"-15px"}}>                               
-                                <ol className="breadcrumb ">
+                            <div className="page-header-left">
+                                <h3>{breadcrumb.title}</h3>
+                                <ol className="breadcrumb pull-right">
                                     <li className="breadcrumb-item">
-                                        <Link to={`${process.env.PUBLIC_URL}/dashboard/default`}>
-                                            <Home style={{color:'#573dac'}} />
+                                        <Home style={{ height: '15px' }}/>
+                                    </li>
+                                    <li className="breadcrumb-item">
+                                        <Link to={`/dashboard/mold`} style={{ color: 'black' }}>
+                                            {breadcrumb.parent}
                                         </Link>
                                     </li>
-                                    <li className="breadcrumb-item active">{breadcrumb.parent}</li>                        
+                                    <li className="breadcrumb-item active">{breadcrumb.title}</li>
                                 </ol>
                             </div>
                         </div>
-                       
                     </div>
                 </div>
             </div>
@@ -30,4 +33,4 @@ const Breadcrumb = props => {
     )
 }
 
-export default Breadcrumb;
+export default Breadcrumb

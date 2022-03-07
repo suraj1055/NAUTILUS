@@ -31,7 +31,7 @@ const CreateMold = ({ toggle3, modal3, handleAddFormChange, handleAddFormSubmit,
 
     return (
         <>
-            <Button className="create_mold_btn" color="primary" onClick={toggle3}>Create Mold</Button>
+            <button className="btn btn-pill btn-primary btn-air-primary m-4" type="button" onClick={toggle3}>Create Mold</button>
             <form>
                 {editMold ?
                     (<EditMold editMold={editMold} setEdit={setEdit} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} handleEditPartChange={handleEditPartChange} NewRow2={NewRow2} setPartId={setPartId} isPartId={isPartId} setPartNumber={setPartNumber} PartNumber={PartNumber} setPart={setPart} partColumn={partColumn} setpartColumn={setpartColumn} setNewRow2={setNewRow2} editMoldData={editMoldData} setIsRowId={setIsRowId} handleEditPartSubmit={handleEditPartSubmit} />)
