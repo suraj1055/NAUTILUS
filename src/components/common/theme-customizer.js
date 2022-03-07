@@ -2,12 +2,12 @@ import React, { Fragment, useEffect } from 'react';
 
 const ThemeCustomizer = () => {
 
-    const primary_color = localStorage.getItem('primary_color');
-    const secondary_color = localStorage.getItem('secondary_color');
-    const layout_version = localStorage.getItem('layout_version');
-    const sidebar_type = localStorage.getItem('wrapper')
-    const body_sidebar_type = localStorage.getItem('bodyWrapper');
-    const color = localStorage.getItem('color')
+    // const primary_color = localStorage.getItem('primary_color');
+    // const secondary_color = localStorage.getItem('secondary_color');
+    // const layout_version = localStorage.getItem('layout_version');
+    // const sidebar_type = localStorage.getItem('wrapper')
+    // const body_sidebar_type = localStorage.getItem('bodyWrapper');
+    // const color = localStorage.getItem('color')
 
     // useEffect(() => {
 
