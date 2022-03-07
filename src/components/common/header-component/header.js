@@ -22,7 +22,7 @@ const Header = ({ logout }) => {
 
   return (
     <Fragment>
-      <div className="page-main-header" >
+      <div className="page-main-header">
         <div className="main-header-right row">
           <div className="d-block">
             <div className="media-body text-right switch-sm">

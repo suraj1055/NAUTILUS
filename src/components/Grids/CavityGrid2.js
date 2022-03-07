@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import '../App.css';
 import Table from 'react-bootstrap/Table';
-import { Button } from 'reactstrap';
 
 const CavityGrid2 = ({ column, NewRow2 }) => {
 
@@ -68,7 +67,7 @@ const CavityGrid2 = ({ column, NewRow2 }) => {
     return (
         <>
             <div className='mb-4'>
-                <Button color="dark" onClick={Total_Average}> Calculate </Button>
+                <button className="btn btn-pill btn-secondary btn-air-secondary mr-4" type="button" onClick={Total_Average}> Calculate </button>
             </div>
             <div className='container-fluid'>
                 <div className='row'>

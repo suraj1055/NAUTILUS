@@ -26,12 +26,12 @@ const ViscocityGrid = ({ toggle2, modal2, addRow, increaseRow, NewRow2, deleteRo
     <div>
       <div className="mb-4 d-flex justify-content-between">
         <div>
-          <Button onClick={toggle2} color="secondary" className="btn btn-sm" type="button"> Add Row </Button>
+          <button className="btn btn-pill btn-secondary btn-air-secondary mr-4" type="button" onClick={toggle2}> Add Row </button>
           <ViscocityAddRow toggle2={toggle2} modal2={modal2} addRow={addRow} increaseRow={increaseRow} />
         </div>
         <div>
-          <Button color="fifth" className="btn btn-sm mr-4" type="button"> Print </Button>
-          <Button onClick={handleShow} color="primary" className="btn btn-sm step-button2" type="button"> Comment </Button>
+          <button className="btn btn-pill btn-fifth btn-air-fifth mr-4" type="button">Print</button>
+          <button className="btn btn-pill btn-primary btn-air-primary" type="button" onClick={handleShow}>Comment</button>
           <Modal isOpen={show} centered={true} >
             <ModalHeader toggle={handleClose}>
               Add Comment
@@ -49,36 +49,6 @@ const ViscocityGrid = ({ toggle2, modal2, addRow, increaseRow, NewRow2, deleteRo
         </div>
       </div>
       <form autoComplete="off">
-        {/* <Table striped bordered hover responsive variant="light">
-          <thead>
-            <tr>
-              <th className="viscosity_heading2">
-                <span> Injection Speed </span>
-              </th>
-              <th className="viscosity_heading2">
-                <span> Fill Time </span>
-              </th>
-              <th className="viscosity_heading2">
-                <span> Peak Inj Press </span>
-              </th>
-              <th className="viscosity_heading2">
-                <span> Viscosity </span>
-              </th>
-              <th className="viscosity_heading">
-                <span> Shear Rate </span>
-              </th>
-              <th className="viscosity_heading">
-                <span> AbsoluteDropViscosity </span>
-              </th>
-              <th className="viscosity_heading">
-                <span> %DropViscosity </span>
-              </th>
-              <th >
-                <span> Action </span>
-              </th>
-            </tr>
-          </thead>
-        </Table> */}
         <div className="viscosity_table" onMouseOut={handleEditFormSubmit}>
           <Table striped bordered hover responsive variant="light" >
             <thead>

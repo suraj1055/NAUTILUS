@@ -116,9 +116,8 @@ const MoldGrid = ({ MoldData, setMoldData, modal3, toggle3, handleAddFormChange,
                 <div className="card mt-4">
                     <div className="row">
                         <Mold modal3={modal3} toggle3={toggle3} handleAddFormChange={handleAddFormChange} handleAddFormSubmit={handleAddFormSubmit} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} handleEditPartSubmit={handleEditPartSubmit} handleEditPartChange={handleEditPartChange} NewRow2={NewRow2} setPartId={setPartId} isPartId={isPartId} setPartNumber={setPartNumber} PartNumber={PartNumber} setPart={setPart} partColumn={partColumn} setpartColumn={setpartColumn} setNewRow2={setNewRow2} editMold={editMold} setEdit={setEdit} editMoldData={editMoldData} setIsRowId={setIsRowId} />
-
                     </div>
-                    <div className="m-4">
+                    <div className="m-2">
                         <form autoComplete="off">
                             <div className="viscosity_table" style={{ height: '510px' }}>
                                 <Table striped bordered hover responsive variant="light">

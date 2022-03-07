@@ -5,7 +5,7 @@ const CavityEdit = ({ modal, toggle, column, addHeader, editColumnHeader, editCo
     return (
         <div className="btn-showcase">
             {/* < !-- Using Form Modal --> */}
-            <Button color="primary" onClick={toggle}> Edit Column Header </Button>
+            <button className="btn btn-pill btn-primary btn-air-primary mr-4" type="button" onClick={toggle}> Edit Column Header </button>
             <Modal isOpen={modal} centered={true}>
                 <ModalHeader toggle={toggle}>{"Edit Header's Value"}</ModalHeader>
                 <ModalBody>

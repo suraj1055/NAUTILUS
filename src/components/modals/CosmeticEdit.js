@@ -24,11 +24,11 @@ const CosmeticEdit = ({ modal, toggle, setHeader1, setHeader2, Melting, Hydrauli
             {/* < !-- Using Form Modal --> */}
             <div className="mb-4 d-flex justify-content-between">
                 <div>
-                    <Button color="primary" onClick={toggle}> Edit Column Header </Button>
+                    <button className="btn btn-pill btn-primary btn-air-primary ml-4" type="button" onClick={toggle}> Edit Column Header </button>
                 </div>
                 <div>
-                    <Button color="fifth" className="btn btn-sm mr-4" type="button"> Print </Button>
-                    <Button onClick={handleShow} color="primary" className="btn btn-sm step-button2" type="button"> Comment </Button>
+                    <button className="btn btn-pill btn-fifth btn-air-fifth mr-4" type="button"> Print </button>
+                    <button className="btn btn-pill btn-primary btn-air-primary mr-4" type="button" onClick={handleShow}> Comment </button>
                     <Modal isOpen={show} centered={true} >
                         <ModalHeader toggle={handleClose}>
                             Add Comment

@@ -4,7 +4,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 const ColdAddRow = ({ toggle2, modal2, addRow, increaseRow }) => {
     return (
         <div className="btn-showcase">
-            <Button onClick={toggle2} color="primary" className="btn btn-sm" type="button"> Add Row </Button>
+            <button className="btn btn-pill btn-primary btn-air-primary mr-4" type="button"onClick={toggle2}> Add Row </button>
             <Modal isOpen={modal2} toggle={toggle2} centered={true}>
                 <ModalHeader toggle={toggle2}>
                     Add Row

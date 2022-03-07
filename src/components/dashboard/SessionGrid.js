@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Breadcrumb from '../common/breadcrumb';
 import "../../assets/custom-stylesheet/app2_style.css";
 import "../../assets/custom-stylesheet/samplepage_style.css";
 import '../App.css';
@@ -152,69 +153,74 @@ const SessionGrid = ({ user }) => {
 
   return (
     <>
-      <div className="container-fluid">
-        <div className="row">
-          <div className="m-4">
-            <Session modal2={modal2} toggle2={toggle2} handleAddFormChange2={handleAddFormChange2} handleAddFormSubmit2={handleAddFormSubmit2} moldId={moldId} />
-          </div>
-        </div>
+      <div>
+        <Breadcrumb title="Session's" parent="Dashboard" />
       </div>
       <div className="container-fluid">
-        <form autoComplete="off">
-          <div className="viscosity_table" onMouseOut={handleEditFormSubmit}>
-            <Table striped bordered hover responsive variant="light">
-            <thead>
-              <tr>
-                <th className="Pressure_Heading">
-                  <span> Mold ID </span>
-                </th>
-                <th className="Pressure_Heading">
-                  <span> Session Name </span>
-                </th>
-                <th className="Pressure_Heading">
-                  <span> Date </span>
-                </th>
-                <th style={{ width: '200px' }}>
-                  <span> Go to Six Step Study</span>
-                </th>
-              </tr>
-            </thead>
-              <tbody className="grid_style">
-                {SessionData.map((session, sessionId) => (
-                  <tr key={SessionData[sessionId].id} onClick={(event) => setId(event, session)}>
-                    <>
-                      {isRowId === SessionData[sessionId].id ?
-                        (
-                          <>
-                            <td> <input type='text' className="form-control" name="Mold_Id" value={session.Mold_Id} readOnly /> </td>
-
-                            <td> <input type='text' className="form-control" name="Session_Name" onChange={handleEditFormChange} value={editSessionData.Session_Name} /> </td>
-
-                            <td> <input type='text' className="form-control" name="Date" value={editSessionData.Date} readOnly /> </td>
-
-                            <td style={{ width: '200px' }} className="icon-position"> <i className="fas fa-link viscocity_icons" onClick={() => handleSession(session.id)}></i> </td>
-                          </>
-                        )
-                        :
-                        (
-                          <>
-                            <td> <input type='text' className="form-control" name="Mold_Id" value={session.Mold_Id} readOnly /> </td>
-
-                            <td> <input type='text' className="form-control" name="Session_Name" value={session.Session_Name} readOnly /> </td>
-
-                            <td> <input type='text' className="form-control" name="Date" value={session.Date} readOnly /> </td>
-
-                            <td style={{ width: '200px' }} className="icon-position"> <i className="fas fa-link viscocity_icons" onClick={() => handleSession(session.id)}></i> </td>
-                          </>
-                        )
-                      }
-                    </>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
+        <div className="card mt-4">
+          <div className="row">
+            <div className="m-4">
+              <Session modal2={modal2} toggle2={toggle2} handleAddFormChange2={handleAddFormChange2} handleAddFormSubmit2={handleAddFormSubmit2} moldId={moldId} />
+            </div>
           </div>
-        </form>
+          <div className="m-2">
+            <form autoComplete="off">
+              <div className="viscosity_table" onMouseOut={handleEditFormSubmit}>
+                <Table striped bordered hover responsive variant="light">
+                  <thead>
+                    <tr>
+                      <th className="Pressure_Heading">
+                        <span> Mold ID </span>
+                      </th>
+                      <th className="Pressure_Heading">
+                        <span> Session Name </span>
+                      </th>
+                      <th className="Pressure_Heading">
+                        <span> Date </span>
+                      </th>
+                      <th style={{ width: '200px' }}>
+                        <span> Go to Six Step Study</span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="grid_style">
+                    {SessionData.map((session, sessionId) => (
+                      <tr key={SessionData[sessionId].id} onClick={(event) => setId(event, session)}>
+                        <>
+                          {isRowId === SessionData[sessionId].id ?
+                            (
+                              <>
+                                <td> <input type='text' className="form-control" name="Mold_Id" value={session.Mold_Id} readOnly /> </td>
+
+                                <td> <input type='text' className="form-control" name="Session_Name" onChange={handleEditFormChange} value={editSessionData.Session_Name} /> </td>
+
+                                <td> <input type='text' className="form-control" name="Date" value={editSessionData.Date} readOnly /> </td>
+
+                                <td style={{ width: '200px' }} className="icon-position"> <i className="fas fa-link viscocity_icons" onClick={() => handleSession(session.id)}></i> </td>
+                              </>
+                            )
+                            :
+                            (
+                              <>
+                                <td> <input type='text' className="form-control" name="Mold_Id" value={session.Mold_Id} readOnly /> </td>
+
+                                <td> <input type='text' className="form-control" name="Session_Name" value={session.Session_Name} readOnly /> </td>
+
+                                <td> <input type='text' className="form-control" name="Date" value={session.Date} readOnly /> </td>
+
+                                <td style={{ width: '200px' }} className="icon-position"> <i className="fas fa-link viscocity_icons" onClick={() => handleSession(session.id)}></i> </td>
+                              </>
+                            )
+                          }
+                        </>
+                      </tr>
+                    ))}
+                  </tbody>
+                </Table>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </>
   )

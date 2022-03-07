@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import {
     ChartComponent, LineSeries, Inject, SeriesCollectionDirective, ScatterSeries, Category, DataLabel, SeriesDirective
 } from '@syncfusion/ej2-react-charts';
-import { Button } from 'reactstrap';
 import CosmeticGrid from '../Grids/CosmeticGrid';
 import CosmeticEdit from '../modals/CosmeticEdit';
 import data from '../data/Cosmetic_data.json';
@@ -175,62 +174,61 @@ const CosmeticPressure = () => {
     useEffect(() => {
 
         const handleChange = (e) => {
-          chartInstance.refresh();
+            chartInstance.refresh();
         }
-    
+
         handleChange()
-    
-      }, [])
+
+    }, [])
 
     return (
 
-        <div>
-            <div className="grid-chart-container">
-                <div className="form-group">
-                    <CosmeticEdit toggle={toggle} modal={modal} setHeader1={setHeader1} setHeader2={setHeader2} Melting={Melting} Hydraulic={Hydraulic} />
-                </div>
-                <div>
-                    <CosmeticGrid Melting={Melting} Hydraulic={Hydraulic} NewRow2={NewRow2} setId={setId} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} isRowId={isRowId} editFormData={editFormData} />
-                </div>
-            </div>
-            <div className="grid-chart-container">
-                <div className="row">
-                    <div className="col-md-4 chart_container_btn">
-                        <Button color="primary" onClick={setGraph}> Show Graph </Button>
+        <div className='cosmetic pb-2'>
+            <div className='card p-2'>
+                <div className="grid-chart-container">
+                    <div className="form-group">
+                        <CosmeticEdit toggle={toggle} modal={modal} setHeader1={setHeader1} setHeader2={setHeader2} Melting={Melting} Hydraulic={Hydraulic} />
+                    </div>
+                    <div>
+                        <CosmeticGrid Melting={Melting} Hydraulic={Hydraulic} NewRow2={NewRow2} setId={setId} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} isRowId={isRowId} editFormData={editFormData} />
                     </div>
                 </div>
-                <div>
-                    <ChartComponent id='charts' ref={chart => chartInstance = chart} title="Cosmetic Process Study" width="1100" primaryXAxis={{ title: `${Melting}` }} primaryYAxis={{ title: `${Hydraulic}` }}>
-
-                        <Inject services={[LineSeries, Category, DataLabel, ScatterSeries]} />
-
-                        <SeriesCollectionDirective>
-
-                            <SeriesDirective type="Line" dataSource={chartData} xName="x" yName="y" marker={{ visible: true, margin: 100 }} ></SeriesDirective>
-
-                            <SeriesDirective
-                                dataSource={centerPoints}
-                                xName="x"
-                                yName="y"
-                                width={2}
-                                marker={{
-                                    dataLabel: { visible: true },
-                                    shape: 'Diamond',
-                                    visible: true,
-                                    width: 10,
-                                    height: 10,
-                                }}
-                                type="Scatter"
-                            ></SeriesDirective>
-
-                        </SeriesCollectionDirective>
-
-                    </ChartComponent>
-                </div>
             </div>
-            <div className="row save_saveas_btn">
-                <div className="col-md-12 text-right">
-                    <Button color="third" className="btn-save-chart"> Save </Button>
+            <div className='card p-2'>
+                <div className="grid-chart-container">
+                    <div className="row">
+                        <div className="col-md-4 chart_container_btn">
+                            <button className="btn btn-pill btn-primary btn-air-primary ml-4" type="button" onClick={setGraph}> Show Graph </button>
+                        </div>
+                    </div>
+                    <div>
+                        <ChartComponent id='charts' ref={chart => chartInstance = chart} title="Cosmetic Process Study" width="1100" primaryXAxis={{ title: `${Melting}` }} primaryYAxis={{ title: `${Hydraulic}` }}>
+
+                            <Inject services={[LineSeries, Category, DataLabel, ScatterSeries]} />
+
+                            <SeriesCollectionDirective>
+
+                                <SeriesDirective type="Line" dataSource={chartData} xName="x" yName="y" marker={{ visible: true, margin: 100 }} ></SeriesDirective>
+
+                                <SeriesDirective
+                                    dataSource={centerPoints}
+                                    xName="x"
+                                    yName="y"
+                                    width={2}
+                                    marker={{
+                                        dataLabel: { visible: true },
+                                        shape: 'Diamond',
+                                        visible: true,
+                                        width: 10,
+                                        height: 10,
+                                    }}
+                                    type="Scatter"
+                                ></SeriesDirective>
+
+                            </SeriesCollectionDirective>
+
+                        </ChartComponent>
+                    </div>
                 </div>
             </div>
         </div>

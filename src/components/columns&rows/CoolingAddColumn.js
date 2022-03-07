@@ -4,7 +4,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 const CoolingAddColumn = ({ toggle, modal, addHeader, addColumn}) => {
     return (
         <div className="btn-showcase">
-            <Button onClick={toggle} color="fifth" className="btn btn-sm" type="button"> Add Column </Button>
+            <button className="btn btn-pill btn-fifth btn-air-fifth mr-4" type="button"onClick={toggle}> Add Column </button>
             <Modal isOpen={modal} toggle={toggle} centered={true}>
                 <ModalHeader toggle={toggle}>
                     Add column
