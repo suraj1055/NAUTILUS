@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Breadcrumb from '../common/breadcrumb';
+// import Breadcrumb from '../common/breadcrumb';
 import '../App.css';
 import MoldGrid from './MoldGrid';
 import { nanoid } from 'nanoid';
@@ -141,7 +141,7 @@ const Dashboard = ({ user }) => {
 
     return (
         <>
-            <Breadcrumb parent="Dashboard / Molds" title="Default" />
+            {/* <Breadcrumb parent="Dashboard / Molds" title="Default" /> */}
 
             {/* <button onClick={() => console.log(MoldData)}> Click Me </button> */}
 
