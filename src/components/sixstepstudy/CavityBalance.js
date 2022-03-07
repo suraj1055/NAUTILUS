@@ -168,67 +168,70 @@ const CavityBalance = () => {
 
     return (
         <>
-            <div className="grid-chart-container">
-                <div className="d-flex justify-content-between">
-                    <div className="d-flex">
-                        <div className="grid_container_btn">
-                            <Cavity toggle2={toggle2} modal2={modal2} addHeader={addHeader} addColumn={addColumn} />
+            <div className='cavity pb-2'>
+                <div className="grid-chart-container">
+                    <div className="card p-4">
+                        <div className="d-flex justify-content-between">
+                            <div className="d-flex">
+                                <div className="grid_container_btn">
+                                    <Cavity toggle2={toggle2} modal2={modal2} addHeader={addHeader} addColumn={addColumn} />
+                                </div>
+                                <div className="grid_container_btn">
+                                    <CavityEdit modal={modal} toggle={toggle} column={column} addHeader={addHeader} editColumnHeader={editColumnHeader} editCancel={editCancel} editColumn={editColumn} />
+                                </div>
+                            </div>
+                            <div className='mt-3'>
+                                <button className="btn btn-pill btn-fifth btn-air-fifth mr-4" type="button"> Print </button>
+                                <button className="btn btn-pill btn-primary btn-air-primary mr-4" type="button" onClick={handleShow}> Comment </button>
+                                <Modal isOpen={show} centered={true} >
+                                    <ModalHeader toggle={handleClose}>
+                                        Add Comment
+                                    </ModalHeader>
+                                    <ModalBody>
+                                        <RichTextEditorComponent toolbarSettings={toolbarSettings} height={250}>
+
+                                            <Inject services={[Toolbar, HtmlEditor]} />
+                                        </RichTextEditorComponent>
+                                    </ModalBody>
+                                    <ModalFooter>
+                                        <Button color="primary"> Save </Button>
+                                        <Button color="dark" onClick={handleClose}> Cancel </Button>
+                                    </ModalFooter>
+                                </Modal>
+                            </div>
                         </div>
-                        <div className="grid_container_btn">
-                            <CavityEdit modal={modal} toggle={toggle} column={column} addHeader={addHeader} editColumnHeader={editColumnHeader} editCancel={editCancel} editColumn={editColumn} />
+                        <div className="mt-4">
+                            <CavityGrid modal={modal} toggle={toggle} modal2={modal2} toggle2={toggle2} column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} addColumn={addColumn} NewRow2={NewRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} setId={setId} isRowId={isRowId} editFormData={editFormData} />
                         </div>
                     </div>
-                    <div className='mt-3'>
-                        <Button color="fifth" className="btn btn-sm mr-4" type="button"> Print </Button>
-                        <Button onClick={handleShow} color="primary" className="btn btn-sm step-button2" type="button"> Comment </Button>
-                        <Modal isOpen={show} centered={true} >
-                            <ModalHeader toggle={handleClose}>
-                                Add Comment
-                            </ModalHeader>
-                            <ModalBody>
-                                <RichTextEditorComponent toolbarSettings={toolbarSettings} height={250}>
+                </div>
 
-                                    <Inject services={[Toolbar, HtmlEditor]} />
-                                </RichTextEditorComponent>
-                            </ModalBody>
-                            <ModalFooter>
-                                <Button color="primary"> Save </Button>
-                                <Button color="dark" onClick={handleClose}> Cancel </Button>
-                            </ModalFooter>
-                        </Modal>
-                    </div>
-
-                </div>
-                <div className="mb-4">
-                    <CavityGrid modal={modal} toggle={toggle} modal2={modal2} toggle2={toggle2} column={column} deleteColumn={deleteColumn} editColumn={editColumn} isColumnId={isColumnId} editCancel={editCancel} addHeader={addHeader} setHeader={setHeader} toggleEdit={toggleEdit} editColumnHeader={editColumnHeader} addColumn={addColumn} NewRow2={NewRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} setId={setId} isRowId={isRowId} editFormData={editFormData} />
-                </div>
-                <div>
-                    <CavityGrid2 column={column} NewRow2={NewRow2} />
-                </div>
-            </div>
-            <div className="grid-chart-container">
-                <div className="row">
-                    <div className="col-md-4 chart_container_btn">
-                        <Button color="primary" onClick={setGraph}> Show Graph </Button>
+                <div className="card p-4">
+                    <div>
+                        <CavityGrid2 column={column} NewRow2={NewRow2} />
                     </div>
                 </div>
-                <div>
-                    <ChartComponent id='charts' ref={chart => chartInstance = chart} title="Cavity Chart Analysis" primaryXAxis={{ valueType: "Category", title: "Cavity ID" }} primaryYAxis={{ title: "Part Weight" }}>
-                        <Inject services={[LineSeries, Category, DataLabel]} />
-                        <SeriesCollectionDirective>
 
-                            {chartData.map((value, key) => (
-                                <SeriesDirective type="Line" dataSource={NewRow2} xName="Cavity_No" yName={`value${key}`} marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
-                            ))}
+                <div className="card p-4">
 
-                        </SeriesCollectionDirective>
-                    </ChartComponent>
-                </div>
-            </div>
-            <div className="row save_saveas_btn">
-                <div className="col-md-12">
-                    <div className="text-right">
-                        <Button color="third" className="btn-save-chart"> Save </Button>
+                    <div className="grid-chart-container">
+                        <div className="row">
+                            <div className="col-md-4 chart_container_btn">
+                                <button className="btn btn-pill btn-primary btn-air-primary mr-4" type="button" onClick={setGraph}> Show Graph </button>
+                            </div>
+                        </div>
+                        <div>
+                            <ChartComponent id='charts' ref={chart => chartInstance = chart} title="Cavity Chart Analysis" primaryXAxis={{ valueType: "Category", title: "Cavity ID" }} primaryYAxis={{ title: "Part Weight" }}>
+                                <Inject services={[LineSeries, Category, DataLabel]} />
+                                <SeriesCollectionDirective>
+
+                                    {chartData.map((value, key) => (
+                                        <SeriesDirective type="Line" dataSource={NewRow2} xName="Cavity_No" yName={`value${key}`} marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
+                                    ))}
+
+                                </SeriesCollectionDirective>
+                            </ChartComponent>
+                        </div>
                     </div>
                 </div>
             </div>

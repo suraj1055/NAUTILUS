@@ -20,7 +20,7 @@ const Sidebar = (props) => {
             <div className="page-sidebar">
                 <div className="main-header-left d-none d-lg-block">
                     <div>
-                            <h3 style={{ color: '#fff' }}> NAUTILUS </h3>
+                        <h3 style={{ color: '#fff' }}> NAUTILUS </h3>
                     </div>
                 </div>
                 <div className="sidebar custom-scrollbar">

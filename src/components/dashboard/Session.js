@@ -4,7 +4,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 const Session = ({ toggle2, modal2, handleAddFormChange2, handleAddFormSubmit2, moldId }) => {
   return (
     <>
-      <Button color="primary" onClick={toggle2}>Create session</Button>
+      <button className="btn btn-pill btn-primary btn-air-primary" type="button" onClick={toggle2}>Create session</button>
       <form>
         <Modal isOpen={modal2} toggle={toggle2} className="modal-body" centered={true}>
           <ModalHeader toggle={toggle2}>Add Session</ModalHeader>

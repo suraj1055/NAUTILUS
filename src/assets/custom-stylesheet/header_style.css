@@ -1,4 +1,4 @@
-@charset "UTF-8";
+/* @charset "UTF-8";
 /*!
  * Bootstrap v4.1.1 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
@@ -9020,10 +9020,10 @@ table tbody .border-bottom-warning td {
   top: 0;
   z-index: 15;
   box-shadow: 0 0 10px 1px rgba(68, 102, 242, 0.05);
-  width: calc(100% - 255px);
+  width: calc(100% - 200px);
   display: flex;
   align-items: center;
-  margin-left: 255px;
+  margin-left: 200px;
   transition: 0.3s; }
   .page-wrapper .page-main-header.open {
     margin-left: 0;
@@ -9564,7 +9564,7 @@ ul .submenu {
     background-color: rgba(0, 0, 0, 0.3); }
 
 .page-wrapper .page-body-wrapper .page-sidebar {
-  width: 255px;
+  width: 205px;
   position: fixed;
   /* background: #21325E; */
   background:#1d2d50;
@@ -51011,7 +51011,7 @@ body.swal2-toast-column .swal2-toast {
     display: block;
     position: absolute;
     top: 0;
-    left: 0; }
+    left: 0; } */
 
 /* custom */
 .table{
@@ -51039,4 +51039,4 @@ body.swal2-toast-column .swal2-toast {
     .table-bordered td{
       border-bottom: 1px solid #d8d7d7;
       border-color: #e6e6e6;      
-    }
+    } 

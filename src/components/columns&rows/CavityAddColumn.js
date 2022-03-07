@@ -1,10 +1,10 @@
 import React from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-const Cavity = ({ toggle2, modal2, addHeader, addColumn}) => {
+const Cavity = ({ toggle2, modal2, addHeader, addColumn }) => {
     return (
         <div className="btn-showcase">
-            <Button onClick={toggle2} color="secondary" className="btn btn-sm" type="button"> Add Column </Button>
+            <button className="btn btn-pill btn-secondary btn-air-secondary mr-4" type="button" onClick={toggle2}> Add Column </button>
             <Modal isOpen={modal2} toggle={toggle2} centered={true}>
                 <ModalHeader toggle={toggle2}>
                     Add column

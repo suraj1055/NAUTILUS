@@ -7,7 +7,7 @@ const ColdEdit = ({ modal3, toggle3, column, addHeader, editColumnHeader, editCo
 
         <div className="btn-showcase">
             {/* < !-- Using Form Modal --> */}
-            <Button color="primary" onClick={toggle3}> Edit Column Header </Button>
+            <button className="btn btn-pill btn-primary btn-air-primary mr-4" type="button"onClick={toggle3}> Edit Column Header </button>
             <Modal isOpen={modal3} centered={true}>
                 <ModalHeader toggle={toggle3}>{"Edit Header's Value"}</ModalHeader>
                 <ModalBody>

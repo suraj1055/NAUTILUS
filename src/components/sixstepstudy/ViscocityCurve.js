@@ -6,7 +6,6 @@ import { ChartComponent, LineSeries, Inject, SeriesCollectionDirective, SeriesDi
 // This is a modal imported from modals folder since we have a button i.e Generate Injection Speed this modal gets displayed
 import Viscocity from '../modals/Viscocity';
 import '../App.css';
-import { Button } from 'reactstrap';
 
 // This is the Grid/Table of our viscosity curve import from Grids folder
 import ViscocityGrid from '../Grids/ViscocityGrid';
@@ -235,102 +234,110 @@ const ViscocityCurve = () => {
 
     return (
         <>
-            <div className="viscocity-curve">
-                <div className="row">
-                    <div className="col-md-12">
+            <div className="Viscosity pb-4">
+                <div className="card mt-4">
+                    <div className="viscocity-curve m-4">
                         <div className="row">
-                            <div className="col-md-2 ">
+                            <div className="col-md-12">
+                                <div className="row">
+                                    <div className="col-md-3">
+                                        <div className="form-group">
+                                            <label htmlFor="Injection_Speed_Units" className="lbl_design"> Injection Speed Units: </label>
+                                            <select className="form-control digits" onChange={(e) => setInjection_Speed_Units(e.target.value)} name="Injection_Speed_Units">
+                                                <option>{"1"}</option>
+                                                <option>{"2"}</option>
+                                                <option>{"3"}</option>
+                                                <option>{"4"}</option>
+                                                <option>{"5"}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-3">
+                                        <div className="form-group">
+                                            <label htmlFor="Intensification_Ratio" className="lbl_design">Intensification Ratio:</label>
+                                            <input className="form-control" onChange={(e) => setIntensificationRatio(e.target.value)} name="Intensification_Ratio" defaultValue={IntensificationRatio} type="text" />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-3">
+                                        <div className="form-group">
+                                            <label htmlFor="Pressure_Units" className="lbl_design"> Pressure Units: </label>
+                                            <input className="form-control" onChange={(e) => setPressure_Units(e.target.value)} name="Pressure_Units" type="text" />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-2">
+                                        <div className="step-button">
+                                            <button className="btn btn-pill btn-primary btn-air-primary" type="button" onClick={toggle}>Generate Injection Speed</button>
+                                            {modal && <Viscocity toggle={toggle} modal={modal} />}
+                                        </div >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="card mt-4">
+
+                    <div className="grid-chart-container m-4">
+                        <div>
+                            <ViscocityGrid toggle2={toggle2} modal2={modal2} addRow={addRow} increaseRow={increaseRow} NewRow2={NewRow2} deleteRow2={deleteRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} setId={setId} isRowId={isRowId} editFormData={editFormData} IntensificationRatio={IntensificationRatio} />
+                        </div>
+                        <div className='d-flex'>
+                            <div className="m-4">
+                                <button className="btn btn-pill btn-secondary btn-air-secondary mr-4" type="button" onClick={getData}> Import Data </button>
+                            </div>
+                            <div className="m-4">
+                                <button className="btn btn-pill btn-secondary btn-air-secondary mr-4" type="button" onClick={saveData}> Save Data </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="card mt-4">
+                    <div className="grid-chart-container m-4">
+                        <div className="row">
+                            <div className="col-md-3">
                                 <div className="form-group">
-                                    <label htmlFor="Injection_Speed_Units" className="lbl_design"> Injection Speed Units: </label>
-                                    <select className="form-control digits" onChange={(e) => setInjection_Speed_Units(e.target.value)} name="Injection_Speed_Units">
-                                        <option>{"1"}</option>
-                                        <option>{"2"}</option>
-                                        <option>{"3"}</option>
-                                        <option>{"4"}</option>
-                                        <option>{"5"}</option>
+                                    <label htmlFor="exampleFormControlSelect30" className="lbl_design"> X-Axis: </label>
+                                    <select className="form-control digits" id="exampleFormControlSelect30" onChange={ChangeGraph}>
+                                        <option> Injection Speed </option>
+                                        <option> Shear Rate </option>
                                     </select>
                                 </div>
                             </div>
-                            <div className="col-md-2">
-                                <div className="form-group">
-                                    <label htmlFor="Intensification_Ratio" className="lbl_design">Intensification Ratio:</label>
-                                    <input className="form-control" onChange={(e) => setIntensificationRatio(e.target.value)} name="Intensification_Ratio" defaultValue={IntensificationRatio} type="text" />
-                                </div>
+                            <div className="col-md-4 mt-4">
+                                <button className="btn btn-pill btn-primary btn-air-primary" type="button" onClick={setGraph}>Show Graph</button>
                             </div>
-                            <div className="col-md-2">
-                                <div className="form-group">
-                                    <label htmlFor="Pressure_Units" className="lbl_design"> Pressure Units: </label>
-                                    <input className="form-control" onChange={(e) => setPressure_Units(e.target.value)} name="Pressure_Units" type="text" />
-                                </div>
-                            </div>
-                            <div className="col-md-2">
-                                <div className="step-button">
-                                    <Button color="primary" className="step-button2" onClick={toggle}> Generate Injection Speed </Button>
-                                    {modal && <Viscocity toggle={toggle} modal={modal} />}
-                                </div >
+                        </div>
+                        <div className="row">
+                            <div className="col-md-12">
+                                {Injection_Speed ? (
+                                    <ChartComponent title="Viscosity Curve" primaryXAxis={{ valueType: "Category", title: "Injection Speed" }} primaryYAxis={{ title: "Viscosity", minimum: minViscosity, maximum: maxViscosity, interval: Interval }}>
+
+                                        <Inject services={[LineSeries, Category, DataLabel]} />
+
+                                        <SeriesCollectionDirective>
+                                            <SeriesDirective type="Line" dataSource={NewRow2} xName="Injection_Speed" yName="Viscosity" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
+                                        </SeriesCollectionDirective>
+
+                                    </ChartComponent>
+                                )
+                                    :
+                                    (
+                                        <ChartComponent title="Viscosity Curve" primaryXAxis={{ valueType: "Category", title: "Shear Rate" }} primaryYAxis={{ title: "Viscosity", minimum: minViscosity, maximum: maxViscosity, interval: Interval }}>
+
+                                            <Inject services={[LineSeries, Category, DataLabel]} />
+
+                                            <SeriesCollectionDirective>
+                                                <SeriesDirective type="Line" dataSource={NewRow2} xName="Shear_Rate" yName="Viscosity" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
+                                            </SeriesCollectionDirective>
+
+                                        </ChartComponent>
+                                    )}
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div className="grid-chart-container">
-                <div>
-                    <ViscocityGrid toggle2={toggle2} modal2={modal2} addRow={addRow} increaseRow={increaseRow} NewRow2={NewRow2} deleteRow2={deleteRow2} handleEditFormChange={handleEditFormChange} handleEditFormSubmit={handleEditFormSubmit} setId={setId} isRowId={isRowId} editFormData={editFormData} IntensificationRatio={IntensificationRatio} />
-                </div>
-                <div className='d-flex'>
-                    <div className="m-4">
-                        <Button color="secondary" onClick={getData}> Import Data </Button>
-                    </div>
-                    <div className="m-4">
-                        <Button color="secondary" onClick={saveData}> Save Data </Button>
-                    </div>
-                </div>
-            </div>
-
-            <div className="grid-chart-container">
-                <div className="row">
-                    <div className="col-md-3">
-                        <div className="form-group">
-                            <label htmlFor="exampleFormControlSelect30" className="lbl_design"> X-Axis: </label>
-                            <select className="form-control digits" id="exampleFormControlSelect30" onChange={ChangeGraph}>
-                                <option>{"Injection Speed"}</option>
-                                <option>{"Shear Rate"}</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div className="col-md-4 mt-4">
-                        <Button color="primary" onClick={setGraph}> Show Graph </Button>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-md-12">
-                        {Injection_Speed ? (
-                            <ChartComponent title="Viscosity Curve" primaryXAxis={{ valueType: "Category", title: "Injection Speed" }} primaryYAxis={{ title: "Viscosity", minimum: minViscosity, maximum: maxViscosity, interval: Interval }}>
-
-                                <Inject services={[LineSeries, Category, DataLabel]} />
-
-                                <SeriesCollectionDirective>
-                                    <SeriesDirective type="Line" dataSource={NewRow2} xName="Injection_Speed" yName="Viscosity" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
-                                </SeriesCollectionDirective>
-
-                            </ChartComponent>
-                        )
-                            :
-                            (
-                                <ChartComponent title="Viscosity Curve" primaryXAxis={{ valueType: "Category", title: "Shear Rate" }} primaryYAxis={{ title: "Viscosity", minimum: minViscosity, maximum: maxViscosity, interval: Interval }}>
-
-                                    <Inject services={[LineSeries, Category, DataLabel]} />
-
-                                    <SeriesCollectionDirective>
-                                        <SeriesDirective type="Line" dataSource={NewRow2} xName="Shear_Rate" yName="Viscosity" marker={{ dataLabel: { visible: true }, visible: true }} ></SeriesDirective>
-                                    </SeriesCollectionDirective>
-
-                                </ChartComponent>
-                            )}
-                    </div>
-                </div>
-
             </div>
         </>
     )
